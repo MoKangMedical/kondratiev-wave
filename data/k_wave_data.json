@@ -1,0 +1,248 @@
+{
+  "k_waves": [
+    {
+      "wave": 1,
+      "name": "蒸汽机时代",
+      "period": "1780-1845",
+      "duration_years": 65,
+      "driver": "蒸汽机、纺织机械、铁路",
+      "phases": {
+        "recovery": {"start": 1780, "end": 1795, "label": "回升"},
+        "prosperity": {"start": 1795, "end": 1815, "label": "繁荣"},
+        "recession": {"start": 1815, "end": 1830, "label": "衰退"},
+        "depression": {"start": 1830, "end": 1845, "label": "萧条"}
+      },
+      "key_events": [
+        {"year": 1785, "event": "瓦特改良蒸汽机广泛应用"},
+        {"year": 1793, "event": "英国棉纺织业机械化"},
+        {"year": 1815, "event": "拿破仑战争结束，英国工业繁荣顶点"},
+        {"year": 1825, "event": "英国第一条公共铁路通车"},
+        {"year": 1837, "event": "经济恐慌，银行倒闭潮"}
+      ]
+    },
+    {
+      "wave": 2,
+      "name": "钢铁铁路时代",
+      "period": "1845-1900",
+      "duration_years": 55,
+      "driver": "钢铁、铁路网、电报",
+      "phases": {
+        "recovery": {"start": 1845, "end": 1857, "label": "回升"},
+        "prosperity": {"start": 1857, "end": 1873, "label": "繁荣"},
+        "recession": {"start": 1873, "end": 1885, "label": "衰退"},
+        "depression": {"start": 1885, "end": 1900, "label": "萧条"}
+      },
+      "key_events": [
+        {"year": 1848, "event": "欧洲革命、加州淘金热"},
+        {"year": 1869, "event": "美国横贯大陆铁路通车"},
+        {"year": 1873, "event": "维也纳股市崩盘，长期萧条开始"},
+        {"year": 1890, "event": "贝塞麦炼钢法推广，钢铁产量激增"}
+      ]
+    },
+    {
+      "wave": 3,
+      "name": "电气化时代",
+      "period": "1900-1950",
+      "duration_years": 50,
+      "driver": "电气化、化工、汽车",
+      "phases": {
+        "recovery": {"start": 1900, "end": 1910, "label": "回升"},
+        "prosperity": {"start": 1910, "end": 1929, "label": "繁荣"},
+        "recession": {"start": 1929, "end": 1937, "label": "衰退"},
+        "depression": {"start": 1937, "end": 1950, "label": "萧条"}
+      },
+      "key_events": [
+        {"year": 1908, "event": "福特T型车，流水线生产"},
+        {"year": 1920, "event": "美国"咆哮的二十年代"开始"},
+        {"year": 1929, "event": "华尔街股市崩盘，大萧条开始"},
+        {"year": 1933, "event": "罗斯福新政"},
+        {"year": 1945, "event": "二战结束，布雷顿森林体系建立"}
+      ]
+    },
+    {
+      "wave": 4,
+      "name": "石油化工时代",
+      "period": "1950-1990",
+      "duration_years": 40,
+      "driver": "石油化工、喷气机、电子",
+      "phases": {
+        "recovery": {"start": 1950, "end": 1958, "label": "回升"},
+        "prosperity": {"start": 1958, "end": 1973, "label": "繁荣"},
+        "recession": {"start": 1973, "end": 1982, "label": "衰退"},
+        "depression": {"start": 1982, "end": 1990, "label": "萧条"}
+      },
+      "key_events": [
+        {"year": 1956, "event": "州际高速公路系统开建"},
+        {"year": 1960, "event": "日本经济高速增长"},
+        {"year": 1971, "event": "尼克松关闭黄金窗口"},
+        {"year": 1973, "event": "第一次石油危机"},
+        {"year": 1980, "event": "沃尔克加息抗通胀"},
+        {"year": 1987, "event": "黑色星期一股灾"}
+      ]
+    },
+    {
+      "wave": 5,
+      "name": "信息技术时代",
+      "period": "1990-2030",
+      "duration_years": 40,
+      "driver": "信息技术、互联网、移动通信",
+      "phases": {
+        "recovery": {"start": 1990, "end": 2000, "label": "回升"},
+        "prosperity": {"start": 2000, "end": 2008, "label": "繁荣"},
+        "recession": {"start": 2008, "end": 2019, "label": "衰退"},
+        "depression": {"start": 2019, "end": 2030, "label": "萧条"}
+      },
+      "key_events": [
+        {"year": 1995, "event": "互联网商业化起步"},
+        {"year": 2000, "event": "互联网泡沫破裂"},
+        {"year": 2007, "event": "iPhone发布，移动互联网时代开启"},
+        {"year": 2008, "event": "全球金融危机"},
+        {"year": 2010, "event": "量化宽松时代"},
+        {"year": 2020, "event": "新冠疫情冲击"},
+        {"year": 2022, "event": "ChatGPT发布，AI时代开启"},
+        {"year": 2025, "event": "美联储降息周期开始"}
+      ],
+      "current_phase": "depression",
+      "progress": 0.95,
+      "status": "萧条末期，即将过渡到第六轮回升"
+    },
+    {
+      "wave": 6,
+      "name": "AI+生物科技+新能源时代",
+      "period": "2025-2070",
+      "duration_years": 45,
+      "driver": "人工智能、生物科技、新能源、量子计算",
+      "phases": {
+        "recovery": {"start": 2025, "end": 2038, "label": "回升"},
+        "prosperity": {"start": 2038, "end": 2055, "label": "繁荣"},
+        "recession": {"start": 2055, "end": 2065, "label": "衰退"},
+        "depression": {"start": 2065, "end": 2070, "label": "萧条"}
+      },
+      "key_events": [
+        {"year": 2025, "event": "AI大模型全面商业化"},
+        {"year": 2028, "event": "预计：AI Agent生态成型"},
+        {"year": 2030, "event": "预计：人形机器人量产"},
+        {"year": 2035, "event": "预计：核聚变商业化"},
+        {"year": 2040, "event": "预计：具身智能全面渗透"},
+        {"year": 2050, "event": "预计：AI+生物融合，个性化医疗普及"}
+      ],
+      "current_phase": "recovery",
+      "progress": 0.05,
+      "status": "回升初期，基建阶段"
+    }
+  ],
+  "asset_rotation": {
+    "recovery": {
+      "best": ["股票（成长股）", "大宗商品"],
+      "good": ["核心城市房产"],
+      "avoid": ["现金（通胀侵蚀）", "长期债券"]
+    },
+    "prosperity": {
+      "best": ["房地产", "实物资产"],
+      "good": ["股票"],
+      "avoid": ["债券", "现金"]
+    },
+    "recession": {
+      "best": ["黄金", "大宗商品"],
+      "good": ["现金"],
+      "avoid": ["股票", "房地产"]
+    },
+    "depression_early": {
+      "best": ["现金", "国债"],
+      "good": ["黄金"],
+      "avoid": ["股票", "房地产", "大宗商品"]
+    },
+    "depression_late": {
+      "best": ["核心资产（底部买入）", "股票（逢低布局）"],
+      "good": ["黄金（继续持有）"],
+      "avoid": ["过度持有现金（将贬值）"]
+    }
+  },
+  "family_strategies": {
+    "rockefeller": {
+      "name": "洛克菲勒家族",
+      "country": "美国",
+      "generations": 7,
+      "estimated_wealth": "110-320亿美元",
+      "core_mechanisms": [
+        "不可撤销王朝信托（Dynasty Trust）",
+        "瀑布方法（Waterfall Method）——终身寿险+信托循环",
+        "家族办公室统筹全球投资",
+        "慈善基金会（声誉+税务+使命感）"
+      ],
+      "portfolio": {
+        "real_estate": 20,
+        "equity": 30,
+        "bonds": 20,
+        "private_equity": 15,
+        "alternatives": 15
+      },
+      "cycle_strategy": "萧条期加大股权和地产配置（逆向操作），繁荣期减持高估值资产"
+    },
+    "rothschild": {
+      "name": "罗斯柴尔德家族",
+      "country": "欧洲（全球）",
+      "generations": 6,
+      "estimated_wealth": "5万亿美元（含私人资产）",
+      "core_mechanisms": [
+        "家族银行不上市，股权内部传承",
+        "联合融资（Syndicate）模式",
+        "锚定实体经济（矿产、土地、基础设施）",
+        "为交战双方融资，对冲地缘风险"
+      ],
+      "cycle_strategy": "繁荣期发行金融产品放大收益，萧条期收购低价实物资产"
+    },
+    "li_ka_shing": {
+      "name": "李嘉诚家族",
+      "country": "中国香港",
+      "generations": 2,
+      "estimated_wealth": "373-451亿美元",
+      "core_mechanisms": [
+        "双轨制分家（实业+金融）",
+        "全球化分散（50+国家）",
+        "匮乏期骆驼式积累，充裕期狮子式警惕",
+        "家族办公室顶层设计风险对冲"
+      ],
+      "cycle_strategy": "萧条期大量收购基础设施，繁荣期逐步减持高位资产",
+      "famous_moves": [
+        "1997亚洲金融危机前减持亚洲地产",
+        "2008金融危机前减持雷曼相关资产",
+        "2013-2015大规模撤出中国房地产（精准逃顶）"
+      ]
+    },
+    "walton": {
+      "name": "沃尔顿家族",
+      "country": "美国",
+      "generations": 3,
+      "estimated_wealth": "5134亿美元（全球最富家族）",
+      "core_mechanisms": [
+        "沃尔玛股权集中在家族信托",
+        "家族成员不直接参与管理",
+        "零售业务稳定现金流驱动多元化投资"
+      ],
+      "cycle_strategy": "稳定现金流穿越周期，利用萧条期进行科技和地产投资"
+    },
+    "huawei_ren": {
+      "name": "华为/任正非",
+      "country": "中国",
+      "generations": 1,
+      "estimated_wealth": "任正非个人210亿，华为市值万亿级",
+      "core_mechanisms": [
+        "98.6%股权分给员工（虚拟受限股）",
+        "去家族化，职业经理人治理",
+        "R&D投入15%+营收（逆周期加码）",
+        "全球化收入来源（170+国家）"
+      ],
+      "cycle_strategy": "技术驱动穿越周期，员工持股制度确保逆周期不流失人才"
+    }
+  },
+  "shihanbing_seven_directions": [
+    {"rank": 1, "name": "黄金", "logic": "去美元化+央行增持+避险", "k_wave_phase": "萧条→回升", "certainty": "极高"},
+    {"rank": 2, "name": "白银", "logic": "新能源工业需求+金银比修复", "k_wave_phase": "回升期", "certainty": "高"},
+    {"rank": 3, "name": "核电", "logic": "AI用电暴增+碳中和", "k_wave_phase": "回升→繁荣", "certainty": "高"},
+    {"rank": 4, "name": "美股", "logic": "AI革命主战场+全球资本流入", "k_wave_phase": "回升期", "certainty": "中高"},
+    {"rank": 5, "name": "美债", "logic": "利率下行+避险", "k_wave_phase": "萧条末期", "certainty": "中"},
+    {"rank": 6, "name": "中药材", "logic": "老龄化+中国特色+稀缺性", "k_wave_phase": "长期", "certainty": "中"},
+    {"rank": 7, "name": "小金属", "logic": "AI+新能源关键材料(镓锗锑)", "k_wave_phase": "回升→繁荣", "certainty": "高"}
+  ]
+}
