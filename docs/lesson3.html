@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第三课：第六轮康波 — AI驱动的新纪元 — 康波研究院</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#09090b;--bg2:#0f0f13;--card:#1c1c21;--card2:#222228;--card3:#2a2a32;--border:#27272a;--border2:#3f3f46;--text:#fafafa;--text2:#a1a1aa;--text3:#71717a;--gold:#e2b64f;--gold2:#f5d98a;--green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;--orange:#f59e0b;--red:#ef4444;--serif:'Noto Serif SC',serif;--sans:'Inter',sans-serif;--radius:16px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.8}
+a{color:var(--gold);text-decoration:none}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(9,9,11,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);height:56px;display:flex;align-items:center}
+.nav-inner{max-width:900px;margin:0 auto;padding:0 24px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-left{display:flex;align-items:center;gap:16px}
+.nav-back{font-size:0.85rem;color:var(--text3);transition:color .2s}.nav-back:hover{color:var(--gold)}
+.nav-title{font-size:0.85rem;color:var(--text2);font-weight:500}
+.nav-right{display:flex;align-items:center;gap:12px}
+.nav-lesson{font-size:0.75rem;color:var(--text3);background:var(--card2);padding:4px 12px;border-radius:6px}
+
+/* PROGRESS BAR */
+.progress-bar{position:fixed;top:56px;left:0;right:0;height:3px;background:var(--border);z-index:99}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));transition:width .3s;width:0%}
+
+/* MAIN */
+.main{max-width:740px;margin:0 auto;padding:80px 24px 60px}
+
+/* LESSON HEADER */
+.lesson-header{margin-bottom:48px}
+.lesson-num{display:inline-flex;align-items:center;gap:8px;font-size:0.8rem;color:var(--gold);font-weight:600;margin-bottom:12px;letter-spacing:0.08em}
+.lesson-num .line{width:32px;height:1px;background:var(--gold)}
+.lesson-header h1{font-family:var(--serif);font-size:clamp(1.8rem,4vw,2.4rem);font-weight:900;line-height:1.3;margin-bottom:12px}
+.lesson-meta{display:flex;gap:16px;flex-wrap:wrap}
+.lesson-meta span{font-size:0.8rem;color:var(--text3);display:flex;align-items:center;gap:4px}
+
+/* SECTIONS */
+.section{margin-bottom:40px}
+.section h2{font-size:1.2rem;font-weight:700;margin-bottom:16px;color:var(--text);display:flex;align-items:center;gap:8px}
+.section h2 .icon{font-size:1.1rem}
+.section p{color:var(--text2);font-size:0.95rem;margin-bottom:12px}
+
+/* CALLOUT */
+.callout{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;margin:20px 0}
+.callout.gold{border-left:3px solid var(--gold)}
+.callout.green{border-left:3px solid var(--green)}
+.callout.blue{border-left:3px solid var(--blue)}
+.callout-title{font-size:0.8rem;font-weight:600;color:var(--gold);margin-bottom:8px;text-transform:uppercase;letter-spacing:0.08em}
+.callout p{color:var(--text2);font-size:0.9rem}
+
+/* TABLE */
+.data-table{width:100%;border-collapse:collapse;margin:16px 0;font-size:0.88rem}
+.data-table th{text-align:left;padding:10px 12px;background:var(--card2);color:var(--text3);font-weight:600;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.05em;border-bottom:1px solid var(--border)}
+.data-table td{padding:10px 12px;border-bottom:1px solid var(--border);color:var(--text2)}
+.data-table tr:hover td{background:var(--card)}
+
+/* TIMELINE INTERACTIVE */
+.timeline-interactive{position:relative;margin:24px 0;padding-left:24px}
+.timeline-interactive::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--green),var(--orange),var(--blue),var(--purple))}
+.tl-item{position:relative;margin-bottom:20px;padding-left:24px;cursor:pointer;transition:all .3s}
+.tl-item::before{content:'';position:absolute;left:-20px;top:8px;width:12px;height:12px;border-radius:50%;border:2px solid var(--border2);background:var(--bg);transition:all .3s}
+.tl-item:hover::before{border-color:var(--gold);background:var(--gold)}
+.tl-item.active::before{border-color:var(--gold);background:var(--gold);box-shadow:0 0 12px rgba(226,182,79,0.4)}
+.tl-item .tl-title{font-weight:600;font-size:0.95rem;margin-bottom:4px}
+.tl-item .tl-period{font-size:0.8rem;color:var(--text3);margin-bottom:4px}
+.tl-item .tl-detail{max-height:0;overflow:hidden;transition:max-height .4s;font-size:0.88rem;color:var(--text2)}
+.tl-item.active .tl-detail{max-height:200px}
+
+/* ASSET MAPPING */
+.asset-phase{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:16px 0}
+.phase-btn{padding:12px 8px;border-radius:10px;border:1px solid var(--border);background:var(--card);cursor:pointer;text-align:center;transition:all .3s;font-size:0.82rem}
+.phase-btn:hover{border-color:var(--border2)}
+.phase-btn.active{border-color:var(--gold);background:rgba(226,182,79,0.08)}
+.phase-btn .emoji{font-size:1.2rem;display:block;margin-bottom:4px}
+.phase-btn .name{font-weight:600;color:var(--text)}
+.phase-btn .sub{font-size:0.7rem;color:var(--text3);margin-top:2px}
+.phase-result{min-height:120px}
+
+/* SECTOR TIER EXPLORER */
+.tier-explorer{margin:24px 0}
+.tier-item{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:12px;overflow:hidden;transition:all .3s}
+.tier-item:hover{border-color:var(--border2)}
+.tier-item.active{border-color:var(--gold)}
+.tier-header{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;cursor:pointer;transition:all .3s}
+.tier-header:hover{background:var(--card2)}
+.tier-header-left{display:flex;align-items:center;gap:12px}
+.tier-badge{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:10px;font-size:1.1rem;font-weight:700}
+.tier-badge.t1{background:rgba(226,182,79,0.15);color:var(--gold)}
+.tier-badge.t2{background:rgba(59,130,246,0.15);color:var(--blue)}
+.tier-badge.t3{background:rgba(16,185,129,0.15);color:var(--green)}
+.tier-header-info h3{font-size:0.95rem;font-weight:600;margin-bottom:2px}
+.tier-header-info .tier-sub{font-size:0.78rem;color:var(--text3)}
+.tier-arrow{color:var(--text3);transition:transform .3s;font-size:1.2rem}
+.tier-item.active .tier-arrow{transform:rotate(180deg)}
+.tier-body{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.tier-item.active .tier-body{max-height:600px}
+.tier-content{padding:0 20px 20px}
+.tier-sectors{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;margin-top:12px}
+.sector-chip{display:flex;align-items:center;gap:8px;padding:10px 14px;background:var(--card2);border-radius:10px;font-size:0.85rem;transition:all .2s}
+.sector-chip:hover{background:var(--card3)}
+.sector-chip .chip-icon{font-size:1.1rem}
+.sector-chip .chip-name{font-weight:500}
+.sector-chip .chip-desc{font-size:0.72rem;color:var(--text3);display:block}
+.tier-note{margin-top:12px;padding:12px 14px;background:var(--card2);border-radius:10px;font-size:0.82rem;color:var(--text2);line-height:1.7;border-left:2px solid var(--border2)}
+.tier-item.active .tier-note{border-left-color:var(--gold)}
+
+/* COMPARISON TABLE */
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0}
+.compare-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px}
+.compare-card h4{font-size:0.9rem;font-weight:600;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.compare-card ul{list-style:none;padding:0}
+.compare-card li{font-size:0.85rem;color:var(--text2);padding:4px 0;display:flex;align-items:flex-start;gap:6px}
+.compare-card li::before{content:'→';color:var(--gold);flex-shrink:0}
+
+/* EXERCISE */
+.exercise{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:28px;margin:24px 0}
+.exercise-label{display:inline-flex;align-items:center;gap:6px;font-size:0.75rem;font-weight:600;color:var(--blue);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:12px}
+.exercise h3{font-size:1.05rem;margin-bottom:8px}
+.exercise p{color:var(--text2);font-size:0.9rem;margin-bottom:16px}
+.exercise textarea{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:14px;color:var(--text);font-family:var(--sans);font-size:0.9rem;resize:vertical;transition:border-color .2s}
+.exercise textarea:focus{outline:none;border-color:var(--gold)}
+.exercise textarea::placeholder{color:var(--text3)}
+.exercise .hint{margin-top:12px}
+.exercise .hint-btn{background:transparent;border:1px solid var(--border2);color:var(--text3);padding:8px 16px;border-radius:8px;font-size:0.82rem;cursor:pointer;transition:all .2s;font-family:var(--sans)}
+.exercise .hint-btn:hover{border-color:var(--gold);color:var(--gold)}
+.exercise .hint-answer{display:none;margin-top:12px;padding:14px;background:var(--card2);border-radius:10px;font-size:0.88rem;color:var(--green);line-height:1.7}
+.exercise .hint-answer.show{display:block}
+
+/* MULTI-CHOICE */
+.choices{display:flex;flex-direction:column;gap:8px;margin:12px 0}
+.choice{padding:12px 16px;background:var(--card2);border:1px solid var(--border);border-radius:10px;cursor:pointer;transition:all .25s;font-size:0.9rem;display:flex;align-items:center;gap:10px}
+.choice:hover{border-color:var(--border2)}
+.choice.selected{border-color:var(--gold);background:rgba(226,182,79,0.08)}
+.choice.correct{border-color:var(--green);background:rgba(34,197,94,0.08)}
+.choice.wrong{border-color:var(--red);background:rgba(239,68,68,0.05)}
+.choice .letter{width:28px;height:28px;border-radius:8px;background:var(--card3);display:flex;align-items:center;justify-content:center;font-weight:600;font-size:0.8rem;flex-shrink:0}
+.choice.correct .letter{background:var(--green);color:#000}
+.choice.wrong .letter{background:var(--red);color:#fff}
+
+/* BOTTOM NAV */
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;padding:32px 0;margin-top:40px;border-top:1px solid var(--border)}
+.bottom-nav a{display:flex;align-items:center;gap:8px;padding:12px 20px;border-radius:10px;font-size:0.9rem;font-weight:500;transition:all .2s}
+.bottom-nav .prev{color:var(--text3);border:1px solid var(--border)}
+.bottom-nav .prev:hover{border-color:var(--gold);color:var(--gold)}
+.bottom-nav .next{background:var(--gold);color:#000}
+.bottom-nav .next:hover{background:var(--gold2)}
+
+/* COMPLETION */
+.completion{text-align:center;padding:40px;background:var(--card);border-radius:var(--radius);border:1px solid var(--gold);margin-top:32px;display:none}
+.completion.show{display:block}
+.completion .check{font-size:3rem;margin-bottom:12px}
+.completion h3{color:var(--gold);margin-bottom:8px}
+.completion p{color:var(--text2);font-size:0.9rem}
+
+/* RESPONSIVE */
+@media(max-width:600px){
+  .asset-phase{grid-template-columns:repeat(2,1fr)}
+  .compare-grid{grid-template-columns:1fr}
+  .tier-sectors{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-left">
+      <a href="index.html" class="nav-back">← 返回首页</a>
+      <span class="nav-title">第三课</span>
+    </div>
+    <div class="nav-right">
+      <span class="nav-lesson">3 / 6</span>
+    </div>
+  </div>
+</nav>
+<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+
+<div class="main">
+
+<!-- HEADER -->
+<div class="lesson-header">
+  <div class="lesson-num"><span class="line"></span> LESSON 03</div>
+  <h1>第六轮康波 — AI驱动的新纪元</h1>
+  <div class="lesson-meta">
+    <span>📖 阅读约18分钟</span>
+    <span>✏️ 3道练习题</span>
+    <span>🎯 进阶篇</span>
+  </div>
+</div>
+
+<!-- 3.1 三大驱动力 -->
+<div class="section">
+  <h2><span class="icon">⚡</span> 第六轮康波的三大驱动力</h2>
+  <p>历史上每一轮康波都由一组"主导技术群"驱动。第六轮康波（2025-2070）的驱动力是三个正在同时爆发的技术方向，它们相互交织、彼此强化：</p>
+  
+  <div class="callout gold">
+    <div class="callout-title">三大驱动力概览</div>
+    <p><strong>🤖 人工智能（AI）</strong>— 生产力革命的核心引擎。大语言模型突破认知自动化边界，将像电力一样渗透所有行业。<br><br>
+    <strong>🔋 新能源</strong>— 能源革命的基石。光伏成本10年降90%，储能技术逼近临界点，核聚变曙光初现。<br><br>
+    <strong>🧬 生物科技</strong>— 生命科学革命。基因编辑、mRNA技术、AI药物研发，正在重新定义人类健康与寿命。</p>
+  </div>
+
+  <p>这三大方向的关系可以用一个简单的公式理解：</p>
+  <div class="callout blue">
+    <div class="callout-title">协同公式</div>
+    <p><strong>AI提供算力 + 新能源提供能量 + 生物科技提供应用场景 = 第六轮康波的完整技术矩阵</strong><br><br>
+    AI需要海量电力（数据中心耗电量年增30%+），新能源需要AI优化电网调度，生物研发需要AI加速分子模拟——三者形成正反馈飞轮。</p>
+  </div>
+</div>
+
+<!-- 3.2 AI渗透路径类比 -->
+<div class="section">
+  <h2><span class="icon">📊</span> AI的渗透路径：互联网2.0？</h2>
+  <p>要理解AI的投资节奏，最好的参照系就是<strong>互联网的渗透史</strong>。技术革命的扩散遵循相似的S曲线，只是速度更快、规模更大。点击每个阶段查看详情：</p>
+
+  <div class="timeline-interactive">
+    <div class="tl-item active" onclick="toggleTL(this)">
+      <div class="tl-title">阶段一：基建期（2022-2027）</div>
+      <div class="tl-period">类比互联网：1995-2000（拨号上网+门户网站）</div>
+      <div class="tl-detail">AI大模型训练基础设施建设期。GPU/TPU需求爆发，数据中心大规模扩建，云计算巨头资本开支翻倍。类似1995-2000年Cisco卖路由器、AOL铺拨号。<strong>特征：硬件先行，应用尚少，资本密集投入。</strong></div>
+    </div>
+    <div class="tl-item" onclick="toggleTL(this)">
+      <div class="tl-title">阶段二：平台期（2027-2035）</div>
+      <div class="tl-period">类比互联网：2003-2010（宽带普及+平台崛起）</div>
+      <div class="tl-detail">AI平台和应用层爆发。AI Agent成为标配，垂直行业大模型落地（医疗、法律、金融），机器人开始规模化部署。类似2003-2010年Google、Amazon、Facebook崛起。<strong>特征：杀手级应用涌现，平台经济成型。</strong></div>
+    </div>
+    <div class="tl-item" onclick="toggleTL(this)">
+      <div class="tl-title">阶段三：全面渗透期（2035-2050）</div>
+      <div class="tl-period">类比互联网：2010-2025（移动互联网+万物互联）</div>
+      <div class="tl-detail">AI无处不在。AGI（通用人工智能）接近实现，AI重塑所有行业的工作流程，人机协作成为常态。类似2010年后智能手机+移动支付+短视频改变一切。<strong>特征：AI融入基础设施，像水电一样无感存在。</strong></div>
+    </div>
+  </div>
+
+  <div class="callout green">
+    <div class="callout-title">💡 关键洞察</div>
+    <p>当前（2026年）我们处于<strong>AI基建期的中段</strong>，类似1997-1998年的互联网。风险投资涌入、基础设施建设过热、大多数人还在观望——这恰恰是早期布局者的黄金窗口。记住：<strong>基建期投硬件，平台期投应用，渗透期投生态</strong>。</p>
+  </div>
+</div>
+
+<!-- 3.3 行业分层地图 -->
+<div class="section">
+  <h2><span class="icon">🗺️</span> 行业分层地图：三层投资机会</h2>
+  <p>根据与AI技术革命的距离和受益时间，我们将相关行业分为三个层级。点击展开查看详情：</p>
+
+  <div class="tier-explorer">
+    <!-- Tier 1 -->
+    <div class="tier-item active" onclick="toggleTier(this)">
+      <div class="tier-header">
+        <div class="tier-header-left">
+          <div class="tier-badge t1">T1</div>
+          <div class="tier-header-info">
+            <h3>第一层 · AI基建（当前主线）</h3>
+            <div class="tier-sub">最先受益 · 确定性最高 · 2022-2030</div>
+          </div>
+        </div>
+        <span class="tier-arrow">▼</span>
+      </div>
+      <div class="tier-body">
+        <div class="tier-content">
+          <div class="tier-sectors">
+            <div class="sector-chip"><span class="chip-icon">🔧</span><div><span class="chip-name">AI芯片</span><span class="chip-desc">GPU、TPU、AI专用芯片</span></div></div>
+            <div class="sector-chip"><span class="chip-icon">🏢</span><div><span class="chip-name">数据中心</span><span class="chip-desc">IDC、液冷散热、电力配套</span></div></div>
+            <div class="sector-chip"><span class="chip-icon">☁️</span><div><span class="chip-name">云计算</span><span class="chip-desc">IaaS/PaaS、AI算力服务</span></div></div>
+            <div class="sector-chip"><span class="chip-icon">⚡</span><div><span class="chip-name">算力电力</span><span class="chip-desc">电力设备、变压器、配电</span></div></div>
+          </div>
+          <div class="tier-note">
+            <strong>投资逻辑：</strong>AI基建期"卖铲子"的确定性最高。如同1997年投资Cisco、Intel。关注点：GPU供给缺口何时缓解、数据中心PUE效率竞赛、国产替代进展。风险：产能过剩、技术迭代导致的资产减值。
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tier 2 -->
+    <div class="tier-item" onclick="toggleTier(this)">
+      <div class="tier-header">
+        <div class="tier-header-left">
+          <div class="tier-badge t2">T2</div>
+          <div class="tier-header-info">
+            <h3>第二层 · AI应用（中期爆发）</h3>
+            <div class="tier-sub">中期受益 · 高弹性 · 2027-2040</div>
+          </div>
+        </div>
+        <span class="tier-arrow">▼</span>
+      </div>
+      <div class="tier-body">
+        <div class="tier-content">
+          <div class="tier-sectors">
+            <div class="sector-chip"><span class="chip-icon">🤖</span><div><span class="chip-name">AI Agent</span><span class="chip-desc">自主AI助手、工作流自动化</span></div></div>
+            <div class="sector-chip"><span class="chip-icon">🦾</span><div><span class="chip-name">机器人</span><span class="chip-desc">人形机器人、工业机器人</span></div></div>
+            <div class="sector-chip"><span class="chip-icon">🏥</span><div><span class="chip-name">AI医疗</span><span class="chip-desc">AI制药、影像诊断、基因组学</span></div></div>
+            <div class="sector-chip"><span class="chip-icon">🚗</span><div><span class="chip-name">自动驾驶</span><span class="chip-desc">L4/L5自动驾驶、车路协同</span></div></div>
+            <div class="sector-chip"><span class="chip-icon">💻</span><div><span class="chip-name">AI软件</span><span class="chip-desc">AI编程、AI设计、AI教育</span></div></div>
+            <div class="sector-chip"><span class="chip-icon">🔐</span><div><span class="chip-name">AI安全</span><span class="chip-desc">网络安全、数据隐私、AI治理</span></div></div>
+          </div>
+          <div class="tier-note">
+            <strong>投资逻辑：</strong>AI应用层是最大的价值创造地，但需要等基建成熟。类似2005年投资移动App。关键信号：AI Agent是否成为标配、机器人成本何时降至人工成本的2倍以内。风险：技术路线不确定性高、赢家通吃效应强。
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tier 3 -->
+    <div class="tier-item" onclick="toggleTier(this)">
+      <div class="tier-header">
+        <div class="tier-header-left">
+          <div class="tier-badge t3">T3</div>
+          <div class="tier-header-info">
+            <h3>第三层 · 新能源+资源（长期支撑）</h3>
+            <div class="tier-sub">全周期受益 · 资源属性 · 2025-2060</div>
+          </div>
+        </div>
+        <span class="tier-arrow">▼</span>
+      </div>
+      <div class="tier-body">
+        <div class="tier-content">
+          <div class="tier-sectors">
+            <div class="sector-chip"><span class="chip-icon">☀️</span><div><span class="chip-name">光伏储能</span><span class="chip-desc">光伏组件、锂电池、钠电池</span></div></div>
+            <div class="sector-chip"><span class="chip-icon">⛏️</span><div><span class="chip-name">铜锂矿</span><span class="chip-desc">铜、锂、钴、镍等关键矿物</span></div></div>
+            <div class="sector-chip"><span class="chip-icon">☢️</span><div><span class="chip-name">核能</span><span class="chip-desc">小型模块化反应堆、核聚变</span></div></div>
+            <div class="sector-chip"><span class="chip-icon">🔌</span><div><span class="chip-name">电网升级</span><span class="chip-desc">智能电网、特高压输电</span></div></div>
+          </div>
+          <div class="tier-note">
+            <strong>投资逻辑：</strong>AI是"电老虎"——数据中心耗电量年增30%+。新能源+资源是AI革命的"隐形基建"。铜被称为"新时代的石油"，AI服务器用铜量是传统服务器的3倍。关注点：铜的供需缺口何时扩大、核能SMR商业化时间表。
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <table class="data-table">
+    <thead><tr><th>层级</th><th>受益时间</th><th>确定性</th><th>弹性</th><th>类比互联网</th></tr></thead>
+    <tbody>
+      <tr><td>🥇 T1 基建层</td><td>2022-2030</td><td style="color:var(--green)">⭐⭐⭐⭐⭐</td><td style="color:var(--orange)">⭐⭐⭐</td><td>Cisco / Intel</td></tr>
+      <tr><td>🥈 T2 应用层</td><td>2027-2040</td><td style="color:var(--orange)">⭐⭐⭐</td><td style="color:var(--green)">⭐⭐⭐⭐⭐</td><td>Google / Meta</td></tr>
+      <tr><td>🥉 T3 资源层</td><td>2025-2060</td><td style="color:var(--blue)">⭐⭐⭐⭐</td><td style="color:var(--blue)">⭐⭐⭐⭐</td><td>电力公司 / 芯片材料</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- 3.4 中国独特优势 -->
+<div class="section">
+  <h2><span class="icon">🇨🇳</span> 中国在第六轮康波中的独特位置</h2>
+  <p>在AI驱动的第六轮康波中，中国拥有全球独一无二的结构性优势，但同时也面临特定挑战：</p>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>✅ 三大核心优势</h4>
+      <ul>
+        <li><strong>完整供应链</strong> — 全球唯一拥有联合国全部工业门类的国家，AI硬件从芯片封装到整机制造一条龙</li>
+        <li><strong>14亿人口数据</strong> — AI时代最稀缺的资源是高质量数据，中国拥有全球最大的单一语言数据池和应用场景</li>
+        <li><strong>工程师红利</strong> — 每年培养500万+STEM毕业生，AI研发人才储备全球第二，成本仅为美国的1/3-1/5</li>
+      </ul>
+    </div>
+    <div class="compare-card">
+      <h4>⚠️ 两大关键挑战</h4>
+      <ul>
+        <li><strong>GPU制裁</strong> — 美国对华AI芯片出口管制（H100/A100禁售），倒逼国产替代（华为昇腾、寒武纪），但性能差距仍在1-2代</li>
+        <li><strong>资本效率</strong> — 相比美国，中国AI创业生态的资本效率偏低，大模型"百模大战"造成资源分散，需要时间整合</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout gold">
+    <div class="callout-title">💡 中国特色投资逻辑</div>
+    <p>中国AI投资的核心逻辑不是"跟随美国"，而是<strong>"应用创新+制造降本"</strong>。中国的AI应用落地速度往往快于美国（参考移动支付、短视频的普及路径）。重点关注：<br><br>
+    ① <strong>AI应用的中国速度</strong> — 同样的技术，中国落地更快、成本更低<br>
+    ② <strong>国产替代</strong> — GPU制裁催生的芯片国产化浪潮<br>
+    ③ <strong>出海机会</strong> — 中国AI应用出海东南亚、中东、非洲</p>
+  </div>
+</div>
+
+<!-- EXERCISE 1 -->
+<div class="exercise" id="ex1">
+  <div class="exercise-label">✏️ 练习 1/3</div>
+  <h3>阶段判断</h3>
+  <p>AI渗透的三个阶段（基建期、平台期、全面渗透期）中，当前我们处于哪个阶段？这个阶段的投资主题是什么？请类比互联网时代的具体案例。</p>
+  <textarea placeholder="写下你的答案..."></textarea>
+  <div class="hint">
+    <button class="hint-btn" onclick="this.nextElementSibling.classList.toggle('show')">💡 查看参考答案</button>
+    <div class="hint-answer">当前（2026年）处于<strong>AI基建期中段</strong>（2022-2027）。<br><br>
+    <strong>投资主题：</strong>卖铲子——AI芯片、数据中心、云计算基础设施。<br><br>
+    <strong>互联网类比：</strong>1997-1998年。当时Cisco（路由器/网络设备）股价3年涨10倍，Intel（芯片）涨5倍。类似今天NVIDIA（GPU）、SMCI（服务器）、Vertiv（液冷）。<br><br>
+    <strong>关键区别：</strong>AI基建期的资本开支规模远超互联网时代——2024年全球AI资本开支约2000亿美元，而1998年互联网基建投资仅约500亿美元（调整通胀后）。</div>
+  </div>
+</div>
+
+<!-- EXERCISE 2 -->
+<div class="exercise" id="ex2">
+  <div class="exercise-label">✏️ 练习 2/3</div>
+  <h3>行业分层</h3>
+  <p>以下行业分别属于哪一层级？请选出正确答案：</p>
+  <div class="choices" id="q2a">
+    <p style="font-size:0.9rem;margin-bottom:8px"><strong>液冷散热设备制造商</strong></p>
+    <div class="choice" onclick="selectChoice(this,'q2a','correct')"><span class="letter">A</span> T1 基建层</div>
+    <div class="choice" onclick="selectChoice(this,'q2a','wrong')"><span class="letter">B</span> T2 应用层</div>
+    <div class="choice" onclick="selectChoice(this,'q2a','wrong')"><span class="letter">C</span> T3 资源层</div>
+  </div>
+  <div class="choices" id="q2b" style="margin-top:16px">
+    <p style="font-size:0.9rem;margin-bottom:8px"><strong>铜矿开采企业</strong></p>
+    <div class="choice" onclick="selectChoice(this,'q2b','wrong')"><span class="letter">A</span> T1 基建层</div>
+    <div class="choice" onclick="selectChoice(this,'q2b','wrong')"><span class="letter">B</span> T2 应用层</div>
+    <div class="choice" onclick="selectChoice(this,'q2b','correct')"><span class="letter">C</span> T3 资源层</div>
+  </div>
+  <div class="choices" id="q2c" style="margin-top:16px">
+    <p style="font-size:0.9rem;margin-bottom:8px"><strong>AI药物研发平台</strong></p>
+    <div class="choice" onclick="selectChoice(this,'q2c','wrong')"><span class="letter">A</span> T1 基建层</div>
+    <div class="choice" onclick="selectChoice(this,'q2c','correct')"><span class="letter">B</span> T2 应用层</div>
+    <div class="choice" onclick="selectChoice(this,'q2c','wrong')"><span class="letter">C</span> T3 资源层</div>
+  </div>
+</div>
+
+<!-- EXERCISE 3 -->
+<div class="exercise" id="ex3">
+  <div class="exercise-label">✏️ 练习 3/3</div>
+  <h3>中国优势分析</h3>
+  <p>如果你是一位基金经理，要在AI产业链中选择中国最具竞争力的3个细分领域进行配置，你会选哪3个？为什么？请结合"三大优势"和"两大挑战"来分析。</p>
+  <textarea placeholder="写下你的答案..."></textarea>
+  <div class="hint">
+    <button class="hint-btn" onclick="this.nextElementSibling.classList.toggle('show')">💡 查看参考答案</button>
+    <div class="hint-answer">参考配置：<br><br>
+    1. <strong>AI应用软件（出海方向）</strong>——利用工程师红利和应用创新能力，中国AI应用出海东南亚/中东具有成本和速度优势<br><br>
+    2. <strong>AI服务器/数据中心（国产替代）</strong>——利用完整供应链优势，GPU制裁倒逼国产化，华为昇腾生态正在形成<br><br>
+    3. <strong>人形机器人（制造降本）</strong>——中国制造业产业链最完整，机器人零部件成本有望比海外低50%+，这是"应用创新+制造降本"的典型案例<br><br>
+    <strong>避坑逻辑：</strong>纯GPU芯片设计（制裁风险高）、纯大模型训练（资本消耗大、竞争激烈）需要谨慎。</div>
+  </div>
+</div>
+
+<!-- COMPLETION -->
+<div class="completion" id="completion">
+  <div class="check">✅</div>
+  <h3>第三课完成！</h3>
+  <p>你已掌握第六轮康波的三大驱动力、AI渗透路径、行业分层地图和中国独特优势。下一课我们将学习如何在康波框架下构建投资组合。</p>
+</div>
+
+<!-- BOTTOM NAV -->
+<div class="bottom-nav">
+  <a href="lesson2.html" class="prev">← 第二课：周金涛</a>
+  <a href="lesson4.html" class="next">第四课：投资组合 →</a>
+</div>
+
+</div>
+
+<script>
+// Progress bar
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement.scrollHeight-window.innerHeight;
+  const p=Math.min(100,window.scrollY/h*100);
+  document.getElementById('progressFill').style.width=p+'%';
+  if(p>95)document.getElementById('completion').classList.add('show');
+});
+
+// Timeline toggle
+function toggleTL(el){el.classList.toggle('active')}
+
+// Tier explorer toggle
+function toggleTier(el){
+  const wasActive=el.classList.contains('active');
+  // Toggle this tier
+  el.classList.toggle('active');
+}
+
+// Choice selection
+function selectChoice(el,groupId,correct){
+  const group=document.getElementById(groupId);
+  group.querySelectorAll('.choice').forEach(c=>{c.classList.remove('selected','correct','wrong')});
+  el.classList.add(correct==='correct'?'correct':'wrong');
+  if(correct==='correct'){
+    group.querySelectorAll('.choice').forEach(c=>{if(c!==el)c.classList.add('wrong')});
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第二课：周金涛 — 人生就是一场康波 — 康波研究院</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#09090b;--bg2:#0f0f13;--card:#1c1c21;--card2:#222228;--card3:#2a2a32;--border:#27272a;--border2:#3f3f46;--text:#fafafa;--text2:#a1a1aa;--text3:#71717a;--gold:#e2b64f;--gold2:#f5d98a;--green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;--orange:#f59e0b;--red:#ef4444;--serif:'Noto Serif SC',serif;--sans:'Inter',sans-serif;--radius:16px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.8}
+a{color:var(--gold);text-decoration:none}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(9,9,11,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);height:56px;display:flex;align-items:center}
+.nav-inner{max-width:900px;margin:0 auto;padding:0 24px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-left{display:flex;align-items:center;gap:16px}
+.nav-back{font-size:0.85rem;color:var(--text3);transition:color .2s}.nav-back:hover{color:var(--gold)}
+.nav-title{font-size:0.85rem;color:var(--text2);font-weight:500}
+.nav-right{display:flex;align-items:center;gap:12px}
+.nav-lesson{font-size:0.75rem;color:var(--text3);background:var(--card2);padding:4px 12px;border-radius:6px}
+
+/* PROGRESS BAR */
+.progress-bar{position:fixed;top:56px;left:0;right:0;height:3px;background:var(--border);z-index:99}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));transition:width .3s;width:0%}
+
+/* MAIN */
+.main{max-width:740px;margin:0 auto;padding:80px 24px 60px}
+
+/* LESSON HEADER */
+.lesson-header{margin-bottom:48px}
+.lesson-num{display:inline-flex;align-items:center;gap:8px;font-size:0.8rem;color:var(--gold);font-weight:600;margin-bottom:12px;letter-spacing:0.08em}
+.lesson-num .line{width:32px;height:1px;background:var(--gold)}
+.lesson-header h1{font-family:var(--serif);font-size:clamp(1.8rem,4vw,2.4rem);font-weight:900;line-height:1.3;margin-bottom:12px}
+.lesson-meta{display:flex;gap:16px;flex-wrap:wrap}
+.lesson-meta span{font-size:0.8rem;color:var(--text3);display:flex;align-items:center;gap:4px}
+
+/* SECTIONS */
+.section{margin-bottom:40px}
+.section h2{font-size:1.2rem;font-weight:700;margin-bottom:16px;color:var(--text);display:flex;align-items:center;gap:8px}
+.section h2 .icon{font-size:1.1rem}
+.section p{color:var(--text2);font-size:0.95rem;margin-bottom:12px}
+
+/* CALLOUT */
+.callout{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;margin:20px 0}
+.callout.gold{border-left:3px solid var(--gold)}
+.callout.green{border-left:3px solid var(--green)}
+.callout.blue{border-left:3px solid var(--blue)}
+.callout-title{font-size:0.8rem;font-weight:600;color:var(--gold);margin-bottom:8px;text-transform:uppercase;letter-spacing:0.08em}
+.callout p{color:var(--text2);font-size:0.9rem}
+
+/* TABLE */
+.data-table{width:100%;border-collapse:collapse;margin:16px 0;font-size:0.88rem}
+.data-table th{text-align:left;padding:10px 12px;background:var(--card2);color:var(--text3);font-weight:600;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.05em;border-bottom:1px solid var(--border)}
+.data-table td{padding:10px 12px;border-bottom:1px solid var(--border);color:var(--text2)}
+.data-table tr:hover td{background:var(--card)}
+
+/* TIMELINE INTERACTIVE */
+.timeline-interactive{position:relative;margin:24px 0;padding-left:24px}
+.timeline-interactive::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--green),var(--orange),var(--blue),var(--purple))}
+.tl-item{position:relative;margin-bottom:20px;padding-left:24px;cursor:pointer;transition:all .3s}
+.tl-item::before{content:'';position:absolute;left:-20px;top:8px;width:12px;height:12px;border-radius:50%;border:2px solid var(--border2);background:var(--bg);transition:all .3s}
+.tl-item:hover::before{border-color:var(--gold);background:var(--gold)}
+.tl-item.active::before{border-color:var(--gold);background:var(--gold);box-shadow:0 0 12px rgba(226,182,79,0.4)}
+.tl-item .tl-title{font-weight:600;font-size:0.95rem;margin-bottom:4px}
+.tl-item .tl-period{font-size:0.8rem;color:var(--text3);margin-bottom:4px}
+.tl-item .tl-detail{max-height:0;overflow:hidden;transition:max-height .4s;font-size:0.88rem;color:var(--text2)}
+.tl-item.active .tl-detail{max-height:200px}
+
+/* ASSET MAPPING */
+.asset-phase{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:16px 0}
+.phase-btn{padding:12px 8px;border-radius:10px;border:1px solid var(--border);background:var(--card);cursor:pointer;text-align:center;transition:all .3s;font-size:0.82rem}
+.phase-btn:hover{border-color:var(--border2)}
+.phase-btn.active{border-color:var(--gold);background:rgba(226,182,79,0.08)}
+.phase-btn .emoji{font-size:1.2rem;display:block;margin-bottom:4px}
+.phase-btn .name{font-weight:600;color:var(--text)}
+.phase-btn .sub{font-size:0.7rem;color:var(--text3);margin-top:2px}
+.phase-result{min-height:120px}
+
+/* EXPANDABLE SECTIONS */
+.expandable{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);margin:12px 0;overflow:hidden}
+.expandable-header{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;cursor:pointer;transition:background .2s}
+.expandable-header:hover{background:var(--card2)}
+.expandable-header .eh-left{display:flex;align-items:center;gap:10px}
+.expandable-header .eh-icon{font-size:1.1rem}
+.expandable-header .eh-title{font-weight:600;font-size:0.95rem}
+.expandable-header .eh-arrow{color:var(--text3);font-size:0.85rem;transition:transform .3s}
+.expandable.open .expandable-header .eh-arrow{transform:rotate(180deg)}
+.expandable-body{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.expandable.open .expandable-body{max-height:800px}
+.expandable-body-inner{padding:0 20px 20px;font-size:0.9rem;color:var(--text2);line-height:1.8}
+
+/* NESTING MODEL VISUAL */
+.nesting-model{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:28px;margin:20px 0}
+.nest-level{padding:16px;border-radius:12px;margin-bottom:12px;border:1px dashed;position:relative}
+.nest-level .nest-label{font-weight:700;font-size:0.85rem;margin-bottom:6px}
+.nest-level .nest-detail{font-size:0.85rem;color:var(--text2)}
+.nest-level.nk{border-color:var(--gold);background:rgba(226,182,79,0.05)}
+.nest-level.nk .nest-label{color:var(--gold)}
+.nest-level.nr{border-color:var(--green);background:rgba(34,197,94,0.05);margin-left:20px}
+.nest-level.nr .nest-label{color:var(--green)}
+.nest-level.nc{border-color:var(--blue);background:rgba(59,130,246,0.05);margin-left:40px}
+.nest-level.nc .nest-label{color:var(--blue)}
+.nest-level.ni{border-color:var(--purple);background:rgba(167,139,250,0.05);margin-left:60px}
+.nest-level.ni .nest-label{color:var(--purple)}
+
+/* BIRTH YEAR SLIDER */
+.slider-container{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:28px;margin:20px 0}
+.slider-label{font-size:0.85rem;color:var(--text3);margin-bottom:8px;font-weight:600}
+.year-slider{width:100%;-webkit-appearance:none;appearance:none;height:6px;border-radius:3px;background:var(--card3);outline:none;margin:12px 0}
+.year-slider::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:24px;height:24px;border-radius:50%;background:var(--gold);cursor:pointer;box-shadow:0 0 12px rgba(226,182,79,0.4)}
+.year-slider::-moz-range-thumb{width:24px;height:24px;border-radius:50%;background:var(--gold);cursor:pointer;border:none;box-shadow:0 0 12px rgba(226,182,79,0.4)}
+.year-display{text-align:center;font-size:2rem;font-weight:900;color:var(--gold);font-family:var(--serif);margin:8px 0}
+.year-timeline{position:relative;height:80px;background:var(--card2);border-radius:10px;margin:16px 0;overflow:hidden}
+.year-bar{height:100%;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:600;color:#000;position:relative;transition:width .3s}
+.year-bar.spring{background:linear-gradient(90deg,rgba(34,197,94,0.3),rgba(34,197,94,0.6))}
+.year-bar.summer{background:linear-gradient(90deg,rgba(245,158,11,0.3),rgba(245,158,11,0.6))}
+.year-bar.autumn{background:linear-gradient(90deg,rgba(239,68,68,0.3),rgba(239,68,68,0.6))}
+.year-bar.winter{background:linear-gradient(90deg,rgba(59,130,246,0.3),rgba(59,130,246,0.6))}
+.year-you{position:absolute;top:0;bottom:0;width:3px;background:var(--gold);box-shadow:0 0 8px rgba(226,182,79,0.6);transition:left .3s}
+.year-you::after{content:'你';position:absolute;top:4px;left:-8px;font-size:0.65rem;color:var(--gold);font-weight:700;white-space:nowrap}
+.year-phases-labels{display:flex;justify-content:space-between;font-size:0.7rem;color:var(--text3);margin-top:4px}
+.year-result{margin-top:16px;padding:16px;background:var(--card2);border-radius:10px;font-size:0.9rem;line-height:1.8}
+.year-result .yr-gen{font-weight:700;color:var(--gold);margin-bottom:4px}
+.year-result .yr-text{color:var(--text2)}
+
+/* WEALTH OPPORTUNITIES */
+.wealth-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0}
+.wealth-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;text-align:center;transition:all .3s;cursor:pointer}
+.wealth-card:hover{border-color:var(--gold);transform:translateY(-2px)}
+.wealth-card.active{border-color:var(--gold);background:rgba(226,182,79,0.08)}
+.wealth-card .wc-year{font-size:1.5rem;font-weight:900;color:var(--gold);font-family:var(--serif)}
+.wealth-card .wc-label{font-size:0.8rem;color:var(--text3);margin-top:4px}
+.wealth-card .wc-age{font-size:0.75rem;color:var(--text3);margin-top:2px}
+.wealth-detail{min-height:100px}
+
+/* EXERCISE */
+.exercise{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:28px;margin:24px 0}
+.exercise-label{display:inline-flex;align-items:center;gap:6px;font-size:0.75rem;font-weight:600;color:var(--blue);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:12px}
+.exercise h3{font-size:1.05rem;margin-bottom:8px}
+.exercise p{color:var(--text2);font-size:0.9rem;margin-bottom:16px}
+.exercise textarea{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:14px;color:var(--text);font-family:var(--sans);font-size:0.9rem;resize:vertical;transition:border-color .2s}
+.exercise textarea:focus{outline:none;border-color:var(--gold)}
+.exercise textarea::placeholder{color:var(--text3)}
+.exercise .hint{margin-top:12px}
+.exercise .hint-btn{background:transparent;border:1px solid var(--border2);color:var(--text3);padding:8px 16px;border-radius:8px;font-size:0.82rem;cursor:pointer;transition:all .2s;font-family:var(--sans)}
+.exercise .hint-btn:hover{border-color:var(--gold);color:var(--gold)}
+.exercise .hint-answer{display:none;margin-top:12px;padding:14px;background:var(--card2);border-radius:10px;font-size:0.88rem;color:var(--green);line-height:1.7}
+.exercise .hint-answer.show{display:block}
+
+/* MULTI-CHOICE */
+.choices{display:flex;flex-direction:column;gap:8px;margin:12px 0}
+.choice{padding:12px 16px;background:var(--card2);border:1px solid var(--border);border-radius:10px;cursor:pointer;transition:all .25s;font-size:0.9rem;display:flex;align-items:center;gap:10px}
+.choice:hover{border-color:var(--border2)}
+.choice.selected{border-color:var(--gold);background:rgba(226,182,79,0.08)}
+.choice.correct{border-color:var(--green);background:rgba(34,197,94,0.08)}
+.choice.wrong{border-color:var(--red);background:rgba(239,68,68,0.05)}
+.choice .letter{width:28px;height:28px;border-radius:8px;background:var(--card3);display:flex;align-items:center;justify-content:center;font-weight:600;font-size:0.8rem;flex-shrink:0}
+.choice.correct .letter{background:var(--green);color:#000}
+.choice.wrong .letter{background:var(--red);color:#fff}
+
+/* BOTTOM NAV */
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;padding:32px 0;margin-top:40px;border-top:1px solid var(--border)}
+.bottom-nav a{display:flex;align-items:center;gap:8px;padding:12px 20px;border-radius:10px;font-size:0.9rem;font-weight:500;transition:all .2s}
+.bottom-nav .prev{color:var(--text3);border:1px solid var(--border)}
+.bottom-nav .prev:hover{border-color:var(--gold);color:var(--gold)}
+.bottom-nav .next{background:var(--gold);color:#000}
+.bottom-nav .next:hover{background:var(--gold2)}
+
+/* COMPLETION */
+.completion{text-align:center;padding:40px;background:var(--card);border-radius:var(--radius);border:1px solid var(--gold);margin-top:32px;display:none}
+.completion.show{display:block}
+.completion .check{font-size:3rem;margin-bottom:12px}
+.completion h3{color:var(--gold);margin-bottom:8px}
+.completion p{color:var(--text2);font-size:0.9rem}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-left">
+      <a href="index.html" class="nav-back">← 返回首页</a>
+      <span class="nav-title">第二课</span>
+    </div>
+    <div class="nav-right">
+      <span class="nav-lesson">2 / 6</span>
+    </div>
+  </div>
+</nav>
+<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+
+<div class="main">
+
+<!-- HEADER -->
+<div class="lesson-header">
+  <div class="lesson-num"><span class="line"></span> LESSON 02</div>
+  <h1>周金涛 — "人生就是一场康波"</h1>
+  <div class="lesson-meta">
+    <span>📖 阅读约20分钟</span>
+    <span>✏️ 3道练习题</span>
+    <span>🎯 进阶篇</span>
+  </div>
+</div>
+
+<!-- 2.1 谁是周金涛 -->
+<div class="section">
+  <h2><span class="icon">👤</span> 谁是周金涛？</h2>
+  <p>周金涛（1972-2016），中信建投首席经济学家，被誉为"周期天王"。他是中国最系统、最深入研究康波周期的经济学家，也是少数将康德拉季耶夫理论与中国实践结合的学者。</p>
+  
+  <div class="callout gold">
+    <div class="callout-title">经典语录</div>
+    <p><strong>"人生发财靠康波。"</strong><br>
+    "每个人的财富积累，一定不要以为是你多有本事——财富积累完全来源于经济周期运动给你的机会。"<br>
+    "你所获得的财富，都是时代的赠予，而非个人的奋斗。"</p>
+  </div>
+
+  <p>周金涛在2015年做出了多个惊人预测：预测2016年大宗商品暴涨、预测2019年经济触底。不幸的是，他于2016年12月英年早逝，年仅44岁。但他的研究遗产——<strong>四周期嵌套模型</strong>——至今仍是理解中国经济周期最重要的框架之一。</p>
+</div>
+
+<!-- 2.2 四周期嵌套模型 -->
+<div class="section">
+  <h2><span class="icon">🔄</span> 四周期嵌套模型</h2>
+  <p>周金涛的核心贡献是将经济周期分层理解。四个周期像俄罗斯套娃一样嵌套在一起，长周期包含短周期：</p>
+  
+  <div class="nesting-model">
+    <div class="nest-level nk">
+      <div class="nest-label">🏔️ 第一层：康德拉季耶夫周期（K-wave）</div>
+      <div class="nest-detail">周期长度：50-60年 ｜ 由技术革命驱动<br>一个完整的经济"一生"，包含完整春夏秋冬</div>
+    </div>
+    <div class="nest-level nr">
+      <div class="nest-label">🏠 第二层：房地产周期（库兹涅茨周期）</div>
+      <div class="nest-detail">周期长度：15-20年 ｜ 由城镇化和人口驱动<br>1个康波 = <strong>约3个</strong>房地产周期</div>
+    </div>
+    <div class="nest-level nc">
+      <div class="nest-label">🏭 第三层：产能投资周期（朱格拉周期）</div>
+      <div class="nest-detail">周期长度：8-10年 ｜ 由企业设备投资驱动<br>1个房地产周期 = <strong>约2个</strong>产能周期 ｜ 1个康波 = <strong>约6个</strong>产能周期</div>
+    </div>
+    <div class="nest-level ni">
+      <div class="nest-label">📦 第四层：库存周期（基钦周期）</div>
+      <div class="nest-detail">周期长度：3-4年 ｜ 由企业库存补/去驱动<br>1个产能周期 = <strong>约3个</strong>库存周期 ｜ 1个康波 = <strong>约18个</strong>库存周期</div>
+    </div>
+  </div>
+
+  <div class="callout green">
+    <div class="callout-title">核心关系</div>
+    <p><strong>1 康波 ≈ 3 房地产周期 ≈ 6 产能周期 ≈ 18 库存周期</strong><br>
+    短周期嵌套在长周期之中，长周期决定了短周期的"天花板"和"地板"。当多个周期同时向上叠加时，就会出现超级牛市；当多个周期同时向下共振时，就会出现经济危机。</p>
+  </div>
+</div>
+
+<!-- 2.3 三次财富机会 -->
+<div class="section">
+  <h2><span class="icon">💎</span> 一生中的三次财富机会</h2>
+  <p>周金涛认为，一个人在一生（60年经济活跃期）中，大约会遇到<strong>三次</strong>大的财富机会。错过一次等10-20年，错过三次就等下辈子。</p>
+  
+  <div class="wealth-grid">
+    <div class="wealth-card active" onclick="showWealth(0)">
+      <div class="wc-year">2008</div>
+      <div class="wc-label">第一次机会</div>
+      <div class="wc-age">萧条中的资产抄底</div>
+    </div>
+    <div class="wealth-card" onclick="showWealth(1)">
+      <div class="wc-year">2019</div>
+      <div class="wc-label">第二次机会</div>
+      <div class="wc-age">周期底部的再配置</div>
+    </div>
+    <div class="wealth-card" onclick="showWealth(2)">
+      <div class="wc-year">2030</div>
+      <div class="wc-label">第三次机会</div>
+      <div class="wc-age">新周期启动的红利</div>
+    </div>
+  </div>
+  
+  <div class="wealth-detail" id="wealthDetail">
+    <div class="callout gold">
+      <div class="callout-title">💎 2008年 — 第一次财富机会</div>
+      <p><strong>周期位置：</strong>第五轮康波繁荣顶点→衰退开始<br>
+      <strong>事件：</strong>全球金融危机，资产价格暴跌<br>
+      <strong>机会本质：</strong>用极低价格买入核心资产<br>
+      <strong>最佳操作：</strong>2008-2009年买入股票/房产/大宗商品<br>
+      <strong>典型案例：</strong>2008年买入A股，2009年涨80%+；2008年买入一线城市房产，至今涨5-10倍<br>
+      <strong>错过代价：</strong>10年内再也没有如此低的入场价</p>
+    </div>
+  </div>
+</div>
+
+<!-- 2.4 出生年代定位 -->
+<div class="section">
+  <h2><span class="icon">🎯</span> 出生年代定位 — 你在康波中的位置</h2>
+  <p>每个人出生的年代，决定了你在康波周期中能遇到几次机会、能利用哪些机会。移动滑块查看你的人生时间线：</p>
+  
+  <div class="slider-container">
+    <div class="slider-label">选择你的出生年份</div>
+    <input type="range" class="year-slider" id="birthYear" min="1970" max="2015" value="1990" oninput="updateYear(this.value)">
+    <div class="year-display" id="yearDisplay">1990</div>
+    
+    <div class="year-timeline" id="yearTimeline">
+      <!-- K-wave phase bars will be rendered by JS -->
+      <div class="year-you" id="yearYou" style="left:40%"></div>
+    </div>
+    <div class="year-phases-labels">
+      <span>1990 繁荣</span>
+      <span>2008 衰退</span>
+      <span>2019 萧条</span>
+      <span>2030 回升</span>
+      <span>2045 繁荣</span>
+      <span>2060</span>
+    </div>
+    
+    <div class="year-result" id="yearResult">
+      <div class="yr-gen">🔹 90后（1990年生）</div>
+      <div class="yr-text">
+        <strong>当前年龄：</strong>36岁（2026年）<br>
+        <strong>已错过：</strong>2008年机会（当时18岁，无资本）<br>
+        <strong>已错过/刚好：</strong>2019年机会（29岁，有少量资本）<br>
+        <strong>核心机会：</strong>2030年前后（40岁，职业巅峰+资本积累期）<br>
+        <strong>策略：</strong>2026-2030年全力积累资本，等待第六轮康波启动
+      </div>
+    </div>
+  </div>
+
+  <!-- 三代人分析 -->
+  <div class="expandable open" onclick="toggleExpand(this)">
+    <div class="expandable-header">
+      <div class="eh-left">
+        <span class="eh-icon">8️⃣</span>
+        <span class="eh-title">80后（1980-1989）— 黄金一代</span>
+      </div>
+      <span class="eh-arrow">▼</span>
+    </div>
+    <div class="expandable-body">
+      <div class="expandable-body-inner">
+        <strong>优势：</strong>完整经历2008和2019两次财富机会，且在2019时正处于30-39岁——既有资本积累，又有投资经验。<br><br>
+        <strong>典型困境：</strong>很多人在2008年太年轻（18-28岁），错失抄底；但在2019年如果买入了资产，收益可观。<br><br>
+        <strong>2030年展望：</strong>41-50岁，仍处于财富增长期，第六轮康波回升是80后的<strong>最后一次大机会</strong>。<br><br>
+        <strong>关键策略：</strong>现在是最后的布局窗口。应将资产从防御型（现金、存款）转向进攻型（科技股权益资产、核心城市房产）。
+      </div>
+    </div>
+  </div>
+
+  <div class="expandable" onclick="toggleExpand(this)">
+    <div class="expandable-header">
+      <div class="eh-left">
+        <span class="eh-icon">9️⃣</span>
+        <span class="eh-title">90后（1990-1999）— 承上启下</span>
+      </div>
+      <span class="eh-arrow">▼</span>
+    </div>
+    <div class="expandable-body">
+      <div class="expandable-body-inner">
+        <strong>优势：</strong>年轻、可塑性强，且能完整经历第六轮康波的繁荣期。<br><br>
+        <strong>典型困境：</strong>2008年太年轻无法利用，2019年可能有少量资本但经验不足，2020s面临就业和房贷压力。<br><br>
+        <strong>2030年展望：</strong>31-40岁，正处于职业上升期和资本积累期，<strong>2030是90后一生中最重要的财富机会</strong>。<br><br>
+        <strong>关键策略：</strong>2026-2030年集中精力提升收入、积累资本、学习投资。不要在周期底部恐慌卖出，要在2028-2031年大胆配置。
+      </div>
+    </div>
+  </div>
+
+  <div class="expandable" onclick="toggleExpand(this)">
+    <div class="expandable-header">
+      <div class="eh-left">
+        <span class="eh-icon">0️⃣</span>
+        <span class="eh-title">00后（2000-2009）— 起步者</span>
+      </div>
+      <span class="eh-arrow">▼</span>
+    </div>
+    <div class="expandable-body">
+      <div class="expandable-body-inner">
+        <strong>优势：</strong>时间是最大的资本。能经历2030和2045-2050年两次大机会，且2045年时仅36-45岁。<br><br>
+        <strong>典型困境：</strong>2030年只有21-30岁，资本有限；需要更长时间才能积累到足够的投资本金。<br><br>
+        <strong>2030年展望：</strong>多数人刚工作不久，能投入的资金有限，但可以通过学习提前建立认知优势。<br><br>
+        <strong>关键策略：</strong>2026-2030年投资自己（教育、技能、认知），用小资金练手。2045年的机会才是00后的主战场——保持耐心。
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 2.5 资产配置框架 -->
+<div class="section">
+  <h2><span class="icon">📊</span> 康波阶段资产配置框架</h2>
+  <p>根据周金涛的理论，不同康波阶段应采用完全不同的资产配置策略。当前（2026年）处于萧条晚期→回升过渡期。</p>
+  
+  <table class="data-table">
+    <thead><tr><th>康波阶段</th><th>股票</th><th>房产</th><th>黄金</th><th>现金</th><th>大宗商品</th></tr></thead>
+    <tbody>
+      <tr><td>🌱 回升期</td><td style="color:var(--green)">⬆ 超配</td><td style="color:var(--green)">⬆ 加仓</td><td style="color:var(--text3)">— 减持</td><td style="color:var(--red)">⬇ 低配</td><td style="color:var(--green)">⬆ 买入</td></tr>
+      <tr><td>☀️ 繁荣期</td><td style="color:var(--green)">⬆ 持有</td><td style="color:var(--green)">⬆⬆ 超配</td><td style="color:var(--red)">⬇ 减持</td><td style="color:var(--red)">⬇ 最低</td><td style="color:var(--orange)">⬆ 持有</td></tr>
+      <tr><td>🍂 衰退期</td><td style="color:var(--red)">⬇ 减持</td><td style="color:var(--red)">⬇ 减持</td><td style="color:var(--green)">⬆⬆ 超配</td><td style="color:var(--green)">⬆ 增持</td><td style="color:var(--red)">⬇ 减持</td></tr>
+      <tr><td>❄️ 萧条早期</td><td style="color:var(--red)">⬇ 最低</td><td style="color:var(--red)">⬇ 抛售</td><td style="color:var(--green)">⬆ 持有</td><td style="color:var(--green)">⬆⬆ 超配</td><td style="color:var(--red)">⬇ 最低</td></tr>
+      <tr><td>❄️ 萧条晚期</td><td style="color:var(--green)">⬆ 逢低买入</td><td style="color:var(--green)">⬆ 逢低买入</td><td style="color:var(--text3)">— 持有</td><td style="color:var(--red)">⬇ 减持</td><td style="color:var(--orange)">⬆ 试探</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout blue">
+    <div class="callout-title">2026年操作建议（萧条晚期→回升过渡）</div>
+    <p><strong>核心原则：</strong>从"防守"转向"进攻"<br>
+    <strong>增持：</strong>科技成长股、核心城市房产（一线城市）、新能源/AI主题ETF<br>
+    <strong>减持：</strong>过多现金（通胀侵蚀）、高收益债（违约风险）、三四线城市房产<br>
+    <strong>观察：</strong>大宗商品（底部信号待确认）、黄金（第五轮衰退末段仍有支撑）</p>
+  </div>
+</div>
+
+<!-- EXERCISE 1 -->
+<div class="exercise" id="ex1">
+  <div class="exercise-label">✏️ 练习 1/3</div>
+  <h3>嵌套周期计算</h3>
+  <p>一个完整的康波周期（55年）中，大约包含多少个库存周期（基钦周期）？请写出计算过程。如果库存周期平均为3.5年，答案会有什么变化？</p>
+  <textarea placeholder="写下你的计算过程和答案..."></textarea>
+  <div class="hint">
+    <button class="hint-btn" onclick="this.nextElementSibling.classList.toggle('show')">💡 查看参考答案</button>
+    <div class="hint-answer"><strong>标准算法：</strong>1 康波 = 3 房地产周期 = 6 产能周期 = 18 库存周期。<br>
+所以55年 ÷ 3年/周期 ≈ <strong>18个库存周期</strong>。<br><br>
+<strong>如果库存周期为3.5年：</strong>55 ÷ 3.5 ≈ <strong>15-16个库存周期</strong>。<br>
+这说明嵌套关系是近似的，不是精确的整数倍。周期长度本身也有弹性，实际中需要灵活理解。</div>
+  </div>
+</div>
+
+<!-- EXERCISE 2 -->
+<div class="exercise" id="ex2">
+  <div class="exercise-label">✏️ 练习 2/3</div>
+  <h3>人生阶段判断</h3>
+  <p>以下是三个不同出生年份的人，请判断他们在2026年的投资处境：</p>
+  <div class="choices" id="q2a">
+    <p style="font-size:0.9rem;margin-bottom:8px"><strong>小王，1985年生（41岁），有房有存款50万</strong></p>
+    <div class="choice" onclick="selectChoice(this,'q2a','wrong')"><span class="letter">A</span> 应该保持现金，等经济好转再投资</div>
+    <div class="choice" onclick="selectChoice(this,'q2a','correct')"><span class="letter">B</span> 处于最后布局窗口，应将部分存款转化为权益资产</div>
+    <div class="choice" onclick="selectChoice(this,'q2a','wrong')"><span class="letter">C</span> 已经太老了，不适合冒险投资</div>
+  </div>
+  <div class="choices" id="q2b" style="margin-top:16px">
+    <p style="font-size:0.9rem;margin-bottom:8px"><strong>小李，1995年生（31岁），月薪1.5万，存款8万</strong></p>
+    <div class="choice" onclick="selectChoice(this,'q2b','wrong')"><span class="letter">A</span> 存款太少，应该等存够钱再投资</div>
+    <div class="choice" onclick="selectChoice(this,'q2b','wrong')"><span class="letter">B</span> 应该全部投入股市，抓住2030年机会</div>
+    <div class="choice" onclick="selectChoice(this,'q2b','correct')"><span class="letter">C</span> 重点投资自己（技能/认知），用小资金学习投资，为2030年做准备</div>
+  </div>
+</div>
+
+<!-- EXERCISE 3 -->
+<div class="exercise" id="ex3">
+  <div class="exercise-label">✏️ 练习 3/3</div>
+  <h3>你的个人康波地图</h3>
+  <p>根据你的出生年份，完成以下分析：<br>
+  1）你在2026年处于什么人生阶段？<br>
+  2）你能利用的财富机会有哪几次？分别是什么时候？<br>
+  3）2026-2030年，你的重点应该是什么？</p>
+  <textarea placeholder="根据你的实际情况，写出你的个人康波地图..."></textarea>
+  <div class="hint">
+    <button class="hint-btn" onclick="this.nextElementSibling.classList.toggle('show')">💡 查看参考答案（以1993年生为例）</button>
+    <div class="hint-answer"><strong>1993年生，2026年33岁</strong><br><br>
+<strong>人生阶段：</strong>职业上升期，资本积累初期<br><br>
+<strong>可利用的财富机会：</strong><br>
+• 2019年机会：26岁，可能刚工作不久，错过了<br>
+• <strong>2030年机会（核心！）</strong>：37岁，正是事业和资本的黄金期<br>
+• 2045年机会：52岁，可能还有机会但需要2030年的积累<br><br>
+<strong>2026-2030重点：</strong><br>
+• 大力提升收入和储蓄率<br>
+• 学习投资知识，建立投资体系<br>
+• 用小资金（5-10万）在2026-2028年试水<br>
+• 2028-2030年，在确认回升信号后加大配置</div>
+  </div>
+</div>
+
+<!-- COMPLETION -->
+<div class="completion" id="completion">
+  <div class="check">✅</div>
+  <h3>第二课完成！</h3>
+  <p>你已掌握周金涛的四周期嵌套模型和人生财富机会框架。下一课我们将深入学习具体的周期研判方法。</p>
+</div>
+
+<!-- BOTTOM NAV -->
+<div class="bottom-nav">
+  <a href="lesson1.html" class="prev">← 上一课：康波理论</a>
+  <a href="lesson3.html" class="next">下一课：周期研判 →</a>
+</div>
+
+</div>
+
+<script>
+// Progress bar
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement.scrollHeight-window.innerHeight;
+  const p=Math.min(100,window.scrollY/h*100);
+  document.getElementById('progressFill').style.width=p+'%';
+  if(p>95)document.getElementById('completion').classList.add('show');
+});
+
+// Timeline toggle
+function toggleTL(el){el.classList.toggle('active')}
+
+// Expandable sections
+function toggleExpand(el){el.classList.toggle('open')}
+
+// Wealth opportunities
+const wealthData=[
+  {year:2008,title:'💎 2008年 — 第一次财富机会',text:'<strong>周期位置：</strong>第五轮康波繁荣顶点→衰退开始<br><strong>事件：</strong>全球金融危机，资产价格暴跌<br><strong>机会本质：</strong>用极低价格买入核心资产<br><strong>最佳操作：</strong>2008-2009年买入股票/房产/大宗商品<br><strong>典型案例：</strong>2008年买入A股，2009年涨80%+；2008年买入一线城市房产，至今涨5-10倍<br><strong>错过代价：</strong>10年内再也没有如此低的入场价'},
+  {year:2019,title:'💎 2019年 — 第二次财富机会',text:'<strong>周期位置：</strong>第五轮康波萧条中期→房地产周期底部<br><strong>事件：</strong>中国房地产调控深化，股市估值极低，全球低利率<br><strong>机会本质：</strong>萧条期的资产再配置窗口<br><strong>最佳操作：</strong>2019-2020年初买入优质股票基金、核心城市房产<br><strong>典型案例：</strong>2020年3月疫情恐慌底部买入，A股随后涨50%+<br><strong>错过代价：</strong>下一次类似机会要等到2030年'},
+  {year:2030,title:'💎 2030年 — 第三次财富机会',text:'<strong>周期位置：</strong>第五轮康波结束→第六轮康波启动（春季）<br><strong>事件（预测）：</strong>AI技术成熟商业化，新能源全面普及，新产业爆发<br><strong>机会本质：</strong>新康波启动期的技术投资红利——这是最肥美的阶段<br><strong>最佳操作：</strong>2028-2031年买入第六轮核心技术资产（AI/生物科技/新能源）<br><strong>历史类比：</strong>类似1992-1995年买入互联网公司股票<br><strong>这是大多数人一生中最后一次大机会——别错过！</strong>'}
+];
+
+function showWealth(idx){
+  document.querySelectorAll('.wealth-card').forEach((c,i)=>{
+    c.classList.toggle('active',i===idx);
+  });
+  const d=wealthData[idx];
+  document.getElementById('wealthDetail').innerHTML=`<div class="callout gold"><div class="callout-title">${d.title}</div><p>${d.text}</p></div>`;
+}
+
+// Birth year slider
+const phaseRanges=[
+  {start:1990,end:2008,label:'繁荣→衰退',cls:'summer'},
+  {start:2008,end:2019,label:'衰退期',cls:'autumn'},
+  {start:2019,end:2030,label:'萧条期',cls:'winter'},
+  {start:2030,end:2045,label:'回升期',cls:'spring'},
+  {start:2045,end:2060,label:'繁荣期',cls:'summer'}
+];
+
+function updateYear(year){
+  year=parseInt(year);
+  document.getElementById('yearDisplay').textContent=year;
+  
+  // Build timeline visualization
+  const tl=document.getElementById('yearTimeline');
+  const totalStart=1990,totalEnd=2060,totalSpan=totalEnd-totalStart;
+  
+  // Build phase bars
+  let barsHTML='';
+  const colors={spring:'rgba(34,197,94,0.4)',summer:'rgba(245,158,11,0.4)',autumn:'rgba(239,68,68,0.4)',winter:'rgba(59,130,246,0.4)'};
+  const labels={spring:'回升',summer:'繁荣',autumn:'衰退',winter:'萧条'};
+  
+  phaseRanges.forEach(r=>{
+    const left=((r.start-totalStart)/totalSpan)*100;
+    const width=((r.end-r.start)/totalSpan)*100;
+    barsHTML+=`<div style="position:absolute;left:${left}%;width:${width}%;height:100%;background:${colors[r.cls]};display:flex;align-items:center;justify-content:center;font-size:0.7rem;color:var(--text3);font-weight:600">${labels[r.cls]}</div>`;
+  });
+  
+  // You marker
+  const youLeft=Math.max(0,Math.min(100,((year-totalStart)/totalSpan)*100));
+  barsHTML+=`<div class="year-you" style="left:${youLeft}%"></div>`;
+  
+  tl.innerHTML=barsHTML;
+  
+  // Generate analysis
+  const age=2026-year;
+  let genLabel,genColor,analysis;
+  
+  if(year>=1980&&year<=1989){
+    genLabel='80后';
+    genColor='var(--gold)';
+    const missed2008=year>1987?'错过（当时太年轻）':'有可能利用（当时'+(2008-year)+'岁）';
+    const use2019=(2019-year)>=28&&2019-year<=39?'✅ 完美窗口（'+(2019-year)+'岁）':'可以利用（'+(2019-year)+'岁）';
+    analysis=`<strong>当前年龄：</strong>${age}岁（2026年）<br>
+<strong>2008年机会：</strong>${missed2008}<br>
+<strong>2019年机会：</strong>${use2019}<br>
+<strong>核心机会：</strong>2030年前后（${2030-year}岁，最后的大机会！）<br>
+<strong>策略：</strong>现在就是最后的布局窗口，应从防守转向进攻。2028-2031年全力出击。`;
+  }else if(year>=1990&&year<=1999){
+    genLabel='90后';
+    genColor='var(--blue)';
+    analysis=`<strong>当前年龄：</strong>${age}岁（2026年）<br>
+<strong>2008年机会：</strong>❌ 错过（当时${2008-year}岁，无法利用）<br>
+<strong>2019年机会：</strong>${age<=29?'有可能但经验不足':'有少量资本'}<br>
+<strong>核心机会：</strong>2030年前后（${2030-year}岁，黄金投资期！）<br>
+<strong>策略：</strong>2026-2030年积累资本和认知，为2030年爆发做准备。这是90后一生中最重要的窗口。`;
+  }else if(year>=2000&&year<=2009){
+    genLabel='00后';
+    genColor='var(--purple)';
+    analysis=`<strong>当前年龄：</strong>${age}岁（2026年）<br>
+<strong>2008/2019年机会：</strong>❌ 完全错过<br>
+<strong>2030年机会：</strong>⚠️ 可能资金有限（${2030-year}岁）<br>
+<strong>核心机会：</strong>2045年前后（${2045-year}岁，这才是主战场！）<br>
+<strong>策略：</strong>投资自己是最高回报。用小资金学习投资，2045年才是你的爆发期。`;
+  }else if(year<1980){
+    genLabel='70后及以前';
+    genColor='var(--orange)';
+    analysis=`<strong>当前年龄：</strong>${age}岁（2026年）<br>
+<strong>已利用：</strong>2008和2019两次机会应该都有参与<br>
+<strong>2030年机会：</strong>${2030-year}岁，仍有机会但应注重风险控制<br>
+<strong>策略：</strong>稳健为主，用第六轮康波的确定性红利（如高股息资产）来保护已有财富。`;
+  }else{
+    genLabel='2010年后';
+    genColor='var(--green)';
+    analysis=`<strong>当前年龄：</strong>${age}岁（2026年）<br>你太年轻了！先把书读好，了解周期思维会让你受益一生。未来你有大把时间等待属于你的机会。`;
+  }
+  
+  document.getElementById('yearResult').innerHTML=`<div class="yr-gen" style="color:${genColor}">🔹 ${genLabel}（${year}年生）</div><div class="yr-text">${analysis}</div>`;
+}
+
+// Choice selection
+function selectChoice(el,groupId,correct){
+  const group=document.getElementById(groupId);
+  group.querySelectorAll('.choice').forEach(c=>{c.classList.remove('selected','correct','wrong')});
+  el.classList.add(correct==='correct'?'correct':'wrong');
+  if(correct==='correct'){
+    group.querySelectorAll('.choice').forEach(c=>{if(c!==el)c.classList.add('wrong')});
+  }
+}
+
+// Init slider
+updateYear(1990);
+</script>
+</body>
+</html>

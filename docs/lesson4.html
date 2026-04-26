@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第四课：老钱密码 — 康波研究院</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#09090b;--bg2:#0f0f13;--card:#1c1c21;--card2:#222228;--card3:#2a2a32;--border:#27272a;--border2:#3f3f46;--text:#fafafa;--text2:#a1a1aa;--text3:#71717a;--gold:#e2b64f;--gold2:#f5d98a;--green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;--orange:#f59e0b;--red:#ef4444;--serif:'Noto Serif SC',serif;--sans:'Inter',sans-serif;--radius:16px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.8}
+a{color:var(--gold);text-decoration:none}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(9,9,11,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);height:56px;display:flex;align-items:center}
+.nav-inner{max-width:900px;margin:0 auto;padding:0 24px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-left{display:flex;align-items:center;gap:16px}
+.nav-back{font-size:0.85rem;color:var(--text3);transition:color .2s}.nav-back:hover{color:var(--gold)}
+.nav-title{font-size:0.85rem;color:var(--text2);font-weight:500}
+.nav-right{display:flex;align-items:center;gap:12px}
+.nav-lesson{font-size:0.75rem;color:var(--text3);background:var(--card2);padding:4px 12px;border-radius:6px}
+
+/* PROGRESS BAR */
+.progress-bar{position:fixed;top:56px;left:0;right:0;height:3px;background:var(--border);z-index:99}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));transition:width .3s;width:0%}
+
+/* MAIN */
+.main{max-width:740px;margin:0 auto;padding:80px 24px 60px}
+
+/* LESSON HEADER */
+.lesson-header{margin-bottom:48px}
+.lesson-num{display:inline-flex;align-items:center;gap:8px;font-size:0.8rem;color:var(--gold);font-weight:600;margin-bottom:12px;letter-spacing:0.08em}
+.lesson-num .line{width:32px;height:1px;background:var(--gold)}
+.lesson-header h1{font-family:var(--serif);font-size:clamp(1.8rem,4vw,2.4rem);font-weight:900;line-height:1.3;margin-bottom:12px}
+.lesson-meta{display:flex;gap:16px;flex-wrap:wrap}
+.lesson-meta span{font-size:0.8rem;color:var(--text3);display:flex;align-items:center;gap:4px}
+
+/* SECTIONS */
+.section{margin-bottom:40px}
+.section h2{font-size:1.2rem;font-weight:700;margin-bottom:16px;color:var(--text);display:flex;align-items:center;gap:8px}
+.section h2 .icon{font-size:1.1rem}
+.section p{color:var(--text2);font-size:0.95rem;margin-bottom:12px}
+
+/* CALLOUT */
+.callout{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;margin:20px 0}
+.callout.gold{border-left:3px solid var(--gold)}
+.callout.green{border-left:3px solid var(--green)}
+.callout.blue{border-left:3px solid var(--blue)}
+.callout.purple{border-left:3px solid var(--purple)}
+.callout-title{font-size:0.8rem;font-weight:600;color:var(--gold);margin-bottom:8px;text-transform:uppercase;letter-spacing:0.08em}
+.callout p{color:var(--text2);font-size:0.9rem}
+
+/* FAMILY CARDS */
+.family-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);margin:16px 0;overflow:hidden;cursor:pointer;transition:all .3s}
+.family-card:hover{border-color:var(--border2)}
+.family-card.active{border-color:var(--gold)}
+.family-card-header{padding:20px 24px;display:flex;align-items:center;justify-content:space-between}
+.family-card-header .left{display:flex;align-items:center;gap:14px}
+.family-card-header .avatar{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0}
+.family-card-header .info h3{font-size:1rem;font-weight:700;margin-bottom:2px}
+.family-card-header .info .desc{font-size:0.82rem;color:var(--text3)}
+.family-card-header .arrow{color:var(--text3);font-size:1rem;transition:transform .3s}
+.family-card.active .family-card-header .arrow{transform:rotate(180deg);color:var(--gold)}
+.family-card-body{max-height:0;overflow:hidden;transition:max-height .5s ease}
+.family-card.active .family-card-body{max-height:600px}
+.family-card-content{padding:0 24px 24px}
+.family-card-content h4{font-size:0.85rem;font-weight:600;color:var(--gold);margin-bottom:8px;text-transform:uppercase;letter-spacing:0.06em}
+.family-card-content p{font-size:0.9rem;color:var(--text2);margin-bottom:10px;line-height:1.8}
+.family-card-content .mechanism{background:var(--card2);border-radius:10px;padding:14px;margin:10px 0}
+.family-card-content .mechanism .label{font-size:0.75rem;font-weight:600;color:var(--text3);margin-bottom:6px}
+.family-card-content .mechanism ul{list-style:none;padding:0}
+.family-card-content .mechanism li{font-size:0.88rem;color:var(--text2);padding:3px 0;padding-left:16px;position:relative}
+.family-card-content .mechanism li::before{content:'→';position:absolute;left:0;color:var(--gold)}
+
+/* TABLE */
+.data-table{width:100%;border-collapse:collapse;margin:16px 0;font-size:0.88rem}
+.data-table th{text-align:left;padding:10px 12px;background:var(--card2);color:var(--text3);font-weight:600;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.05em;border-bottom:1px solid var(--border)}
+.data-table td{padding:10px 12px;border-bottom:1px solid var(--border);color:var(--text2)}
+.data-table tr:hover td{background:var(--card)}
+
+/* EXERCISE */
+.exercise{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:28px;margin:24px 0}
+.exercise-label{display:inline-flex;align-items:center;gap:6px;font-size:0.75rem;font-weight:600;color:var(--blue);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:12px}
+.exercise h3{font-size:1.05rem;margin-bottom:8px}
+.exercise p{color:var(--text2);font-size:0.9rem;margin-bottom:16px}
+.exercise textarea{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:14px;color:var(--text);font-family:var(--sans);font-size:0.9rem;resize:vertical;transition:border-color .2s}
+.exercise textarea:focus{outline:none;border-color:var(--gold)}
+.exercise textarea::placeholder{color:var(--text3)}
+.exercise .hint{margin-top:12px}
+.exercise .hint-btn{background:transparent;border:1px solid var(--border2);color:var(--text3);padding:8px 16px;border-radius:8px;font-size:0.82rem;cursor:pointer;transition:all .2s;font-family:var(--sans)}
+.exercise .hint-btn:hover{border-color:var(--gold);color:var(--gold)}
+.exercise .hint-answer{display:none;margin-top:12px;padding:14px;background:var(--card2);border-radius:10px;font-size:0.88rem;color:var(--green);line-height:1.7}
+.exercise .hint-answer.show{display:block}
+
+/* MULTI-CHOICE */
+.choices{display:flex;flex-direction:column;gap:8px;margin:12px 0}
+.choice{padding:12px 16px;background:var(--card2);border:1px solid var(--border);border-radius:10px;cursor:pointer;transition:all .25s;font-size:0.9rem;display:flex;align-items:center;gap:10px}
+.choice:hover{border-color:var(--border2)}
+.choice.selected{border-color:var(--gold);background:rgba(226,182,79,0.08)}
+.choice.correct{border-color:var(--green);background:rgba(34,197,94,0.08)}
+.choice.wrong{border-color:var(--red);background:rgba(239,68,68,0.05)}
+.choice .letter{width:28px;height:28px;border-radius:8px;background:var(--card3);display:flex;align-items:center;justify-content:center;font-weight:600;font-size:0.8rem;flex-shrink:0}
+.choice.correct .letter{background:var(--green);color:#000}
+.choice.wrong .letter{background:var(--red);color:#fff}
+
+/* BOTTOM NAV */
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;padding:32px 0;margin-top:40px;border-top:1px solid var(--border)}
+.bottom-nav a{display:flex;align-items:center;gap:8px;padding:12px 20px;border-radius:10px;font-size:0.9rem;font-weight:500;transition:all .2s}
+.bottom-nav .prev{color:var(--text3);border:1px solid var(--border)}
+.bottom-nav .prev:hover{border-color:var(--gold);color:var(--gold)}
+.bottom-nav .next{background:var(--gold);color:#000}
+.bottom-nav .next:hover{background:var(--gold2)}
+
+/* COMPLETION */
+.completion{text-align:center;padding:40px;background:var(--card);border-radius:var(--radius);border:1px solid var(--gold);margin-top:32px;display:none}
+.completion.show{display:block}
+.completion .check{font-size:3rem;margin-bottom:12px}
+.completion h3{color:var(--gold);margin-bottom:8px}
+.completion p{color:var(--text2);font-size:0.9rem}
+
+/* PATTERN LIST */
+.pattern-list{list-style:none;padding:0;margin:16px 0}
+.pattern-list li{display:flex;align-items:flex-start;gap:12px;padding:12px 16px;background:var(--card2);border-radius:10px;margin-bottom:8px;font-size:0.9rem;color:var(--text2)}
+.pattern-list li .num{width:24px;height:24px;border-radius:6px;background:var(--gold);color:#000;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.75rem;flex-shrink:0}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-left">
+      <a href="index.html" class="nav-back">← 返回首页</a>
+      <span class="nav-title">第四课</span>
+    </div>
+    <div class="nav-right">
+      <span class="nav-lesson">4 / 6</span>
+    </div>
+  </div>
+</nav>
+<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+
+<div class="main">
+
+<!-- HEADER -->
+<div class="lesson-header">
+  <div class="lesson-num"><span class="line"></span> LESSON 04</div>
+  <h1>顶级家族 — 老钱密码</h1>
+  <div class="lesson-meta">
+    <span>📖 阅读约20分钟</span>
+    <span>✏️ 3道练习题</span>
+    <span>🎯 进阶篇</span>
+  </div>
+</div>
+
+<!-- 4.1 -->
+<div class="section">
+  <h2><span class="icon">🔑</span> 为什么研究"老钱"？</h2>
+  <p>在康波的50-60年周期中，大多数人只能经历一个完整周期。但有些家族已经跨越了3-5个康波周期，积累了惊人的财富和智慧。他们不只是"有钱"，而是掌握了穿越周期的<strong>结构性方法论</strong>。</p>
+  
+  <div class="callout gold">
+    <div class="callout-title">核心观点</div>
+    <p><strong>真正的"老钱"不是靠运气，而是靠制度设计。</strong>信托架构、家族宪章、跨代传承机制——这些才是让财富跨越康波周期的关键。技术会变，周期会转，但<strong>制度化的财富管理体系</strong>可以永续。</p>
+  </div>
+</div>
+
+<!-- 4.2 家族卡 -->
+<div class="section">
+  <h2><span class="icon">🏛️</span> 四大顶级家族，四种密码</h2>
+  <p>点击展开每个家族的核心机制与策略：</p>
+  
+  <!-- 洛克菲勒 -->
+  <div class="family-card" onclick="toggleCard(this)">
+    <div class="family-card-header">
+      <div class="left">
+        <div class="avatar" style="background:rgba(59,130,246,0.15)">🦅</div>
+        <div class="info">
+          <h3>洛克菲勒家族</h3>
+          <div class="desc">美国 · 石油帝国 · 传承6代 · 150年+</div>
+        </div>
+      </div>
+      <div class="arrow">▼</div>
+    </div>
+    <div class="family-card-body">
+      <div class="family-card-content">
+        <h4>🏗️ 核心架构：信托+瀑布</h4>
+        <p>洛克菲勒家族在19世纪末就建立了世界上最早的家族信托体系。约翰·D·洛克菲勒设立的信托资产超过10亿美元，通过<strong>"瀑布式分配"（Waterfall Method）</strong>实现多代传承。</p>
+        <div class="mechanism">
+          <div class="label">瀑布分配机制</div>
+          <ul>
+            <li>第一层：家族办公室（Rockefeller & Co.）统一管理核心资产</li>
+            <li>第二层：5个家族信托基金，分别服务5条分支</li>
+            <li>第三层：每个分支内的成员按比例获得收益分配</li>
+            <li>关键设计：<strong>本金锁定，仅分配收益</strong>——信托本金永远不被消耗</li>
+          </ul>
+        </div>
+        <div class="mechanism">
+          <div class="label">传承策略</div>
+          <ul>
+            <li>家族宪章：明确规定每代人的教育义务和治理责任</li>
+            <li>分散投资：跨行业、跨地域、跨资产类别</li>
+            <li>慈善绑定：通过慈善信托（洛克菲勒基金会）维系家族凝聚力</li>
+            <li>制度化传承：不依赖某个"天才后代"，而靠系统运转</li>
+          </ul>
+        </div>
+        <p><strong>康波启示：</strong>洛克菲勒家族穿越了第三、四、五轮康波，核心在于信托制度<strong>隔离了个人风险与家族资产</strong>。无论经济周期如何波动，信托结构保证资产不被单个成员的决策摧毁。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 罗斯柴尔德 -->
+  <div class="family-card" onclick="toggleCard(this)">
+    <div class="family-card-header">
+      <div class="left">
+        <div class="avatar" style="background:rgba(239,68,68,0.15)">🏦</div>
+        <div class="info">
+          <h3>罗斯柴尔德家族</h3>
+          <div class="desc">欧洲 · 金融网络 · 传承7代 · 200年+</div>
+        </div>
+      </div>
+      <div class="arrow">▼</div>
+    </div>
+    <div class="family-card-body">
+      <div class="family-card-content">
+        <h4>🏗️ 核心架构：五城网络+联盟模型</h4>
+        <p>梅耶·阿姆谢尔·罗斯柴尔德在18世纪末创建了人类历史上最成功的金融帝国。其核心创新不是单点经营，而是<strong>"辛迪加模型"（Syndicate Model）</strong>——五个儿子分别驻扎法兰克福、伦敦、巴黎、维也纳、那不勒斯，形成跨国金融网络。</p>
+        <div class="mechanism">
+          <div class="label">辛迪加运营机制</div>
+          <ul>
+            <li>信息优势：五城通信网络比政府快24-48小时（信鸽+专用信使）</li>
+            <li>风险分散：单点失败不影响整体，网络自愈能力强</li>
+            <li>套利交易：利用信息差和汇率差在五城间套利</li>
+            <li>主权借贷：向各国政府放贷，获得特许经营权和信息通道</li>
+          </ul>
+        </div>
+        <div class="mechanism">
+          <div class="label">传承策略</div>
+          <ul>
+            <li>家族银行制：每个分支都是独立银行，但共享品牌和网络</li>
+            <li>内婚制：早期只允许表亲通婚，集中财富（后已改变）</li>
+            <li>情报网络：信息即权力，比金钱更重要</li>
+            <li>低调原则："梅耶第六诫——远离公众视野"</li>
+          </ul>
+        </div>
+        <p><strong>康波启示：</strong>罗斯柴尔德家族起源于第一轮康波，穿越了全部六轮。核心能力是<strong>信息网络</strong>——在任何时代，掌握比别人更早、更准确的信息，都是穿越周期的终极武器。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 李嘉诚 -->
+  <div class="family-card" onclick="toggleCard(this)">
+    <div class="family-card-header">
+      <div class="left">
+        <div class="avatar" style="background:rgba(226,182,79,0.15)">🏙️</div>
+        <div class="info">
+          <h3>李嘉诚家族</h3>
+          <div class="desc">中国香港 · 多元帝国 · 传承2代 · 跨康波模式</div>
+        </div>
+      </div>
+      <div class="arrow">▼</div>
+    </div>
+    <div class="family-card-body">
+      <div class="family-card-content">
+        <h4>🏗️ 核心架构：双轨制传承</h4>
+        <p>李嘉诚的传承设计堪称华人世界最精密的方案。核心是<strong>"双轨制"（Dual-Track Succession）</strong>——长子李泽钜获得"帝国"，次子李泽钜获得"资本"，各得其所。</p>
+        <div class="mechanism">
+          <div class="label">双轨传承设计</div>
+          <ul>
+            <li>长子李泽钜：接管长江实业+和记黄埔（实体帝国）</li>
+            <li>次子李泽楷：获得巨额现金（约100亿美元）自主投资</li>
+            <li>核心原则：不让兄弟争夺同一个帝国，用"分而治之"避免内斗</li>
+            <li>信托锁定：核心资产通过家族信托持有，受益人分散</li>
+          </ul>
+        </div>
+        <div class="mechanism">
+          <div class="label">周期穿越能力</div>
+          <ul>
+            <li>1967年香港暴动：逆市买入地产（第三轮康波萧条期底部）</li>
+            <li>1997亚洲金融风暴：提前减持，危机后抄底</li>
+            <li>2013-2015年：系统性减持中国资产，转投欧洲（康波衰退期避险）</li>
+            <li>核心方法：<strong>"在别人恐惧时贪婪，在别人贪婪时恐惧"</strong></li>
+          </ul>
+        </div>
+        <p><strong>康波启示：</strong>李嘉诚的每一次重大资产转移都精准对应康波阶段转换。他不是靠"赌"，而是靠<strong>对周期的深刻理解</strong>做出结构性资产再配置。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 华为 -->
+  <div class="family-card" onclick="toggleCard(this)">
+    <div class="family-card-header">
+      <div class="left">
+        <div class="avatar" style="background:rgba(167,139,250,0.15)">📱</div>
+        <div class="info">
+          <h3>华为模式</h3>
+          <div class="desc">中国 · 员工持股 · 非家族传承 · 制度创新</div>
+        </div>
+      </div>
+      <div class="arrow">▼</div>
+    </div>
+    <div class="family-card-body">
+      <div class="family-card-content">
+        <h4>🏗️ 核心架构：员工持股+虚拟股权</h4>
+        <p>华为不是家族企业，却创造了一种<strong>超家族</strong>的传承模式——<strong>员工持股计划（ESOP）+虚拟受限股</strong>。任正非仅持有约0.73%的股份，99%以上由员工持有。</p>
+        <div class="mechanism">
+          <div class="label">华为持股机制</div>
+          <ul>
+            <li>虚拟受限股：员工不真正"拥有"股票，只有分红权</li>
+            <li>退出机制：离职即回购，股份不外流</li>
+            <li>TUP（时间单位计划）：按贡献和年限动态分配</li>
+            <li>核心效果：将全公司变成利益共同体，激发"狼性文化"</li>
+          </ul>
+        </div>
+        <div class="mechanism">
+          <div class="label">传承设计</div>
+          <ul>
+            <li>轮值CEO制：不依赖单一领导者，制度化决策</li>
+            <li>EMT（经营管理团队）：集体领导，避免"人亡政息"</li>
+            <li>宪法级文件：《华为基本法》规定企业治理的"宪法"</li>
+            <li>关键创新：<strong>不传给血缘后代，传给制度和文化</strong></li>
+          </ul>
+        </div>
+        <p><strong>康波启示：</strong>华为模式证明了"老钱"不一定是"家族的钱"。通过制度设计，一个组织可以实现比血缘传承更强的延续性。<strong>员工持股让全公司成为"利益共同体"</strong>，在康波萧条期（如美国制裁时期）展现出了惊人的韧性。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 4.3 对比表 -->
+<div class="section">
+  <h2><span class="icon">📋</span> 四大模式对比</h2>
+  <table class="data-table">
+    <thead><tr><th>维度</th><th>洛克菲勒</th><th>罗斯柴尔德</th><th>李嘉诚</th><th>华为</th></tr></thead>
+    <tbody>
+      <tr><td style="color:var(--gold)">核心工具</td><td>家族信托</td><td>金融网络</td><td>双轨传承</td><td>员工持股</td></tr>
+      <tr><td style="color:var(--gold)">传承代数</td><td>6代</td><td>7代</td><td>2代</td><td>制度传承</td></tr>
+      <tr><td style="color:var(--gold)">防分裂机制</td><td>信托锁定本金</td><td>分支独立运营</td><td>资产二分法</td><td>股份退出机制</td></tr>
+      <tr><td style="color:var(--gold)">信息优势</td><td>政商关系</td><td>跨国通信网</td><td>全球视野</td><td>技术研发</td></tr>
+      <tr><td style="color:var(--gold)">康波跨度</td><td>3轮+</td><td>6轮</td><td>2轮</td><td>1轮+</td></tr>
+      <tr><td style="color:var(--gold)">核心启示</td><td>制度>个人</td><td>信息>资本</td><td>周期判断力</td><td>利益共同体</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- 4.4 共同规律 -->
+<div class="section">
+  <h2><span class="icon">🔮</span> 老钱的五个共同规律</h2>
+  <p>无论东西方、无论行业，穿越周期的"老钱"家族都遵循以下规律：</p>
+  
+  <ul class="pattern-list">
+    <li><span class="num">1</span><div><strong style="color:var(--text)">制度优先于个人</strong><br><span style="color:var(--text3)">不依赖"天才后代"，靠系统运转。家族宪章、信托架构、治理委员会——这些制度才是真正的"继承人"。</span></div></li>
+    <li><span class="num">2</span><div><strong style="color:var(--text)">分散+对冲</strong><br><span style="color:var(--text3)">永远不把所有鸡蛋放在一个篮子里。跨行业、跨地域、跨资产类别、跨货币——分散是穿越周期的第一法则。</span></div></li>
+    <li><span class="num">3</span><div><strong style="color:var(--text)">信息与网络</strong><br><span style="color:var(--text3)">无论哪个时代，老钱家族都掌握着比普通人更早、更准确的信息。从罗斯柴尔德的信鸽到今天的智库网络，信息优势永不过时。</span></div></li>
+    <li><span class="num">4</span><div><strong style="color:var(--text)">逆周期操作</strong><br><span style="color:var(--text3)">在别人恐惧时贪婪——这是老钱家族反复验证的核心策略。李嘉诚1967年抄底、洛克菲勒在大萧条中扩张，都印证了这一点。</span></div></li>
+    <li><span class="num">5</span><div><strong style="color:var(--text)">慈善与社会责任</strong><br><span style="color:var(--text3)">几乎所有老钱家族都深度参与慈善。这不只是"做好事"，更是维持社会合法性、凝聚家族共识、获取软实力的战略工具。</span></div></li>
+  </ul>
+</div>
+
+<!-- EXERCISE 1 -->
+<div class="exercise" id="ex1">
+  <div class="exercise-label">✏️ 练习 1/3</div>
+  <h3>家族密码解码</h3>
+  <p>假设你是一个拥有1亿资产的家庭的"第一代"，你打算设计一套传承体系。你会选择哪种模式？为什么？请写出你的方案框架。</p>
+  <textarea placeholder="写下你的方案...\n提示：考虑信托/持股/分散/慈善等维度"></textarea>
+  <div class="hint">
+    <button class="hint-btn" onclick="this.nextElementSibling.classList.toggle('show')">💡 查看参考答案</button>
+    <div class="hint-answer">参考方案：<br>1. <strong>设立家族信托</strong>：将50%核心资产装入信托，本金锁定，仅分配收益<br>2. <strong>员工持股平台</strong>：将经营性企业的20-30%分配给核心团队（借鉴华为模式）<br>3. <strong>多元配置</strong>：信托资产分散到股票、房产、黄金、海外资产<br>4. <strong>家族宪章</strong>：制定教育义务、治理规则、决策流程<br>5. <strong>慈善基金</strong>：设立家族慈善基金，每年捐赠收益的5-10%<br><br>关键：1亿资产在一线城市不算巨额，重点应放在<strong>制度设计</strong>而非规模。</div>
+  </div>
+</div>
+
+<!-- EXERCISE 2 -->
+<div class="exercise" id="ex2">
+  <div class="exercise-label">✏️ 练习 2/3</div>
+  <h3>模式匹配</h3>
+  <p>以下哪种家族传承模式最适合"没有明确继承人"的企业创始人？</p>
+  <div class="choices" id="q2">
+    <div class="choice" onclick="selectChoice(this,'q2','wrong')"><span class="letter">A</span> 洛克菲勒信托模式</div>
+    <div class="choice" onclick="selectChoice(this,'q2','wrong')"><span class="letter">B</span> 罗斯柴尔德辛迪加模式</div>
+    <div class="choice" onclick="selectChoice(this,'q2','wrong')"><span class="letter">C</span> 李嘉诚双轨传承模式</div>
+    <div class="choice" onclick="selectChoice(this,'q2','correct')"><span class="letter">D</span> 华为员工持股模式</div>
+  </div>
+</div>
+
+<!-- EXERCISE 3 -->
+<div class="exercise" id="ex3">
+  <div class="exercise-label">✏️ 练习 3/3</div>
+  <h3>周期穿越推演</h3>
+  <p>如果2026年发生一次严重的金融危机（康波萧条尾部），以下哪种"老钱策略"最能保护你的资产？请分析原因。</p>
+  <textarea placeholder="写下你的分析...\n提示：思考分散、逆周期、现金流等维度"></textarea>
+  <div class="hint">
+    <button class="hint-btn" onclick="this.nextElementSibling.classList.toggle('show')">💡 查看参考答案</button>
+    <div class="hint-answer">最有效的策略组合：<br>1. <strong>分散配置</strong>——不把资产集中在单一国家或行业<br>2. <strong>保留充足现金流</strong>——萧条期最大的机会是"抄底"，但需要弹药<br>3. <strong>逆周期思维</strong>——在恐慌中买入优质资产（李嘉诚1967年的做法）<br>4. <strong>信托隔离</strong>——防止个人决策失误连累家族核心资产<br><br>关键是：<strong>危机前做好分散，危机中保持现金，危机后果断出手</strong>。这正是所有老钱家族穿越周期的核心逻辑。</div>
+  </div>
+</div>
+
+<!-- COMPLETION -->
+<div class="completion" id="completion">
+  <div class="check">✅</div>
+  <h3>第四课完成！</h3>
+  <p>你已了解顶级家族穿越周期的四种模式。下一课我们将进入"货币战争与全球博弈"。</p>
+</div>
+
+<!-- BOTTOM NAV -->
+<div class="bottom-nav">
+  <a href="lesson3.html" class="prev">← 上一课</a>
+  <a href="lesson5.html" class="next">下一课：货币战争 →</a>
+</div>
+
+</div>
+
+<script>
+// Progress bar
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement.scrollHeight-window.innerHeight;
+  const p=Math.min(100,window.scrollY/h*100);
+  document.getElementById('progressFill').style.width=p+'%';
+  if(p>95)document.getElementById('completion').classList.add('show');
+});
+
+// Family card toggle
+function toggleCard(el){
+  const wasActive=el.classList.contains('active');
+  document.querySelectorAll('.family-card').forEach(c=>c.classList.remove('active'));
+  if(!wasActive)el.classList.add('active');
+}
+
+// Choice selection
+function selectChoice(el,groupId,correct){
+  const group=document.getElementById(groupId);
+  group.querySelectorAll('.choice').forEach(c=>{c.classList.remove('selected','correct','wrong')});
+  el.classList.add(correct==='correct'?'correct':'wrong');
+  if(correct==='correct'){
+    group.querySelectorAll('.choice').forEach(c=>{if(c!==el)c.classList.add('wrong')});
+  }
+}
+</script>
+</body>
+</html>

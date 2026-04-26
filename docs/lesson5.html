@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第五课：货币战争与全球博弈 — 康波研究院</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#09090b;--bg2:#0f0f13;--card:#1c1c21;--card2:#222228;--card3:#2a2a32;--border:#27272a;--border2:#3f3f46;--text:#fafafa;--text2:#a1a1aa;--text3:#71717a;--gold:#e2b64f;--gold2:#f5d98a;--green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;--orange:#f59e0b;--red:#ef4444;--serif:'Noto Serif SC',serif;--sans:'Inter',sans-serif;--radius:16px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.8}
+a{color:var(--gold);text-decoration:none}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(9,9,11,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);height:56px;display:flex;align-items:center}
+.nav-inner{max-width:900px;margin:0 auto;padding:0 24px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-left{display:flex;align-items:center;gap:16px}
+.nav-back{font-size:0.85rem;color:var(--text3);transition:color .2s}.nav-back:hover{color:var(--gold)}
+.nav-title{font-size:0.85rem;color:var(--text2);font-weight:500}
+.nav-right{display:flex;align-items:center;gap:12px}
+.nav-lesson{font-size:0.75rem;color:var(--text3);background:var(--card2);padding:4px 12px;border-radius:6px}
+
+/* PROGRESS BAR */
+.progress-bar{position:fixed;top:56px;left:0;right:0;height:3px;background:var(--border);z-index:99}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));transition:width .3s;width:0%}
+
+/* MAIN */
+.main{max-width:740px;margin:0 auto;padding:80px 24px 60px}
+
+/* LESSON HEADER */
+.lesson-header{margin-bottom:48px}
+.lesson-num{display:inline-flex;align-items:center;gap:8px;font-size:0.8rem;color:var(--gold);font-weight:600;margin-bottom:12px;letter-spacing:0.08em}
+.lesson-num .line{width:32px;height:1px;background:var(--gold)}
+.lesson-header h1{font-family:var(--serif);font-size:clamp(1.8rem,4vw,2.4rem);font-weight:900;line-height:1.3;margin-bottom:12px}
+.lesson-meta{display:flex;gap:16px;flex-wrap:wrap}
+.lesson-meta span{font-size:0.8rem;color:var(--text3);display:flex;align-items:center;gap:4px}
+
+/* SECTIONS */
+.section{margin-bottom:40px}
+.section h2{font-size:1.2rem;font-weight:700;margin-bottom:16px;color:var(--text);display:flex;align-items:center;gap:8px}
+.section h2 .icon{font-size:1.1rem}
+.section p{color:var(--text2);font-size:0.95rem;margin-bottom:12px}
+
+/* CALLOUT */
+.callout{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;margin:20px 0}
+.callout.gold{border-left:3px solid var(--gold)}
+.callout.green{border-left:3px solid var(--green)}
+.callout.blue{border-left:3px solid var(--blue)}
+.callout.purple{border-left:3px solid var(--purple)}
+.callout.red{border-left:3px solid var(--red)}
+.callout-title{font-size:0.8rem;font-weight:600;color:var(--gold);margin-bottom:8px;text-transform:uppercase;letter-spacing:0.08em}
+.callout p{color:var(--text2);font-size:0.9rem}
+
+/* TABLE */
+.data-table{width:100%;border-collapse:collapse;margin:16px 0;font-size:0.88rem}
+.data-table th{text-align:left;padding:10px 12px;background:var(--card2);color:var(--text3);font-weight:600;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.05em;border-bottom:1px solid var(--border)}
+.data-table td{padding:10px 12px;border-bottom:1px solid var(--border);color:var(--text2)}
+.data-table tr:hover td{background:var(--card)}
+
+/* PREDICTION TRACKER */
+.prediction-list{margin:20px 0}
+.prediction-item{background:var(--card);border:1px solid var(--border);border-radius:12px;margin-bottom:10px;overflow:hidden;cursor:pointer;transition:all .3s}
+.prediction-item:hover{border-color:var(--border2)}
+.prediction-item.active{border-color:var(--gold)}
+.prediction-header{padding:16px 20px;display:flex;align-items:center;justify-content:space-between}
+.prediction-header .left{display:flex;align-items:center;gap:12px;flex:1}
+.prediction-header .num{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.85rem;flex-shrink:0}
+.prediction-header .num.verified{background:rgba(34,197,94,0.15);color:var(--green)}
+.prediction-header .num.unverified{background:rgba(239,68,68,0.15);color:var(--red)}
+.prediction-header .num.partial{background:rgba(245,158,11,0.15);color:var(--orange)}
+.prediction-header .pred-text{font-size:0.92rem;font-weight:500}
+.prediction-header .status-badge{font-size:0.72rem;padding:3px 10px;border-radius:20px;font-weight:600;flex-shrink:0}
+.prediction-header .status-badge.v{background:rgba(34,197,94,0.15);color:var(--green)}
+.prediction-header .status-badge.p{background:rgba(245,158,11,0.15);color:var(--orange)}
+.prediction-header .status-badge.x{background:rgba(239,68,68,0.15);color:var(--red)}
+.prediction-header .arrow{color:var(--text3);font-size:0.85rem;margin-left:8px;transition:transform .3s}
+.prediction-item.active .prediction-header .arrow{transform:rotate(180deg);color:var(--gold)}
+.prediction-body{max-height:0;overflow:hidden;transition:max-height .4s}
+.prediction-item.active .prediction-body{max-height:200px}
+.prediction-detail{padding:0 20px 16px;font-size:0.88rem;color:var(--text2);line-height:1.7}
+.prediction-detail strong{color:var(--text)}
+
+/* ACCURACY METER */
+.accuracy-meter{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;margin:20px 0}
+.accuracy-meter h4{font-size:0.85rem;font-weight:600;color:var(--text3);margin-bottom:12px;text-transform:uppercase;letter-spacing:0.06em}
+.accuracy-bar{height:12px;background:var(--card2);border-radius:6px;overflow:hidden;margin-bottom:8px}
+.accuracy-fill{height:100%;border-radius:6px;background:linear-gradient(90deg,var(--green),var(--gold));transition:width .8s ease}
+.accuracy-label{display:flex;justify-content:space-between;font-size:0.82rem;color:var(--text3)}
+.accuracy-label .val{font-size:1.6rem;font-weight:700;color:var(--green)}
+
+/* TIMELINE */
+.timeline-simple{position:relative;margin:24px 0;padding-left:20px}
+.timeline-simple::before{content:'';position:absolute;left:7px;top:0;bottom:0;width:2px;background:var(--border)}
+.timeline-simple .tl{position:relative;margin-bottom:18px;padding-left:20px}
+.timeline-simple .tl::before{content:'';position:absolute;left:-14px;top:8px;width:10px;height:10px;border-radius:50%;border:2px solid var(--gold);background:var(--bg)}
+.timeline-simple .tl .year{font-size:0.8rem;color:var(--gold);font-weight:600;margin-bottom:2px}
+.timeline-simple .tl .event{font-size:0.9rem;color:var(--text2)}
+
+/* EXERCISE */
+.exercise{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:28px;margin:24px 0}
+.exercise-label{display:inline-flex;align-items:center;gap:6px;font-size:0.75rem;font-weight:600;color:var(--blue);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:12px}
+.exercise h3{font-size:1.05rem;margin-bottom:8px}
+.exercise p{color:var(--text2);font-size:0.9rem;margin-bottom:16px}
+.exercise textarea{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:14px;color:var(--text);font-family:var(--sans);font-size:0.9rem;resize:vertical;transition:border-color .2s}
+.exercise textarea:focus{outline:none;border-color:var(--gold)}
+.exercise textarea::placeholder{color:var(--text3)}
+.exercise .hint{margin-top:12px}
+.exercise .hint-btn{background:transparent;border:1px solid var(--border2);color:var(--text3);padding:8px 16px;border-radius:8px;font-size:0.82rem;cursor:pointer;transition:all .2s;font-family:var(--sans)}
+.exercise .hint-btn:hover{border-color:var(--gold);color:var(--gold)}
+.exercise .hint-answer{display:none;margin-top:12px;padding:14px;background:var(--card2);border-radius:10px;font-size:0.88rem;color:var(--green);line-height:1.7}
+.exercise .hint-answer.show{display:block}
+
+/* MULTI-CHOICE */
+.choices{display:flex;flex-direction:column;gap:8px;margin:12px 0}
+.choice{padding:12px 16px;background:var(--card2);border:1px solid var(--border);border-radius:10px;cursor:pointer;transition:all .25s;font-size:0.9rem;display:flex;align-items:center;gap:10px}
+.choice:hover{border-color:var(--border2)}
+.choice.selected{border-color:var(--gold);background:rgba(226,182,79,0.08)}
+.choice.correct{border-color:var(--green);background:rgba(34,197,94,0.08)}
+.choice.wrong{border-color:var(--red);background:rgba(239,68,68,0.05)}
+.choice .letter{width:28px;height:28px;border-radius:8px;background:var(--card3);display:flex;align-items:center;justify-content:center;font-weight:600;font-size:0.8rem;flex-shrink:0}
+.choice.correct .letter{background:var(--green);color:#000}
+.choice.wrong .letter{background:var(--red);color:#fff}
+
+/* BOTTOM NAV */
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;padding:32px 0;margin-top:40px;border-top:1px solid var(--border)}
+.bottom-nav a{display:flex;align-items:center;gap:8px;padding:12px 20px;border-radius:10px;font-size:0.9rem;font-weight:500;transition:all .2s}
+.bottom-nav .prev{color:var(--text3);border:1px solid var(--border)}
+.bottom-nav .prev:hover{border-color:var(--gold);color:var(--gold)}
+.bottom-nav .next{background:var(--gold);color:#000}
+.bottom-nav .next:hover{background:var(--gold2)}
+
+/* COMPLETION */
+.completion{text-align:center;padding:40px;background:var(--card);border-radius:var(--radius);border:1px solid var(--gold);margin-top:32px;display:none}
+.completion.show{display:block}
+.completion .check{font-size:3rem;margin-bottom:12px}
+.completion h3{color:var(--gold);margin-bottom:8px}
+.completion p{color:var(--text2);font-size:0.9rem}
+
+/* POPULATION CHART */
+.pop-visual{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin:16px 0}
+.pop-bar{text-align:center}
+.pop-bar .bar{border-radius:6px 6px 0 0;background:var(--blue);min-height:20px;transition:height .5s;position:relative}
+.pop-bar .bar.golden{background:linear-gradient(to top,var(--gold),var(--gold2))}
+.pop-bar .label{font-size:0.7rem;color:var(--text3);margin-top:6px}
+.pop-bar .val{font-size:0.75rem;color:var(--text2);font-weight:600;margin-bottom:4px}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-left">
+      <a href="index.html" class="nav-back">← 返回首页</a>
+      <span class="nav-title">第五课</span>
+    </div>
+    <div class="nav-right">
+      <span class="nav-lesson">5 / 6</span>
+    </div>
+  </div>
+</nav>
+<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+
+<div class="main">
+
+<!-- HEADER -->
+<div class="lesson-header">
+  <div class="lesson-num"><span class="line"></span> LESSON 05</div>
+  <h1>货币战争与全球博弈</h1>
+  <div class="lesson-meta">
+    <span>📖 阅读约20分钟</span>
+    <span>✏️ 3道练习题</span>
+    <span>🎯 进阶篇</span>
+  </div>
+</div>
+
+<!-- 5.1 -->
+<div class="section">
+  <h2><span class="icon">💱</span> 宋鸿兵《货币战争》：五卷核心框架</h2>
+  <p>宋鸿兵的《货币战争》系列（5卷）是中国读者理解国际金融体系最广泛阅读的著作之一。虽然部分观点存在争议，但其核心框架——<strong>货币权力决定国家命运</strong>——提供了一个独特的分析视角。</p>
+  
+  <div class="callout gold">
+    <div class="callout-title">五卷核心逻辑</div>
+    <p><strong>卷1：</strong>国际银行家族如何通过控制货币发行权影响世界历史<br>
+    <strong>卷2：</strong>金权天下——金融资本与国家权力的博弈<br>
+    <strong>卷3：</strong>金融高边疆——货币战争的攻防战略<br>
+    <strong>卷4：</strong>战国时代——全球货币体系的分裂与重组<br>
+    <strong>卷5：</strong>山雨欲来——美元霸权的终结与新时代</p>
+  </div>
+</div>
+
+<!-- 5.2 美元霸权周期 -->
+<div class="section">
+  <h2><span class="icon">🇺🇸</span> 美元霸权的康波周期</h2>
+  <p>美元霸权不是静态的，它本身也遵循康波周期的规律。从布雷顿森林体系建立到今天，美元经历了完整的"兴衰周期"：</p>
+  
+  <div class="timeline-simple">
+    <div class="tl">
+      <div class="year">1944 · 布雷顿森林</div>
+      <div class="event">美元与黄金挂钩，成为世界储备货币。美国GDP占全球50%。美元霸权<strong>起点</strong>。</div>
+    </div>
+    <div class="tl">
+      <div class="year">1971 · 尼克松冲击</div>
+      <div class="event">关闭黄金窗口，美元与黄金脱钩。但通过"石油美元"协议（1974），美元霸权<strong>转型而非崩溃</strong>。</div>
+    </div>
+    <div class="tl">
+      <div class="year">1985 · 广场协议</div>
+      <div class="event">美国联合G5强迫日元升值。美元霸权进入<strong>管理期</strong>——通过汇率操控维持优势。</div>
+    </div>
+    <div class="tl">
+      <div class="year">2008 · 金融危机</div>
+      <div class="event">量化宽松（QE）开启。美元霸权的<strong>透支期</strong>——靠印钞维持，但全球信任开始松动。</div>
+    </div>
+    <div class="tl">
+      <div class="year">2020 · 无限QE</div>
+      <div class="event">疫情期间美联储资产负债表从4万亿→9万亿。美元霸权进入<strong>加速透支</strong>阶段。</div>
+    </div>
+    <div class="tl">
+      <div class="year">2026 · 当前</div>
+      <div class="event">去美元化趋势加速，金砖国家推进本币结算。美元霸权处于<strong>康波衰退→萧条过渡期</strong>。</div>
+    </div>
+  </div>
+  
+  <div class="callout blue">
+    <div class="callout-title">关键判断</div>
+    <p>美元霸权不会在一夜之间崩溃，但其<strong>边际优势正在递减</strong>。历史上，储备货币的更替周期约为80-100年。从1944年算起，美元已运行82年——正处于康波意义上的"秋季"。</p>
+  </div>
+</div>
+
+<!-- 5.3 施汉兵预测 -->
+<div class="section">
+  <h2><span class="icon">🔮</span> 施汉兵七大预测验证</h2>
+  <p>施汉兵（笔名）是中国民间金融分析者，其2010年前后的七大预测至今仍被广泛讨论。点击每条预测查看验证结果：</p>
+  
+  <div class="accuracy-meter">
+    <h4>预测准确率</h4>
+    <div class="accuracy-bar"><div class="accuracy-fill" style="width:71%"></div></div>
+    <div class="accuracy-label">
+      <span>5/7 预测已验证或部分验证</span>
+      <span class="val">71%</span>
+    </div>
+  </div>
+  
+  <div class="prediction-list">
+    <!-- 预测1 -->
+    <div class="prediction-item" onclick="togglePred(this)">
+      <div class="prediction-header">
+        <div class="left">
+          <div class="num verified">1</div>
+          <span class="pred-text">美国将通过印钞转嫁危机</span>
+        </div>
+        <span class="status-badge v">✓ 已验证</span>
+        <span class="arrow">▼</span>
+      </div>
+      <div class="prediction-body">
+        <div class="prediction-detail">
+          <strong>预测内容：</strong>2008年金融危机后，美国将通过量化宽松（QE）大量印钞，将危机成本转嫁给全球持有美元资产的国家。<br>
+          <strong>验证结果：</strong>2008-2014年三轮QE，美联储资产负债表从0.9万亿→4.5万亿美元。2020年无限QE更进一步。<strong>完全验证。</strong>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 预测2 -->
+    <div class="prediction-item" onclick="togglePred(this)">
+      <div class="prediction-header">
+        <div class="left">
+          <div class="num verified">2</div>
+          <span class="pred-text">中国房价将经历长期上涨后进入调整</span>
+        </div>
+        <span class="status-badge v">✓ 已验证</span>
+        <span class="arrow">▼</span>
+      </div>
+      <div class="prediction-body">
+        <div class="prediction-detail">
+          <strong>预测内容：</strong>中国房地产在2010年前后尚未见顶，但长期来看将经历泡沫化和去杠杆过程。<br>
+          <strong>验证结果：</strong>2010-2021年持续上涨，2021年后进入深度调整（恒大、碧桂园暴雷，多地房价下跌20-30%）。<strong>完全验证。</strong>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 预测3 -->
+    <div class="prediction-item" onclick="togglePred(this)">
+      <div class="prediction-header">
+        <div class="left">
+          <div class="num verified">3</div>
+          <span class="pred-text">黄金将迎来长期牛市</span>
+        </div>
+        <span class="status-badge v">✓ 已验证</span>
+        <span class="arrow">▼</span>
+      </div>
+      <div class="prediction-body">
+        <div class="prediction-detail">
+          <strong>预测内容：</strong>在货币超发的背景下，黄金作为"硬通货"将迎来长期上涨趋势。<br>
+          <strong>验证结果：</strong>2010年金价约1200美元/盎司，2024年突破2400美元，2025年更创新高。<strong>完全验证。</strong>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 预测4 -->
+    <div class="prediction-item" onclick="togglePred(this)">
+      <div class="prediction-header">
+        <div class="left">
+          <div class="num partial">4</div>
+          <span class="pred-text">欧元区将面临解体危机</span>
+        </div>
+        <span class="status-badge p">◐ 部分验证</span>
+        <span class="arrow">▼</span>
+      </div>
+      <div class="prediction-body">
+        <div class="prediction-detail">
+          <strong>预测内容：</strong>欧元区内部经济差异过大，将面临严重的分裂危机，可能有成员国退出。<br>
+          <strong>验证结果：</strong>2010-2015年希腊债务危机、"退欧"风险确实出现，但欧元区通过各种机制（ESM、OMT）勉强维持。<strong>部分验证</strong>——危机发生了，但解体没有。
+        </div>
+      </div>
+    </div>
+    
+    <!-- 预测5 -->
+    <div class="prediction-item" onclick="togglePred(this)">
+      <div class="prediction-header">
+        <div class="left">
+          <div class="num verified">5</div>
+          <span class="pred-text">美元最终将失去储备货币地位</span>
+        </div>
+        <span class="status-badge p">◐ 趋势验证中</span>
+        <span class="arrow">▼</span>
+      </div>
+      <div class="prediction-body">
+        <div class="prediction-detail">
+          <strong>预测内容：</strong>美元霸权不可持续，最终将被新的货币体系取代。<br>
+          <strong>验证结果：</strong>美元在全球外汇储备中的占比从2000年的71%降至2025年的约58%。金砖国家推进本币结算，数字货币兴起。<strong>趋势正在进行中</strong>，但"最终失去"可能还需要10-20年。
+        </div>
+      </div>
+    </div>
+    
+    <!-- 预测6 -->
+    <div class="prediction-item" onclick="togglePred(this)">
+      <div class="prediction-header">
+        <div class="left">
+          <div class="num unverified">6</div>
+          <span class="pred-text">2025年前将爆发第三次世界大战级别的冲突</span>
+        </div>
+        <span class="status-badge x">✗ 未验证</span>
+        <span class="arrow">▼</span>
+      </div>
+      <div class="prediction-body">
+        <div class="prediction-detail">
+          <strong>预测内容：</strong>大国博弈升级将导致大规模军事冲突。<br>
+          <strong>验证结果：</strong>截至2026年，虽然俄乌冲突、中东局势紧张，但并未升级到"世界大战"级别。<strong>未验证。</strong>不过地缘风险确实在上升。
+        </div>
+      </div>
+    </div>
+    
+    <!-- 预测7 -->
+    <div class="prediction-item" onclick="togglePred(this)">
+      <div class="prediction-header">
+        <div class="left">
+          <div class="num partial">7</div>
+          <span class="pred-text">中国将在2020年代超越美国成为第一大经济体</span>
+        </div>
+        <span class="status-badge p">◐ 部分验证</span>
+        <span class="arrow">▼</span>
+      </div>
+      <div class="prediction-body">
+        <div class="prediction-detail">
+          <strong>预测内容：</strong>按购买力平价（PPP）计算，中国GDP将在2020年代超越美国。<br>
+          <strong>验证结果：</strong>按PPP计算，中国GDP已在2016年前后超越美国。但按名义汇率计算，中国GDP约为美国的65%（2025年）。<strong>部分验证</strong>——取决于使用哪种计算方法。
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 5.4 人口周期 -->
+<div class="section">
+  <h2><span class="icon">👶</span> 人口周期：康波的底层力量</h2>
+  <p>宋鸿兵和许多周期研究者都指出，<strong>人口周期</strong>是驱动康波的底层力量。人口结构的变化决定了劳动力供给、消费模式、创新能力和债务承受力。</p>
+  
+  <div class="callout purple">
+    <div class="callout-title">人口红利与人口负债</div>
+    <p><strong>人口红利期（抚养比下降）：</strong>劳动力充沛，储蓄率高，经济高速增长。对应康波的春季和夏季。<br><br>
+    <strong>人口负债期（抚养比上升）：</strong>老龄化加速，社保压力增大，经济增速放缓。对应康波的秋季和冬季。</p>
+  </div>
+  
+  <h4 style="font-size:0.9rem;color:var(--text3);margin:16px 0 8px;font-weight:600">主要经济体人口红利期对比</h4>
+  <table class="data-table">
+    <thead><tr><th>经济体</th><th>人口红利期</th><th>转折点</th><th>当前状态</th></tr></thead>
+    <tbody>
+      <tr><td style="color:var(--gold)">日本</td><td>1960-1990</td><td>1990（老龄化加速）</td><td style="color:var(--red)">深度老龄化</td></tr>
+      <tr><td style="color:var(--gold)">美国</td><td>1970-2010</td><td>2010（婴儿潮退休）</td><td style="color:var(--orange)">中度老龄化</td></tr>
+      <tr><td style="color:var(--gold)">中国</td><td>1980-2015</td><td>2015（劳动力见顶）</td><td style="color:var(--red)">快速老龄化</td></tr>
+      <tr><td style="color:var(--gold)">印度</td><td>2000-2040</td><td>预计2040</td><td style="color:var(--green)">人口红利期</td></tr>
+    </tbody>
+  </table>
+  
+  <div class="callout green">
+    <div class="callout-title">与康波的交叉验证</div>
+    <p>人口周期（约60-80年）与康波周期（50-60年）存在<strong>高度相关性</strong>。日本1990年人口转折点恰好对应第四轮康波衰退→萧条的过渡。中国2015年劳动力见顶也与第五轮康波衰退期重合。<strong>人口是"看不见的手"，在背后推动康波周期运转。</strong></p>
+  </div>
+</div>
+
+<!-- 5.5 交叉验证 -->
+<div class="section">
+  <h2><span class="icon">🔗</span> 货币理论与康波的交叉验证</h2>
+  <p>将宋鸿兵的货币理论与康德拉季耶夫周期理论进行交叉验证，可以发现惊人的共振：</p>
+  
+  <table class="data-table">
+    <thead><tr><th>康波阶段</th><th>货币特征</th><th>历史案例</th></tr></thead>
+    <tbody>
+      <tr><td style="color:var(--green)">回升期</td><td>新货币秩序建立，信贷扩张</td><td>1944布雷顿森林 / 2009后QE时代</td></tr>
+      <tr><td style="color:var(--orange)">繁荣期</td><td>信用膨胀，资产泡沫形成</td><td>1970s欧洲美元 / 2000s衍生品爆炸</td></tr>
+      <tr><td style="color:var(--red)">衰退期</td><td>货币危机频发，去杠杆开始</td><td>1997亚洲金融危机 / 2008次贷危机</td></tr>
+      <tr><td style="color:var(--blue)">萧条期</td><td>货币体系重组，旧秩序瓦解</td><td>1930s金本位崩溃 / 2020s去美元化</td></tr>
+    </tbody>
+  </table>
+  
+  <div class="callout gold">
+    <div class="callout-title">核心洞察</div>
+    <p><strong>每一次康波萧条期，都会伴随一次货币体系的重组。</strong>1930s金本位崩溃→1944布雷顿森林。2020s美元霸权松动→??? 新的国际货币体系正在酝酿中。这就是为什么"货币战争"的研究对投资者至关重要——<strong>谁掌握了新的货币规则，谁就掌握了下一个康波周期的财富密码。</strong></p>
+  </div>
+</div>
+
+<!-- EXERCISE 1 -->
+<div class="exercise" id="ex1">
+  <div class="exercise-label">✏️ 练习 1/3</div>
+  <h3>美元霸权判断</h3>
+  <p>你认为美元霸权将在何时结束？它会被什么取代？写出你的分析框架。</p>
+  <textarea placeholder="写下你的分析...\n提示：考虑SWIFT替代、数字货币、金砖货币等维度"></textarea>
+  <div class="hint">
+    <button class="hint-btn" onclick="this.nextElementSibling.classList.toggle('show')">💡 查看参考答案</button>
+    <div class="hint-answer">参考框架：<br>1. <strong>不会突然崩溃</strong>：美元霸权的消退将是渐进的，预计需要15-25年（2040-2050）<br>2. <strong>多极化而非单一替代</strong>：不太可能出现"下一个美元"，更可能是美元、人民币、欧元、数字货币并存的多极体系<br>3. <strong>关键变量</strong>：美国军事实力、科技实力、制度吸引力、债务可持续性<br>4. <strong>与康波的对应</strong>：美元霸权衰退≈第五轮康波萧条→第六轮回升的过渡期<br><br>最可能的情景：<strong>美元仍是最强的单极货币，但其"特权溢价"将逐步消失。</strong></div>
+  </div>
+</div>
+
+<!-- EXERCISE 2 -->
+<div class="exercise" id="ex2">
+  <div class="exercise-label">✏️ 练习 2/3</div>
+  <h3>预测验证</h3>
+  <p>施汉兵的七大预测中，准确率最高的预测类型是什么？</p>
+  <div class="choices" id="q2">
+    <div class="choice" onclick="selectChoice(this,'q2','wrong')"><span class="letter">A</span> 地缘政治类预测（战争、冲突）</div>
+    <div class="choice" onclick="selectChoice(this,'q2','correct')"><span class="letter">B</span> 货币与资产价格类预测（QE、房价、金价）</div>
+    <div class="choice" onclick="selectChoice(this,'q2','wrong')"><span class="letter">C</span> 国力对比类预测（GDP排名）</div>
+    <div class="choice" onclick="selectChoice(this,'q2','wrong')"><span class="letter">D</span> 社会变革类预测</div>
+  </div>
+</div>
+
+<!-- EXERCISE 3 -->
+<div class="exercise" id="ex3">
+  <div class="exercise-label">✏️ 练习 3/3</div>
+  <h3>人口周期推演</h3>
+  <p>基于人口周期理论，你认为印度在未来20年最可能经历哪个康波阶段？它与中国的康波位置有何不同？</p>
+  <textarea placeholder="写下你的分析...\n提示：印度的人口红利期预计到2040年"></textarea>
+  <div class="hint">
+    <button class="hint-btn" onclick="this.nextElementSibling.classList.toggle('show')">💡 查看参考答案</button>
+    <div class="hint-answer">关键分析：<br>1. <strong>印度</strong>：处于人口红利上升期（类似中国1990-2010年），对应康波<strong>春季→夏季</strong>的过渡。经济增长将加速，城市化推进，消费升级。<br>2. <strong>中国</strong>：人口红利消退，老龄化加速，对应康波<strong>秋季→冬季</strong>的过渡（第五轮尾声→第六轮回升初期）。<br>3. <strong>关键差异</strong>：印度的康波位置比中国"年轻"约20-25年。这意味着印度可能在未来10-20年经历中国2000-2015年的高速增长期。<br><br><strong>投资启示：</strong>印度市场的成长股和基建类资产可能具有长期配置价值。</div>
+  </div>
+</div>
+
+<!-- COMPLETION -->
+<div class="completion" id="completion">
+  <div class="check">✅</div>
+  <h3>第五课完成！</h3>
+  <p>你已掌握货币战争的核心框架和人口周期的底层逻辑。最后一课，我们将把所有理论转化为具体的投资操作手册。</p>
+</div>
+
+<!-- BOTTOM NAV -->
+<div class="bottom-nav">
+  <a href="lesson4.html" class="prev">← 上一课</a>
+  <a href="lesson6.html" class="next">下一课：投资操作手册 →</a>
+</div>
+
+</div>
+
+<script>
+// Progress bar
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement.scrollHeight-window.innerHeight;
+  const p=Math.min(100,window.scrollY/h*100);
+  document.getElementById('progressFill').style.width=p+'%';
+  if(p>95)document.getElementById('completion').classList.add('show');
+});
+
+// Prediction toggle
+function togglePred(el){
+  const wasActive=el.classList.contains('active');
+  document.querySelectorAll('.prediction-item').forEach(p=>p.classList.remove('active'));
+  if(!wasActive)el.classList.add('active');
+}
+
+// Choice selection
+function selectChoice(el,groupId,correct){
+  const group=document.getElementById(groupId);
+  group.querySelectorAll('.choice').forEach(c=>{c.classList.remove('selected','correct','wrong')});
+  el.classList.add(correct==='correct'?'correct':'wrong');
+  if(correct==='correct'){
+    group.querySelectorAll('.choice').forEach(c=>{if(c!==el)c.classList.add('wrong')});
+  }
+}
+</script>
+</body>
+</html>

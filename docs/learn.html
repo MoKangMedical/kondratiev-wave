@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>课程学习 — 康波研究院</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#09090b;--bg2:#0f0f13;--bg3:#18181b;
+  --card:#1c1c21;--card2:#222228;--card3:#2a2a32;
+  --border:#27272a;--border2:#3f3f46;
+  --text:#fafafa;--text2:#a1a1aa;--text3:#71717a;
+  --gold:#e2b64f;--gold2:#f5d98a;
+  --green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;
+  --orange:#f59e0b;--red:#ef4444;
+  --serif:'Noto Serif SC',serif;
+  --sans:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+  --radius:16px;--radius-sm:10px;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(9,9,11,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:var(--serif);font-size:1.1rem;font-weight:700;color:var(--gold);display:flex;align-items:center;gap:8px}
+.nav-logo svg{width:28px;height:28px}
+.nav-links{display:flex;gap:24px;align-items:center}
+.nav-links a{font-size:0.85rem;color:var(--text2);transition:color .2s;font-weight:500}
+.nav-links a:hover,.nav-links a.active{color:var(--gold)}
+
+/* PROGRESS BAR */
+.progress-bar{position:fixed;top:64px;left:0;right:0;height:3px;background:var(--border);z-index:99}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));transition:width .5s ease;width:0%}
+
+/* LAYOUT */
+.main{max-width:860px;margin:0 auto;padding:88px 24px 80px}
+
+/* HERO */
+.learn-hero{text-align:center;padding:20px 0 40px}
+.learn-hero .label{font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.12em;color:var(--gold);margin-bottom:12px}
+.learn-hero h1{font-family:var(--serif);font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:900;margin-bottom:12px}
+.learn-hero h1 .gold{color:var(--gold)}
+.learn-hero p{color:var(--text2);font-size:1rem;max-width:560px;margin:0 auto}
+
+/* COURSE MAP */
+.course-map{display:flex;flex-direction:column;gap:12px;margin:32px 0}
+
+/* COURSE NODE */
+.c-node{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:all .3s;position:relative}
+.c-node.locked{opacity:0.5;pointer-events:none}
+.c-node.current{border-color:var(--gold);box-shadow:0 0 30px rgba(226,182,79,0.08)}
+.c-node.completed{border-color:var(--green)}
+.c-node-header{display:flex;align-items:center;padding:20px 24px;gap:16px;cursor:pointer;user-select:none}
+.c-node.locked .c-node-header{cursor:default}
+.c-num{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;font-weight:800;flex-shrink:0}
+.c-node.locked .c-num{background:var(--card3);color:var(--text3)}
+.c-node.current .c-num{background:linear-gradient(135deg,var(--gold),#b8860b);color:#000}
+.c-node.completed .c-num{background:var(--green);color:#000}
+.c-info{flex:1}
+.c-info h3{font-size:1rem;margin-bottom:4px}
+.c-info p{font-size:0.82rem;color:var(--text3)}
+.c-tags{display:flex;gap:6px;margin-top:6px}
+.c-tag{font-size:0.7rem;padding:2px 8px;border-radius:4px;background:var(--card3);color:var(--text3)}
+.c-status{font-size:0.8rem;font-weight:600;flex-shrink:0;padding:4px 12px;border-radius:6px}
+.c-node.locked .c-status{color:var(--text3)}
+.c-node.current .c-status{color:var(--gold);background:rgba(226,182,79,0.1)}
+.c-node.completed .c-status{color:var(--green);background:rgba(34,197,94,0.1)}
+
+/* COURSE CONTENT PANEL */
+.c-body{display:none;border-top:1px solid var(--border)}
+.c-node.open .c-body{display:block}
+.c-content{padding:28px 24px;max-height:65vh;overflow-y:auto}
+.c-content::-webkit-scrollbar{width:4px}
+.c-content::-webkit-scrollbar-thumb{background:var(--border2);border-radius:4px}
+
+/* MARKDOWN CONTENT */
+.md{color:var(--text2);font-size:0.92rem;line-height:1.85}
+.md h1{font-family:var(--serif);font-size:1.6rem;color:var(--text);margin:28px 0 14px;font-weight:700}
+.md h2{font-size:1.2rem;color:var(--text);margin:24px 0 10px;font-weight:700;border-bottom:1px solid var(--border);padding-bottom:6px}
+.md h3{font-size:1.02rem;color:var(--gold);margin:18px 0 6px;font-weight:600}
+.md h4{font-size:0.95rem;color:var(--text);margin:14px 0 6px;font-weight:600}
+.md p{margin:8px 0}
+.md strong{color:var(--text)}
+.md em{color:var(--gold);font-style:italic}
+.md blockquote{border-left:3px solid var(--gold);padding:10px 18px;margin:14px 0;background:rgba(226,182,79,0.04);border-radius:0 8px 8px 0}
+.md ul,.md ol{padding-left:22px;margin:8px 0}
+.md li{margin:4px 0}
+.md code{background:var(--card3);padding:1px 5px;border-radius:3px;font-size:0.84rem;color:var(--gold)}
+.md pre{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:14px;margin:14px 0;overflow-x:auto}
+.md pre code{background:none;padding:0;color:var(--text2)}
+.md table{width:100%;border-collapse:collapse;margin:14px 0;font-size:0.85rem}
+.md th{background:var(--card2);color:var(--gold);text-align:left;padding:8px 10px;border:1px solid var(--border);font-weight:600}
+.md td{padding:8px 10px;border:1px solid var(--border)}
+.md tr:nth-child(even){background:rgba(255,255,255,0.015)}
+.md hr{border:none;border-top:1px solid var(--border);margin:20px 0}
+
+/* QUIZ SECTION */
+.quiz-section{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:28px;margin-top:24px}
+.quiz-title{display:flex;align-items:center;gap:10px;margin-bottom:20px}
+.quiz-title h3{font-size:1.1rem;color:var(--gold)}
+.quiz-title .badge{font-size:0.7rem;background:var(--gold);color:#000;padding:2px 10px;border-radius:100px;font-weight:700}
+
+.quiz-q{margin-bottom:24px;padding:20px;background:var(--card);border-radius:var(--radius-sm);border:1px solid var(--border)}
+.quiz-q.answered-correct{border-color:var(--green);background:rgba(34,197,94,0.03)}
+.quiz-q.answered-wrong{border-color:var(--red);background:rgba(239,68,68,0.03)}
+.quiz-q-num{font-size:0.75rem;color:var(--text3);font-weight:600;margin-bottom:8px}
+.quiz-q-text{font-size:0.95rem;color:var(--text);margin-bottom:14px;font-weight:500}
+
+.quiz-opts{display:flex;flex-direction:column;gap:8px}
+.quiz-opt{display:flex;align-items:flex-start;gap:10px;padding:10px 14px;border:1px solid var(--border);border-radius:8px;cursor:pointer;transition:all .2s;font-size:0.88rem;color:var(--text2);user-select:none}
+.quiz-opt:hover{border-color:var(--border2);color:var(--text);background:var(--card2)}
+.quiz-opt.selected{border-color:var(--blue);color:var(--text);background:rgba(59,130,246,0.06)}
+.quiz-opt.correct{border-color:var(--green)!important;color:var(--green)!important;background:rgba(34,197,94,0.08)!important}
+.quiz-opt.wrong{border-color:var(--red)!important;color:var(--red)!important;background:rgba(239,68,68,0.06)!important}
+.quiz-opt.disabled{pointer-events:none}
+.quiz-opt-letter{width:22px;height:22px;border-radius:50%;border:1.5px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;flex-shrink:0;transition:all .2s}
+.quiz-opt.selected .quiz-opt-letter{border-color:var(--blue);color:var(--blue)}
+.quiz-opt.correct .quiz-opt-letter{border-color:var(--green);color:#000;background:var(--green)}
+.quiz-opt.wrong .quiz-opt-letter{border-color:var(--red);color:#000;background:var(--red)}
+
+.quiz-explain{display:none;margin-top:12px;padding:12px 16px;border-radius:8px;font-size:0.85rem;line-height:1.7}
+.quiz-explain.show{display:block}
+.quiz-explain.correct-explain{background:rgba(34,197,94,0.06);border:1px solid rgba(34,197,94,0.2);color:var(--green)}
+.quiz-explain.wrong-explain{background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.2);color:var(--red)}
+
+/* QUIZ FOOTER */
+.quiz-footer{display:flex;align-items:center;justify-content:space-between;margin-top:20px;padding-top:16px;border-top:1px solid var(--border)}
+.quiz-score{font-size:0.9rem;color:var(--text2)}
+.quiz-score .num{color:var(--gold);font-weight:700;font-size:1.2rem}
+.quiz-actions{display:flex;gap:10px}
+
+/* BUTTONS */
+.btn{padding:10px 22px;border-radius:8px;font-weight:600;font-size:0.88rem;border:none;cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;gap:6px}
+.btn-primary{background:var(--gold);color:#000}
+.btn-primary:hover{background:var(--gold2);transform:translateY(-1px)}
+.btn-primary:disabled{opacity:0.4;cursor:not-allowed;transform:none}
+.btn-secondary{background:transparent;color:var(--text);border:1px solid var(--border2)}
+.btn-secondary:hover{border-color:var(--gold);color:var(--gold)}
+.btn-green{background:var(--green);color:#000}
+.btn-green:hover{background:#16a34a}
+
+/* NEXT COURSE BANNER */
+.next-banner{display:none;margin-top:24px;padding:24px;background:linear-gradient(135deg,rgba(34,197,94,0.08),rgba(59,130,246,0.05));border:1px solid rgba(34,197,94,0.2);border-radius:var(--radius);text-align:center}
+.next-banner.show{display:block}
+.next-banner h4{color:var(--green);margin-bottom:8px}
+.next-banner p{color:var(--text2);font-size:0.9rem;margin-bottom:16px}
+.next-banner .next-title{color:var(--gold);font-weight:700}
+
+/* STATS BAR */
+.stats-bar{display:flex;gap:16px;margin:24px 0;flex-wrap:wrap}
+.stat-item{flex:1;min-width:120px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:16px;text-align:center}
+.stat-item .stat-num{font-size:1.6rem;font-weight:800;color:var(--gold)}
+.stat-item .stat-label{font-size:0.75rem;color:var(--text3);margin-top:4px}
+
+/* CONFETTI */
+.confetti-container{position:fixed;top:0;left:0;right:0;bottom:0;pointer-events:none;z-index:200;overflow:hidden}
+.confetti{position:absolute;width:8px;height:8px;top:-10px;animation:confetti-fall 3s ease-in forwards}
+@keyframes confetti-fall{
+  0%{transform:translateY(0) rotate(0deg);opacity:1}
+  100%{transform:translateY(100vh) rotate(720deg);opacity:0}
+}
+
+/* FOOTER */
+.footer{border-top:1px solid var(--border);padding:24px 0;text-align:center;margin-top:40px}
+.footer p{font-size:0.8rem;color:var(--text3)}
+
+@media(max-width:768px){
+  .main{padding:84px 16px 60px}
+  .c-node-header{padding:16px;gap:12px}
+  .c-num{width:40px;height:40px;font-size:1.1rem}
+  .c-content{padding:20px 16px}
+  .quiz-section{padding:20px 16px}
+  .quiz-footer{flex-direction:column;gap:12px}
+  .stats-bar{gap:8px}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <svg viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12" stroke="#e2b64f" stroke-width="1.5"/><path d="M6 18c2-6 4-8 8-10s6 2 8 6" stroke="#e2b64f" stroke-width="1.5" fill="none"/><circle cx="14" cy="12" r="2" fill="#e2b64f"/></svg>
+      康波研究院
+    </a>
+    <div class="nav-links">
+      <a href="index.html">首页</a>
+      <a href="index.html#theory">理论</a>
+      <a href="learn.html" class="active">学习</a>
+      <a href="tools.html">工具</a>
+      <a href="index.html#pricing">定价</a>
+    </div>
+  </div>
+</nav>
+
+<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+
+<div class="main">
+  <div class="learn-hero">
+    <div class="label">交互式学习系统</div>
+    <h1>从理论到实战，<span class="gold">逐课解锁</span></h1>
+    <p>完成每课测验后解锁下一课。答对60%即通过，可反复作答。</p>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats-bar" id="statsBar">
+    <div class="stat-item"><div class="stat-num" id="statCompleted">0</div><div class="stat-label">已完成课程</div></div>
+    <div class="stat-item"><div class="stat-num" id="statScore">0</div><div class="stat-label">总答对题数</div></div>
+    <div class="stat-item"><div class="stat-num" id="statStreak">0</div><div class="stat-label">连续通过</div></div>
+  </div>
+
+  <!-- COURSE MAP -->
+  <div class="course-map" id="courseMap"></div>
+</div>
+
+<div class="confetti-container" id="confettiBox"></div>
+
+<footer class="footer">
+  <p>康波研究院 © 2026 · MoKangMedical · 完成全部6课获得「康波分析师」认证</p>
+</footer>
+
+<script>
+// ============================================================
+// COURSE DATA
+// ============================================================
+const COURSES = [
+  {
+    id:1,
+    title:"康波理论 — 为什么经济有\"四季\"？",
+    desc:"康德拉季耶夫长波基础、五轮历史复盘、四阶段模型、周期嵌套关系",
+    tags:["基础","30分钟"],
+    file:"courses/01-康波理论基础.md",
+    quiz:[
+      {
+        q:"康德拉季耶夫在哪一年提出了经济长波理论？",
+        opts:["1900年","1925年","1945年","1971年"],
+        answer:1,
+        explain:"1925年，苏联经济学家康德拉季耶夫发表论文《经济生活中的长波》，首次系统提出50-60年经济长周期理论。"
+      },
+      {
+        q:"一轮完整的康波周期大约持续多少年？",
+        opts:["10-15年","20-30年","50-60年","100年以上"],
+        answer:2,
+        explain:"康波周期持续50-60年，经历回升(春)→繁荣(夏)→衰退(秋)→萧条(冬)四个阶段。"
+      },
+      {
+        q:"我们目前（2026年）处于康波的哪个位置？",
+        opts:["第三轮繁荣期","第四轮衰退期","第五轮冬末+第六轮春初","第六轮夏初"],
+        answer:2,
+        explain:"2026年处于第五轮康波(信息技术)萧条末期与第六轮康波(AI+新能源+生物科技)回升初期的交替窗口。"
+      },
+      {
+        q:"以下哪项不是康波四季模型中的阶段？",
+        opts:["回升期(春)","繁荣期(夏)","转型期)","萧条期(冬)"],
+        answer:2,
+        explain:"康波四季为：回升(春)、繁荣(夏)、衰退(秋)、萧条(冬)。没有\"转型期\"这一说法。"
+      },
+      {
+        q:"第五轮康波的核心驱动力是什么？",
+        opts:["蒸汽机和纺织机械","钢铁和铁路","石油化工和电子","信息技术和互联网"],
+        answer:3,
+        explain:"第五轮康波(1990-2025)的核心驱动力是信息技术+互联网+移动通信。"
+      }
+    ]
+  },
+  {
+    id:2,
+    title:"周金涛 — \"人生就是一场康波\"",
+    desc:"四周期嵌套模型、三次财富机会、不同年代人群的周期适配",
+    tags:["核心","40分钟"],
+    file:"courses/02-周金涛四周期嵌套.md",
+    quiz:[
+      {
+        q:"周金涛的四周期嵌套模型中，最长的周期是哪个？",
+        opts:["库存周期(3-5年)","资本支出周期(7-11年)","房地产周期(18-25年)","康波(50-60年)"],
+        answer:3,
+        explain:"四周期从短到长：库存周期(3-5年)→资本支出周期(7-11年)→房地产周期(18-25年)→康波(50-60年)。"
+      },
+      {
+        q:"周金涛认为，一个人一生中有几次大的财富机会？",
+        opts:["1次","2次","3次","5次"],
+        answer:2,
+        explain:"周金涛核心论断：一生只有三次资产大底机会，抓住一次跻身中产，抓住两次财务自由。"
+      },
+      {
+        q:"85后(1985-1995年出生)的人生第一次财富机会在什么时候？",
+        opts:["2008年","2015年","2019年前后","2030年"],
+        answer:2,
+        explain:"周金涛预测\"2019年是康波周期万劫不复之年，85后的人生第一次机会将会出现\"。2019年A股2440点确实是重要底部。"
+      },
+      {
+        q:"当四个周期同时向上时，会产生什么现象？",
+        opts:["经济停滞","超级牛市","温和上涨","无明显变化"],
+        answer:1,
+        explain:"当康波、房地产、资本支出、库存四个周期同时向上时，产生共振效应，形成超级牛市(如1995-2000年)。"
+      },
+      {
+        q:"周金涛于哪一年去世？",
+        opts:["2014年","2016年","2018年","2020年"],
+        answer:1,
+        explain:"周金涛于2016年12月因胰腺癌去世，年仅44岁。他的很多预测在去世后得到验证。"
+      }
+    ]
+  },
+  {
+    id:3,
+    title:"第六轮康波 — AI驱动的新纪元",
+    desc:"三驾马车(AI/能源/生物)、渗透路径、赛道图谱(Tier 1/2/3)",
+    tags:["深度","45分钟"],
+    file:"courses/03-第六轮康波深度分析.md",
+    quiz:[
+      {
+        q:"第六轮康波的\"三驾马车\"不包括以下哪项？",
+        opts:["人工智能","新能源","生物科技","房地产"],
+        answer:3,
+        explain:"第六轮康波三驾马车：AI(核心引擎)+新能源(基础支撑)+生物科技(价值增量)。房地产不是驱动力。"
+      },
+      {
+        q:"AI渗透路径的第一阶段（2025-2028）是什么？",
+        opts:["行业重塑","经济结构变革","效率工具","通用人工智能"],
+        answer:2,
+        explain:"AI渗透三阶段：效率工具(2025-2028)→行业重塑(2028-2032)→经济结构变革(2032-2040)。"
+      },
+      {
+        q:"在赛道图谱中，Tier 1(确定性最高)建议配置多少比例？",
+        opts:["30%","50%","65%","80%"],
+        answer:2,
+        explain:"配置建议：Tier 1(确定性65%)+Tier 2(成长性30%)+Tier 3(想象力5%)。"
+      },
+      {
+        q:"中国在第六轮康波中的优势领域是？",
+        opts:["高端芯片","基础软件","新能源制造和AI应用","金融体系"],
+        answer:2,
+        explain:"中国在应用层(AI应用)和新能源(光伏、电池、电动车)上有全球领先优势，在高端芯片和基础软件上受制于人。"
+      },
+      {
+        q:"全球光伏组件产量中，中国占比约多少？",
+        opts:["30%","50%","70%","80%以上"],
+        answer:3,
+        explain:"中国光伏组件产量占全球80%以上，动力电池产量占全球60%以上，电动汽车产销量全球第一。"
+      }
+    ]
+  },
+  {
+    id:4,
+    title:"顶级家族 — \"老钱密码\"",
+    desc:"洛克菲勒王朝信托、李嘉诚精准逃顶、华为去家族化",
+    tags:["案例","35分钟"],
+    file:"courses/04-顶级家族跨周期策略.md",
+    quiz:[
+      {
+        q:"洛克菲勒家族传承财富的核心工具是什么？",
+        opts:["股票投资","房地产","王朝信托(Dynasty Trust)","加密货币"],
+        answer:2,
+        explain:"洛克菲勒家族的核心策略是王朝信托：将资产注入信托，与个人风险隔离，可永续存在，不受遗产税限制。"
+      },
+      {
+        q:"李嘉诚2012年的分家方案采用了什么模式？",
+        opts:["均分给两个儿子","全部捐给慈善","双轨分家(传统+新兴)","由职业经理人管理"],
+        answer:2,
+        explain:"李嘉诚双轨分家：李泽钜获得传统业务(地产、基建)，李泽楷获得现金+新兴业务(科技、金融)。"
+      },
+      {
+        q:"任正非在华为的持股比例是多少？",
+        opts:["51%以上","20-30%","5-10%","不到1%"],
+        answer:3,
+        explain:"华为99%的股份由员工持有，任正非个人持股不到1%。这是\"去家族化\"的典型模式。"
+      },
+      {
+        q:"\"老钱密码\"的共性规律中，以下哪项不是核心要素？",
+        opts:["风险隔离","长期视角","短期投机","制度化管理"],
+        answer:2,
+        explain:"五大共性：风险隔离、长期视角、逆周期操作、制度化管理、持续学习。短期投机恰恰是老钱家族避免的。"
+      },
+      {
+        q:"李嘉诚在哪一年大量抛售中国地产转投欧洲？",
+        opts:["2008年","2010年","2013-2015年","2019年"],
+        answer:2,
+        explain:"2013-2015年，李嘉诚大量抛售中国地产资产，转投欧洲基建、电信等。这被视为精准判断中国地产周期见顶。"
+      }
+    ]
+  },
+  {
+    id:5,
+    title:"货币战争与全球博弈",
+    desc:"宋鸿兵核心框架、美元霸权周期、时寒冰七大预测验证",
+    tags:["进阶","40分钟"],
+    file:"courses/05-货币战争与全球博弈.md",
+    quiz:[
+      {
+        q:"布雷顿森林体系在哪一年建立？",
+        opts:["1918年","1944年","1971年","2008年"],
+        answer:1,
+        explain:"1944年布雷顿森林体系建立，美元与黄金挂钩(35美元/盎司)。1971年尼克松关闭黄金窗口，美元与黄金脱钩。"
+      },
+      {
+        q:"时寒冰2014年七大预测的准确率是多少？",
+        opts:["50%","71%","85%","100%"],
+        answer:3,
+        explain:"时寒冰七大预测全部验证：黄金、白银、核电、美股、美债、中药材、小金属。方向完全正确，准确率100%。"
+      },
+      {
+        q:"中国人口在哪一年首次出现负增长？",
+        opts:["2018年","2020年","2022年","2025年"],
+        answer:2,
+        explain:"2022年中国人口首次负增长，出生约956万，死亡约1041万。这是一个历史性拐点。"
+      },
+      {
+        q:"根据人口周期，以下哪个行业最被看好？",
+        opts:["K12教育","母婴产品","医疗健康","传统房地产"],
+        answer:2,
+        explain:"老龄化加速→医疗健康、养老服务需求大增。人口减少→房地产、K12教育、母婴需求萎缩。"
+      },
+      {
+        q:"宋鸿兵《货币战争》的核心观点是什么？",
+        opts:["股市是经济的晴雨表","货币是权力的武器","技术决定一切","人口决定经济"],
+        answer:1,
+        explain:"宋鸿兵核心观点：\"货币是权力的武器。控制了货币发行权，就控制了整个国家的经济命脉。\""
+      }
+    ]
+  },
+  {
+    id:6,
+    title:"投资操作手册 2026-2040",
+    desc:"当前周期精确定位、按年龄层资产配置、六大可操作策略",
+    tags:["实战","50分钟"],
+    file:"courses/06-投资操作手册.md",
+    quiz:[
+      {
+        q:"2026年处于康波的哪个阶段？",
+        opts:["春初(回升初期)","夏中(繁荣中期)","秋初(衰退初期)","冬末(萧条末期)"],
+        answer:0,
+        explain:"2026年处于第五轮冬末(95%)+第六轮春初(5%)的交替窗口。综合判断为\"冬末春初\"，是播种的最佳季节。"
+      },
+      {
+        q:"30岁的人在2026年建议配置多少比例的风险资产(如股票)？",
+        opts:["30%","50%","70%","90%"],
+        answer:2,
+        explain:"公式：风险资产比例=(100-年龄)×周期系数。2026年周期系数约1.0，所以(100-30)×1.0=70%。"
+      },
+      {
+        q:"以下哪种不是本课介绍的六大策略之一？",
+        opts:["康波定投法","逆周期建仓法","高频交易法","核心-卫星配置法"],
+        answer:2,
+        explain:"六大策略：康波定投、逆周期建仓、核心-卫星配置、行业轮动、对冲保值、现金为王等待。高频交易不在其中。"
+      },
+      {
+        q:"根据康波周期日历，2031-2033年应该采取什么操作？",
+        opts:["开始建仓","继续加仓","逐步减持锁定利润","大量买入"],
+        answer:2,
+        explain:"2031-2033年预计处于夏初(泡沫形成期)，应逐步减持、锁定利润，而不是追涨。"
+      },
+      {
+        q:"黄金在资产配置中的建议比例是多少？",
+        opts:["1-3%","5-8%","10-15%","20-30%"],
+        answer:2,
+        explain:"黄金是对冲货币贬值和地缘风险的核心工具，建议配置总资产的10-15%。"
+      }
+    ]
+  }
+];
+
+// ============================================================
+// STATE
+const KEY='kondratiev_learn_v1';
+let state=loadState();
+
+function loadState(){
+  try{
+    const s=localStorage.getItem(KEY);
+    if(s) return JSON.parse(s);
+  }catch(e){}
+  return {completed:[],scores:{},current:1,totalCorrect:0,streak:0};
+}
+function saveState(){localStorage.setItem(KEY,JSON.stringify(state));}
+
+// ============================================================
+// RENDER
+function render(){
+  const map=document.getElementById('courseMap');
+  map.innerHTML='';
+  let totalQ=0,totalA=0;
+
+  COURSES.forEach((c,i)=>{
+    const isCompleted=state.completed.includes(c.id);
+    const isCurrent=c.id===state.current;
+    const isLocked=!isCompleted && !isCurrent;
+    const score=state.scores[c.id];
+    const hasScore=score!==undefined;
+
+    totalQ+=c.quiz.length;
+    if(hasScore) totalA+=score;
+
+    const node=document.createElement('div');
+    node.className='c-node'+(isCompleted?' completed':'')+(isCurrent?' current':'')+(isLocked?' locked':'')+(isCurrent&&node.classList.contains('open')?' open':'');
+    node.id='course-'+c.id;
+
+    // Header
+    const statusText=isCompleted?'✓ 已通过':isLocked?'🔒 未解锁':'▶ 学习中';
+    node.innerHTML=`
+      <div class="c-node-header" onclick="toggleCourse(${c.id})">
+        <div class="c-num">${isCompleted?'✓':c.id}</div>
+        <div class="c-info">
+          <h3>${c.title}</h3>
+          <p>${c.desc}</p>
+          <div class="c-tags">${c.tags.map(t=>`<span class="c-tag">${t}</span>`).join('')}${hasScore?`<span class="c-tag" style="color:var(--green)">得分 ${score}/${c.quiz.length}</span>`:''}</div>
+        </div>
+        <div class="c-status">${statusText}</div>
+      </div>
+      <div class="c-body">
+        <div class="c-content">
+          <div class="md" id="md-${c.id}"><p style="color:var(--text3)">加载课程内容中...</p></div>
+          ${renderQuiz(c,isCompleted,hasScore)}
+        </div>
+      </div>
+    `;
+    map.appendChild(node);
+
+    // Load markdown
+    if(!isLocked) loadMd(c);
+  });
+
+  // Update stats
+  document.getElementById('statCompleted').textContent=state.completed.length;
+  document.getElementById('statScore').textContent=state.totalCorrect;
+  document.getElementById('statStreak').textContent=state.streak;
+
+  // Progress bar
+  const pct=(state.completed.length/COURSES.length)*100;
+  document.getElementById('progressFill').style.width=pct+'%';
+}
+
+function renderQuiz(c,isCompleted,hasScore){
+  if(isCompleted && hasScore){
+    return `
+      <div class="quiz-section">
+        <div class="quiz-title"><h3>随堂测验</h3><span class="badge">得分 ${state.scores[c.id]}/${c.quiz.length}</span></div>
+        <p style="color:var(--green);text-align:center;padding:20px">✓ 本课测验已通过</p>
+        <div class="quiz-actions" style="justify-content:center;margin-top:12px">
+          <button class="btn btn-secondary" onclick="retakeQuiz(${c.id})">重新测验</button>
+        </div>
+      </div>
+    `;
+  }
+
+  const letters=['A','B','C','D'];
+  let html=`<div class="quiz-section" id="quiz-${c.id}">
+    <div class="quiz-title"><h3>随堂测验</h3><span class="badge">答对${Math.ceil(c.quiz.length*0.6)}/${c.quiz.length}通过</span></div>`;
+
+  c.quiz.forEach((q,qi)=>{
+    html+=`<div class="quiz-q" id="q-${c.id}-${qi}">
+      <div class="quiz-q-num">第${qi+1}题 / 共${c.quiz.length}题</div>
+      <div class="quiz-q-text">${q.q}</div>
+      <div class="quiz-opts">
+        ${q.opts.map((o,oi)=>`
+          <div class="quiz-opt" id="opt-${c.id}-${qi}-${oi}" onclick="selectOpt(${c.id},${qi},${oi})">
+            <div class="quiz-opt-letter">${letters[oi]}</div>
+            <div>${o}</div>
+          </div>
+        `).join('')}
+      </div>
+      <div class="quiz-explain" id="exp-${c.id}-${qi}"></div>
+    </div>`;
+  });
+
+  html+=`<div class="quiz-footer">
+      <div class="quiz-score">已答：<span class="num" id="answered-${c.id}">0</span>/${c.quiz.length}</div>
+      <div class="quiz-actions">
+        <button class="btn btn-primary" id="submitBtn-${c.id}" onclick="submitQuiz(${c.id})" disabled>提交答卷</button>
+      </div>
+    </div></div>`;
+  return html;
+}
+
+// ============================================================
+// INTERACTIONS
+let quizAnswers={}; // {courseId: {qIndex: optIndex}}
+
+function selectOpt(ci,qi,oi){
+  const qEl=document.getElementById(`q-${ci}-${qi}`);
+  if(qEl.classList.contains('answered-correct')||qEl.classList.contains('answered-wrong')) return;
+
+  if(!quizAnswers[ci]) quizAnswers[ci]={};
+  quizAnswers[ci][qi]=oi;
+
+  // Visual selection
+  const opts=qEl.querySelectorAll('.quiz-opt');
+  opts.forEach((o,i)=>{
+    o.classList.toggle('selected',i===oi);
+  });
+
+  // Update answered count
+  const answered=Object.keys(quizAnswers[ci]).length;
+  const answeredEl=document.getElementById('answered-'+ci);
+  if(answeredEl) answeredEl.textContent=answered;
+
+  // Enable submit
+  const total=COURSES.find(c=>c.id===ci).quiz.length;
+  const btn=document.getElementById('submitBtn-'+ci);
+  if(btn) btn.disabled=answered<total;
+}
+
+function submitQuiz(ci){
+  const c=COURSES.find(x=>x.id===ci);
+  const answers=quizAnswers[ci]||{};
+  let correct=0;
+
+  c.quiz.forEach((q,qi)=>{
+    const userAns=answers[qi];
+    const qEl=document.getElementById(`q-${ci}-${qi}`);
+    const expEl=document.getElementById(`exp-${ci}-${qi}`);
+    const opts=qEl.querySelectorAll('.quiz-opt');
+
+    // Disable all options
+    opts.forEach(o=>o.classList.add('disabled'));
+
+    if(userAns===q.answer){
+      correct++;
+      qEl.classList.add('answered-correct');
+      opts[userAns].classList.add('correct');
+      expEl.className='quiz-explain show correct-explain';
+      expEl.innerHTML='✓ 正确 — '+q.explain;
+    } else {
+      qEl.classList.add('answered-wrong');
+      if(userAns!==undefined) opts[userAns].classList.add('wrong');
+      opts[q.answer].classList.add('correct');
+      expEl.className='quiz-explain show wrong-explain';
+      expEl.innerHTML='✗ 正确答案是 '+['A','B','C','D'][q.answer]+' — '+q.explain;
+    }
+  });
+
+  // Save score
+  state.scores[ci]=correct;
+  state.totalCorrect=Object.values(state.scores).reduce((a,b)=>a+b,0);
+
+  const passed=correct>=Math.ceil(c.quiz.length*0.6);
+
+  if(passed){
+    if(!state.completed.includes(ci)){
+      state.completed.push(ci);
+      state.streak++;
+      // Unlock next
+      if(ci<COURSES.length) state.current=ci+1;
+    }
+    showConfetti();
+
+    // Show next course banner
+    const nextC=COURSES.find(x=>x.id===ci+1);
+    const banner=document.createElement('div');
+    banner.className='next-banner show';
+    banner.innerHTML=nextC?
+      `<h4>🎉 恭喜通过！</h4>
+       <p>你答对了 <strong>${correct}/${c.quiz.length}</strong> 题，下一课已解锁：</p>
+       <p class="next-title">第${nextC.id}课：${nextC.title}</p>
+       <button class="btn btn-green" onclick="toggleCourse(${nextC.id});window.scrollTo({top:document.getElementById('course-${nextC.id}').offsetTop-80,behavior:'smooth'})">进入下一课 →</button>`
+      :
+      `<h4>🏆 全部完成！</h4>
+       <p>你答对了 <strong>${correct}/${c.quiz.length}</strong> 题，已完成全部6课！</p>
+       <p style="color:var(--gold);font-weight:700;font-size:1.1rem;margin-top:8px">恭喜获得「康波分析师」认证</p>`;
+    document.getElementById('quiz-'+ci).after(banner);
+  }
+
+  // Update submit button
+  const btn=document.getElementById('submitBtn-'+ci);
+  if(btn){
+    btn.outerHTML=passed?
+      `<span style="color:var(--green);font-weight:700">✓ 通过 (${correct}/${c.quiz.length})</span>`
+      :
+      `<button class="btn btn-secondary" onclick="retakeQuiz(${ci})">未通过 (${correct}/${c.quiz.length})，重试</button>`;
+  }
+
+  saveState();
+  updateStats();
+}
+
+function retakeQuiz(ci){
+  delete quizAnswers[ci];
+  delete state.scores[ci];
+  state.completed=state.completed.filter(x=>x!==ci);
+  if(state.current>ci) state.current=ci;
+  saveState();
+  render();
+  setTimeout(()=>toggleCourse(ci),100);
+}
+
+function toggleCourse(id){
+  const node=document.getElementById('course-'+id);
+  if(!node||node.classList.contains('locked')) return;
+  const wasOpen=node.classList.contains('open');
+  document.querySelectorAll('.c-node').forEach(n=>n.classList.remove('open'));
+  if(!wasOpen){
+    node.classList.add('open');
+    setTimeout(()=>node.scrollIntoView({behavior:'smooth',block:'start'}),50);
+  }
+}
+
+function updateStats(){
+  document.getElementById('statCompleted').textContent=state.completed.length;
+  document.getElementById('statScore').textContent=state.totalCorrect;
+  document.getElementById('statStreak').textContent=state.streak;
+  document.getElementById('progressFill').style.width=(state.completed.length/COURSES.length*100)+'%';
+}
+
+// ============================================================
+// MARKDOWN LOADER
+function parseMd(md){
+  return md
+    .replace(/^# .+\n/,'')
+    .replace(/^### (.+)$/gm,'<h3>$1</h3>')
+    .replace(/^## (.+)$/gm,'<h2>$1</h2>')
+    .replace(/^#### (.+)$/gm,'<h4>$1</h4>')
+    .replace(/^> (.+)$/gm,'<blockquote>$1</blockquote>')
+    .replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')
+    .replace(/\*(.+?)\*/g,'<em>$1</em>')
+    .replace(/`([^`]+)`/g,'<code>$1</code>')
+    .replace(/^---$/gm,'<hr>')
+    .replace(/^- (.+)$/gm,'<li>$1</li>')
+    .replace(/^\d+\. (.+)$/gm,'<li>$1</li>')
+    .replace(/```[\s\S]*?```/g,m=>'<pre><code>'+m.replace(/```\w*\n?/,'').replace(/```$/,'').trim()+'</code></pre>')
+    .replace(/\n\n/g,'</p><p>')
+    .replace(/<p><\/p>/g,'')
+    .replace(/<p>(<h[234]>)/g,'$1').replace(/(<\/h[234]>)<\/p>/g,'$1')
+    .replace(/<p>(<blockquote>)/g,'$1').replace(/(<\/blockquote>)<\/p>/g,'$1')
+    .replace(/<p>(<pre>)/g,'$1').replace(/(<\/pre>)<\/p>/g,'$1')
+    .replace(/<p>(<hr>)<\/p>/g,'$1')
+    .replace(/<p><li>/g,'<ul><li>').replace(/<\/li><\/p>/g,'</li></ul>')
+    .replace(/<\/ul><ul>/g,'');
+}
+
+function loadMd(c){
+  fetch(c.file)
+    .then(r=>r.text())
+    .then(md=>{
+      const el=document.getElementById('md-'+c.id);
+      if(el) el.innerHTML=parseMd(md);
+    })
+    .catch(()=>{
+      const el=document.getElementById('md-'+c.id);
+      if(el) el.innerHTML='<p style="color:var(--text3)">课程内容加载失败，请刷新重试。</p>';
+    });
+}
+
+// ============================================================
+// CONFETTI
+function showConfetti(){
+  const box=document.getElementById('confettiBox');
+  const colors=['#e2b64f','#22c55e','#3b82f6','#a78bfa','#f59e0b','#ef4444'];
+  for(let i=0;i<60;i++){
+    const el=document.createElement('div');
+    el.className='confetti';
+    el.style.left=Math.random()*100+'%';
+    el.style.background=colors[Math.floor(Math.random()*colors.length)];
+    el.style.animationDelay=Math.random()*2+'s';
+    el.style.animationDuration=(2+Math.random()*2)+'s';
+    box.appendChild(el);
+  }
+  setTimeout(()=>box.innerHTML='',4000);
+}
+
+// ============================================================
+// INIT
+render();
+
+// Auto-open current course
+if(state.current<=COURSES.length){
+  setTimeout(()=>{
+    const node=document.getElementById('course-'+state.current);
+    if(node){
+      node.classList.add('open');
+    }
+  },300);
+}
+</script>
+</body>
+</html>
