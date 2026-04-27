@@ -1,21 +1,21 @@
 // 康波周期投资预测平台 - 核心逻辑
 // === DATA ===
 const scores={
-  '黄金':{z:5,s:5,t:5,msg:'三重共振最高确定性。康波萧条期最佳资产+去美元化趋势+货币重置核心锚。黄金是唯一三个维度都满分的标的。'},
-  '白银':{z:4,s:5,t:4,msg:'新能源工业属性加持（光伏银浆+电动车），金银比修复空间大。回升期弹性可能超过黄金。'},
-  'AI算力':{z:5,s:5,t:3,msg:'第六轮康波核心基建，类似第五轮的"买芯片"。算力是AI的电力，确定性极高。货币环境中性。'},
-  '核电':{z:4,s:5,t:3,msg:'AI用电量暴增+碳中和双驱动，核电回归确定性高。小模块化反应堆是新方向。'},
-  '小金属':{z:4,s:5,t:5,msg:'镓锗锑稀土是AI+新能源的"维生素"，供给高度集中且刚性。三重共振仅次于黄金。'},
-  '美股':{z:4,s:4,t:2,msg:'AI革命主战场，全球资本持续流入。但美元信用衰减+估值泡沫风险构成长期压力。'},
-  '美债':{z:3,s:3,t:2,msg:'利率下行周期有短期机会。但美元长期信用风险+债务不可持续=长期看空。'},
-  '中药材':{z:3,s:4,t:3,msg:'老龄化+中国特色消费+稀缺性。长期确定但短期波动较大。'},
-  '加密货币':{z:3,s:3,t:4,msg:'去中心化货币实验，是货币战争理论的"技术路径"受益者。高风险高回报。'},
-  '房地产':{z:2,s:2,t:2,msg:'康波下行+调整期+泡沫风险。仅一线城市核心地段可配置。整体不推荐。'},
-  'A股':{z:3,s:3,t:3,msg:'国产替代+AI概念有机会，但整体估值承压。结构性机会大于整体机会。'},
-  '大宗商品':{z:4,s:4,t:4,msg:'资源超级牛市逻辑成立，时寒冰+宋鸿兵双确认。需区分品种：能源>工业品。'},
-  '现金':{z:2,s:2,t:3,msg:'萧条末期持有过多现金将错失底部机会。保持15-20%流动性即可。'},
-  '人民币资产':{z:3,s:3,t:3,msg:'人民币国际化趋势确定，但短期受经济调整压制。中长期看好。'},
-  '东南亚市场':{z:4,s:4,t:3,msg:'产业转移+人口红利+去中国化受益者。类似2000年的中国。'}
+  '黄金':{z:5,s:5,t:5,b:5,msg:'四维满分共振！康波萧条期最佳资产+去美元化趋势+货币重置核心锚+法币贬值终极对冲。黄金是唯一四个维度都满分的标的——它不是投资品，它是货币本身。'},
+  '白银':{z:4,s:5,t:4,b:4,msg:'新能源工业属性加持，金银比修复空间大。大贬值背景下，白银是"穷人的黄金"，弹性甚至更大。'},
+  'AI算力':{z:5,s:5,t:3,b:2,msg:'第六轮康波核心基建，算力是AI的电力。但算力是法币计价的服务，在大贬值维度评分偏低——需要持续投入法币购买。'},
+  '核电':{z:4,s:5,t:3,b:2,msg:'AI用电量暴增+碳中和双驱动。核电是实体基建，有一定硬资产属性，但主要受电力政策驱动。'},
+  '小金属':{z:4,s:5,t:5,b:4,msg:'镓锗锑稀土是AI+新能源的"维生素"，供给高度集中。实物小金属在大贬值背景下具备硬资产属性。四维共振仅次于黄金。'},
+  '美股':{z:4,s:4,t:2,b:1,msg:'AI革命主战场，但法币计价的金融资产在大贬值维度只评1分——看似上涨，实际购买力在下降。'},
+  '美债':{z:3,s:3,t:2,b:1,msg:'利率下行周期有短期机会。但美元长期信用风险+债务不可持续，大贬值维度只评1分——法币债务的终极受害者。'},
+  '中药材':{z:3,s:4,t:3,b:3,msg:'老龄化+中国特色消费+稀缺性。中药材具有实物属性，大贬值背景下有一定保值功能。'},
+  '加密货币':{z:3,s:3,t:4,b:3,msg:'去中心化货币实验，是货币重置的技术路径之一。但波动性太大，大贬值维度给3分——方向对，确定性不足。'},
+  '房地产':{z:2,s:2,t:2,b:3,msg:'康波下行+调整期+泡沫风险。但房产是实物资产，大贬值背景下有一定保值功能——核心地段>非核心。'},
+  'A股':{z:3,s:3,t:3,b:2,msg:'国产替代+AI概念有机会，但法币计价的金融资产在大贬值中承压。结构性机会大于整体。'},
+  '大宗商品':{z:4,s:4,t:4,b:5,msg:'资源超级牛市逻辑成立。在大贬值维度满分——实物商品是法币贬值的直接对冲工具。四维共振仅次于黄金。'},
+  '现金':{z:2,s:2,t:3,b:1,msg:'萧条末期持有过多现金将错失底部机会。大贬值维度只评1分——现金是大贬值的最大输家。'},
+  '人民币资产':{z:3,s:3,t:3,b:3,msg:'人民币国际化趋势确定，大贬值背景下人民币相对美元可能反而走强——全球货币重置的受益者。'},
+  '东南亚市场':{z:4,s:4,t:3,b:3,msg:'产业转移+人口红利+去中国化受益者。东南亚国家持有大量美元外储，大贬值中面临挑战但也蕴含机会。'}
 };
 const assets={
   depression_late:{best:['核心资产（底部买入）','黄金','白银'],good:['股票（逢低布局）','大宗商品','AI算力'],avoid:['过度持有现金','高杠杆资产','长期债券']},
@@ -86,15 +86,15 @@ function updateAssets(){
       <div class="asset-grid">${d[k].map(a=>`<div class="asset-item asset-${k==='best'?'best':k==='good'?'good':'avoid'}">${a}</div>`).join('')}</div></div>`;
   }).join('');
 }
-// === RADAR ===
-function drawRadar(z,s,t){
+// === RADAR (4D) ===
+function drawRadar(z,s,t,b){
   const c=document.getElementById('radar');
   const ctx=c.getContext('2d');
-  const cx=150,cy=150,r=110;
-  ctx.clearRect(0,0,300,300);
-  const angles=[-Math.PI/2, Math.PI/6, 5*Math.PI/6];
-  const labels=['周金涛\n(周期定位)','时寒冰\n(趋势方向)','宋鸿兵\n(货币环境)'];
-  const vals=[z/5,s/5,t/5];
+  const cx=155,cy=155,r=110;
+  ctx.clearRect(0,0,310,310);
+  const angles=[-Math.PI/2, 0, Math.PI/2, Math.PI];
+  const labels=['周金涛\n(周期定位)','时寒冰\n(趋势方向)','巴拉塔\n(货币重置)','宋鸿兵\n(货币环境)'];
+  const vals=[z/5,s/5,b/5,t/5];
   // Grid
   for(let lv=1;lv<=5;lv++){
     ctx.beginPath();
@@ -128,15 +128,15 @@ function drawRadar(z,s,t){
   // Dots
   pts.forEach(p=>{ctx.beginPath();ctx.arc(p.x,p.y,5,0,Math.PI*2);ctx.fillStyle='#00d4aa';ctx.fill()});
   // Labels
-  const lOff=[{x:0,y:-20},{x:15,y:15},{x:-15,y:15}];
+  const lOff=[{x:0,y:-20},{x:18,y:5},{x:0,y:20},{x:-18,y:5}];
   angles.forEach((a,i)=>{
-    const lx=cx+(r+25)*Math.cos(a)+lOff[i].x;
-    const ly=cy+(r+25)*Math.sin(a)+lOff[i].y;
+    const lx=cx+(r+28)*Math.cos(a)+lOff[i].x;
+    const ly=cy+(r+28)*Math.sin(a)+lOff[i].y;
     ctx.fillStyle='#94a3b8';
-    ctx.font='12px sans-serif';
+    ctx.font='11px sans-serif';
     ctx.textAlign='center';
     labels[i].split('\n').forEach((line,li)=>{
-      ctx.fillText(line,lx,ly+li*14);
+      ctx.fillText(line,lx,ly+li*13);
     });
   });
   // Value labels
@@ -146,37 +146,42 @@ function drawRadar(z,s,t){
     ctx.font='bold 13px sans-serif';
     ctx.textAlign='center';
     const off=vals[i]>0.6?-12:12;
-    ctx.fillText([z,s,t][i]+'/5',px,py+off);
+    ctx.fillText([z,s,b,t][i]+'/5',px,py+off);
   });
 }
 function updateScore(){
   const name=document.getElementById('investSelect').value;
   const d=scores[name];
-  const avg=((d.z+d.s+d.t)/3).toFixed(1);
-  drawRadar(d.z,d.s,d.t);
+  const avg=((d.z+d.s+d.t+d.b)/4).toFixed(1);
+  drawRadar(d.z,d.s,d.t,d.b);
   const color=avg>=4.5?'var(--green)':avg>=3.5?'var(--gold)':avg>=2.5?'var(--orange)':'var(--red)';
   document.getElementById('scoreDisplay').innerHTML=`
     <div class="score-big" style="color:${color}">${avg}<span style="font-size:0.4em;color:var(--text2)">/5.0</span></div>
-    <div class="score-text">综合确定性评分</div>
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;text-align:center;margin-bottom:16px">
-      <div style="background:var(--card2);padding:10px;border-radius:8px">
-        <div style="font-size:0.7em;color:var(--text2)">周金涛</div>
-        <div style="font-size:1.4em;font-weight:700;color:var(--green)">${d.z}⭐</div>
-        <div style="font-size:0.65em;color:var(--text2)">周期定位</div>
+    <div class="score-text">四维共振综合确定性评分</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:6px;text-align:center;margin-bottom:16px">
+      <div style="background:var(--card2);padding:8px;border-radius:8px">
+        <div style="font-size:0.65em;color:var(--text2)">周金涛</div>
+        <div style="font-size:1.2em;font-weight:700;color:var(--green)">${d.z}⭐</div>
+        <div style="font-size:0.6em;color:var(--text2)">周期定位</div>
       </div>
-      <div style="background:var(--card2);padding:10px;border-radius:8px">
-        <div style="font-size:0.7em;color:var(--text2)">时寒冰</div>
-        <div style="font-size:1.4em;font-weight:700;color:var(--orange)">${d.s}⭐</div>
-        <div style="font-size:0.65em;color:var(--text2)">趋势方向</div>
+      <div style="background:var(--card2);padding:8px;border-radius:8px">
+        <div style="font-size:0.65em;color:var(--text2)">时寒冰</div>
+        <div style="font-size:1.2em;font-weight:700;color:var(--orange)">${d.s}⭐</div>
+        <div style="font-size:0.6em;color:var(--text2)">趋势方向</div>
       </div>
-      <div style="background:var(--card2);padding:10px;border-radius:8px">
-        <div style="font-size:0.7em;color:var(--text2)">宋鸿兵</div>
-        <div style="font-size:1.4em;font-weight:700;color:var(--blue)">${d.t}⭐</div>
-        <div style="font-size:0.65em;color:var(--text2)">货币环境</div>
+      <div style="background:var(--card2);padding:8px;border-radius:8px">
+        <div style="font-size:0.65em;color:var(--text2)">宋鸿兵</div>
+        <div style="font-size:1.2em;font-weight:700;color:var(--blue)">${d.t}⭐</div>
+        <div style="font-size:0.6em;color:var(--text2)">货币环境</div>
+      </div>
+      <div style="background:var(--card2);padding:8px;border-radius:8px">
+        <div style="font-size:0.65em;color:var(--text2)">巴拉塔</div>
+        <div style="font-size:1.2em;font-weight:700;color:var(--purple)">${d.b}⭐</div>
+        <div style="font-size:0.6em;color:var(--text2)">货币重置</div>
       </div>
     </div>
     <div style="background:var(--card2);padding:14px;border-radius:8px;font-size:0.85em;color:var(--text2);line-height:1.6;border-left:3px solid ${color}">
-      <b style="color:var(--text)">📝 三维分析：</b>${d.msg}
+      <b style="color:var(--text)">📝 四维分析：</b>${d.msg}
     </div>`;
 }
 // === FAMILIES ===

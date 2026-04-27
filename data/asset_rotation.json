@@ -1,0 +1,185 @@
+{
+  "meta": {
+    "version": "2.0",
+    "last_updated": "2026-04-24",
+    "description": "康波周期各阶段资产轮动详细规律 — 三维共振框架"
+  },
+  "rotation_matrix": {
+    "recovery": {
+      "phase_name": "回升期",
+      "period_example": "2025-2038",
+      "economic_profile": {
+        "growth": "上升",
+        "inflation": "低位",
+        "interest_rate": "低位",
+        "tech_phase": "技术商业化初期"
+      },
+      "assets": {
+        "best": {
+          "label": "🟢 最佳资产",
+          "items": [
+            {"name": "股票（成长股）", "logic": "新技术驱动的高增长企业，估值扩张期", "allocation": "30-40%"},
+            {"name": "AI算力基建", "logic": "第六轮核心基建，类似第五轮买芯片/光纤", "allocation": "15-20%"},
+            {"name": "大宗商品", "logic": "基建投资拉动原材料需求", "allocation": "10-15%"}
+          ]
+        },
+        "good": {
+          "label": "🟡 可配置",
+          "items": [
+            {"name": "核心城市房产", "logic": "人口流入+经济复苏支撑", "allocation": "10-15%"},
+            {"name": "小金属/稀土", "logic": "AI+新能源关键材料，供给刚性", "allocation": "5-10%"},
+            {"name": "核电/新能源", "logic": "AI用电量暴增+碳中和双驱动", "allocation": "5-10%"}
+          ]
+        },
+        "avoid": {
+          "label": "🔴 应避免",
+          "items": [
+            {"name": "过度持有现金", "logic": "通胀逐步抬头，现金购买力被侵蚀"},
+            {"name": "长期债券", "logic": "利率上行周期，债券价格下跌"}
+          ]
+        }
+      }
+    },
+    "prosperity": {
+      "phase_name": "繁荣期",
+      "period_example": "2038-2055",
+      "economic_profile": {
+        "growth": "高位",
+        "inflation": "上升",
+        "interest_rate": "上升",
+        "tech_phase": "技术全面渗透"
+      },
+      "assets": {
+        "best": {
+          "label": "🟢 最佳资产",
+          "items": [
+            {"name": "房地产/实物资产", "logic": "通胀期实物资产保值增值", "allocation": "25-35%"},
+            {"name": "股票（消费/服务）", "logic": "经济全面繁荣，消费扩张", "allocation": "25-30%"}
+          ]
+        },
+        "good": {
+          "label": "🟡 可配置",
+          "items": [
+            {"name": "核心地段商铺/写字楼", "logic": "商业活动活跃，租金上涨"},
+            {"name": "大宗商品", "logic": "需求旺盛推高价格"}
+          ]
+        },
+        "avoid": {
+          "label": "🔴 应避免",
+          "items": [
+            {"name": "债券", "logic": "高利率环境下债券表现最差"},
+            {"name": "过多现金", "logic": "繁荣期现金的机会成本极高"}
+          ]
+        }
+      }
+    },
+    "recession": {
+      "phase_name": "衰退期",
+      "period_example": "2055-2065",
+      "economic_profile": {
+        "growth": "下降",
+        "inflation": "高位（滞胀）",
+        "interest_rate": "先升后降",
+        "tech_phase": "技术红利消退"
+      },
+      "assets": {
+        "best": {
+          "label": "🟢 最佳资产",
+          "items": [
+            {"name": "黄金", "logic": "滞胀期最佳避险资产，历史上涨幅可达10-20倍", "allocation": "20-30%"},
+            {"name": "大宗商品", "logic": "通胀支撑商品价格", "allocation": "15-20%"}
+          ]
+        },
+        "good": {
+          "label": "🟡 可配置",
+          "items": [
+            {"name": "现金/短债", "logic": "保持流动性，等待萧条抄底机会", "allocation": "20-25%"},
+            {"name": "防御型股票", "logic": "公用事业、必需消费品"}
+          ]
+        },
+        "avoid": {
+          "label": "🔴 应避免",
+          "items": [
+            {"name": "成长股", "logic": "估值泡沫破裂，高增长故事失效"},
+            {"name": "房地产", "logic": "利率高企+需求萎缩"}
+          ]
+        }
+      }
+    },
+    "depression_early": {
+      "phase_name": "萧条早期",
+      "period_example": "调整期前半段",
+      "economic_profile": {
+        "growth": "深度下行",
+        "inflation": "通缩",
+        "interest_rate": "极低",
+        "tech_phase": "旧产业淘汰，新技术孕育"
+      },
+      "assets": {
+        "best": {
+          "label": "🟢 最佳资产",
+          "items": [
+            {"name": "现金", "logic": "通缩环境下现金购买力上升", "allocation": "30-40%"},
+            {"name": "国债", "logic": "避险+利率下行推动价格上涨", "allocation": "20-30%"}
+          ]
+        },
+        "good": {
+          "label": "🟡 可配置",
+          "items": [
+            {"name": "黄金", "logic": "危机初期避险", "allocation": "10-15%"}
+          ]
+        },
+        "avoid": {
+          "label": "🔴 应避免",
+          "items": [
+            {"name": "股票", "logic": "市场恐慌性下跌"},
+            {"name": "房地产", "logic": "去杠杆导致资产价格暴跌"},
+            {"name": "大宗商品", "logic": "需求崩溃，商品价格暴跌"}
+          ]
+        }
+      }
+    },
+    "depression_late": {
+      "phase_name": "萧条晚期（当前）",
+      "period_example": "2024-2028",
+      "economic_profile": {
+        "growth": "触底",
+        "inflation": "低位/通缩尾声",
+        "interest_rate": "历史低位",
+        "tech_phase": "新技术开始商业化"
+      },
+      "assets": {
+        "best": {
+          "label": "🟢 最佳资产（底部建仓）",
+          "items": [
+            {"name": "核心资产底部买入", "logic": "资产价格处于历史低位，一生一次的建仓机会", "allocation": "30-40%"},
+            {"name": "黄金", "logic": "去美元化+央行增持+货币重置", "allocation": "15-20%"},
+            {"name": "白银", "logic": "金银比修复+新能源工业需求", "allocation": "5-10%"}
+          ]
+        },
+        "good": {
+          "label": "🟡 可配置",
+          "items": [
+            {"name": "股票（逢低布局）", "logic": "分批建仓，摊平成本", "allocation": "15-20%"},
+            {"name": "AI相关标的", "logic": "第六轮核心驱动力，提前布局", "allocation": "10-15%"}
+          ]
+        },
+        "avoid": {
+          "label": "🔴 应避免",
+          "items": [
+            {"name": "过度持有现金", "logic": "即将进入回升期，现金将快速贬值"},
+            {"name": "高杠杆资产", "logic": "余震风险仍在"},
+            {"name": "长期债券", "logic": "利率触底，未来只有上行空间"}
+          ]
+        }
+      }
+    }
+  },
+  "cross_cycle_rules": {
+    "golden_rule_1": "萧条晚期买入，繁荣期卖出 — 一生只需做对2-3次",
+    "golden_rule_2": "当所有人恐惧时贪婪，当所有人贪婪时恐惧",
+    "golden_rule_3": "永远不要all-in单一资产，分散是生存的前提",
+    "golden_rule_4": "短周期上行+康波上行=超级牛市；短周期下行+康波下行=超级危机",
+    "golden_rule_5": "黄金在康波衰退-萧条期表现最佳，股票在回升-繁荣期表现最佳"
+  }
+}
