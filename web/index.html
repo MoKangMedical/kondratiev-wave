@@ -3,30 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>康波周期投资预测平台 — 三维共振</title>
+<title>康波周期投资预测平台 — 四维共振 v3.0</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--bg:#0a0e17;--card:#141b2d;--card2:#1a2332;--green:#00d4aa;--orange:#ff6b35;--gold:#ffd700;--red:#ff4757;--blue:#3b82f6;--purple:#a855f7;--text:#e2e8f0;--text2:#94a3b8;--border:#1e293b}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
-.header{text-align:center;padding:30px 20px 10px;background:linear-gradient(135deg,#0a0e17,#1a1a2e)}
-.header h1{font-size:1.8em;background:linear-gradient(90deg,var(--green),var(--blue),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:2px}
-.header .subtitle{color:var(--text2);font-size:0.9em;margin-top:6px}
-.header .quote{color:var(--gold);font-size:0.85em;margin-top:12px;font-style:italic;opacity:0.9}
-.tabs{display:flex;justify-content:center;gap:4px;padding:16px 10px;flex-wrap:wrap}
-.tab{padding:8px 16px;border:1px solid var(--border);border-radius:20px;background:transparent;color:var(--text2);cursor:pointer;font-size:0.82em;transition:all .3s}
+:root{--bg:#0a0e17;--card:#141b2d;--card2:#1a2332;--green:#00d4aa;--orange:#ff6b35;--gold:#ffd700;--red:#ff4757;--blue:#3b82f6;--purple:#a855f7;--text:#e2e8f0;--text2:#94a3b8;--border:#1e293b;--cyan:#06b6d4}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+.header{text-align:center;padding:32px 20px 12px;background:linear-gradient(135deg,#0a0e17 0%,#1a1a2e 50%,#0a0e17 100%);position:relative;overflow:hidden}
+.header::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 50% 0%,rgba(0,212,170,0.08) 0%,transparent 70%);pointer-events:none}
+.header h1{font-size:1.9em;background:linear-gradient(90deg,var(--green),var(--cyan),var(--blue),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:2px;position:relative}
+.header .subtitle{color:var(--text2);font-size:0.92em;margin-top:6px;letter-spacing:1px}
+.header .quote{color:var(--gold);font-size:0.85em;margin-top:14px;font-style:italic;opacity:0.9}
+.version-badge{display:inline-block;background:linear-gradient(135deg,var(--green),var(--cyan));color:#000;font-size:0.65em;padding:2px 10px;border-radius:10px;font-weight:700;margin-left:8px;vertical-align:middle}
+.tabs{display:flex;justify-content:center;gap:5px;padding:14px 8px;flex-wrap:wrap;position:sticky;top:0;background:var(--bg);z-index:100;border-bottom:1px solid var(--border)}
+.tab{padding:7px 14px;border:1px solid var(--border);border-radius:20px;background:transparent;color:var(--text2);cursor:pointer;font-size:0.8em;transition:all .3s;white-space:nowrap}
 .tab.active{background:var(--green);color:#000;border-color:var(--green);font-weight:600}
 .tab:hover:not(.active){border-color:var(--green);color:var(--green)}
-.content{max-width:1000px;margin:0 auto;padding:0 16px 60px}
+.content{max-width:1040px;margin:0 auto;padding:0 16px 80px}
 .panel{display:none;animation:fadeIn .4s}
 .panel.active{display:block}
 @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-.card{background:var(--card);border-radius:12px;padding:20px;margin-bottom:16px;border:1px solid var(--border)}
-.card h3{color:var(--green);margin-bottom:12px;font-size:1.1em}
+.card{background:var(--card);border-radius:12px;padding:20px;margin-bottom:14px;border:1px solid var(--border);transition:border-color .3s}
+.card:hover{border-color:rgba(0,212,170,0.3)}
+.card h3{color:var(--green);margin-bottom:10px;font-size:1.1em}
 .card h4{color:var(--orange);margin:10px 0 6px;font-size:0.95em}
-.section-title{color:var(--text);font-size:1em;margin:16px 0 10px;display:flex;align-items:center;gap:8px}
+.section-title{color:var(--text);font-size:1em;margin:18px 0 10px;display:flex;align-items:center;gap:8px}
 .section-title span{font-size:1.2em}
 /* Timeline */
-.timeline{display:flex;border-radius:8px;overflow:hidden;height:60px;margin:16px 0;position:relative}
+.timeline{display:flex;border-radius:8px;overflow:hidden;height:56px;margin:14px 0;position:relative}
 .timeline .phase{display:flex;align-items:center;justify-content:center;font-size:0.7em;font-weight:600;flex-direction:column;text-align:center;transition:all .3s}
 .timeline .spring{background:#065f46;color:#6ee7b7}
 .timeline .summer{background:#92400e;color:#fbbf24}
@@ -34,18 +38,20 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .timeline .winter{background:#1e3a5f;color:#93c5fd}
 .timeline .current{box-shadow:inset 0 0 0 3px var(--gold);animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{box-shadow:inset 0 0 0 3px var(--gold)}50%{box-shadow:inset 0 0 0 3px transparent}}
-.wave-card{margin-bottom:20px}
+.wave-card{margin-bottom:14px}
 .wave-header{display:flex;justify-content:space-between;align-items:center;cursor:pointer}
 .wave-header h3{margin-bottom:0}
 .wave-badge{font-size:0.7em;padding:3px 10px;border-radius:12px;font-weight:600}
 .badge-winter{background:#1e3a5f;color:#93c5fd}
 .badge-spring{background:#065f46;color:#6ee7b7}
+.badge-active{background:#ffd70020;color:var(--gold);border:1px solid var(--gold)}
 .wave-body{max-height:0;overflow:hidden;transition:max-height .4s}
 .wave-body.open{max-height:600px}
 .wave-detail{padding-top:12px}
 /* Asset cards */
-.asset-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin-top:12px}
-.asset-item{padding:12px;border-radius:8px;border:1px solid var(--border)}
+.asset-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px;margin-top:10px}
+.asset-item{padding:12px;border-radius:8px;border:1px solid var(--border);font-size:0.88em;transition:transform .2s}
+.asset-item:hover{transform:translateY(-2px)}
 .asset-best{background:#065f4620;border-color:#065f46}
 .asset-good{background:#92400e20;border-color:#92400e}
 .asset-avoid{background:#991b1b20;border-color:#991b1b}
@@ -58,9 +64,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .radar-wrap canvas{max-width:100%}
 .score-big{text-align:center;font-size:2.5em;font-weight:800;margin:10px 0}
 .score-text{text-align:center;color:var(--text2);font-size:0.9em;margin-bottom:16px}
-select{background:var(--card2);color:var(--text);border:1px solid var(--border);padding:10px 14px;border-radius:8px;font-size:0.95em;width:100%;margin-bottom:12px;appearance:none}
+select{background:var(--card2);color:var(--text);border:1px solid var(--border);padding:10px 14px;border-radius:8px;font-size:0.95em;width:100%;margin-bottom:12px;appearance:none;cursor:pointer}
+select:focus{outline:none;border-color:var(--green)}
 /* Family cards */
-.family-card{background:var(--card);border:1px solid var(--border);border-radius:12px;margin-bottom:12px;overflow:hidden;cursor:pointer;transition:all .3s}
+.family-card{background:var(--card);border:1px solid var(--border);border-radius:12px;margin-bottom:10px;overflow:hidden;cursor:pointer;transition:all .3s}
 .family-card:hover{border-color:var(--green)}
 .family-head{padding:16px 20px;display:flex;justify-content:space-between;align-items:center}
 .family-head h3{font-size:1em;color:var(--green)}
@@ -75,30 +82,53 @@ select{background:var(--card2);color:var(--text);border:1px solid var(--border);
 .age-label{display:flex;justify-content:space-between;margin-bottom:6px;font-size:0.85em}
 .age-label .val{color:var(--green);font-weight:700;font-size:1.2em}
 input[type=range]{width:100%;accent-color:var(--green);height:6px}
-.timeline-vis{position:relative;height:40px;background:var(--card2);border-radius:8px;margin:16px 0;overflow:hidden}
+.timeline-vis{position:relative;height:40px;background:var(--card2);border-radius:8px;margin:14px 0;overflow:hidden}
 .timeline-vis .marker{position:absolute;top:0;height:100%;display:flex;align-items:center;justify-content:center;font-size:0.65em;font-weight:600;color:#fff}
 .timeline-vis .you{position:absolute;top:-2px;width:3px;height:calc(100% + 4px);background:var(--gold);z-index:2}
-.timeline-vis .you::after{content:"你";position:absolute;top:-16px;left:50%;transform:translateX(-50%);color:var(--gold);font-size:0.7em;font-weight:700}
-.opp-list{margin-top:16px}
+.opp-list{margin-top:14px}
 .opp-item{display:flex;align-items:flex-start;gap:10px;padding:10px;background:var(--card2);border-radius:8px;margin-bottom:8px}
 .opp-year{font-weight:700;color:var(--green);min-width:60px;font-size:0.9em}
 .opp-desc{font-size:0.85em;color:var(--text2)}
+/* Ranking table */
+.rank-table{width:100%;border-collapse:collapse;margin-top:12px}
+.rank-table th{text-align:left;padding:10px 8px;font-size:0.75em;color:var(--text2);border-bottom:1px solid var(--border);text-transform:uppercase;letter-spacing:0.5px}
+.rank-table td{padding:10px 8px;font-size:0.85em;border-bottom:1px solid rgba(255,255,255,0.04)}
+.rank-table tr:hover td{background:rgba(0,212,170,0.03)}
+.rank-num{font-weight:700;color:var(--green);font-size:1.1em}
+.rank-bar{height:6px;border-radius:3px;background:var(--border);position:relative;overflow:hidden;margin-top:4px}
+.rank-bar-fill{height:100%;border-radius:3px;transition:width .6s ease}
+/* Devaluation section */
+.deval-stat{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin:14px 0}
+.deval-stat-item{background:var(--card2);padding:14px;border-radius:10px;text-align:center;border:1px solid var(--border)}
+.deval-stat-item .num{font-size:1.6em;font-weight:800;color:var(--red);margin:4px 0}
+.deval-stat-item .lbl{font-size:0.7em;color:var(--text2)}
+/* Footer */
 .footer{text-align:center;padding:30px;color:var(--text2);font-size:0.75em;border-top:1px solid var(--border)}
-@media(max-width:600px){.header h1{font-size:1.3em}.tabs{gap:3px}.tab{padding:6px 10px;font-size:0.75em}.asset-grid{grid-template-columns:1fr}}
+.footer a{color:var(--green);text-decoration:none}
+/* Responsive */
+@media(max-width:600px){
+  .header h1{font-size:1.3em}
+  .tabs{gap:3px;padding:10px 6px}
+  .tab{padding:5px 9px;font-size:0.72em}
+  .asset-grid{grid-template-columns:1fr 1fr}
+  .deval-stat{grid-template-columns:1fr 1fr}
+  .score-big{font-size:2em}
+}
 </style>
 </head>
 <body>
 <div class="header">
-  <h1>📊 康波周期投资预测平台</h1>
+  <h1>📊 康波周期投资预测平台<span class="version-badge">v3.0</span></h1>
   <div class="subtitle">四维共振框架 · 周金涛 × 时寒冰 × 宋鸿兵 × 巴拉塔</div>
   <div class="quote">"人生就是一场康波" — 周金涛</div>
 </div>
 <div class="tabs">
   <button class="tab active" onclick="showTab(0)">🔮 周期定位</button>
   <button class="tab" onclick="showTab(1)">💹 资产轮动</button>
-  <button class="tab" onclick="showTab(2)">🎯 三维评分</button>
-  <button class="tab" onclick="showTab(3)">🏛️ 家族策略</button>
-  <button class="tab" onclick="showTab(4)">👤 个人时间表</button>
+  <button class="tab" onclick="showTab(2)">🎯 四维评分</button>
+  <button class="tab" onclick="showTab(3)">📉 大贬值专题</button>
+  <button class="tab" onclick="showTab(4)">🏛️ 家族策略</button>
+  <button class="tab" onclick="showTab(5)">👤 个人时间表</button>
 </div>
 <div class="content">
   <!-- Panel 0: 周期定位 -->
@@ -117,7 +147,7 @@ input[type=range]{width:100%;accent-color:var(--green);height:6px}
       </div>
       <p style="font-size:0.82em;color:var(--text2);margin-top:10px">⚡ 标志性信号：AI大模型突破 | 全球利率见顶 | 大宗商品调整 | 中国地产去杠杆基本完成</p>
     </div>
-    <div class="card">
+    <div class="card" style="border-color:var(--green)">
       <h3>第六轮康波 · AI+生物科技+新能源（2025-2070）</h3>
       <p style="color:var(--text2);font-size:0.85em;margin:8px 0">当前阶段：<span style="color:var(--green);font-weight:700">🌱 回升初期</span>（进度 5%）</p>
       <div class="timeline">
@@ -147,9 +177,9 @@ input[type=range]{width:100%;accent-color:var(--green);height:6px}
       <div id="assetResult"></div>
     </div>
   </div>
-  <!-- Panel 2: 三维评分 -->
+  <!-- Panel 2: 四维评分 -->
   <div class="panel" id="p2">
-    <div class="section-title"><span>🎯</span>三维共振投资评分</div>
+    <div class="section-title"><span>🎯</span>四维共振投资评分</div>
     <div class="card">
       <select id="investSelect" onchange="updateScore()">
         <option value="黄金">🥇 黄金</option><option value="白银">🥈 白银</option>
@@ -161,12 +191,46 @@ input[type=range]{width:100%;accent-color:var(--green);height:6px}
         <option value="现金">💵 现金</option><option value="人民币资产">💴 人民币资产</option>
         <option value="东南亚市场">🌏 东南亚市场</option>
       </select>
-      <div class="radar-wrap"><canvas id="radar" width="310" height="310"></canvas></div>
+      <div class="radar-wrap"><canvas id="radar" width="320" height="320"></canvas></div>
       <div id="scoreDisplay"></div>
     </div>
+    <div class="section-title"><span>🏆</span>全部资产四维排名</div>
+    <div class="card" id="rankBoard"></div>
   </div>
-  <!-- Panel 3: 家族策略 -->
+  <!-- Panel 3: 大贬值专题 -->
   <div class="panel" id="p3">
+    <div class="section-title"><span>📉</span>大贬值理论 — 巴拉塔核心框架</div>
+    <div class="deval-stat">
+      <div class="deval-stat-item"><div class="lbl">美国国债规模</div><div class="num">$36T+</div><div class="lbl">2026年</div></div>
+      <div class="deval-stat-item"><div class="lbl">全球债务/GDP</div><div class="num">350%+</div><div class="lbl">不可持续</div></div>
+      <div class="deval-stat-item"><div class="lbl">美联储资产负债表</div><div class="num">$8.9T</div><div class="lbl">2008年来扩张10倍</div></div>
+      <div class="deval-stat-item"><div class="lbl">美元购买力损失</div><div class="num">96%</div><div class="lbl">1913年以来</div></div>
+    </div>
+    <div class="card">
+      <h3>支柱一：货币超发不可逆</h3>
+      <p style="font-size:0.85em;color:var(--text2);line-height:1.7">自1913年美联储成立以来，尤其1971年金本位脱钩后，全球债务加速膨胀。每一次危机都需要更多货币来解决——2008年QE1，2020年无限QE，形成正反馈死亡螺旋。央行在正常时期使用的"疯狂"政策（零利率、QE），在危机中成为唯一选择。</p>
+    </div>
+    <div class="card">
+      <h3>支柱二：价格信号全面失真</h3>
+      <p style="font-size:0.85em;color:var(--text2);line-height:1.7">过去十年央行行为彻底摧毁了自由市场定价机制：债券价格不再反映信用风险，股票估值完全依赖央行流动性，高收益债利差失真。金融体系中几乎没有准确信号了——它已经坏了。</p>
+    </div>
+    <div class="card">
+      <h3>支柱三：全球货币重置不可避免</h3>
+      <p style="font-size:0.85em;color:var(--text2);line-height:1.7">历史规律：1933年罗斯福没收黄金→1944年布雷顿森林→1971年黄金窗口关闭。每一次债务/货币比超过临界点，体系必然重置。巴拉塔预测：美元霸权将引发系统性贬值，黄金等硬资产是终极避险工具。</p>
+    </div>
+    <div class="card" style="border-color:var(--gold)">
+      <h3 style="color:var(--gold)">🔑 与康波理论的交叉验证</h3>
+      <div style="font-size:0.85em;color:var(--text2);line-height:1.8">
+        <p>✅ 法币体系崩溃 ↔ 第五轮萧条期特征（2019-2030）</p>
+        <p>✅ 黄金是终极避险 ↔ 周金涛+时寒冰+宋鸿兵三方确认</p>
+        <p>✅ 货币重置 ↔ 第六轮启动前兆</p>
+        <p>✅ 债务不可持续 ↔ 繁荣期泡沫后果</p>
+        <p style="margin-top:10px;color:var(--gold);font-style:italic">"The system is not broken, it was designed this way. And the endgame has always been devaluation." — Adam Baratta</p>
+      </div>
+    </div>
+  </div>
+  <!-- Panel 4: 家族策略 -->
+  <div class="panel" id="p4">
     <div class="section-title"><span>🏛️</span>顶级家族跨周期策略</div>
     <div id="familyList"></div>
     <div class="card" style="border-color:var(--gold)">
@@ -181,8 +245,8 @@ input[type=range]{width:100%;accent-color:var(--green);height:6px}
       </div>
     </div>
   </div>
-  <!-- Panel 4: 个人时间表 -->
-  <div class="panel" id="p4">
+  <!-- Panel 5: 个人时间表 -->
+  <div class="panel" id="p5">
     <div class="section-title"><span>👤</span>你的康波时间表</div>
     <div class="card">
       <div class="age-wrap">
@@ -195,8 +259,8 @@ input[type=range]{width:100%;accent-color:var(--green);height:6px}
   </div>
 </div>
 <div class="footer">
-  康波周期投资预测平台 v1.0 · 基于周金涛《涛动周期论》+ 时寒冰《全球视野下的投资机会》+ 宋鸿兵《货币战争》<br>
-  ⚠️ 仅供参考，不构成投资建议 · MoKangMedical © 2026
+  康波周期投资预测平台 v3.0 · 四维共振 · 周金涛《涛动周期论》+ 时寒冰《全球视野下的投资机会》+ 宋鸿兵《货币战争》+ 巴拉塔《大贬值》<br>
+  ⚠️ 仅供参考，不构成投资建议 · <a href="https://github.com/MoKangMedical/kondratiev-wave">GitHub</a> · MoKangMedical © 2026
 </div>
 <script src="app.js"></script>
 </body>

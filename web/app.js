@@ -51,7 +51,7 @@ const waves=[
   {name:'第六轮 · AI+生物科技+新能源',period:'2025-2070',driver:'人工智能、生物科技、新能源、量子计算',phases:[{l:'🌱回升',y:'2025-2038',c:'spring',current:true},{l:'☀️繁荣',y:'2038-2055',c:'summer'},{l:'🍂衰退',y:'2055-2065',c:'autumn'},{l:'❄️萧条',y:'2065-2070',c:'winter'}]}
 ];
 // === INIT ===
-document.addEventListener('DOMContentLoaded',()=>{initWaves();initFamilies();updateAssets();updateScore();updateAge()});
+document.addEventListener('DOMContentLoaded',()=>{initWaves();initFamilies();updateAssets();updateScore();updateAge();initRankBoard()});
 // === TAB ===
 function showTab(i){
   document.querySelectorAll('.tab').forEach((t,j)=>t.classList.toggle('active',j===i));
@@ -240,4 +240,31 @@ function updateAge(){
     <div style="margin-top:12px;font-size:0.8em;color:var(--text2);font-style:italic;background:var(--card2);padding:10px;border-radius:8px;border-left:3px solid var(--gold)">
       💡 周金涛忠告："在座各位所经历的第5次康波，你们的人生就是一场康波……你的财富机会完全取决于你对康波周期的理解。"
     </div>`;
+}
+// === RANKING BOARD ===
+function initRankBoard(){
+  const ranked=Object.entries(scores).map(([name,d])=>({
+    name,
+    z:d.z,s:d.s,t:d.t,b:d.b,
+    avg:+((d.z+d.s+d.t+d.b)/4).toFixed(2)
+  })).sort((a,b)=>b.avg-a.avg);
+  const maxAvg=ranked[0].avg;
+  const el=document.getElementById('rankBoard');
+  el.innerHTML=`
+    <table class="rank-table">
+      <thead><tr><th>#</th><th>资产</th><th>周金涛</th><th>时寒冰</th><th>宋鸿兵</th><th>巴拉塔</th><th>综合</th></tr></thead>
+      <tbody>${ranked.map((r,i)=>{
+        const color=r.avg>=4.5?'var(--green)':r.avg>=3.5?'var(--gold)':r.avg>=2.5?'var(--orange)':'var(--red)';
+        const barW=(r.avg/maxAvg*100).toFixed(0);
+        return `<tr>
+          <td><span class="rank-num">${i+1}</span></td>
+          <td><b>${r.name}</b></td>
+          <td>${r.z}⭐</td><td>${r.s}⭐</td><td>${r.t}⭐</td><td>${r.b}⭐</td>
+          <td>
+            <span style="color:${color};font-weight:700">${r.avg}</span>
+            <div class="rank-bar"><div class="rank-bar-fill" style="width:${barW}%;background:${color}"></div></div>
+          </td>
+        </tr>`;
+      }).join('')}</tbody>
+    </table>`;
 }
