@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>课程体系 — 康波研究院</title>
-<meta name="description" content="康波研究院入门课：6节精编课程，从理论到实战，掌握50年财富周期。">
+<meta name="description" content="康波研究院完整课程体系：20节精编课程，5大阶段，从理论到实战，掌握50年财富周期。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -43,6 +43,12 @@ a{color:inherit;text-decoration:none}
 .hero h1 .gold{color:var(--gold)}
 .hero-sub{color:var(--text2);font-size:1.1rem;max-width:600px;margin:0 auto;line-height:1.8}
 
+/* PROGRESS */
+.progress-bar{max-width:900px;margin:0 auto 40px;padding:0 24px}
+.progress-track{height:6px;background:var(--card2);border-radius:3px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));border-radius:3px;transition:width 1s ease}
+.progress-label{display:flex;justify-content:space-between;margin-top:8px;font-size:0.8rem;color:var(--text3)}
+
 /* COURSE GRID */
 .courses{max-width:900px;margin:0 auto;padding:40px 24px 80px}
 .course-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:20px;cursor:pointer;transition:all .3s}
@@ -59,7 +65,6 @@ a{color:inherit;text-decoration:none}
 .course-tag{font-size:0.7rem;padding:3px 10px;border-radius:6px;background:var(--card3);color:var(--text3)}
 .course-arrow{color:var(--text3);font-size:1.2rem;transition:transform .3s;flex-shrink:0}
 .course-card.open .course-arrow{transform:rotate(90deg);color:var(--gold)}
-.course-link{margin-left:auto;flex-shrink:0}
 
 /* COURSE CONTENT */
 .course-content{display:none;border-top:1px solid var(--border);padding:32px 24px;max-height:70vh;overflow-y:auto}
@@ -87,9 +92,6 @@ a{color:inherit;text-decoration:none}
 .md-content td{padding:10px 12px;border:1px solid var(--border)}
 .md-content tr:nth-child(even){background:rgba(255,255,255,0.02)}
 .md-content hr{border:none;border-top:1px solid var(--border);margin:24px 0}
-.md-content .toc{background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:20px;margin:20px 0}
-.md-content .toc a{color:var(--blue);text-decoration:none}
-.md-content .toc a:hover{color:var(--gold)}
 
 /* BACK TO TOP */
 .back-top{position:fixed;bottom:24px;right:24px;width:44px;height:44px;background:var(--gold);color:#000;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem;cursor:pointer;opacity:0;transition:all .3s;z-index:50}
@@ -129,15 +131,32 @@ a{color:inherit;text-decoration:none}
 
 <section class="hero">
   <div class="hero-content">
-    <div class="label">课程体系</div>
-    <h1>从理论到实战，<span class="gold">六节课</span>掌握周期投资</h1>
-    <p class="hero-sub">每一课包含核心知识点 + 历史案例 + 实操练习，学完即可制定自己的投资计划。</p>
+    <div class="label">完整课程体系</div>
+    <h1>从理论到实战，<span class="gold">二十节课</span>掌握周期投资</h1>
+    <p class="hero-sub">5大阶段 · 20节精编课程 · 30+本核心著作 · 每课含知识点 + 历史案例 + 实操练习</p>
   </div>
 </section>
 
+<div class="progress-bar">
+  <div class="progress-track">
+    <div class="progress-fill" style="width:30%"></div>
+  </div>
+  <div class="progress-label">
+    <span>已完成 6/20 课</span>
+    <span>Phase 1 完成</span>
+  </div>
+</div>
+
 <div class="courses" id="courses">
-  <!-- Course 1 -->
-  <div class="course-card" onclick="toggleCourse(this)">
+
+  <div style="margin:40px 0 20px;padding:0 24px">
+    <h2 style="font-family:var(--serif);color:var(--gold);font-size:1.3rem;display:flex;align-items:center;gap:8px">
+      <span style="font-size:1.5rem">✅</span> Phase 1: 周期理论基础
+      <span style="font-size:0.75rem;color:var(--text3);font-weight:400">（第1-6课）</span>
+    </h2>
+  </div>
+
+  <div class="course-card" onclick="toggleCourse(this)" data-file="courses/01-康波理论基础.md">
     <div class="course-header">
       <div class="course-num">1</div>
       <div class="course-meta">
@@ -153,12 +172,11 @@ a{color:inherit;text-decoration:none}
     </div>
     <div class="course-content">
       <div class="md-content" id="course-1"><p>加载中...</p></div>
-      <a href="lesson1.html" class="course-start">开始学习 →</a>
+      <a href='lesson1.html' class='course-start'>开始学习 →</a>
     </div>
   </div>
 
-  <!-- Course 2 -->
-  <div class="course-card" onclick="toggleCourse(this)">
+  <div class="course-card" onclick="toggleCourse(this)" data-file="courses/02-周金涛四周期嵌套.md">
     <div class="course-header">
       <div class="course-num">2</div>
       <div class="course-meta">
@@ -174,16 +192,15 @@ a{color:inherit;text-decoration:none}
     </div>
     <div class="course-content">
       <div class="md-content" id="course-2"><p>加载中...</p></div>
-      <a href="lesson2.html" class="course-start">开始学习 →</a>
+      <a href='lesson2.html' class='course-start'>开始学习 →</a>
     </div>
   </div>
 
-  <!-- Course 3 -->
-  <div class="course-card" onclick="toggleCourse(this)">
+  <div class="course-card" onclick="toggleCourse(this)" data-file="courses/03-第六轮康波深度分析.md">
     <div class="course-header">
       <div class="course-num">3</div>
       <div class="course-meta">
-        <h3>第六轮康波 — AI驱动的新纪元</h3>
+        <h3>AI驱动的新纪元</h3>
         <p>三驾马车(AI/能源/生物)、渗透路径、赛道图谱(Tier 1/2/3)、中国独特位置</p>
         <div class="course-tags">
           <span class="course-tag">深度</span>
@@ -195,12 +212,11 @@ a{color:inherit;text-decoration:none}
     </div>
     <div class="course-content">
       <div class="md-content" id="course-3"><p>加载中...</p></div>
-      <a href="lesson3.html" class="course-start">开始学习 →</a>
+      <a href='lesson3.html' class='course-start'>开始学习 →</a>
     </div>
   </div>
 
-  <!-- Course 4 -->
-  <div class="course-card" onclick="toggleCourse(this)">
+  <div class="course-card" onclick="toggleCourse(this)" data-file="courses/04-顶级家族跨周期策略.md">
     <div class="course-header">
       <div class="course-num">4</div>
       <div class="course-meta">
@@ -216,12 +232,11 @@ a{color:inherit;text-decoration:none}
     </div>
     <div class="course-content">
       <div class="md-content" id="course-4"><p>加载中...</p></div>
-      <a href="lesson4.html" class="course-start">开始学习 →</a>
+      <a href='lesson4.html' class='course-start'>开始学习 →</a>
     </div>
   </div>
 
-  <!-- Course 5 -->
-  <div class="course-card" onclick="toggleCourse(this)">
+  <div class="course-card" onclick="toggleCourse(this)" data-file="courses/05-货币战争与全球博弈.md">
     <div class="course-header">
       <div class="course-num">5</div>
       <div class="course-meta">
@@ -237,12 +252,11 @@ a{color:inherit;text-decoration:none}
     </div>
     <div class="course-content">
       <div class="md-content" id="course-5"><p>加载中...</p></div>
-      <a href="lesson5.html" class="course-start">开始学习 →</a>
+      <a href='lesson5.html' class='course-start'>开始学习 →</a>
     </div>
   </div>
 
-  <!-- Course 6 -->
-  <div class="course-card" onclick="toggleCourse(this)">
+  <div class="course-card" onclick="toggleCourse(this)" data-file="courses/06-投资操作手册.md">
     <div class="course-header">
       <div class="course-num">6</div>
       <div class="course-meta">
@@ -258,9 +272,318 @@ a{color:inherit;text-decoration:none}
     </div>
     <div class="course-content">
       <div class="md-content" id="course-6"><p>加载中...</p></div>
-      <a href="lesson6.html" class="course-start">开始学习 →</a>
+      <a href='lesson6.html' class='course-start'>开始学习 →</a>
     </div>
   </div>
+
+  <div style="margin:40px 0 20px;padding:0 24px">
+    <h2 style="font-family:var(--serif);color:var(--gold);font-size:1.3rem;display:flex;align-items:center;gap:8px">
+      <span style="font-size:1.5rem">🆕</span> Phase 2: 经典投资理论
+      <span style="font-size:0.75rem;color:var(--text3);font-weight:400">（第7-12课）</span>
+    </h2>
+  </div>
+
+  <div class="course-card" onclick="toggleCourse(this)" data-file="courses/07-价值投资从格雷厄姆到巴菲特.md">
+    <div class="course-header">
+      <div class="course-num">7</div>
+      <div class="course-meta">
+        <h3>价值投资 — 从格雷厄姆到巴菲特</h3>
+        <p>安全边际、内在价值、护城河理论、长期持有的数学逻辑</p>
+        <div class="course-tags">
+          <span class="course-tag">经典</span>
+          <span class="course-tag">40分钟</span>
+          <span class="course-tag">含练习</span>
+        </div>
+      </div>
+      <div class="course-arrow">›</div>
+    </div>
+    <div class="course-content">
+      <div class="md-content" id="course-7"><p>加载中...</p></div>
+      <a href='#' class='course-start' onclick='event.preventDefault()'>阅读完整课程 →</a>
+    </div>
+  </div>
+
+  <div class="course-card" onclick="toggleCourse(this)" data-file="courses/08-索罗斯反身性与量子基金.md">
+    <div class="course-header">
+      <div class="course-num">8</div>
+      <div class="course-meta">
+        <h3>索罗斯 — 反身性与量子基金</h3>
+        <p>反身性理论、反射循环、宏观对冲实战、英镑狙击案复盘</p>
+        <div class="course-tags">
+          <span class="course-tag">高级</span>
+          <span class="course-tag">45分钟</span>
+          <span class="course-tag">含练习</span>
+        </div>
+      </div>
+      <div class="course-arrow">›</div>
+    </div>
+    <div class="course-content">
+      <div class="md-content" id="course-8"><p>加载中...</p></div>
+      <a href='#' class='course-start' onclick='event.preventDefault()'>阅读完整课程 →</a>
+    </div>
+  </div>
+
+  <div class="course-card" onclick="toggleCourse(this)" data-file="courses/09-达里奥全天候与债务周期.md">
+    <div class="course-header">
+      <div class="course-num">9</div>
+      <div class="course-meta">
+        <h3>达里奥 — 全天候与债务周期</h3>
+        <p>全天候策略、债务长周期、原则框架、桥水基金核心方法论</p>
+        <div class="course-tags">
+          <span class="course-tag">策略</span>
+          <span class="course-tag">40分钟</span>
+          <span class="course-tag">含练习</span>
+        </div>
+      </div>
+      <div class="course-arrow">›</div>
+    </div>
+    <div class="course-content">
+      <div class="md-content" id="course-9"><p>加载中...</p></div>
+      <a href='#' class='course-start' onclick='event.preventDefault()'>阅读完整课程 →</a>
+    </div>
+  </div>
+
+  <div class="course-card" onclick="toggleCourse(this)" data-file="courses/10-塔勒布黑天鹅与反脆弱.md">
+    <div class="course-header">
+      <div class="course-num">10</div>
+      <div class="course-meta">
+        <h3>塔勒布 — 黑天鹅与反脆弱</h3>
+        <p>肥尾分布、凸性策略、杠铃配置、从不确定性中获利</p>
+        <div class="course-tags">
+          <span class="course-tag">思维</span>
+          <span class="course-tag">35分钟</span>
+          <span class="course-tag">含练习</span>
+        </div>
+      </div>
+      <div class="course-arrow">›</div>
+    </div>
+    <div class="course-content">
+      <div class="md-content" id="course-10"><p>加载中...</p></div>
+      <a href='#' class='course-start' onclick='event.preventDefault()'>阅读完整课程 →</a>
+    </div>
+  </div>
+
+  <div class="course-card" onclick="toggleCourse(this)" data-file="courses/11-凯恩斯动物精神与政府干预.md">
+    <div class="course-header">
+      <div class="course-num">11</div>
+      <div class="course-meta">
+        <h3>凯恩斯 — 动物精神与政府干预</h3>
+        <p>有效需求、流动性陷阱、动物精神、政府在危机中的角色</p>
+        <div class="course-tags">
+          <span class="course-tag">理论</span>
+          <span class="course-tag">30分钟</span>
+          <span class="course-tag">含练习</span>
+        </div>
+      </div>
+      <div class="course-arrow">›</div>
+    </div>
+    <div class="course-content">
+      <div class="md-content" id="course-11"><p>加载中...</p></div>
+      <a href='#' class='course-start' onclick='event.preventDefault()'>阅读完整课程 →</a>
+    </div>
+  </div>
+
+  <div class="course-card" onclick="toggleCourse(this)" data-file="courses/12-明斯基金融不稳定假说.md">
+    <div class="course-header">
+      <div class="course-num">12</div>
+      <div class="course-meta">
+        <h3>明斯基 — 金融不稳定假说</h3>
+        <p>明斯基时刻、对冲/投机/庞氏融资三阶段、金融危机的内在逻辑</p>
+        <div class="course-tags">
+          <span class="course-tag">预警</span>
+          <span class="course-tag">35分钟</span>
+          <span class="course-tag">含练习</span>
+        </div>
+      </div>
+      <div class="course-arrow">›</div>
+    </div>
+    <div class="course-content">
+      <div class="md-content" id="course-12"><p>加载中...</p></div>
+      <a href='#' class='course-start' onclick='event.preventDefault()'>阅读完整课程 →</a>
+    </div>
+  </div>
+
+  <div style="margin:40px 0 20px;padding:0 24px">
+    <h2 style="font-family:var(--serif);color:var(--gold);font-size:1.3rem;display:flex;align-items:center;gap:8px">
+      <span style="font-size:1.5rem">🆕</span> Phase 3: 货币与制度
+      <span style="font-size:0.75rem;color:var(--text3);font-weight:400">（第13-16课）</span>
+    </h2>
+  </div>
+
+  <div class="course-card" onclick="toggleCourse(this)" data-file="courses/13-奥地利学派货币周期与自由.md">
+    <div class="course-header">
+      <div class="course-num">13</div>
+      <div class="course-meta">
+        <h3>奥地利学派 — 货币、周期与自由</h3>
+        <p>米塞斯的繁荣-萧条周期、哈耶克的自发秩序、货币非国家化</p>
+        <div class="course-tags">
+          <span class="course-tag">学派</span>
+          <span class="course-tag">40分钟</span>
+          <span class="course-tag">含练习</span>
+        </div>
+      </div>
+      <div class="course-arrow">›</div>
+    </div>
+    <div class="course-content">
+      <div class="md-content" id="course-13"><p>加载中...</p></div>
+      <a href='#' class='course-start' onclick='event.preventDefault()'>阅读完整课程 →</a>
+    </div>
+  </div>
+
+  <div class="course-card" onclick="toggleCourse(this)" data-file="courses/14-现代货币理论MMT.md">
+    <div class="course-header">
+      <div class="course-num">14</div>
+      <div class="course-meta">
+        <h3>现代货币理论(MMT) — 主权货币的真相</h3>
+        <p>财政赤字神话、就业保障计划、美元霸权终结路径</p>
+        <div class="course-tags">
+          <span class="course-tag">前沿</span>
+          <span class="course-tag">35分钟</span>
+          <span class="course-tag">含练习</span>
+        </div>
+      </div>
+      <div class="course-arrow">›</div>
+    </div>
+    <div class="course-content">
+      <div class="md-content" id="course-14"><p>加载中...</p></div>
+      <a href='#' class='course-start' onclick='event.preventDefault()'>阅读完整课程 →</a>
+    </div>
+  </div>
+
+  <div class="course-card" onclick="toggleCourse(this)" data-file="courses/15-马克思资本积累与危机理论.md">
+    <div class="course-header">
+      <div class="course-num">15</div>
+      <div class="course-meta">
+        <h3>马克思 — 资本积累与危机理论</h3>
+        <p>利润率下降趋势、资本集中、周期性危机的必然性</p>
+        <div class="course-tags">
+          <span class="course-tag">批判</span>
+          <span class="course-tag">40分钟</span>
+          <span class="course-tag">含练习</span>
+        </div>
+      </div>
+      <div class="course-arrow">›</div>
+    </div>
+    <div class="course-content">
+      <div class="md-content" id="course-15"><p>加载中...</p></div>
+      <a href='#' class='course-start' onclick='event.preventDefault()'>阅读完整课程 →</a>
+    </div>
+  </div>
+
+  <div class="course-card" onclick="toggleCourse(this)" data-file="courses/16-巴拉塔大贬值与货币重置.md">
+    <div class="course-header">
+      <div class="course-num">16</div>
+      <div class="course-meta">
+        <h3>巴拉塔 — 大贬值与货币重置</h3>
+        <p>法币崩溃历史、硬资产避险策略、全球货币重构路径</p>
+        <div class="course-tags">
+          <span class="course-tag">预警</span>
+          <span class="course-tag">35分钟</span>
+          <span class="course-tag">含练习</span>
+        </div>
+      </div>
+      <div class="course-arrow">›</div>
+    </div>
+    <div class="course-content">
+      <div class="md-content" id="course-16"><p>加载中...</p></div>
+      <a href='#' class='course-start' onclick='event.preventDefault()'>阅读完整课程 →</a>
+    </div>
+  </div>
+
+  <div style="margin:40px 0 20px;padding:0 24px">
+    <h2 style="font-family:var(--serif);color:var(--gold);font-size:1.3rem;display:flex;align-items:center;gap:8px">
+      <span style="font-size:1.5rem">🆕</span> Phase 4: 人口与地缘
+      <span style="font-size:0.75rem;color:var(--text3);font-weight:400">（第17-18课）</span>
+    </h2>
+  </div>
+
+  <div class="course-card" onclick="toggleCourse(this)" data-file="courses/17-人口周期经济的终极密码.md">
+    <div class="course-header">
+      <div class="course-num">17</div>
+      <div class="course-meta">
+        <h3>人口周期 — 经济的终极密码</h3>
+        <p>人口红利、老龄化冲击、刘易斯拐点、人口与资产价格的关系</p>
+        <div class="course-tags">
+          <span class="course-tag">底层</span>
+          <span class="course-tag">40分钟</span>
+          <span class="course-tag">含练习</span>
+        </div>
+      </div>
+      <div class="course-arrow">›</div>
+    </div>
+    <div class="course-content">
+      <div class="md-content" id="course-17"><p>加载中...</p></div>
+      <a href='#' class='course-start' onclick='event.preventDefault()'>阅读完整课程 →</a>
+    </div>
+  </div>
+
+  <div class="course-card" onclick="toggleCourse(this)" data-file="courses/18-地缘政治经济学.md">
+    <div class="course-header">
+      <div class="course-num">18</div>
+      <div class="course-meta">
+        <h3>地缘政治经济学 — 大国博弈与投资</h3>
+        <p>修昔底德陷阱、供应链重构、脱钩风险、地缘冲突下的投资策略</p>
+        <div class="course-tags">
+          <span class="course-tag">宏观</span>
+          <span class="course-tag">45分钟</span>
+          <span class="course-tag">含练习</span>
+        </div>
+      </div>
+      <div class="course-arrow">›</div>
+    </div>
+    <div class="course-content">
+      <div class="md-content" id="course-18"><p>加载中...</p></div>
+      <a href='#' class='course-start' onclick='event.preventDefault()'>阅读完整课程 →</a>
+    </div>
+  </div>
+
+  <div style="margin:40px 0 20px;padding:0 24px">
+    <h2 style="font-family:var(--serif);color:var(--gold);font-size:1.3rem;display:flex;align-items:center;gap:8px">
+      <span style="font-size:1.5rem">🆕</span> Phase 5: 前沿与未来
+      <span style="font-size:0.75rem;color:var(--text3);font-weight:400">（第19-20课）</span>
+    </h2>
+  </div>
+
+  <div class="course-card" onclick="toggleCourse(this)" data-file="courses/19-技术奇点当AI超越人类.md">
+    <div class="course-header">
+      <div class="course-num">19</div>
+      <div class="course-meta">
+        <h3>技术奇点 — 当AI超越人类</h3>
+        <p>奇点理论、指数增长规律、AI对经济的颠覆性影响、投资机会</p>
+        <div class="course-tags">
+          <span class="course-tag">前沿</span>
+          <span class="course-tag">35分钟</span>
+          <span class="course-tag">含练习</span>
+        </div>
+      </div>
+      <div class="course-arrow">›</div>
+    </div>
+    <div class="course-content">
+      <div class="md-content" id="course-19"><p>加载中...</p></div>
+      <a href='#' class='course-start' onclick='event.preventDefault()'>阅读完整课程 →</a>
+    </div>
+  </div>
+
+  <div class="course-card" onclick="toggleCourse(this)" data-file="courses/20-终极整合构建你的投资世界观.md">
+    <div class="course-header">
+      <div class="course-num">20</div>
+      <div class="course-meta">
+        <h3>终极整合 — 构建你的投资世界观</h3>
+        <p>20维度投资评估框架、个人投资宣言模板、终身学习路线图</p>
+        <div class="course-tags">
+          <span class="course-tag">综合</span>
+          <span class="course-tag">60分钟</span>
+          <span class="course-tag">含练习</span>
+        </div>
+      </div>
+      <div class="course-arrow">›</div>
+    </div>
+    <div class="course-content">
+      <div class="md-content" id="course-20"><p>加载中...</p></div>
+      <a href='#' class='course-start' onclick='event.preventDefault()'>阅读完整课程 →</a>
+    </div>
+  </div>
+
 </div>
 
 <div class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
@@ -273,51 +596,31 @@ a{color:inherit;text-decoration:none}
 // Simple Markdown parser
 function parseMd(md) {
   let html = md
-    // Remove first H1 (title)
     .replace(/^# .+\n/, '')
-    // Headers
     .replace(/^### (.+)$/gm, '<h3>$1</h3>')
     .replace(/^## (.+)$/gm, '<h2>$1</h2>')
     .replace(/^#### (.+)$/gm, '<h4>$1</h4>')
-    // Blockquotes
     .replace(/^> (.+)$/gm, '<blockquote>$1</blockquote>')
-    // Bold & Italic
     .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
     .replace(/\*(.+?)\*/g, '<em>$1</em>')
-    // Inline code
     .replace(/`([^`]+)`/g, '<code>$1</code>')
-    // HR
     .replace(/^---$/gm, '<hr>')
-    // Tables
     .replace(/^\|(.+)\|$/gm, function(match, content) {
       const cells = content.split('|').map(c => c.trim());
       if (cells.every(c => /^[-:]+$/.test(c))) return '<!--table-sep-->';
-      const tag = match.includes('---') ? 'th' : 'td';
-      const isHeader = !match.includes('---');
       return '<tr>' + cells.map(c => `<td>${c}</td>`).join('') + '</tr>';
     })
-    // Unordered lists
     .replace(/^- (.+)$/gm, '<li>$1</li>')
-    // Ordered lists
     .replace(/^\d+\. (.+)$/gm, '<li>$1</li>')
-    // Code blocks
     .replace(/```[\s\S]*?```/g, function(match) {
       const code = match.replace(/```\w*\n?/, '').replace(/```$/, '');
       return '<pre><code>' + code.trim() + '</code></pre>';
     })
-    // Paragraphs
     .replace(/\n\n/g, '</p><p>')
-    // Clean up
     .replace(/<!--table-sep-->/g, '')
-    .replace(/<tr>/g, function(m, offset, str) {
-      // Check if this is the first row after a non-tr line (header)
-      return '<tr>';
-    });
+    .replace(/<tr>/g, function(m) { return '<tr>'; });
 
-  // Wrap in paragraph
   html = '<p>' + html + '</p>';
-
-  // Clean up empty paragraphs and nested tags
   html = html
     .replace(/<p><\/p>/g, '')
     .replace(/<p>(<h[234]>)/g, '$1')
@@ -334,33 +637,43 @@ function parseMd(md) {
   return html;
 }
 
-// Load course content
+// Load all 20 courses
 const courseFiles = [
   'courses/01-康波理论基础.md',
   'courses/02-周金涛四周期嵌套.md',
   'courses/03-第六轮康波深度分析.md',
   'courses/04-顶级家族跨周期策略.md',
   'courses/05-货币战争与全球博弈.md',
-  'courses/06-投资操作手册.md'
+  'courses/06-投资操作手册.md',
+  'courses/07-价值投资从格雷厄姆到巴菲特.md',
+  'courses/08-索罗斯反身性与量子基金.md',
+  'courses/09-达里奥全天候与债务周期.md',
+  'courses/10-塔勒布黑天鹅与反脆弱.md',
+  'courses/11-凯恩斯动物精神与政府干预.md',
+  'courses/12-明斯基金融不稳定假说.md',
+  'courses/13-奥地利学派货币周期与自由.md',
+  'courses/14-现代货币理论MMT.md',
+  'courses/15-马克思资本积累与危机理论.md',
+  'courses/16-巴拉塔大贬值与货币重置.md',
+  'courses/17-人口周期经济的终极密码.md',
+  'courses/18-地缘政治经济学.md',
+  'courses/19-技术奇点当AI超越人类.md',
+  'courses/20-终极整合构建你的投资世界观.md'
 ];
 
 courseFiles.forEach((file, i) => {
+  const el = document.getElementById('course-' + (i+1));
+  if (!el) return;
   fetch(file)
-    .then(r => r.text())
-    .then(md => {
-      document.getElementById('course-' + (i+1)).innerHTML = parseMd(md);
-    })
-    .catch(() => {
-      document.getElementById('course-' + (i+1)).innerHTML = '<p>内容加载失败，请刷新页面重试。</p>';
-    });
+    .then(r => r.ok ? r.text() : Promise.reject())
+    .then(md => { el.innerHTML = parseMd(md); })
+    .catch(() => { el.innerHTML = '<p>内容加载失败，请刷新页面重试。</p>'; });
 });
 
 // Toggle course
 function toggleCourse(card) {
   const wasOpen = card.classList.contains('open');
-  // Close all
   document.querySelectorAll('.course-card').forEach(c => c.classList.remove('open'));
-  // Toggle current
   if (!wasOpen) {
     card.classList.add('open');
     setTimeout(() => card.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
@@ -375,7 +688,7 @@ window.addEventListener('scroll', () => {
 // Open course from URL hash
 if (location.hash) {
   const num = parseInt(location.hash.replace('#course-', ''));
-  if (num >= 1 && num <= 6) {
+  if (num >= 1 && num <= 20) {
     setTimeout(() => {
       const cards = document.querySelectorAll('.course-card');
       if (cards[num-1]) {
