@@ -1,0 +1,210 @@
+{
+  "meta": {
+    "version": "2.0",
+    "last_updated": "2026-04-24",
+    "description": "顶级家族跨周期投资组合解构 — 老钱密码"
+  },
+  "families": [
+    {
+      "id": "rockefeller",
+      "name": "洛克菲勒家族",
+      "country": "美国",
+      "flag": "🇺🇸",
+      "generations": 7,
+      "years": "150+年",
+      "estimated_wealth": "110-320亿美元",
+      "founded": 1870,
+      "founder": "约翰·D·洛克菲勒",
+      "core_philosophy": "制度大于个人，信托隔离保全，穿越周期的不是眼光而是结构",
+      "mechanisms": [
+        {"name": "不可撤销王朝信托（Dynasty Trust）", "detail": "资产放入信托后不可撤回，隔离个人债务风险，实现代际传承"},
+        {"name": "瀑布方法（Waterfall Method）", "detail": "终身寿险+信托循环：信托购买寿险→寿险赔付进入新信托→循环放大"},
+        {"name": "家族办公室", "detail": "1882年成立全球首个家族办公室，统筹全球投资"},
+        {"name": "慈善基金会", "detail": "声誉资本+税务优化+家族使命感三重功能"}
+      ],
+      "portfolio_allocation": {
+        "real_estate": 20,
+        "equity": 30,
+        "bonds": 20,
+        "private_equity": 15,
+        "alternatives": 15
+      },
+      "cycle_strategy": {
+        "depression": "加大股权和地产配置（逆向操作），1929大萧条信托隔离保全核心资产",
+        "recovery": "保持增长型配置，利用信托免税优势复利增长",
+        "prosperity": "逐步减持高估值资产，增加慈善捐赠",
+        "recession": "增持现金和黄金，寻找危机中的收购机会"
+      },
+      "key_events": [
+        {"year": 1870, "event": "标准石油公司成立"},
+        {"year": 1911, "event": "标准石油被拆分，但家族财富反而因多元化而增长"},
+        {"year": 1929, "event": "大萧条中信托隔离保全核心资产"},
+        {"year": 1974, "event": "家族办公室正式公司化（Rockefeller & Co.）"}
+      ],
+      "lesson": "建立一个无论如何都能活下来的制度，比押对每一次周期更重要"
+    },
+    {
+      "id": "rothschild",
+      "name": "罗斯柴尔德家族",
+      "country": "欧洲（全球）",
+      "flag": "🇪🇺",
+      "generations": 6,
+      "years": "300年",
+      "estimated_wealth": "5万亿美元（含私人资产估计）",
+      "founded": 1760,
+      "founder": "迈耶·阿姆谢尔·罗斯柴尔德",
+      "core_philosophy": "信息即权力，分散即安全，为所有可能的结果做好准备",
+      "mechanisms": [
+        {"name": "家族银行不上市", "detail": "股权完全内部传承，不受外部市场波动影响"},
+        {"name": "联合融资（Syndicate）", "detail": "五兄弟分驻五国，联合承销政府债券，分散又协同"},
+        {"name": "锚定实体经济", "detail": "矿产、土地、基础设施——实物资产穿越所有周期"},
+        {"name": "为交战双方融资", "detail": "拿破仑战争期间同时为英国和法国融资，对冲地缘风险"}
+      ],
+      "portfolio_allocation": {
+        "banking_finance": 30,
+        "real_assets": 35,
+        "wine_art": 10,
+        "government_bonds": 15,
+        "other": 10
+      },
+      "cycle_strategy": {
+        "depression": "收购低价实物资产，以极低价格买入恐慌者抛售的优质资产",
+        "recovery": "为新兴企业和政府提供融资，获取早期红利",
+        "prosperity": "发行金融产品放大收益，同时逐步减持高估资产",
+        "recession": "增持黄金和实物资产，减少金融敞口"
+      },
+      "key_events": [
+        {"year": 1760, "event": "迈耶在法兰克福建立金融业务"},
+        {"year": 1815, "event": "滑铁卢战役——提前获知战果，大量买入英国国债"},
+        {"year": 1818, "event": "为普鲁士政府发行国债，奠定欧洲金融主导地位"},
+        {"year": 1875, "event": "为英国政府提供贷款购买苏伊士运河股份"}
+      ],
+      "lesson": "信息优势+地理分散+锚定实物 = 300年不倒的秘诀"
+    },
+    {
+      "id": "li_ka_shing",
+      "name": "李嘉诚家族",
+      "country": "中国香港",
+      "flag": "🇭🇰",
+      "generations": 2,
+      "years": "70+年",
+      "estimated_wealth": "373-451亿美元",
+      "founded": 1950,
+      "founder": "李嘉诚",
+      "core_philosophy": "匮乏期骆驼式积累，充裕期狮子式警惕——永远为最坏的情况做准备",
+      "mechanisms": [
+        {"name": "双轨制分家", "detail": "长子李泽钜接管实业（长和系），次子李泽楷获现金独立发展"},
+        {"name": "全球化分散", "detail": "投资遍布50+国家，不依赖单一市场"},
+        {"name": "逆周期操作", "detail": "萧条期大量收购基础设施，繁荣期减持高位资产"},
+        {"name": "家族办公室", "detail": "维港投资（Horizons Ventures）专注科技前沿投资"}
+      ],
+      "portfolio_allocation": {
+        "infrastructure": 35,
+        "telecom": 20,
+        "retail": 15,
+        "real_estate": 15,
+        "tech_venture": 15
+      },
+      "cycle_strategy": {
+        "depression": "大量收购基础设施（港口、电力、供水）——现金流稳定+逆周期低价",
+        "recovery": "保持基础设施核心，适度增加科技投资",
+        "prosperity": "逐步减持高位资产（2013-2015大规模撤出中国地产=精准逃顶）",
+        "recession": "增持现金，等待抄底机会"
+      },
+      "key_events": [
+        {"year": 1950, "event": "创办长江实业"},
+        {"year": 1979, "event": "收购和记黄埔，成为首位收购英资洋行的华人"},
+        {"year": 1997, "event": "亚洲金融危机前减持亚洲地产"},
+        {"year": 2008, "event": "金融危机前减持雷曼相关资产"},
+        {"year": 2013, "event": "大规模撤出中国房地产（精准逃顶）"},
+        {"year": 2015, "event": "重组长和系，注册地迁至开曼群岛"}
+      ],
+      "lesson": "逆向操作+全球分散+永远保留撤退路线"
+    },
+    {
+      "id": "walton",
+      "name": "沃尔顿家族",
+      "country": "美国",
+      "flag": "🇺🇸",
+      "generations": 3,
+      "years": "60+年",
+      "estimated_wealth": "5134亿美元（全球最富家族）",
+      "founded": 1962,
+      "founder": "山姆·沃尔顿",
+      "core_philosophy": "稳定现金流是穿越周期的万能钥匙",
+      "mechanisms": [
+        {"name": "股权集中信托", "detail": "沃尔玛51%+股权集中在家族信托，不分散"},
+        {"name": "去管理化", "detail": "家族成员不直接参与公司日常管理，避免能力断层"},
+        {"name": "现金流驱动", "detail": "零售业务提供稳定现金流，穿越所有周期"},
+        {"name": "多元化投资", "detail": "利用沃尔玛分红进行科技、地产等多元化投资"}
+      ],
+      "portfolio_allocation": {
+        "walmart_equity": 50,
+        "diversified_investments": 30,
+        "real_estate": 10,
+        "cash_bonds": 10
+      },
+      "cycle_strategy": {
+        "depression": "沃尔玛抗衰退——低价零售在萧条期反而受益，同时利用现金进行科技和地产投资",
+        "recovery": "保持核心持股，分享经济复苏红利",
+        "prosperity": "适度多元化，探索新零售和科技投资",
+        "recession": "沃尔玛低价优势凸显，保持稳定分红"
+      },
+      "key_events": [
+        {"year": 1962, "event": "第一家沃尔玛开业"},
+        {"year": 1970, "event": "沃尔玛上市"},
+        {"year": 1992, "event": "山姆·沃尔顿去世，股权顺利传至第二代"},
+        {"year": 2020, "event": "疫情中沃尔玛受益于线上+线下低价策略"}
+      ],
+      "lesson": "抗周期的现金流业务+股权集中信托=最简单的老钱密码"
+    },
+    {
+      "id": "huawei",
+      "name": "华为/任正非",
+      "country": "中国",
+      "flag": "🇨🇳",
+      "generations": 1,
+      "years": "38年",
+      "estimated_wealth": "任正非个人210亿 / 华为年营收近万亿",
+      "founded": 1987,
+      "founder": "任正非",
+      "core_philosophy": "技术驱动穿越周期——'华为的冬天'意识：繁荣期提前准备萧条",
+      "mechanisms": [
+        {"name": "员工虚拟受限股", "detail": "98.6%股权分给员工，形成强利益绑定和逆周期留才机制"},
+        {"name": "去家族化治理", "detail": "轮值董事长制度，不依赖任何个人"},
+        {"name": "逆周期研发", "detail": "R&D投入15%+营收，经济越差越加大研发"},
+        {"name": "全球化收入", "detail": "业务覆盖170+国家，不依赖单一市场"}
+      ],
+      "portfolio_allocation": {
+        "rnd_reinvestment": 15,
+        "global_operations": 50,
+        "infrastructure": 20,
+        "reserves": 15
+      },
+      "cycle_strategy": {
+        "depression": "逆势加大研发投入——'弯道超车'的最佳时机",
+        "recovery": "将研发成果商业化，快速占领市场",
+        "prosperity": "储备弹药，提前为'冬天'做准备（任正非2001年《华为的冬天》）",
+        "recession": "全球化分散对冲区域风险"
+      },
+      "key_events": [
+        {"year": 1987, "event": "任正非以2.1万元创立华为"},
+        {"year": 2001, "event": "任正非发表《华为的冬天》——繁荣期的危机意识"},
+        {"year": 2019, "event": "美国制裁——全球化分散收入来源提供缓冲"},
+        {"year": 2023, "event": "Mate 60 Pro突破芯片封锁——逆周期研发的回报"}
+      ],
+      "lesson": "新钱的极致：不靠信托靠制度，不靠资产靠技术，不靠个人靠系统"
+    }
+  ],
+  "common_patterns": {
+    "name": "老钱密码 — 五大共性规律",
+    "rules": [
+      {"rule": "制度恒定", "detail": "家族信托+家族办公室 → 所有阶段不变", "importance": "最高"},
+      {"rule": "实物锚定", "detail": "地产/矿/基础设施占比30-50% → 萧条期加仓", "importance": "高"},
+      {"rule": "现金纪律", "detail": "保持15-25%流动性 → 萧条期保持高位", "importance": "高"},
+      {"rule": "逆向操作", "detail": "萧条期反向买入 → 一生一次的机会", "importance": "高"},
+      {"rule": "全面分散", "detail": "地域/行业/币种/资产类别 → 所有阶段恒定", "importance": "最高"}
+    ],
+    "golden_quote": "老钱的秘诀不是在正确的时间买对资产，而是建立一个无论如何都能活下来的制度。"
+  }
+}

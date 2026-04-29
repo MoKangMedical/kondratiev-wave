@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>课程体系 — 康波研究院</title>
+<meta name="description" content="康波研究院入门课：6节精编课程，从理论到实战，掌握50年财富周期。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#09090b;--bg2:#0f0f13;--bg3:#18181b;
+  --card:#1c1c21;--card2:#222228;--card3:#2a2a32;
+  --border:#27272a;--border2:#3f3f46;
+  --text:#fafafa;--text2:#a1a1aa;--text3:#71717a;
+  --gold:#e2b64f;--gold2:#f5d98a;
+  --green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;
+  --orange:#f59e0b;--red:#ef4444;
+  --serif:'Noto Serif SC',serif;
+  --sans:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+  --radius:16px;--radius-sm:10px;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(9,9,11,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:var(--serif);font-size:1.1rem;font-weight:700;color:var(--gold);display:flex;align-items:center;gap:8px}
+.nav-logo svg{width:28px;height:28px}
+.nav-links{display:flex;gap:24px;align-items:center}
+.nav-links a{font-size:0.85rem;color:var(--text2);transition:color .2s;font-weight:500}
+.nav-links a:hover{color:var(--text)}
+
+/* HERO */
+.hero{padding:120px 0 60px;text-align:center;position:relative}
+.hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse 80% 60% at 50% 30%,rgba(226,182,79,0.06),transparent 70%)}
+.hero-content{position:relative;z-index:1}
+.hero .label{font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.12em;color:var(--gold);margin-bottom:16px}
+.hero h1{font-family:var(--serif);font-size:clamp(2rem,4vw,3rem);font-weight:900;margin-bottom:16px}
+.hero h1 .gold{color:var(--gold)}
+.hero-sub{color:var(--text2);font-size:1.1rem;max-width:600px;margin:0 auto;line-height:1.8}
+
+/* COURSE GRID */
+.courses{max-width:900px;margin:0 auto;padding:40px 24px 80px}
+.course-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:20px;cursor:pointer;transition:all .3s}
+.course-card:hover{border-color:var(--gold);transform:translateY(-2px)}
+.course-card.open{border-color:var(--gold)}
+.course-start{display:inline-block;margin-top:12px;padding:8px 20px;background:var(--gold);color:#000;font-size:0.85rem;font-weight:600;border-radius:8px;text-decoration:none;transition:all .2s}
+.course-start:hover{background:var(--gold2);transform:translateY(-1px)}
+.course-header{display:flex;align-items:center;padding:24px;gap:20px}
+.course-num{width:56px;height:56px;background:linear-gradient(135deg,var(--gold),#b8860b);display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:900;color:#000;flex-shrink:0;border-radius:12px}
+.course-meta{flex:1}
+.course-meta h3{font-size:1.1rem;margin-bottom:6px}
+.course-meta p{color:var(--text2);font-size:0.85rem}
+.course-tags{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
+.course-tag{font-size:0.7rem;padding:3px 10px;border-radius:6px;background:var(--card3);color:var(--text3)}
+.course-arrow{color:var(--text3);font-size:1.2rem;transition:transform .3s;flex-shrink:0}
+.course-card.open .course-arrow{transform:rotate(90deg);color:var(--gold)}
+.course-link{margin-left:auto;flex-shrink:0}
+
+/* COURSE CONTENT */
+.course-content{display:none;border-top:1px solid var(--border);padding:32px 24px;max-height:70vh;overflow-y:auto}
+.course-content::-webkit-scrollbar{width:4px}
+.course-content::-webkit-scrollbar-thumb{background:var(--border2);border-radius:4px}
+.course-card.open .course-content{display:block}
+
+/* MARKDOWN RENDERING */
+.md-content{color:var(--text2);font-size:0.95rem;line-height:1.9}
+.md-content h1{font-family:var(--serif);font-size:1.8rem;color:var(--text);margin:32px 0 16px;font-weight:700}
+.md-content h2{font-size:1.35rem;color:var(--text);margin:28px 0 12px;font-weight:700;border-bottom:1px solid var(--border);padding-bottom:8px}
+.md-content h3{font-size:1.1rem;color:var(--gold);margin:20px 0 8px;font-weight:600}
+.md-content h4{font-size:1rem;color:var(--text);margin:16px 0 8px;font-weight:600}
+.md-content p{margin:10px 0}
+.md-content strong{color:var(--text)}
+.md-content em{color:var(--gold);font-style:italic}
+.md-content blockquote{border-left:3px solid var(--gold);padding:12px 20px;margin:16px 0;background:rgba(226,182,79,0.05);border-radius:0 8px 8px 0;color:var(--text)}
+.md-content ul,.md-content ol{padding-left:24px;margin:10px 0}
+.md-content li{margin:6px 0}
+.md-content code{background:var(--card3);padding:2px 6px;border-radius:4px;font-size:0.85rem;color:var(--gold)}
+.md-content pre{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:16px;margin:16px 0;overflow-x:auto}
+.md-content pre code{background:none;padding:0;color:var(--text2)}
+.md-content table{width:100%;border-collapse:collapse;margin:16px 0;font-size:0.9rem}
+.md-content th{background:var(--card2);color:var(--gold);text-align:left;padding:10px 12px;border:1px solid var(--border);font-weight:600}
+.md-content td{padding:10px 12px;border:1px solid var(--border)}
+.md-content tr:nth-child(even){background:rgba(255,255,255,0.02)}
+.md-content hr{border:none;border-top:1px solid var(--border);margin:24px 0}
+.md-content .toc{background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:20px;margin:20px 0}
+.md-content .toc a{color:var(--blue);text-decoration:none}
+.md-content .toc a:hover{color:var(--gold)}
+
+/* BACK TO TOP */
+.back-top{position:fixed;bottom:24px;right:24px;width:44px;height:44px;background:var(--gold);color:#000;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem;cursor:pointer;opacity:0;transition:all .3s;z-index:50}
+.back-top.visible{opacity:1}
+.back-top:hover{transform:translateY(-2px);box-shadow:0 4px 20px rgba(226,182,79,0.3)}
+
+/* FOOTER */
+.footer{border-top:1px solid var(--border);padding:32px 0;text-align:center}
+.footer p{font-size:0.8rem;color:var(--text3)}
+
+@media(max-width:768px){
+  .course-header{padding:16px;gap:12px}
+  .course-num{width:44px;height:44px;font-size:1.2rem}
+  .course-content{padding:20px 16px}
+  .md-content table{font-size:0.75rem}
+  .md-content th,.md-content td{padding:6px 8px}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <svg viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12" stroke="#e2b64f" stroke-width="1.5"/><path d="M6 18c2-6 4-8 8-10s6 2 8 6" stroke="#e2b64f" stroke-width="1.5" fill="none"/><circle cx="14" cy="12" r="2" fill="#e2b64f"/></svg>
+      康波研究院
+    </a>
+    <div class="nav-links">
+      <a href="index.html">首页</a>
+      <a href="index.html#theory">理论体系</a>
+      <a href="courses.html">课程</a>
+      <a href="tools.html">工具</a>
+      <a href="index.html#pricing">定价</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="label">课程体系</div>
+    <h1>从理论到实战，<span class="gold">六节课</span>掌握周期投资</h1>
+    <p class="hero-sub">每一课包含核心知识点 + 历史案例 + 实操练习，学完即可制定自己的投资计划。</p>
+  </div>
+</section>
+
+<div class="courses" id="courses">
+  <!-- Course 1 -->
+  <div class="course-card" onclick="toggleCourse(this)">
+    <div class="course-header">
+      <div class="course-num">1</div>
+      <div class="course-meta">
+        <h3>康波理论 — 为什么经济有"四季"？</h3>
+        <p>康德拉季耶夫长波基础、五轮历史复盘、四阶段模型、周期嵌套关系</p>
+        <div class="course-tags">
+          <span class="course-tag">基础</span>
+          <span class="course-tag">30分钟</span>
+          <span class="course-tag">含练习</span>
+        </div>
+      </div>
+      <div class="course-arrow">›</div>
+    </div>
+    <div class="course-content">
+      <div class="md-content" id="course-1"><p>加载中...</p></div>
+      <a href="lesson1.html" class="course-start">开始学习 →</a>
+    </div>
+  </div>
+
+  <!-- Course 2 -->
+  <div class="course-card" onclick="toggleCourse(this)">
+    <div class="course-header">
+      <div class="course-num">2</div>
+      <div class="course-meta">
+        <h3>周金涛 — "人生就是一场康波"</h3>
+        <p>四周期嵌套模型、三次财富机会、不同年代人群的周期适配、资产配置框架</p>
+        <div class="course-tags">
+          <span class="course-tag">核心</span>
+          <span class="course-tag">40分钟</span>
+          <span class="course-tag">含练习</span>
+        </div>
+      </div>
+      <div class="course-arrow">›</div>
+    </div>
+    <div class="course-content">
+      <div class="md-content" id="course-2"><p>加载中...</p></div>
+      <a href="lesson2.html" class="course-start">开始学习 →</a>
+    </div>
+  </div>
+
+  <!-- Course 3 -->
+  <div class="course-card" onclick="toggleCourse(this)">
+    <div class="course-header">
+      <div class="course-num">3</div>
+      <div class="course-meta">
+        <h3>第六轮康波 — AI驱动的新纪元</h3>
+        <p>三驾马车(AI/能源/生物)、渗透路径、赛道图谱(Tier 1/2/3)、中国独特位置</p>
+        <div class="course-tags">
+          <span class="course-tag">深度</span>
+          <span class="course-tag">45分钟</span>
+          <span class="course-tag">含练习</span>
+        </div>
+      </div>
+      <div class="course-arrow">›</div>
+    </div>
+    <div class="course-content">
+      <div class="md-content" id="course-3"><p>加载中...</p></div>
+      <a href="lesson3.html" class="course-start">开始学习 →</a>
+    </div>
+  </div>
+
+  <!-- Course 4 -->
+  <div class="course-card" onclick="toggleCourse(this)">
+    <div class="course-header">
+      <div class="course-num">4</div>
+      <div class="course-meta">
+        <h3>顶级家族 — "老钱密码"</h3>
+        <p>洛克菲勒王朝信托、李嘉诚精准逃顶、华为去家族化、家族策略共性规律</p>
+        <div class="course-tags">
+          <span class="course-tag">案例</span>
+          <span class="course-tag">35分钟</span>
+          <span class="course-tag">含练习</span>
+        </div>
+      </div>
+      <div class="course-arrow">›</div>
+    </div>
+    <div class="course-content">
+      <div class="md-content" id="course-4"><p>加载中...</p></div>
+      <a href="lesson4.html" class="course-start">开始学习 →</a>
+    </div>
+  </div>
+
+  <!-- Course 5 -->
+  <div class="course-card" onclick="toggleCourse(this)">
+    <div class="course-header">
+      <div class="course-num">5</div>
+      <div class="course-meta">
+        <h3>货币战争与全球博弈</h3>
+        <p>宋鸿兵核心框架、美元霸权周期、时寒冰七大预测验证、人口周期底层力量</p>
+        <div class="course-tags">
+          <span class="course-tag">进阶</span>
+          <span class="course-tag">40分钟</span>
+          <span class="course-tag">含练习</span>
+        </div>
+      </div>
+      <div class="course-arrow">›</div>
+    </div>
+    <div class="course-content">
+      <div class="md-content" id="course-5"><p>加载中...</p></div>
+      <a href="lesson5.html" class="course-start">开始学习 →</a>
+    </div>
+  </div>
+
+  <!-- Course 6 -->
+  <div class="course-card" onclick="toggleCourse(this)">
+    <div class="course-header">
+      <div class="course-num">6</div>
+      <div class="course-meta">
+        <h3>投资操作手册 2026-2040</h3>
+        <p>当前周期精确定位、按年龄层资产配置、六大可操作策略、康波周期日历、风险清单</p>
+        <div class="course-tags">
+          <span class="course-tag">实战</span>
+          <span class="course-tag">50分钟</span>
+          <span class="course-tag">含练习</span>
+        </div>
+      </div>
+      <div class="course-arrow">›</div>
+    </div>
+    <div class="course-content">
+      <div class="md-content" id="course-6"><p>加载中...</p></div>
+      <a href="lesson6.html" class="course-start">开始学习 →</a>
+    </div>
+  </div>
+</div>
+
+<div class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+
+<footer class="footer">
+  <p>康波研究院 © 2026 · MoKangMedical · 本平台内容仅供参考，不构成投资建议</p>
+</footer>
+
+<script>
+// Simple Markdown parser
+function parseMd(md) {
+  let html = md
+    // Remove first H1 (title)
+    .replace(/^# .+\n/, '')
+    // Headers
+    .replace(/^### (.+)$/gm, '<h3>$1</h3>')
+    .replace(/^## (.+)$/gm, '<h2>$1</h2>')
+    .replace(/^#### (.+)$/gm, '<h4>$1</h4>')
+    // Blockquotes
+    .replace(/^> (.+)$/gm, '<blockquote>$1</blockquote>')
+    // Bold & Italic
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.+?)\*/g, '<em>$1</em>')
+    // Inline code
+    .replace(/`([^`]+)`/g, '<code>$1</code>')
+    // HR
+    .replace(/^---$/gm, '<hr>')
+    // Tables
+    .replace(/^\|(.+)\|$/gm, function(match, content) {
+      const cells = content.split('|').map(c => c.trim());
+      if (cells.every(c => /^[-:]+$/.test(c))) return '<!--table-sep-->';
+      const tag = match.includes('---') ? 'th' : 'td';
+      const isHeader = !match.includes('---');
+      return '<tr>' + cells.map(c => `<td>${c}</td>`).join('') + '</tr>';
+    })
+    // Unordered lists
+    .replace(/^- (.+)$/gm, '<li>$1</li>')
+    // Ordered lists
+    .replace(/^\d+\. (.+)$/gm, '<li>$1</li>')
+    // Code blocks
+    .replace(/```[\s\S]*?```/g, function(match) {
+      const code = match.replace(/```\w*\n?/, '').replace(/```$/, '');
+      return '<pre><code>' + code.trim() + '</code></pre>';
+    })
+    // Paragraphs
+    .replace(/\n\n/g, '</p><p>')
+    // Clean up
+    .replace(/<!--table-sep-->/g, '')
+    .replace(/<tr>/g, function(m, offset, str) {
+      // Check if this is the first row after a non-tr line (header)
+      return '<tr>';
+    });
+
+  // Wrap in paragraph
+  html = '<p>' + html + '</p>';
+
+  // Clean up empty paragraphs and nested tags
+  html = html
+    .replace(/<p><\/p>/g, '')
+    .replace(/<p>(<h[234]>)/g, '$1')
+    .replace(/(<\/h[234]>)<\/p>/g, '$1')
+    .replace(/<p>(<blockquote>)/g, '$1')
+    .replace(/(<\/blockquote>)<\/p>/g, '$1')
+    .replace(/<p>(<pre>)/g, '$1')
+    .replace(/(<\/pre>)<\/p>/g, '$1')
+    .replace(/<p>(<hr>)<\/p>/g, '$1')
+    .replace(/<p><li>/g, '<ul><li>')
+    .replace(/<\/li><\/p>/g, '</li></ul>')
+    .replace(/<\/ul><ul>/g, '');
+
+  return html;
+}
+
+// Load course content
+const courseFiles = [
+  'courses/01-康波理论基础.md',
+  'courses/02-周金涛四周期嵌套.md',
+  'courses/03-第六轮康波深度分析.md',
+  'courses/04-顶级家族跨周期策略.md',
+  'courses/05-货币战争与全球博弈.md',
+  'courses/06-投资操作手册.md'
+];
+
+courseFiles.forEach((file, i) => {
+  fetch(file)
+    .then(r => r.text())
+    .then(md => {
+      document.getElementById('course-' + (i+1)).innerHTML = parseMd(md);
+    })
+    .catch(() => {
+      document.getElementById('course-' + (i+1)).innerHTML = '<p>内容加载失败，请刷新页面重试。</p>';
+    });
+});
+
+// Toggle course
+function toggleCourse(card) {
+  const wasOpen = card.classList.contains('open');
+  // Close all
+  document.querySelectorAll('.course-card').forEach(c => c.classList.remove('open'));
+  // Toggle current
+  if (!wasOpen) {
+    card.classList.add('open');
+    setTimeout(() => card.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+  }
+}
+
+// Back to top
+window.addEventListener('scroll', () => {
+  document.getElementById('backTop').classList.toggle('visible', window.scrollY > 400);
+});
+
+// Open course from URL hash
+if (location.hash) {
+  const num = parseInt(location.hash.replace('#course-', ''));
+  if (num >= 1 && num <= 6) {
+    setTimeout(() => {
+      const cards = document.querySelectorAll('.course-card');
+      if (cards[num-1]) {
+        cards[num-1].classList.add('open');
+        cards[num-1].scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 500);
+  }
+}
+</script>
+</body>
+</html>

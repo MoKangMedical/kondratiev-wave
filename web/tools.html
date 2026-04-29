@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>康波工具 — 康波研究院</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#09090b;--bg2:#0f0f13;--card:#1c1c21;--card2:#222228;--card3:#2a2a32;--border:#27272a;--border2:#3f3f46;--text:#fafafa;--text2:#a1a1aa;--text3:#71717a;--gold:#e2b64f;--gold2:#f5d98a;--green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;--orange:#f59e0b;--red:#ef4444;--serif:'Noto Serif SC',serif;--sans:'Inter',sans-serif;--radius:16px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.7}
+a{color:var(--gold);text-decoration:none}
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(9,9,11,0.9);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);height:64px;display:flex;align-items:center}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:var(--serif);font-size:1.1rem;font-weight:700;color:var(--gold)}
+.nav-back{font-size:0.85rem;color:var(--text3)}
+.container{max-width:900px;margin:0 auto;padding:80px 24px 60px}
+h1{font-family:var(--serif);font-size:2rem;font-weight:900;margin-bottom:8px}
+.subtitle{color:var(--text2);margin-bottom:40px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:32px;margin-bottom:24px}
+.card h2{font-size:1.25rem;color:var(--gold);margin-bottom:16px}
+select{background:var(--card2);color:var(--text);border:1px solid var(--border);padding:12px 16px;border-radius:10px;font-size:0.95rem;width:100%;margin-bottom:12px;appearance:none;font-family:var(--sans)}
+input[type=range]{width:100%;accent-color:var(--gold);height:6px;margin:8px 0}
+.age-label{display:flex;justify-content:space-between;font-size:0.9rem;margin-bottom:4px}
+.age-val{color:var(--gold);font-weight:700;font-size:1.3rem}
+.timeline-vis{position:relative;height:44px;background:var(--card2);border-radius:10px;margin:16px 0;overflow:hidden}
+.timeline-vis .marker{position:absolute;top:0;height:100%;display:flex;align-items:center;justify-content:center;font-size:0.65rem;font-weight:600;color:#fff}
+.timeline-vis .you{position:absolute;top:-2px;width:3px;height:calc(100% + 4px);background:var(--gold);z-index:2}
+.timeline-vis .you::after{content:'你';position:absolute;top:-18px;left:50%;transform:translateX(-50%);color:var(--gold);font-size:0.7rem;font-weight:700}
+.opp-item{display:flex;align-items:flex-start;gap:12px;padding:12px;background:var(--card2);border-radius:10px;margin-bottom:8px}
+.opp-year{font-weight:700;color:var(--green);min-width:70px;font-size:0.9rem}
+.opp-desc{font-size:0.85rem;color:var(--text2)}
+.strategy-box{padding:16px;border-radius:10px;margin-top:16px}
+.strategy-box .label{font-size:0.8rem;color:var(--text3)}
+.strategy-box .name{font-size:1.15rem;font-weight:700;margin:4px 0}
+.strategy-box .detail{font-size:0.85rem;color:var(--text2)}
+.asset-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;margin-top:12px}
+.asset-item{padding:12px;border-radius:10px;border:1px solid var(--border);font-size:0.9rem}
+.asset-best{background:rgba(34,197,94,0.08);border-color:rgba(34,197,94,0.3)}
+.asset-good{background:rgba(245,158,11,0.08);border-color:rgba(245,158,11,0.3)}
+.asset-avoid{background:rgba(239,68,68,0.08);border-color:rgba(239,68,68,0.3)}
+.asset-label{font-size:0.75rem;font-weight:600;margin-bottom:6px}
+.lg{color:var(--green)}.ly{color:var(--orange)}.lr{color:var(--red)}
+.radar-wrap{display:flex;justify-content:center;margin:20px 0}
+.score-big{text-align:center;font-size:2.5rem;font-weight:900;margin:10px 0}
+.score-text{text-align:center;color:var(--text2);font-size:0.9rem;margin-bottom:16px}
+.dim-grid{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px;text-align:center;margin-bottom:16px}
+.dim-box{background:var(--card2);padding:12px;border-radius:10px}
+.dim-box .dim-name{font-size:0.75rem;color:var(--text3)}
+.dim-box .dim-score{font-size:1.4rem;font-weight:700;margin:4px 0}
+.dim-box .dim-label{font-size:0.65rem;color:var(--text3)}
+.analysis{background:var(--card2);padding:16px;border-radius:10px;font-size:0.9rem;color:var(--text2);line-height:1.7;border-left:3px solid var(--gold)}
+.quote-sm{text-align:center;padding:40px 0;font-family:var(--serif);font-size:1.1rem;color:var(--text3);font-style:italic}
+/* Ranking table */
+.rank-table{width:100%;border-collapse:collapse;margin-top:12px}
+.rank-table th{text-align:left;padding:10px 8px;font-size:0.75rem;color:var(--text3);border-bottom:1px solid var(--border);text-transform:uppercase;letter-spacing:0.5px}
+.rank-table td{padding:10px 8px;font-size:0.85rem;border-bottom:1px solid rgba(255,255,255,0.04)}
+.rank-table tr:hover td{background:rgba(226,182,79,0.03)}
+.rank-num{font-weight:700;color:var(--gold);font-size:1.1rem}
+.rank-bar{height:6px;border-radius:3px;background:var(--border);position:relative;overflow:hidden;margin-top:4px}
+.rank-bar-fill{height:100%;border-radius:3px;transition:width .6s ease}
+/* Devaluation section */
+.deval-card{background:linear-gradient(135deg,rgba(226,182,79,0.05),rgba(239,68,68,0.05));border:1px solid rgba(226,182,79,0.2)}
+.deval-card h2{color:var(--gold)}
+.deval-highlight{background:var(--card2);padding:16px;border-radius:10px;margin:12px 0;border-left:3px solid var(--gold)}
+.deval-highlight .title{font-weight:700;color:var(--gold);margin-bottom:8px}
+.deval-highlight .content{font-size:0.9rem;color:var(--text2)}
+.deval-quote{font-family:var(--serif);font-style:italic;color:var(--text3);text-align:center;padding:20px;font-size:1rem}
+</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner"><a href="index.html" class="nav-logo">← 康波研究院</a><span class="nav-back">互动工具</span></div></nav>
+<div class="container">
+<h1>康波投资工具箱</h1>
+<p class="subtitle">输入你的信息，获得个性化的周期定位和投资建议</p>
+
+<!-- 工具1: 康波计算器 -->
+<div class="card" id="calculator">
+  <h2>康波计算器 — 你的人生时间表</h2>
+  <div class="age-label"><span>你的年龄</span><span class="age-val" id="ageVal">35</span></div>
+  <input type="range" min="20" max="60" value="35" id="ageSlider" oninput="updateAge()">
+  <div class="timeline-vis" id="ageTimeline"></div>
+  <div id="ageResult"></div>
+</div>
+
+<div class="quote-sm">"人生发财靠康波" — 周金涛</div>
+
+<!-- 工具2: 资产轮动 -->
+<div class="card" id="assets">
+  <h2>资产轮动查询器</h2>
+  <select id="phaseSelect" onchange="updateAssets()">
+    <option value="depression_late">萧条末期（当前 · 2026）</option>
+    <option value="recovery">回升期（2026-2038）</option>
+    <option value="prosperity">繁荣期（2038-2055）</option>
+    <option value="recession">衰退期</option>
+    <option value="depression_early">萧条早期</option>
+  </select>
+  <div id="assetResult"></div>
+</div>
+
+<!-- 工具3: 四维评分 -->
+<div class="card" id="radar">
+  <h2>四维共振投资评分</h2>
+  <p style="color:var(--text3);font-size:0.85rem;margin-bottom:16px">周金涛 × 时寒冰 × 宋鸿兵 × 巴拉塔 — 当四个维度同时给出正面信号时，投资确定性最高</p>
+  <select id="investSelect" onchange="updateScore()">
+    <option value="黄金">黄金</option><option value="白银">白银</option>
+    <option value="AI算力">AI算力</option><option value="核电">核电</option>
+    <option value="小金属">小金属</option><option value="美股">美股</option>
+    <option value="美债">美债</option><option value="中药材">中药材</option>
+    <option value="加密货币">加密货币</option><option value="房地产">房地产</option>
+    <option value="A股">A股</option><option value="大宗商品">大宗商品</option>
+    <option value="现金">现金</option><option value="人民币资产">人民币资产</option>
+    <option value="东南亚市场">东南亚市场</option>
+  </select>
+  <div class="radar-wrap"><canvas id="radarCanvas" width="300" height="300"></canvas></div>
+  <div id="scoreDisplay"></div>
+</div>
+
+<!-- 工具4: 排名榜 -->
+<div class="card" id="ranking">
+  <h2>四维共振排名榜</h2>
+  <p style="color:var(--text3);font-size:0.85rem;margin-bottom:16px">所有资产按四维平均分排名，分数越高确定性越强</p>
+  <div id="rankBoard"></div>
+</div>
+
+<!-- 大贬值专题 -->
+<div class="card deval-card" id="devaluation">
+  <h2>📉 大贬值专题 — 巴拉塔第四维度</h2>
+  <p style="color:var(--text2);font-size:0.9rem;margin-bottom:20px">亚当·巴拉塔《大贬值》核心观点：法币体系结构性崩溃不可避免，硬资产是终极避险工具</p>
+  
+  <div class="deval-highlight">
+    <div class="title">💰 货币超发不可逆</div>
+    <div class="content">美国国债：1913年29亿 → 1971年3980亿 → 2020年24万亿 → 2026年36万亿+。每一次危机都需要更多货币来解决，形成正反馈死亡螺旋。</div>
+  </div>
+  
+  <div class="deval-highlight">
+    <div class="title">🏛️ 价格信号全面失真</div>
+    <div class="content">央行行为彻底摧毁了自由市场定价机制：债券价格不再反映信用风险，股票估值完全依赖央行流动性。金融体系中几乎没有准确信号了。</div>
+  </div>
+  
+  <div class="deval-highlight">
+    <div class="title">🔄 全球货币重置不可避免</div>
+    <div class="content">历史规律：1933年罗斯福没收黄金，1944年布雷顿森林体系，1971年尼克松关闭黄金窗口。美元霸权将引发系统性贬值、通胀飙升和社会动荡。</div>
+  </div>
+  
+  <div class="deval-quote">"The system is not broken, it was designed this way. And the endgame has always been devaluation."<br>— Adam Baratta</div>
+  
+  <div style="margin-top:20px">
+    <h3 style="color:var(--gold);margin-bottom:12px">四维共振中的巴拉塔维度</h3>
+    <div style="font-size:0.9rem;color:var(--text2);line-height:1.8">
+      <p>巴拉塔维度评分依据：</p>
+      <ul style="list-style:none;margin-top:8px">
+        <li style="padding:4px 0">• 债务/GDP比率趋势（越高分越低——货币体系越脆弱）</li>
+        <li style="padding:4px 0">• 央行资产负债表扩张速度（扩张越快，贬值越确定）</li>
+        <li style="padding:4px 0">• 黄金/美元比值趋势（硬资产相对法币的升值幅度）</li>
+        <li style="padding:4px 0">• 全球去美元化进展（美元霸权松动程度）</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<script>
+const scores={
+  '黄金':{z:5,s:5,t:5,b:5,msg:'四维满分共振！康波萧条期最佳资产+去美元化趋势+货币重置核心锚+法币贬值终极对冲。黄金是唯一四个维度都满分的标的——它不是投资品，它是货币本身。'},
+  '白银':{z:4,s:5,t:4,b:4,msg:'新能源工业属性加持，金银比修复空间大。大贬值背景下，白银是"穷人的黄金"，弹性甚至更大。'},
+  'AI算力':{z:5,s:5,t:3,b:2,msg:'第六轮康波核心基建，算力是AI的电力。但算力是法币计价的服务，在大贬值维度评分偏低——需要持续投入法币购买。'},
+  '核电':{z:4,s:5,t:3,b:2,msg:'AI用电量暴增+碳中和双驱动。核电是实体基建，有一定硬资产属性，但主要受电力政策驱动。'},
+  '小金属':{z:4,s:5,t:5,b:4,msg:'镓锗锑稀土是AI+新能源的"维生素"，供给高度集中。实物小金属在大贬值背景下具备硬资产属性。四维共振仅次于黄金。'},
+  '美股':{z:4,s:4,t:2,b:1,msg:'AI革命主战场，但法币计价的金融资产在大贬值维度只评1分——看似上涨，实际购买力在下降。'},
+  '美债':{z:3,s:3,t:2,b:1,msg:'利率下行周期有短期机会。但美元长期信用风险+债务不可持续，大贬值维度只评1分——法币债务的终极受害者。'},
+  '中药材':{z:3,s:4,t:3,b:3,msg:'老龄化+中国特色消费+稀缺性。中药材具有实物属性，大贬值背景下有一定保值功能。'},
+  '加密货币':{z:3,s:3,t:4,b:3,msg:'去中心化货币实验，是货币重置的技术路径之一。但波动性太大，大贬值维度给3分——方向对，确定性不足。'},
+  '房地产':{z:2,s:2,t:2,b:3,msg:'康波下行+调整期+泡沫风险。但房产是实物资产，大贬值背景下有一定保值功能——核心地段>非核心。'},
+  'A股':{z:3,s:3,t:3,b:2,msg:'国产替代+AI概念有机会，但法币计价的金融资产在大贬值中承压。结构性机会大于整体。'},
+  '大宗商品':{z:4,s:4,t:4,b:5,msg:'资源超级牛市逻辑成立。在大贬值维度满分——实物商品是法币贬值的直接对冲工具。四维共振仅次于黄金。'},
+  '现金':{z:2,s:2,t:3,b:1,msg:'萧条末期持有过多现金将错失底部机会。大贬值维度只评1分——现金是大贬值的最大输家。'},
+  '人民币资产':{z:3,s:3,t:3,b:3,msg:'人民币国际化趋势确定，大贬值背景下人民币相对美元可能反而走强——全球货币重置的受益者。'},
+  '东南亚市场':{z:4,s:4,t:3,b:3,msg:'产业转移+人口红利+去中国化受益者。东南亚国家持有大量美元外储，大贬值中面临挑战但也蕴含机会。'}
+};
+const assets={
+  depression_late:{best:['核心资产（底部买入）','黄金','白银'],good:['股票（逢低布局）','大宗商品','AI算力'],avoid:['过度持有现金','高杠杆资产','长期债券']},
+  recovery:{best:['股票（成长股）','AI算力','大宗商品'],good:['核心城市房产','小金属','核电'],avoid:['现金（通胀侵蚀）','长期债券']},
+  prosperity:{best:['房地产','实物资产'],good:['股票','消费类'],avoid:['债券','现金']},
+  recession:{best:['黄金','大宗商品'],good:['现金'],avoid:['股票','房地产']},
+  depression_early:{best:['现金','国债'],good:['黄金'],avoid:['股票','房地产','大宗商品']}
+};
+
+function updateAge(){
+  const age=parseInt(document.getElementById('ageSlider').value);
+  document.getElementById('ageVal').textContent=age;
+  const tl=document.getElementById('ageTimeline');
+  const phases=[{label:'五轮萧条',start:2019,end:2030,color:'#1e3a5f'},{label:'六轮回升',start:2025,end:2038,color:'#065f46'},{label:'六轮繁荣',start:2038,end:2055,color:'#92400e'}];
+  const tS=2019,tE=2060;
+  tl.innerHTML=phases.map(p=>`<div class="marker" style="left:${(p.start-tS)/(tE-tS)*100}%;width:${(p.end-p.start)/(tE-tS)*100}%;background:${p.color}">${p.label}</div>`).join('')+`<div class="you" style="left:${(2026-tS)/(tE-tS)*100}%"></div>`;
+  const opps=[];
+  opps.push({year:'2026-28',desc:'播种期定投——AI算力+黄金+小金属，低成本建仓',status:age>=25?'现在就做':'还早'});
+  if(age<=45)opps.push({year:'2029-30',desc:'第三次财富机会（周金涛预测）——核心资产建仓',status:'最关键'});
+  if(age<=50)opps.push({year:'2032-38',desc:'AI应用全面渗透——机器人+产业AI',status:'高回报期'});
+  if(age<=55)opps.push({year:'2038-45',desc:'第六轮繁荣启动——减持成长股，加仓实物',status:'收获期'});
+  const s=age<=30?'进攻型：60%权益+20%实物+15%现金+5%探索':age<=40?'平衡型：50%权益+25%实物+20%固收+5%现金':age<=50?'稳健型：35%权益+30%固收+20%实物+15%现金':'防守型：40%固收+30%权益+20%实物+10%现金';
+  const[sname,sdetail]=s.split('：');
+  const sc=age<=35?'var(--green)':age<=45?'var(--orange)':'var(--blue)';
+  document.getElementById('ageResult').innerHTML=`
+    <div class="strategy-box" style="background:${sc}15;border:1px solid ${sc}40">
+      <div class="label">你的投资策略</div>
+      <div class="name" style="color:${sc}">${sname}</div>
+      <div class="detail">${sdetail}</div>
+    </div>
+    <div style="margin-top:20px;font-weight:600;margin-bottom:10px">你的财富机会窗口</div>
+    ${opps.map(o=>`<div class="opp-item"><div class="opp-year">${o.year}</div><div class="opp-desc">${o.desc} <span style="color:var(--gold)">[${o.status}]</span></div></div>`).join('')}
+  `;
+}
+
+function updateAssets(){
+  const d=assets[document.getElementById('phaseSelect').value];
+  const el=document.getElementById('assetResult');
+  const labels=[['最佳资产','lg','asset-best'],['可配置','ly','asset-good'],['应避免','lr','asset-avoid']];
+  const keys=['best','good','avoid'];
+  el.innerHTML=keys.map((k,i)=>`<div style="margin-top:16px"><div class="asset-label ${labels[i][1]}">${labels[i][0]}</div><div class="asset-grid">${d[k].map(a=>`<div class="asset-item ${labels[i][2]}">${a}</div>`).join('')}</div></div>`).join('');
+}
+
+function drawRadar(z,s,t,b){
+  const c=document.getElementById('radarCanvas'),ctx=c.getContext('2d'),cx=150,cy=150,r=110;
+  ctx.clearRect(0,0,300,300);
+  const angles=[-Math.PI/2,0,Math.PI/2,Math.PI],vals=[z/5,s/5,b/5,t/5];
+  for(let lv=1;lv<=5;lv++){ctx.beginPath();const lr=r*lv/5;angles.forEach((a,i)=>{const x=cx+lr*Math.cos(a),y=cy+lr*Math.sin(a);i?ctx.lineTo(x,y):ctx.moveTo(x,y)});ctx.closePath();ctx.strokeStyle='rgba(255,255,255,0.06)';ctx.stroke()}
+  angles.forEach(a=>{ctx.beginPath();ctx.moveTo(cx,cy);ctx.lineTo(cx+r*Math.cos(a),cy+r*Math.sin(a));ctx.strokeStyle='rgba(255,255,255,0.1)';ctx.stroke()});
+  ctx.beginPath();const pts=angles.map((a,i)=>({x:cx+r*vals[i]*Math.cos(a),y:cy+r*vals[i]*Math.sin(a)}));pts.forEach((p,i)=>{i?ctx.lineTo(p.x,p.y):ctx.moveTo(p.x,p.y)});ctx.closePath();ctx.fillStyle='rgba(226,182,79,0.2)';ctx.fill();ctx.strokeStyle='#e2b64f';ctx.lineWidth=2;ctx.stroke();
+  pts.forEach(p=>{ctx.beginPath();ctx.arc(p.x,p.y,4,0,Math.PI*2);ctx.fillStyle='#e2b64f';ctx.fill()});
+  const labels=['周金涛\n(周期定位)','时寒冰\n(趋势方向)','巴拉塔\n(货币重置)','宋鸿兵\n(货币环境)'];
+  angles.forEach((a,i)=>{const lx=cx+(r+25)*Math.cos(a),ly=cy+(r+25)*Math.sin(a);ctx.fillStyle='#a1a1aa';ctx.font='10px sans-serif';ctx.textAlign='center';const lines=labels[i].split('\n');lines.forEach((line,j)=>{ctx.fillText(line,lx,ly+j*12})});
+}
+
+function updateScore(){
+  const name=document.getElementById('investSelect').value,d=scores[name];
+  const avg=((d.z+d.s+d.t+d.b)/4).toFixed(1);
+  drawRadar(d.z,d.s,d.t,d.b);
+  const color=avg>=4.5?'var(--green)':avg>=3.5?'var(--gold)':avg>=2.5?'var(--orange)':'var(--red)';
+  document.getElementById('scoreDisplay').innerHTML=`
+    <div class="score-big" style="color:${color}">${avg}<span style="font-size:0.35em;color:var(--text3)">/5.0</span></div>
+    <div class="score-text">四维共振综合评分</div>
+    <div class="dim-grid">
+      <div class="dim-box"><div class="dim-name">周金涛</div><div class="dim-score" style="color:var(--green)">${d.z}</div><div class="dim-label">周期定位</div></div>
+      <div class="dim-box"><div class="dim-name">时寒冰</div><div class="dim-score" style="color:var(--orange)">${d.s}</div><div class="dim-label">趋势方向</div></div>
+      <div class="dim-box"><div class="dim-name">巴拉塔</div><div class="dim-score" style="color:var(--red)">${d.b}</div><div class="dim-label">货币重置</div></div>
+      <div class="dim-box"><div class="dim-name">宋鸿兵</div><div class="dim-score" style="color:var(--blue)">${d.t}</div><div class="dim-label">货币环境</div></div>
+    </div>
+    <div class="analysis"><b>四维分析：</b>${d.msg}</div>
+  `;
+}
+
+function initRankBoard(){
+  const ranked=Object.entries(scores).map(([name,d])=>({name,z:d.z,s:d.s,t:d.t,b:d.b,avg:((d.z+d.s+d.t+d.b)/4)}));
+  ranked.sort((a,b)=>b.avg-a.avg);
+  const maxAvg=ranked[0].avg;
+  const el=document.getElementById('rankBoard');
+  el.innerHTML=`
+    <table class="rank-table">
+      <thead><tr><th>#</th><th>资产</th><th>四维评分</th><th>确定性</th></tr></thead>
+      <tbody>${ranked.map((r,i)=>{
+        const pct=(r.avg/maxAvg*100).toFixed(0);
+        const color=r.avg>=4.5?'var(--green)':r.avg>=3.5?'var(--gold)':r.avg>=2.5?'var(--orange)':'var(--red)';
+        return `<tr>
+          <td><span class="rank-num">${i+1}</span></td>
+          <td><strong>${r.name}</strong><br><span style="font-size:0.75rem;color:var(--text3)">周${r.z} 时${r.s} 巴${r.b} 宋${r.t}</span></td>
+          <td>${r.avg.toFixed(1)}</td>
+          <td><div class="rank-bar"><div class="rank-bar-fill" style="width:${pct}%;background:${color}"></div></div></td>
+        </tr>`;
+      }).join('')}</tbody>
+    </table>
+  `;
+}
+
+document.addEventListener('DOMContentLoaded',()=>{updateAge();updateAssets();updateScore();initRankBoard()});
+</script>
+</body>
+</html>

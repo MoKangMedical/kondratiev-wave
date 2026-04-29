@@ -3,201 +3,490 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>康波周期投资预测平台 — 三维共振</title>
+<title>康波研究院 — 掌握50年财富周期</title>
+<meta name="description" content="基于康德拉季耶夫长波理论，帮你定位当前周期位置，规划2026-2040投资策略。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
+/* ═══════════════ RESET & VARIABLES ═══════════════ */
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--bg:#0a0e17;--card:#141b2d;--card2:#1a2332;--green:#00d4aa;--orange:#ff6b35;--gold:#ffd700;--red:#ff4757;--blue:#3b82f6;--purple:#a855f7;--text:#e2e8f0;--text2:#94a3b8;--border:#1e293b}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
-.header{text-align:center;padding:30px 20px 10px;background:linear-gradient(135deg,#0a0e17,#1a1a2e)}
-.header h1{font-size:1.8em;background:linear-gradient(90deg,var(--green),var(--blue),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:2px}
-.header .subtitle{color:var(--text2);font-size:0.9em;margin-top:6px}
-.header .quote{color:var(--gold);font-size:0.85em;margin-top:12px;font-style:italic;opacity:0.9}
-.tabs{display:flex;justify-content:center;gap:4px;padding:16px 10px;flex-wrap:wrap}
-.tab{padding:8px 16px;border:1px solid var(--border);border-radius:20px;background:transparent;color:var(--text2);cursor:pointer;font-size:0.82em;transition:all .3s}
-.tab.active{background:var(--green);color:#000;border-color:var(--green);font-weight:600}
-.tab:hover:not(.active){border-color:var(--green);color:var(--green)}
-.content{max-width:1000px;margin:0 auto;padding:0 16px 60px}
-.panel{display:none;animation:fadeIn .4s}
-.panel.active{display:block}
-@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-.card{background:var(--card);border-radius:12px;padding:20px;margin-bottom:16px;border:1px solid var(--border)}
-.card h3{color:var(--green);margin-bottom:12px;font-size:1.1em}
-.card h4{color:var(--orange);margin:10px 0 6px;font-size:0.95em}
-.section-title{color:var(--text);font-size:1em;margin:16px 0 10px;display:flex;align-items:center;gap:8px}
-.section-title span{font-size:1.2em}
-/* Timeline */
-.timeline{display:flex;border-radius:8px;overflow:hidden;height:60px;margin:16px 0;position:relative}
-.timeline .phase{display:flex;align-items:center;justify-content:center;font-size:0.7em;font-weight:600;flex-direction:column;text-align:center;transition:all .3s}
-.timeline .spring{background:#065f46;color:#6ee7b7}
-.timeline .summer{background:#92400e;color:#fbbf24}
-.timeline .autumn{background:#991b1b;color:#fca5a5}
-.timeline .winter{background:#1e3a5f;color:#93c5fd}
-.timeline .current{box-shadow:inset 0 0 0 3px var(--gold);animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{box-shadow:inset 0 0 0 3px var(--gold)}50%{box-shadow:inset 0 0 0 3px transparent}}
-.wave-card{margin-bottom:20px}
-.wave-header{display:flex;justify-content:space-between;align-items:center;cursor:pointer}
-.wave-header h3{margin-bottom:0}
-.wave-badge{font-size:0.7em;padding:3px 10px;border-radius:12px;font-weight:600}
-.badge-winter{background:#1e3a5f;color:#93c5fd}
-.badge-spring{background:#065f46;color:#6ee7b7}
-.wave-body{max-height:0;overflow:hidden;transition:max-height .4s}
-.wave-body.open{max-height:600px}
-.wave-detail{padding-top:12px}
-/* Asset cards */
-.asset-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin-top:12px}
-.asset-item{padding:12px;border-radius:8px;border:1px solid var(--border)}
-.asset-best{background:#065f4620;border-color:#065f46}
-.asset-good{background:#92400e20;border-color:#92400e}
-.asset-avoid{background:#991b1b20;border-color:#991b1b}
-.asset-item .label{font-size:0.7em;font-weight:600;margin-bottom:4px}
-.label-green{color:var(--green)}
-.label-yellow{color:var(--gold)}
-.label-red{color:var(--red)}
-/* Radar */
-.radar-wrap{display:flex;justify-content:center;margin:20px 0}
-.radar-wrap canvas{max-width:100%}
-.score-big{text-align:center;font-size:2.5em;font-weight:800;margin:10px 0}
-.score-text{text-align:center;color:var(--text2);font-size:0.9em;margin-bottom:16px}
-select{background:var(--card2);color:var(--text);border:1px solid var(--border);padding:10px 14px;border-radius:8px;font-size:0.95em;width:100%;margin-bottom:12px;appearance:none}
-/* Family cards */
-.family-card{background:var(--card);border:1px solid var(--border);border-radius:12px;margin-bottom:12px;overflow:hidden;cursor:pointer;transition:all .3s}
-.family-card:hover{border-color:var(--green)}
-.family-head{padding:16px 20px;display:flex;justify-content:space-between;align-items:center}
-.family-head h3{font-size:1em;color:var(--green)}
-.family-head .gen{font-size:0.75em;color:var(--gold);background:#ffd70020;padding:2px 10px;border-radius:10px}
-.family-body{max-height:0;overflow:hidden;transition:max-height .4s;padding:0 20px}
-.family-body.open{max-height:500px;padding:0 20px 16px}
-.family-body ul{list-style:none;padding:0}
-.family-body li{padding:4px 0;font-size:0.85em;color:var(--text2)}
-.family-body li::before{content:"→ ";color:var(--green)}
-/* Age slider */
-.age-wrap{margin:16px 0}
-.age-label{display:flex;justify-content:space-between;margin-bottom:6px;font-size:0.85em}
-.age-label .val{color:var(--green);font-weight:700;font-size:1.2em}
-input[type=range]{width:100%;accent-color:var(--green);height:6px}
-.timeline-vis{position:relative;height:40px;background:var(--card2);border-radius:8px;margin:16px 0;overflow:hidden}
-.timeline-vis .marker{position:absolute;top:0;height:100%;display:flex;align-items:center;justify-content:center;font-size:0.65em;font-weight:600;color:#fff}
-.timeline-vis .you{position:absolute;top:-2px;width:3px;height:calc(100% + 4px);background:var(--gold);z-index:2}
-.timeline-vis .you::after{content:"你";position:absolute;top:-16px;left:50%;transform:translateX(-50%);color:var(--gold);font-size:0.7em;font-weight:700}
-.opp-list{margin-top:16px}
-.opp-item{display:flex;align-items:flex-start;gap:10px;padding:10px;background:var(--card2);border-radius:8px;margin-bottom:8px}
-.opp-year{font-weight:700;color:var(--green);min-width:60px;font-size:0.9em}
-.opp-desc{font-size:0.85em;color:var(--text2)}
-.footer{text-align:center;padding:30px;color:var(--text2);font-size:0.75em;border-top:1px solid var(--border)}
-@media(max-width:600px){.header h1{font-size:1.3em}.tabs{gap:3px}.tab{padding:6px 10px;font-size:0.75em}.asset-grid{grid-template-columns:1fr}}
+:root{
+  --bg:#09090b;--bg2:#0f0f13;--bg3:#18181b;
+  --card:#1c1c21;--card2:#222228;--card3:#2a2a32;
+  --border:#27272a;--border2:#3f3f46;
+  --text:#fafafa;--text2:#a1a1aa;--text3:#71717a;
+  --gold:#e2b64f;--gold2:#f5d98a;
+  --green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;
+  --orange:#f59e0b;--red:#ef4444;
+  --serif:'Noto Serif SC',serif;
+  --sans:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+  --radius:16px;--radius-sm:10px;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{max-width:100%}
+
+/* ═══════════════ TYPOGRAPHY ═══════════════ */
+.serif{font-family:var(--serif)}
+h1{font-size:clamp(2.4rem,5vw,4rem);font-weight:900;line-height:1.15;letter-spacing:-0.02em}
+h2{font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;line-height:1.25;letter-spacing:-0.01em}
+h3{font-size:1.25rem;font-weight:600}
+.label{font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.12em;color:var(--gold)}
+.body-lg{font-size:1.125rem;color:var(--text2);line-height:1.8}
+.body-sm{font-size:0.875rem;color:var(--text3)}
+
+/* ═══════════════ LAYOUT ═══════════════ */
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+.container-sm{max-width:800px;margin:0 auto;padding:0 24px}
+.section{padding:100px 0}
+.section-sm{padding:60px 0}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:32px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+@media(max-width:768px){
+  .grid-2,.grid-3,.grid-4{grid-template-columns:1fr}
+  .section{padding:60px 0}
+}
+
+/* ═══════════════ NAV ═══════════════ */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(9,9,11,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:all .3s}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:var(--serif);font-size:1.1rem;font-weight:700;color:var(--gold);display:flex;align-items:center;gap:8px}
+.nav-logo svg{width:28px;height:28px}
+.nav-links{display:flex;gap:32px;align-items:center}
+.nav-links a{font-size:0.875rem;color:var(--text2);transition:color .2s;font-weight:500}
+.nav-links a:hover{color:var(--text)}
+.nav-cta{background:var(--gold);color:#000;padding:8px 20px;border-radius:8px;font-weight:600;font-size:0.85rem;transition:all .2s}
+.nav-cta:hover{background:var(--gold2);transform:translateY(-1px)}
+@media(max-width:768px){
+  .nav-links{display:none}
+  .nav-links.open{display:flex;flex-direction:column;position:absolute;top:64px;left:0;right:0;background:var(--bg2);padding:20px;gap:16px;border-bottom:1px solid var(--border)}
+}
+.hamburger{display:none;cursor:pointer;padding:8px}
+@media(max-width:768px){.hamburger{display:block}}
+
+/* ═══════════════ HERO ═══════════════ */
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding-top:64px}
+.hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse 80% 60% at 50% 20%,rgba(226,182,79,0.08),transparent 70%),radial-gradient(ellipse 60% 40% at 80% 80%,rgba(59,130,246,0.05),transparent 60%)}
+.hero-content{position:relative;z-index:1;text-align:center;max-width:900px;margin:0 auto;padding:0 24px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(226,182,79,0.1);border:1px solid rgba(226,182,79,0.2);padding:6px 16px;border-radius:100px;font-size:0.8rem;color:var(--gold);margin-bottom:32px}
+.hero-badge .dot{width:6px;height:6px;background:var(--gold);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
+.hero h1{margin-bottom:24px}
+.hero h1 .gold{color:var(--gold)}
+.hero-sub{font-size:1.2rem;color:var(--text2);max-width:600px;margin:0 auto 40px;line-height:1.7}
+.hero-actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:var(--radius-sm);font-weight:600;font-size:0.95rem;transition:all .25s;border:none;cursor:pointer}
+.btn-primary{background:var(--gold);color:#000}
+.btn-primary:hover{background:var(--gold2);transform:translateY(-2px);box-shadow:0 8px 30px rgba(226,182,79,0.3)}
+.btn-secondary{background:transparent;color:var(--text);border:1px solid var(--border2)}
+.btn-secondary:hover{border-color:var(--gold);color:var(--gold)}
+.hero-stats{display:flex;justify-content:center;gap:48px;margin-top:64px;padding-top:40px;border-top:1px solid var(--border)}
+.hero-stat{text-align:center}
+.hero-stat .num{font-size:2rem;font-weight:800;color:var(--gold)}
+.hero-stat .desc{font-size:0.8rem;color:var(--text3);margin-top:4px}
+@media(max-width:768px){.hero-stats{gap:24px}.hero-stat .num{font-size:1.5rem}}
+
+/* ═══════════════ CARDS ═══════════════ */
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:32px;transition:all .3s}
+.card:hover{border-color:var(--border2);transform:translateY(-2px)}
+.card-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:20px}
+.card-icon.gold{background:rgba(226,182,79,0.1)}
+.card-icon.green{background:rgba(34,197,94,0.1)}
+.card-icon.blue{background:rgba(59,130,246,0.1)}
+.card-icon.purple{background:rgba(167,139,250,0.1)}
+.card h3{margin-bottom:10px}
+.card p{color:var(--text2);font-size:0.9rem;line-height:1.7}
+
+/* ═══════════════ SECTION HEADERS ═══════════════ */
+.section-header{text-align:center;max-width:700px;margin:0 auto 60px}
+.section-header .label{margin-bottom:12px}
+.section-header h2{margin-bottom:16px}
+.section-header p{color:var(--text2);font-size:1.05rem;line-height:1.7}
+
+/* ═══════════════ WAVE TIMELINE ═══════════════ */
+.wave-timeline{position:relative;padding:40px 0}
+.wave-line{position:absolute;left:50%;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--gold),var(--blue),var(--purple))}
+.wave-item{display:flex;align-items:center;margin-bottom:40px;position:relative}
+.wave-item:nth-child(odd){flex-direction:row-reverse}
+.wave-item .wave-content{width:45%;padding:24px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius)}
+.wave-item .wave-dot{width:16px;height:16px;background:var(--gold);border-radius:50%;position:absolute;left:50%;transform:translateX(-50%);z-index:2;box-shadow:0 0 20px rgba(226,182,79,0.4)}
+.wave-item .wave-content h3{color:var(--gold);font-size:1.1rem;margin-bottom:8px}
+.wave-item .wave-content .period{font-size:0.85rem;color:var(--text3);margin-bottom:12px}
+.wave-item .wave-content .driver{color:var(--text2);font-size:0.9rem}
+.wave-item .wave-content.current{border-color:var(--gold);box-shadow:0 0 40px rgba(226,182,79,0.1)}
+@media(max-width:768px){
+  .wave-line{left:20px}
+  .wave-item,.wave-item:nth-child(odd){flex-direction:row}
+  .wave-item .wave-content{width:calc(100% - 50px);margin-left:40px}
+  .wave-item .wave-dot{left:20px}
+}
+
+/* ═══════════════ PRICING ═══════════════ */
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1000px;margin:0 auto}
+@media(max-width:900px){.pricing-grid{grid-template-columns:1fr}}
+.price-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:36px;position:relative;transition:all .3s}
+.price-card:hover{border-color:var(--border2);transform:translateY(-4px)}
+.price-card.featured{border-color:var(--gold);background:linear-gradient(180deg,rgba(226,182,79,0.05),transparent)}
+.price-card.featured::before{content:'最受欢迎';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--gold);color:#000;padding:4px 16px;border-radius:100px;font-size:0.75rem;font-weight:700}
+.price-name{font-size:0.9rem;color:var(--text3);font-weight:600;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px}
+.price-amount{font-size:2.5rem;font-weight:900;margin-bottom:4px}
+.price-amount .unit{font-size:0.9rem;font-weight:400;color:var(--text3)}
+.price-desc{font-size:0.85rem;color:var(--text3);margin-bottom:24px}
+.price-features{list-style:none;margin-bottom:32px}
+.price-features li{padding:8px 0;font-size:0.9rem;color:var(--text2);display:flex;align-items:flex-start;gap:10px}
+.price-features li::before{content:'✓';color:var(--green);font-weight:700;flex-shrink:0}
+.price-btn{display:block;width:100%;text-align:center;padding:14px;border-radius:var(--radius-sm);font-weight:600;font-size:0.95rem;transition:all .25s;border:none;cursor:pointer}
+.price-btn-primary{background:var(--gold);color:#000}
+.price-btn-primary:hover{background:var(--gold2)}
+.price-btn-secondary{background:transparent;color:var(--text);border:1px solid var(--border2)}
+.price-btn-secondary:hover{border-color:var(--gold);color:var(--gold)}
+
+/* ═══════════════ COURSE ═══════════════ */
+.course-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:all .3s}
+.course-card:hover{border-color:var(--border2)}
+.course-num{width:56px;height:56px;background:linear-gradient(135deg,var(--gold),#b8860b);display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:900;color:#000;flex-shrink:0}
+.course-body{padding:24px}
+.course-body h3{margin-bottom:8px}
+.course-body p{color:var(--text2);font-size:0.9rem;line-height:1.7}
+.course-tags{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.course-tag{font-size:0.75rem;padding:4px 10px;border-radius:6px;background:var(--card3);color:var(--text3)}
+
+/* ═══════════════ QUOTE ═══════════════ */
+.quote-block{text-align:center;padding:80px 0;position:relative}
+.quote-block::before{content:'"';font-size:8rem;color:var(--gold);opacity:0.15;position:absolute;top:20px;left:50%;transform:translateX(-50%);font-family:var(--serif)}
+.quote-text{font-family:var(--serif);font-size:clamp(1.3rem,2.5vw,1.8rem);color:var(--text);max-width:700px;margin:0 auto;line-height:1.8;font-weight:400}
+.quote-author{margin-top:20px;font-size:0.9rem;color:var(--text3)}
+
+/* ═══════════════ CTA ═══════════════ */
+.cta-section{text-align:center;padding:100px 0;position:relative}
+.cta-section::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse 70% 50% at 50% 50%,rgba(226,182,79,0.06),transparent)}
+.cta-content{position:relative;z-index:1}
+.cta-content h2{margin-bottom:16px}
+.cta-content p{color:var(--text2);font-size:1.1rem;margin-bottom:32px;max-width:500px;margin-left:auto;margin-right:auto}
+
+/* ═══════════════ FOOTER ═══════════════ */
+.footer{border-top:1px solid var(--border);padding:48px 0;text-align:center}
+.footer-links{display:flex;justify-content:center;gap:32px;margin-bottom:24px;flex-wrap:wrap}
+.footer-links a{font-size:0.85rem;color:var(--text3);transition:color .2s}
+.footer-links a:hover{color:var(--gold)}
+.footer-copy{font-size:0.8rem;color:var(--text3)}
+.footer-disclaimer{font-size:0.75rem;color:var(--text3);max-width:600px;margin:12px auto 0;line-height:1.6}
+
+/* ═══════════════ ANIMATIONS ═══════════════ */
+.fade-in{opacity:0;transform:translateY(20px);transition:all .6s ease-out}
+.fade-in.visible{opacity:1;transform:translateY(0)}
 </style>
 </head>
 <body>
-<div class="header">
-  <h1>📊 康波周期投资预测平台</h1>
-  <div class="subtitle">三维共振框架 · 周金涛 × 时寒冰 × 宋鸿兵</div>
-  <div class="quote">"人生就是一场康波" — 周金涛</div>
+
+<!-- ═══════════════ NAV ═══════════════ -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <svg viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12" stroke="#e2b64f" stroke-width="1.5"/><path d="M6 18c2-6 4-8 8-10s6 2 8 6" stroke="#e2b64f" stroke-width="1.5" fill="none"/><circle cx="14" cy="12" r="2" fill="#e2b64f"/></svg>
+      康波研究院
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#theory">理论体系</a>
+      <a href="learn.html">学习</a>
+      <a href="#tools">工具</a>
+      <a href="#pricing">定价</a>
+      <a href="learn.html" class="nav-cta">开始学习</a>
+    </div>
+    <div class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">
+      <svg width="24" height="24" fill="none" stroke="#a1a1aa" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge"><span class="dot"></span> 第六轮康波已启动 · 2026年处于回升初期</div>
+    <h1 class="serif">掌握<span class="gold">50年财富周期</span><br>规划你的人生投资节奏</h1>
+    <p class="hero-sub">基于康德拉季耶夫长波理论 + 周金涛涛动周期论 + 时寒冰趋势投资 + 宋鸿兵货币战争，构建完整的周期投资决策框架。</p>
+    <div class="hero-actions">
+      <a href="learn.html" class="btn btn-primary">查看课程 →</a>
+      <a href="#tools" class="btn btn-secondary">免费体验工具</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="num">6轮</div><div class="desc">康波周期覆盖240年</div></div>
+      <div class="hero-stat"><div class="num">5位</div><div class="desc">顶级家族跨周期策略</div></div>
+      <div class="hero-stat"><div class="num">2040</div><div class="desc">投资规划终点年</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ QUOTE ═══════════════ -->
+<div class="quote-block">
+  <div class="container-sm">
+    <p class="quote-text serif">"人生就是一场康波。你的财富机会完全取决于你对康波周期的理解。"</p>
+    <p class="quote-author">— 周金涛，中信建投首席经济学家，2016年</p>
+  </div>
 </div>
-<div class="tabs">
-  <button class="tab active" onclick="showTab(0)">🔮 周期定位</button>
-  <button class="tab" onclick="showTab(1)">💹 资产轮动</button>
-  <button class="tab" onclick="showTab(2)">🎯 三维评分</button>
-  <button class="tab" onclick="showTab(3)">🏛️ 家族策略</button>
-  <button class="tab" onclick="showTab(4)">👤 个人时间表</button>
-</div>
-<div class="content">
-  <!-- Panel 0: 周期定位 -->
-  <div class="panel active" id="p0">
-    <div class="section-title"><span>🔮</span>五轮康波周期总览</div>
-    <div id="waveList"></div>
-    <div class="section-title"><span>📍</span>当前位置</div>
-    <div class="card">
-      <h3>第五轮康波 · 信息技术时代（1990-2030）</h3>
-      <p style="color:var(--text2);font-size:0.85em;margin:8px 0">当前阶段：<span style="color:var(--blue);font-weight:700">❄️ 萧条末期</span>（进度 95%）</p>
-      <div class="timeline">
-        <div class="phase spring" style="flex:10">🌱<br>回升</div>
-        <div class="phase summer" style="flex:8">☀️<br>繁荣</div>
-        <div class="phase autumn" style="flex:11">🍂<br>衰退</div>
-        <div class="phase winter current" style="flex:11">❄️<br>萧条</div>
+
+<!-- ═══════════════ THEORY SECTION ═══════════════ -->
+<section id="theory" class="section" style="background:var(--bg2)">
+  <div class="container">
+    <div class="section-header fade-in">
+      <div class="label">理论体系</div>
+      <h2>四维共振框架，一个完整体系</h2>
+      <p>我们整合了中国和西方最权威的周期理论，构建了从宏观定位到微观操作的完整投资决策体系。当四个维度同时给出正面信号时，投资确定性最高。</p>
+    </div>
+    <div class="grid-2">
+      <div class="card fade-in">
+        <div class="card-icon gold">📊</div>
+        <h3>康德拉季耶夫长波理论</h3>
+        <p>1925年提出的50-60年经济长周期理论。每一波由重大技术创新驱动，经历回升→繁荣→衰退→萧条四季更替。六轮康波覆盖从蒸汽机到AI的240年经济史。</p>
       </div>
-      <p style="font-size:0.82em;color:var(--text2);margin-top:10px">⚡ 标志性信号：AI大模型突破 | 全球利率见顶 | 大宗商品调整 | 中国地产去杠杆基本完成</p>
-    </div>
-    <div class="card">
-      <h3>第六轮康波 · AI+生物科技+新能源（2025-2070）</h3>
-      <p style="color:var(--text2);font-size:0.85em;margin:8px 0">当前阶段：<span style="color:var(--green);font-weight:700">🌱 回升初期</span>（进度 5%）</p>
-      <div class="timeline">
-        <div class="phase spring current" style="flex:13">🌱<br>回升</div>
-        <div class="phase summer" style="flex:17">☀️<br>繁荣</div>
-        <div class="phase autumn" style="flex:10">🍂<br>衰退</div>
-        <div class="phase winter" style="flex:5">❄️<br>萧条</div>
+      <div class="card fade-in">
+        <div class="card-icon green">📈</div>
+        <h3>周金涛四周期嵌套</h3>
+        <p>"周期天王"将康波与房地产周期(25年)、资本支出周期(10年)、库存周期(4年)嵌套叠加。核心论断：一生只有三次资产大底机会，抓住一次跻身中产，抓住两次财务自由。</p>
       </div>
-      <p style="font-size:0.82em;color:var(--text2);margin-top:10px">🚀 三驾马车：人工智能（核心引擎）+ 新能源革命（基础支撑）+ 生物科技（价值增量）</p>
-    </div>
-  </div>
-  <!-- Panel 1: 资产轮动 -->
-  <div class="panel" id="p1">
-    <div class="section-title"><span>💹</span>资产轮动查询器</div>
-    <div class="card">
-      <select id="phaseSelect" onchange="updateAssets()">
-        <option value="depression_late">❄️ 萧条末期（当前 · 2026）</option>
-        <option value="recovery">🌱 回升期（2026-2038）</option>
-        <option value="prosperity">☀️ 繁荣期（2038-2055）</option>
-        <option value="recession">🍂 衰退期</option>
-        <option value="depression_early">❄️ 萧条早期</option>
-      </select>
-      <select id="cycleSelect" onchange="updateAssets()">
-        <option value="up">📈 库存周期上行（补库存）</option>
-        <option value="down">📉 库存周期下行（去库存）</option>
-      </select>
-      <div id="assetResult"></div>
-    </div>
-  </div>
-  <!-- Panel 2: 三维评分 -->
-  <div class="panel" id="p2">
-    <div class="section-title"><span>🎯</span>三维共振投资评分</div>
-    <div class="card">
-      <select id="investSelect" onchange="updateScore()">
-        <option value="黄金">🥇 黄金</option><option value="白银">🥈 白银</option>
-        <option value="AI算力">🤖 AI算力</option><option value="核电">⚛️ 核电</option>
-        <option value="小金属">🔩 小金属</option><option value="美股">🇺🇸 美股</option>
-        <option value="美债">📜 美债</option><option value="中药材">🌿 中药材</option>
-        <option value="加密货币">₿ 加密货币</option><option value="房地产">🏠 房地产</option>
-        <option value="A股">🇨🇳 A股</option><option value="大宗商品">🛢️ 大宗商品</option>
-        <option value="现金">💵 现金</option><option value="人民币资产">💴 人民币资产</option>
-        <option value="东南亚市场">🌏 东南亚市场</option>
-      </select>
-      <div class="radar-wrap"><canvas id="radar" width="300" height="300"></canvas></div>
-      <div id="scoreDisplay"></div>
-    </div>
-  </div>
-  <!-- Panel 3: 家族策略 -->
-  <div class="panel" id="p3">
-    <div class="section-title"><span>🏛️</span>顶级家族跨周期策略</div>
-    <div id="familyList"></div>
-    <div class="card" style="border-color:var(--gold)">
-      <h3 style="color:var(--gold)">🔑 共性规律："老钱密码"</h3>
-      <div style="font-size:0.85em;color:var(--text2);line-height:1.8">
-        <p><b style="color:var(--green)">制度</b>：家族信托+家族办公室 → 所有阶段恒定</p>
-        <p><b style="color:var(--green)">实物</b>：地产/矿/基础设施占比30-50% → 萧条期加仓</p>
-        <p><b style="color:var(--green)">现金</b>：保持15-25%流动性 → 萧条期保持高位</p>
-        <p><b style="color:var(--green)">逆向</b>：萧条期反向买入 → 一生一次的机会</p>
-        <p><b style="color:var(--green)">分散</b>：地域/行业/币种/资产类别 → 所有阶段恒定</p>
-        <p style="margin-top:10px;color:var(--gold);font-style:italic">"老钱的秘诀不是在正确的时间买对资产，而是建立一个无论如何都能活下来的制度。"</p>
+      <div class="card fade-in">
+        <div class="card-icon blue">🌍</div>
+        <h3>时寒冰趋势投资</h3>
+        <p>势→道→术三层方法论。识别资本、资源、人口、技术四大流向，找到最稀缺的标的。2014年七大预测中5项完全验证(71%准确率)。七大方向：黄金、白银、核电、美股、美债、中药材、小金属。</p>
+      </div>
+      <div class="card fade-in">
+        <div class="card-icon purple">💱</div>
+        <h3>宋鸿兵货币战争</h3>
+        <p>货币是权力的武器。美元霸权周期与康波深度交叉：去美元化趋势推高黄金，石油美元体系松动，全球货币秩序重构。理解货币环境是投资决策的第三维度。</p>
+      </div>
+      <div class="card fade-in" style="grid-column:span 2">
+        <div class="card-icon" style="background:rgba(239,68,68,0.1)">📉</div>
+        <h3>巴拉塔大贬值理论 <span style="font-size:0.7rem;color:var(--text3);font-weight:400">新增第四维度</span></h3>
+        <p>亚当·巴拉塔《大贬值》核心观点：法币体系结构性崩溃不可避免。美国国债从1913年29亿膨胀至2026年36万亿+，每一次危机都需要更多货币来解决。黄金等硬资产是唯一真正的避险工具。四维共振评分中，黄金是唯一四个维度都满分的标的。</p>
       </div>
     </div>
   </div>
-  <!-- Panel 4: 个人时间表 -->
-  <div class="panel" id="p4">
-    <div class="section-title"><span>👤</span>你的康波时间表</div>
-    <div class="card">
-      <div class="age-wrap">
-        <div class="age-label"><span>你的年龄</span><span class="val" id="ageVal">35</span></div>
-        <input type="range" min="20" max="60" value="35" id="ageSlider" oninput="updateAge()">
-      </div>
-      <div class="timeline-vis" id="ageTimeline"></div>
-      <div id="ageResult"></div>
+</section>
+
+<!-- ═══════════════ WAVE TIMELINE ═══════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="section-header fade-in">
+      <div class="label">周期定位</div>
+      <h2>六轮康波 · 240年经济长河</h2>
+      <p>每一轮康波由一个主导技术群驱动，重塑整个经济结构。我们正处于第五轮萧条末期与第六轮回升初期的交替窗口。</p>
+    </div>
+    <div class="wave-timeline">
+      <div class="wave-line"></div>
+      <div class="wave-item fade-in"><div class="wave-content"><h3>第一轮 · 蒸汽机时代</h3><div class="period">1780-1845 · 持续65年</div><div class="driver">蒸汽机 + 纺织机械 + 铁路</div></div><div class="wave-dot"></div></div>
+      <div class="wave-item fade-in"><div class="wave-content"><h3>第二轮 · 钢铁铁路时代</h3><div class="period">1845-1900 · 持续55年</div><div class="driver">钢铁 + 铁路网 + 电报</div></div><div class="wave-dot"></div></div>
+      <div class="wave-item fade-in"><div class="wave-content"><h3>第三轮 · 电气化时代</h3><div class="period">1900-1950 · 持续50年</div><div class="driver">电气化 + 化工 + 汽车</div></div><div class="wave-dot"></div></div>
+      <div class="wave-item fade-in"><div class="wave-content"><h3>第四轮 · 石油化工时代</h3><div class="period">1950-1990 · 持续40年</div><div class="driver">石油化工 + 喷气机 + 电子</div></div><div class="wave-dot"></div></div>
+      <div class="wave-item fade-in"><div class="wave-content current"><h3>第五轮 · 信息技术时代</h3><div class="period">1990-2030 · 萧条末期(95%)</div><div class="driver">信息技术 + 互联网 + 移动通信</div></div><div class="wave-dot" style="background:var(--blue);box-shadow:0 0 20px rgba(59,130,246,0.5)"></div></div>
+      <div class="wave-item fade-in"><div class="wave-content current" style="border-color:var(--gold)"><h3>第六轮 · AI+生物科技+新能源</h3><div class="period">2025-2070 · 回升初期(5%)</div><div class="driver">人工智能 + 生物科技 + 新能源 + 量子计算</div></div><div class="wave-dot" style="background:var(--gold);box-shadow:0 0 20px rgba(226,182,79,0.5)"></div></div>
     </div>
   </div>
-</div>
-<div class="footer">
-  康波周期投资预测平台 v1.0 · 基于周金涛《涛动周期论》+ 时寒冰《全球视野下的投资机会》+ 宋鸿兵《货币战争》<br>
-  ⚠️ 仅供参考，不构成投资建议 · MoKangMedical © 2026
-</div>
-<script src="app.js"></script>
+</section>
+
+<!-- ═══════════════ COURSE SECTION ═══════════════ -->
+<section id="course" class="section" style="background:var(--bg2)">
+  <div class="container">
+    <div class="section-header fade-in">
+      <div class="label">课程体系</div>
+      <h2>从理论到实战，六节课掌握周期投资</h2>
+      <p>每一课包含核心知识点 + 历史案例 + 实操练习，学完即可制定自己的投资计划。</p>
+    </div>
+    <div class="grid-2" style="max-width:900px;margin:0 auto">
+      <a href="courses.html#course-1" class="course-card fade-in" style="display:block">
+        <div style="display:flex">
+          <div class="course-num">1</div>
+          <div class="course-body">
+            <h3>康波理论 — 为什么经济有"四季"？</h3>
+            <p>康德拉季耶夫长波基础、五轮历史复盘、四阶段模型、周期嵌套关系、资产价格映射。</p>
+            <div class="course-tags"><span class="course-tag">基础</span><span class="course-tag">30分钟</span><span class="course-tag">含练习</span></div>
+          </div>
+        </div>
+      </a>
+      <a href="courses.html#course-2" class="course-card fade-in" style="display:block">
+        <div style="display:flex">
+          <div class="course-num">2</div>
+          <div class="course-body">
+            <h3>周金涛 — "人生就是一场康波"</h3>
+            <p>四周期嵌套模型、三次财富机会、不同年代人群的周期适配、资产配置框架。</p>
+            <div class="course-tags"><span class="course-tag">核心</span><span class="course-tag">40分钟</span><span class="course-tag">含练习</span></div>
+          </div>
+        </div>
+      </a>
+      <a href="courses.html#course-3" class="course-card fade-in" style="display:block">
+        <div style="display:flex">
+          <div class="course-num">3</div>
+          <div class="course-body">
+            <h3>第六轮康波 — AI驱动的新纪元</h3>
+            <p>三驾马车(AI/能源/生物)、渗透路径、赛道图谱(Tier 1/2/3)、中国独特位置。</p>
+            <div class="course-tags"><span class="course-tag">深度</span><span class="course-tag">45分钟</span><span class="course-tag">含练习</span></div>
+          </div>
+        </div>
+      </a>
+      <a href="courses.html#course-4" class="course-card fade-in" style="display:block">
+        <div style="display:flex">
+          <div class="course-num">4</div>
+          <div class="course-body">
+            <h3>顶级家族 — "老钱密码"</h3>
+            <p>洛克菲勒王朝信托、李嘉诚精准逃顶、华为去家族化、家族策略共性规律。</p>
+            <div class="course-tags"><span class="course-tag">案例</span><span class="course-tag">35分钟</span><span class="course-tag">含练习</span></div>
+          </div>
+        </div>
+      </a>
+      <a href="courses.html#course-5" class="course-card fade-in" style="display:block">
+        <div style="display:flex">
+          <div class="course-num">5</div>
+          <div class="course-body">
+            <h3>货币战争与全球博弈</h3>
+            <p>宋鸿兵核心框架、美元霸权周期、时寒冰七大预测验证、人口周期底层力量。</p>
+            <div class="course-tags"><span class="course-tag">进阶</span><span class="course-tag">40分钟</span><span class="course-tag">含练习</span></div>
+          </div>
+        </div>
+      </a>
+      <a href="courses.html#course-6" class="course-card fade-in" style="display:block">
+        <div style="display:flex">
+          <div class="course-num">6</div>
+          <div class="course-body">
+            <h3>投资操作手册 2026-2040</h3>
+            <p>当前周期精确定位、按年龄层资产配置、六大可操作策略、康波周期日历、风险清单。</p>
+            <div class="course-tags"><span class="course-tag">实战</span><span class="course-tag">50分钟</span><span class="course-tag">含练习</span></div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ TOOLS SECTION ═══════════════ -->
+<section id="tools" class="section">
+  <div class="container">
+    <div class="section-header fade-in">
+      <div class="label">免费工具</div>
+      <h2>三分钟定位你的周期位置</h2>
+      <p>输入你的年龄和资产情况，立即获得个性化的周期定位和投资建议。</p>
+    </div>
+    <div class="grid-3" style="max-width:900px;margin:0 auto">
+      <a href="tools.html#calculator" class="card fade-in" style="text-align:center">
+        <div class="card-icon gold" style="margin:0 auto 16px">🔮</div>
+        <h3>康波计算器</h3>
+        <p>输入出生年份，生成你的人生康波时间表和三次财富机会窗口。</p>
+      </a>
+      <a href="tools.html#assets" class="card fade-in" style="text-align:center">
+        <div class="card-icon green" style="margin:0 auto 16px">💹</div>
+        <h3>资产轮动查询</h3>
+        <p>选择当前周期阶段，查看最佳/可配置/应避免的资产类别。</p>
+      </a>
+      <a href="tools.html#radar" class="card fade-in" style="text-align:center">
+        <div class="card-icon blue" style="margin:0 auto 16px">🎯</div>
+        <h3>四维评分系统</h3>
+        <p>周金涛×时寒冰×宋鸿兵×巴拉塔四维度评分，量化每个投资标的的确定性。</p>
+      </a>
+      <a href="tools.html#ranking" class="card fade-in" style="text-align:center">
+        <div class="card-icon purple" style="margin:0 auto 16px">🏆</div>
+        <h3>四维排名榜</h3>
+        <p>所有资产按四维平均分排名，一目了然看清确定性最强的标的。</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ PRICING ═══════════════ -->
+<section id="pricing" class="section" style="background:var(--bg2)">
+  <div class="container">
+    <div class="section-header fade-in">
+      <div class="label">定价方案</div>
+      <h2>选择适合你的学习路径</h2>
+      <p>从免费工具到高端私董会，找到最适合你的周期投资学习方式。</p>
+    </div>
+    <div class="pricing-grid">
+      <!-- 入门课 -->
+      <div class="price-card fade-in">
+        <div class="price-name">入门课</div>
+        <div class="price-amount">99<span class="unit">元</span></div>
+        <div class="price-desc">建立周期投资思维框架</div>
+        <ul class="price-features">
+          <li>6节精编文字课程</li>
+          <li>每课配套练习题+参考答案</li>
+          <li>康波周期定位表(PDF)</li>
+          <li>个人投资时间表模板</li>
+          <li>永久回看权限</li>
+        </ul>
+        <button class="price-btn price-btn-secondary">立即购买</button>
+      </div>
+      <!-- 进阶课 -->
+      <div class="price-card featured fade-in">
+        <div class="price-name">进阶课</div>
+        <div class="price-amount">999<span class="unit">元</span></div>
+        <div class="price-desc">从理论到实战的投资手册</div>
+        <ul class="price-features">
+          <li>入门课全部内容</li>
+          <li>12节深度直播课(含回放)</li>
+          <li>200页精装讲义</li>
+          <li>个人投资计划书(导师点评)</li>
+          <li>康波投资计算器(高级版)</li>
+          <li>社群1年(月度周期更新)</li>
+          <li>3次1v1答疑</li>
+        </ul>
+        <button class="price-btn price-btn-primary">立即购买</button>
+      </div>
+      <!-- 私董会 -->
+      <div class="price-card fade-in">
+        <div class="price-name">康波私董会</div>
+        <div class="price-amount">9,999<span class="unit">元/年</span></div>
+        <div class="price-desc">高端圈层，限额100人</div>
+        <ul class="price-features">
+          <li>进阶课全部内容</li>
+          <li>每月1次线上闭门会</li>
+          <li>每季度《康波投资内参》</li>
+          <li>年度线下私享会</li>
+          <li>1v1资产配置咨询(2次/年)</li>
+          <li>全赛道研究资料库</li>
+          <li>高质量人脉社群</li>
+        </ul>
+        <button class="price-btn price-btn-secondary">申请加入</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ CTA ═══════════════ -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-content fade-in">
+      <h2 class="serif">2030年，一生一次的财富机会</h2>
+      <p>周金涛预测的第三次机会窗口即将到来。现在开始学习，就是最好的准备。</p>
+      <a href="#pricing" class="btn btn-primary">开始学习 →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-links">
+      <a href="#theory">理论体系</a>
+      <a href="learn.html">学习</a>
+      <a href="#tools">工具</a>
+      <a href="#pricing">定价</a>
+    </div>
+    <div class="footer-copy">康波研究院 © 2026 · MoKangMedical</div>
+    <div class="footer-disclaimer">本平台内容基于康波理论和公开信息整理，仅供参考，不构成投资建议。投资有风险，决策需谨慎。</div>
+  </div>
+</footer>
+
+<script>
+// Scroll animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// Nav scroll effect
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('.nav');
+  nav.style.borderBottomColor = window.scrollY > 50 ? 'var(--border2)' : 'transparent';
+});
+</script>
 </body>
 </html>
