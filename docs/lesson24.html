@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第24课：21世纪资本论 — 贫富分化的真相 — 康波研究院</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#09090b;--bg2:#0f0f13;--card:#1c1c21;--card2:#222228;--card3:#2a2a32;--border:#27272a;--border2:#3f3f46;--text:#fafafa;--text2:#a1a1aa;--text3:#71717a;--gold:#e2b64f;--gold2:#f5d98a;--green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;--orange:#f59e0b;--red:#ef4444;--serif:'Noto Serif SC',serif;--sans:'Inter',sans-serif;--radius:16px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:2;font-size:18px}
+a{color:var(--gold);text-decoration:none}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(9,9,11,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);height:56px;display:flex;align-items:center}
+.nav-inner{max-width:900px;margin:0 auto;padding:0 24px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-left{display:flex;align-items:center;gap:16px}
+.nav-back{font-size:0.9rem;color:var(--text3);transition:color .2s}.nav-back:hover{color:var(--gold)}
+.nav-title{font-size:0.9rem;color:var(--text2);font-weight:500}
+.nav-right{display:flex;align-items:center;gap:12px}
+.nav-lesson{font-size:0.8rem;color:var(--text3);background:var(--card2);padding:4px 14px;border-radius:6px}
+
+/* PROGRESS BAR */
+.progress-bar{position:fixed;top:56px;left:0;right:0;height:3px;background:var(--border);z-index:99}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));transition:width .3s;width:0%}
+
+/* MAIN */
+.main{max-width:800px;margin:0 auto;padding:80px 28px 60px}
+
+/* LESSON HEADER */
+.lesson-header{margin-bottom:56px;text-align:center}
+.lesson-cat{display:inline-block;font-size:0.75rem;color:var(--gold);background:rgba(226,182,79,0.1);padding:4px 14px;border-radius:20px;margin-bottom:16px;letter-spacing:0.1em}
+.lesson-header h1{font-family:var(--serif);font-size:clamp(2rem,5vw,2.8rem);font-weight:900;line-height:1.3;margin-bottom:16px;background:linear-gradient(135deg,var(--text),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lesson-meta{display:flex;gap:20px;justify-content:center;flex-wrap:wrap}
+.lesson-meta span{font-size:0.85rem;color:var(--text3);display:flex;align-items:center;gap:6px}
+
+/* SECTIONS */
+.section{margin-bottom:48px}
+.section h2{font-size:1.4rem;font-weight:700;margin-bottom:20px;color:var(--text);display:flex;align-items:center;gap:10px}
+.section h2 .icon{font-size:1.2rem}
+.section h3{font-size:1.15rem;font-weight:600;margin:28px 0 12px;color:var(--gold2)}
+.section p{color:var(--text2);font-size:1.05rem;margin-bottom:14px;line-height:2}
+
+/* CALLOUT */
+.callout{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:28px;margin:24px 0}
+.callout.gold{border-left:4px solid var(--gold)}
+.callout.green{border-left:4px solid var(--green)}
+.callout.blue{border-left:4px solid var(--blue)}
+.callout-title{font-size:0.85rem;font-weight:600;color:var(--gold);margin-bottom:10px;text-transform:uppercase;letter-spacing:0.08em}
+.callout p{color:var(--text2);font-size:1rem;line-height:1.9}
+
+/* TABLE */
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:0.95rem}
+.data-table th{text-align:left;padding:12px 14px;background:var(--card2);color:var(--text3);font-weight:600;font-size:0.85rem;text-transform:uppercase;letter-spacing:0.05em;border-bottom:2px solid var(--border)}
+.data-table td{padding:12px 14px;border-bottom:1px solid var(--border);color:var(--text2)}
+.data-table tr:hover td{background:var(--card)}
+
+/* EXERCISE */
+.exercise{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:32px;margin:28px 0}
+.exercise-label{display:inline-flex;align-items:center;gap:6px;font-size:0.8rem;font-weight:600;color:var(--blue);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:14px}
+.exercise h3{font-size:1.1rem;margin-bottom:10px;color:var(--text)}
+.exercise p{color:var(--text2);font-size:1rem;margin-bottom:14px}
+.exercise-question{color:var(--text);font-weight:500;font-size:1.05rem}
+.exercise textarea{width:100%;min-height:90px;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:16px;color:var(--text);font-family:var(--sans);font-size:1rem;resize:vertical;transition:border-color .2s;line-height:1.8}
+.exercise textarea:focus{outline:none;border-color:var(--gold)}
+.exercise textarea::placeholder{color:var(--text3)}
+
+/* BOTTOM NAV */
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;padding:36px 0;margin-top:48px;border-top:1px solid var(--border)}
+.bottom-nav a{display:flex;align-items:center;gap:8px;padding:14px 24px;border-radius:12px;font-size:1rem;font-weight:500;transition:all .2s}
+.bottom-nav .prev{color:var(--text3);border:1px solid var(--border)}
+.bottom-nav .prev:hover{border-color:var(--gold);color:var(--gold)}
+.bottom-nav .next{background:var(--gold);color:#000}
+.bottom-nav .next:hover{background:var(--gold2)}
+
+/* AUDIO PLAYER */
+.audio-player{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin:24px 0;display:flex;align-items:center;gap:16px}
+.audio-player .play-btn{width:48px;height:48px;border-radius:50%;background:var(--gold);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.2rem;transition:background .2s;flex-shrink:0}
+.audio-player .play-btn:hover{background:var(--gold2)}
+.audio-player .audio-info{flex:1}
+.audio-player .audio-title{font-size:0.9rem;font-weight:600;color:var(--text);margin-bottom:4px}
+.audio-player .audio-sub{font-size:0.8rem;color:var(--text3)}
+
+/* RESPONSIVE */
+@media(max-width:640px){
+  .main{padding:72px 16px 40px}
+  .lesson-header h1{font-size:1.8rem}
+  .section h2{font-size:1.2rem}
+  .data-table{font-size:0.85rem}
+  .data-table th,.data-table td{padding:8px 10px}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-left">
+      <a href="index.html" class="nav-back">← 返回首页</a>
+      <span class="nav-title">第24课</span>
+    </div>
+    <div class="nav-right">
+      <span class="nav-lesson">24 / 20</span>
+    </div>
+  </div>
+</nav>
+<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+
+<div class="main">
+
+<!-- HEADER -->
+<div class="lesson-header">
+  <div class="lesson-cat">趋势洞察</div>
+  <h1>📊 21世纪资本论 — 贫富分化的真相</h1>
+  <div class="lesson-meta">
+    <span>📖 阅读约30分钟</span>
+    <span>✏️ 6道练习题</span>
+    <span>🎯 进阶</span>
+  </div>
+</div>
+
+<!-- AUDIO OVERVIEW -->
+<div class="audio-player">
+  <button class="play-btn" onclick="toggleAudio()" id="playBtn">▶️</button>
+  <div class="audio-info">
+    <div class="audio-title">🎧 课程音频概述</div>
+    <div class="audio-sub">点击播放课程核心内容摘要</div>
+  </div>
+  <audio id="courseAudio" preload="none">
+    <source src="audio/lesson24.mp3" type="audio/mpeg">
+  </audio>
+</div>
+
+
+
+<div class="section">
+  <h2><span class="icon"></span> </h2>
+  <p># 第24课：21世纪资本论 — 贫富分化的真相</p>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p><strong>推荐书籍</strong>：《21世纪资本论》（皮凯蒂）</p></div>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 开篇：为什么富人越来越富？</h2>
+  <p><strong>过去40年，全球前1%的人获取了经济增长收益的27%，而后50%的人只获取了12%。</strong></p>
+  <p>皮凯蒂用200年的数据证明了一个残酷的规律：</p>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p><strong>资本收益率（r）> 经济增长率（g）</strong></p></div>
+  <p>这意味着：靠钱赚钱的速度，永远比靠劳动赚钱的速度快。</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 皮凯蒂的核心公式</h2>
+  <h3>2.1 r > g 的含义</h3>
+  <table class="data-table"><thead><tr><th>收益来源</th><th>年均回报</th><th>说明</th></tr></thead><tbody>
+  <tr><td>资本（股票、房产）</td><td>4-5%</td><td>被动收入</td></tr>
+  <tr><td>劳动（工资）</td><td>1-2%</td><td>主动收入</td></tr>
+  </tbody></table>
+  <p>|----------|----------|------|</p>
+  <p><strong>差距</strong>：每年3个百分点。50年后，资本收入将是劳动收入的4倍。</p>
+  <h3>2.2 历史验证</h3>
+  <p>• 19世纪：r > g，贫富差距极大（镀金时代）</p>
+  <p>• 1914-1970：两次大战+高税率，r < g，中产阶级崛起</p>
+  <p>• 1980至今：减税+金融化，r > g，贫富差距再次扩大</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 中国的贫富分化</h2>
+  <h3>3.1 基尼系数</h3>
+  <p>• 中国基尼系数约0.47（警戒线0.4）</p>
+  <p>• 高于美国（0.39）、日本（0.33）</p>
+  <h3>3.2 分化的原因</h3>
+  <table class="data-table"><thead><tr><th>因素</th><th>说明</th></tr></thead><tbody>
+  <tr><td>房产</td><td>有房vs无房的巨大鸿沟</td></tr>
+  <tr><td>教育</td><td>名校vs普通学校的收入差距</td></tr>
+  <tr><td>行业</td><td>金融/IT vs 传统行业</td></tr>
+  <tr><td>地域</td><td>一线vs三四线城市</td></tr>
+  </tbody></table>
+  <p>|------|------|</p>
+  <h3>3.3 代际固化</h3>
+  <p>• "寒门难出贵子"不是鸡汤，是数据</p>
+  <p>• 教育资源不均等</p>
+  <p>• 社会流动性下降</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 普通人如何应对分化</h2>
+  <h3>4.1 让自己成为"资本"的一部分</h3>
+  <p>• 投资股票市场（指数基金）</p>
+  <p>• 购买核心城市房产</p>
+  <p>• 学习投资理财知识</p>
+  <h3>4.2 提升人力资本</h3>
+  <p>• 持续学习新技能</p>
+  <p>• 选择有增长潜力的行业</p>
+  <p>• 建立个人品牌和影响力</p>
+  <h3>4.3 控制消费、增加储蓄</h3>
+  <p>• 延迟满足</p>
+  <p>• 区分"想要"和"需要"</p>
+  <p>• 把储蓄变成投资</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 核心概念总结</h2>
+  <h3>你需要记住的5个关键点</h3>
+  <p><strong>1.</strong> <strong>r > g 是贫富分化的根本原因</strong></p>
+  <p><strong>2.</strong> <strong>靠劳动致富的速度永远赶不上靠资本致富</strong></p>
+  <p><strong>3.</strong> <strong>房产是有房者和无房者的最大鸿沟</strong></p>
+  <p><strong>4.</strong> <strong>提升人力资本是普通人最好的投资</strong></p>
+  <p><strong>5.</strong> <strong>控制消费、增加投资是应对分化的关键</strong></p>
+  <h3>你需要打破的3个误区</h3>
+  <p><strong>误区1</strong>："只要努力工作就能致富"</p>
+  <p>→ 努力工作只能让你维持中产。真正的财富增长来自资本收益。</p>
+  <p><strong>误区2</strong>："投资是富人的事"</p>
+  <p>→ 指数基金100元起投。越早开始，复利效应越大。</p>
+  <p><strong>误区3</strong>："房价永远涨"</p>
+  <p>→ 人口下降+债务累积=长期压力。核心城市可能坚挺，但三四线城市风险很大。</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 练习题</h2>
+  <div class="exercise"><div class="exercise-label">✏️ 练习</div><h3>练习1：r vs g 计算</h3>
+  <p class="exercise-question">假设你有100万，年资本收益率4%，同时你的工资年增长2%。10年后，你的资本收入和劳动收入分别是多少？</p>
+  <textarea placeholder="写下你的思考..." rows="3"></textarea>
+  <div class="exercise"><div class="exercise-label">✏️ 练习</div><h3>练习2：资产配置</h3>
+  <p class="exercise-question">如果你只有10万元，你会如何配置？（股票、房产、现金、教育）</p>
+  <textarea placeholder="写下你的思考..." rows="3"></textarea>
+  <div class="exercise"><div class="exercise-label">✏️ 练习</div><h3>练习3：人力资本投资</h3>
+  <p class="exercise-question">你认为未来5年最有价值的技能是什么？你打算如何投资自己的人力资本？</p>
+  <textarea placeholder="写下你的思考..." rows="3"></textarea>
+  </div>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 练习题参考答案</h2>
+  <div class="exercise"><div class="exercise-label">✏️ 练习</div><h3>练习1参考答案</h3>
+  <p>• 100万 × (1.04)^10 = 148万（资本）</p>
+  <p>• 假设工资10万/年，10万 × (1.02)^10 = 12.2万/年</p>
+  <p>• 资本增值48万 vs 工资增长22万</p>
+  <p>• 资本收益是劳动收益的2倍多</p>
+  <div class="exercise"><div class="exercise-label">✏️ 练习</div><h3>练习2思路提示</h3>
+  <p>10万元配置建议：</p>
+  <p>• 5万：指数基金（沪深300/标普500）</p>
+  <p>• 2万：货币基金（应急资金）</p>
+  <p>• 2万：教育/技能提升</p>
+  <p>• 1万：尝试性投资（个股/行业基金）</p>
+  <div class="exercise"><div class="exercise-label">✏️ 练习</div><h3>练习3思路提示</h3>
+  <p>未来5年最有价值的技能：</p>
+  <p><strong>1.</strong> AI提示词工程</p>
+  <p><strong>2.</strong> 数据分析能力</p>
+  <p><strong>3.</strong> 跨境电商运营</p>
+  <p><strong>4.</strong> 短视频/直播内容创作</p>
+  </div>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 下节预告</h2>
+  <p><strong>第25课：贫穷的本质 — 诺贝尔奖得主的反直觉发现</strong></p>
+  <p>巴纳吉和迪弗洛将告诉你：</p>
+  <p>• 穷人为什么不"理性"？</p>
+  <p>• 扶贫的最有效方式是什么？</p>
+  <p>• 这些发现如何适用于你的理财决策</p>
+</div>
+<div class="section">
+  <h2><span class="icon"></span> </h2>
+  <p><em>康波研究院 · 第24课 · 21世纪资本论</em></p>
+</div>
+
+
+<!-- BOTTOM NAV -->
+<div class="bottom-nav">
+  <a href="lesson23.html" class="prev">← 第23课</a>
+  <span></span>
+</div>
+
+</div>
+
+<script>
+// Reading progress
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement;
+  const pct=(h.scrollTop)/(h.scrollHeight-h.clientHeight)*100;
+  document.getElementById('progressFill').style.width=pct+'%';
+});
+
+// Audio player
+function toggleAudio(){
+  const audio=document.getElementById('courseAudio');
+  const btn=document.getElementById('playBtn');
+  if(audio.paused){audio.play();btn.textContent='⏸️'}else{audio.pause();btn.textContent='▶️'}
+}
+</script>
+
+</body>
+</html>

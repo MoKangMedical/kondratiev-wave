@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第30课：未来十年 — 普通人如何守住财富 — 康波研究院</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#09090b;--bg2:#0f0f13;--card:#1c1c21;--card2:#222228;--card3:#2a2a32;--border:#27272a;--border2:#3f3f46;--text:#fafafa;--text2:#a1a1aa;--text3:#71717a;--gold:#e2b64f;--gold2:#f5d98a;--green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;--orange:#f59e0b;--red:#ef4444;--serif:'Noto Serif SC',serif;--sans:'Inter',sans-serif;--radius:16px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:2;font-size:18px}
+a{color:var(--gold);text-decoration:none}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(9,9,11,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);height:56px;display:flex;align-items:center}
+.nav-inner{max-width:900px;margin:0 auto;padding:0 24px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-left{display:flex;align-items:center;gap:16px}
+.nav-back{font-size:0.9rem;color:var(--text3);transition:color .2s}.nav-back:hover{color:var(--gold)}
+.nav-title{font-size:0.9rem;color:var(--text2);font-weight:500}
+.nav-right{display:flex;align-items:center;gap:12px}
+.nav-lesson{font-size:0.8rem;color:var(--text3);background:var(--card2);padding:4px 14px;border-radius:6px}
+
+/* PROGRESS BAR */
+.progress-bar{position:fixed;top:56px;left:0;right:0;height:3px;background:var(--border);z-index:99}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));transition:width .3s;width:0%}
+
+/* MAIN */
+.main{max-width:800px;margin:0 auto;padding:80px 28px 60px}
+
+/* LESSON HEADER */
+.lesson-header{margin-bottom:56px;text-align:center}
+.lesson-cat{display:inline-block;font-size:0.75rem;color:var(--gold);background:rgba(226,182,79,0.1);padding:4px 14px;border-radius:20px;margin-bottom:16px;letter-spacing:0.1em}
+.lesson-header h1{font-family:var(--serif);font-size:clamp(2rem,5vw,2.8rem);font-weight:900;line-height:1.3;margin-bottom:16px;background:linear-gradient(135deg,var(--text),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lesson-meta{display:flex;gap:20px;justify-content:center;flex-wrap:wrap}
+.lesson-meta span{font-size:0.85rem;color:var(--text3);display:flex;align-items:center;gap:6px}
+
+/* SECTIONS */
+.section{margin-bottom:48px}
+.section h2{font-size:1.4rem;font-weight:700;margin-bottom:20px;color:var(--text);display:flex;align-items:center;gap:10px}
+.section h2 .icon{font-size:1.2rem}
+.section h3{font-size:1.15rem;font-weight:600;margin:28px 0 12px;color:var(--gold2)}
+.section p{color:var(--text2);font-size:1.05rem;margin-bottom:14px;line-height:2}
+
+/* CALLOUT */
+.callout{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:28px;margin:24px 0}
+.callout.gold{border-left:4px solid var(--gold)}
+.callout.green{border-left:4px solid var(--green)}
+.callout.blue{border-left:4px solid var(--blue)}
+.callout-title{font-size:0.85rem;font-weight:600;color:var(--gold);margin-bottom:10px;text-transform:uppercase;letter-spacing:0.08em}
+.callout p{color:var(--text2);font-size:1rem;line-height:1.9}
+
+/* TABLE */
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:0.95rem}
+.data-table th{text-align:left;padding:12px 14px;background:var(--card2);color:var(--text3);font-weight:600;font-size:0.85rem;text-transform:uppercase;letter-spacing:0.05em;border-bottom:2px solid var(--border)}
+.data-table td{padding:12px 14px;border-bottom:1px solid var(--border);color:var(--text2)}
+.data-table tr:hover td{background:var(--card)}
+
+/* EXERCISE */
+.exercise{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:32px;margin:28px 0}
+.exercise-label{display:inline-flex;align-items:center;gap:6px;font-size:0.8rem;font-weight:600;color:var(--blue);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:14px}
+.exercise h3{font-size:1.1rem;margin-bottom:10px;color:var(--text)}
+.exercise p{color:var(--text2);font-size:1rem;margin-bottom:14px}
+.exercise-question{color:var(--text);font-weight:500;font-size:1.05rem}
+.exercise textarea{width:100%;min-height:90px;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:16px;color:var(--text);font-family:var(--sans);font-size:1rem;resize:vertical;transition:border-color .2s;line-height:1.8}
+.exercise textarea:focus{outline:none;border-color:var(--gold)}
+.exercise textarea::placeholder{color:var(--text3)}
+
+/* BOTTOM NAV */
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;padding:36px 0;margin-top:48px;border-top:1px solid var(--border)}
+.bottom-nav a{display:flex;align-items:center;gap:8px;padding:14px 24px;border-radius:12px;font-size:1rem;font-weight:500;transition:all .2s}
+.bottom-nav .prev{color:var(--text3);border:1px solid var(--border)}
+.bottom-nav .prev:hover{border-color:var(--gold);color:var(--gold)}
+.bottom-nav .next{background:var(--gold);color:#000}
+.bottom-nav .next:hover{background:var(--gold2)}
+
+/* AUDIO PLAYER */
+.audio-player{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin:24px 0;display:flex;align-items:center;gap:16px}
+.audio-player .play-btn{width:48px;height:48px;border-radius:50%;background:var(--gold);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.2rem;transition:background .2s;flex-shrink:0}
+.audio-player .play-btn:hover{background:var(--gold2)}
+.audio-player .audio-info{flex:1}
+.audio-player .audio-title{font-size:0.9rem;font-weight:600;color:var(--text);margin-bottom:4px}
+.audio-player .audio-sub{font-size:0.8rem;color:var(--text3)}
+
+/* RESPONSIVE */
+@media(max-width:640px){
+  .main{padding:72px 16px 40px}
+  .lesson-header h1{font-size:1.8rem}
+  .section h2{font-size:1.2rem}
+  .data-table{font-size:0.85rem}
+  .data-table th,.data-table td{padding:8px 10px}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-left">
+      <a href="index.html" class="nav-back">← 返回首页</a>
+      <span class="nav-title">第30课</span>
+    </div>
+    <div class="nav-right">
+      <span class="nav-lesson">30 / 20</span>
+    </div>
+  </div>
+</nav>
+<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+
+<div class="main">
+
+<!-- HEADER -->
+<div class="lesson-header">
+  <div class="lesson-cat">终极整合</div>
+  <h1>🎯 未来十年 — 普通人如何守住财富</h1>
+  <div class="lesson-meta">
+    <span>📖 阅读约45分钟</span>
+    <span>✏️ 3道练习题</span>
+    <span>🎯 高级</span>
+  </div>
+</div>
+
+<!-- AUDIO OVERVIEW -->
+<div class="audio-player">
+  <button class="play-btn" onclick="toggleAudio()" id="playBtn">▶️</button>
+  <div class="audio-info">
+    <div class="audio-title">🎧 课程音频概述</div>
+    <div class="audio-sub">点击播放课程核心内容摘要</div>
+  </div>
+  <audio id="courseAudio" preload="none">
+    <source src="audio/lesson30.mp3" type="audio/mpeg">
+  </audio>
+</div>
+
+
+
+<div class="section">
+  <h2><span class="icon"></span> </h2>
+  <p># 第30课：未来十年 — 普通人如何守住财富</p>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p><strong>推荐书籍</strong>：综合所有课程推荐书目</p></div>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 开篇：未来十年的确定性</h2>
+  <p><strong>未来十年，什么是最确定的？</strong></p>
+  <table class="data-table"><thead><tr><th>确定性趋势</th><th>影响</th><th>应对策略</th></tr></thead><tbody>
+  <tr><td>人口老龄化</td><td>经济增速放缓</td><td>银发经济、养老规划</td></tr>
+  <tr><td>AI技术革命</td><td>产业升级</td><td>投资AI、提升技能</td></tr>
+  <tr><td>中美博弈</td><td>供应链重组</td><td>关注国产替代</td></tr>
+  <tr><td>债务周期</td><td>金融风险</td><td>控制杠杆、保持现金</td></tr>
+  <tr><td>气候变化</td><td>能源转型</td><td>新能源投资</td></tr>
+  </tbody></table>
+  <p>|------------|------|----------|</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 普通人的资产配置策略</h2>
+  <h3>2.1 核心-卫星策略</h3>
+  <table class="data-table"><thead><tr><th>层次</th><th>配置</th><th>占比</th><th>说明</th></tr></thead><tbody>
+  <tr><td>核心</td><td>指数基金</td><td>50%</td><td>长期持有</td></tr>
+  <tr><td>卫星</td><td>行业基金</td><td>30%</td><td>顺势而为</td></tr>
+  <tr><td>机会</td><td>个股/另类</td><td>20%</td><td>高风险高回报</td></tr>
+  <tr><td>年龄段</td><td>股票</td><td>债券</td><td>现金</td><td>说明</td></tr>
+  </tbody></table>
+  <p>|------|------|------|------|</p>
+  <h3>2.2 年龄与配置</h3>
+  <p>|--------|------|------|------|------|</p>
+  <table class="data-table"><thead><tr><th>25-35</th><th>70%</th><th>20%</th><th>10%</th><th>激进</th></tr></thead><tbody>
+  <tr><td>35-45</td><td>60%</td><td>30%</td><td>10%</td><td>平衡</td></tr>
+  <tr><td>45-55</td><td>50%</td><td>35%</td><td>15%</td><td>稳健</td></tr>
+  <tr><td>55+</td><td>30%</td><td>40%</td><td>30%</td><td>保守</td></tr>
+  </tbody></table>
+  <h3>2.3 定投的力量</h3>
+  <p>每月定投3000元，年化收益8%：</p>
+  <p>• 10年后：55万</p>
+  <p>• 20年后：176万</p>
+  <p>• 30年后：453万</p>
+  <p><strong>关键</strong>：时间是最大的朋友。</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 构建你的投资世界观</h2>
+  <h3>3.1 康波定位</h3>
+  <p>• 当前位置：第五轮康波冬末，第六轮春初</p>
+  <p>• 战略：布局新产业（AI、新能源、生物科技）</p>
+  <h3>3.2 行业选择</h3>
+  <table class="data-table"><thead><tr><th>行业</th><th>趋势</th><th>策略</th></tr></thead><tbody>
+  <tr><td>AI</td><td>强劲上升</td><td>重点关注</td></tr>
+  <tr><td>新能源</td><td>快速增长</td><td>长期持有</td></tr>
+  <tr><td>生物科技</td><td>长期看好</td><td>选择性投资</td></tr>
+  <tr><td>传统制造</td><td>转型升级</td><td>精选龙头</td></tr>
+  <tr><td>房地产</td><td>分化调整</td><td>核心城市</td></tr>
+  </tbody></table>
+  <p>|------|------|------|</p>
+  <h3>3.3 风险管理</h3>
+  <p><strong>1.</strong> <strong>分散投资</strong>：不把鸡蛋放一个篮子</p>
+  <p><strong>2.</strong> <strong>控制杠杆</strong>：负债率<50%</p>
+  <p><strong>3.</strong> <strong>保持现金</strong>：6个月生活费</p>
+  <p><strong>4.</strong> <strong>保险保障</strong>：社保+商业保险</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 终身学习清单</h2>
+  <h3>4.1 必读书单</h3>
+  <table class="data-table"><thead><tr><th>类别</th><th>书籍</th><th>作者</th></tr></thead><tbody>
+  <tr><td>周期</td><td>《债务危机》</td><td>达里奥</td></tr>
+  <tr><td>价值</td><td>《聪明的投资者》</td><td>格雷厄姆</td></tr>
+  <tr><td>宏观</td><td>《置身事内》</td><td>兰小欢</td></tr>
+  <tr><td>行为</td><td>《思考，快与慢》</td><td>卡尼曼</td></tr>
+  <tr><td>历史</td><td>《激荡三十年》</td><td>吴晓波</td></tr>
+  </tbody></table>
+  <p>|------|------|------|</p>
+  <h3>4.2 持续学习的习惯</h3>
+  <p>• 每月读一本经济/投资书</p>
+  <p>• 每周关注经济新闻</p>
+  <p>• 每年复盘投资决策</p>
+  <p>• 持续提升专业技能</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 核心概念总结</h2>
+  <h3>你需要记住的10个关键点</h3>
+  <p><strong>1.</strong> <strong>康波冬末春初是布局的最佳时机</strong></p>
+  <p><strong>2.</strong> <strong>AI和新能源是未来十年的核心赛道</strong></p>
+  <p><strong>3.</strong> <strong>指数基金定投是普通人最好的投资方式</strong></p>
+  <p><strong>4.</strong> <strong>资产配置比选股更重要</strong></p>
+  <p><strong>5.</strong> <strong>控制杠杆是生存的基础</strong></p>
+  <p><strong>6.</strong> <strong>保持现金等待机会</strong></p>
+  <p><strong>7.</strong> <strong>保险保障是风险管理的第一步</strong></p>
+  <p><strong>8.</strong> <strong>终身学习是最好的投资</strong></p>
+  <p><strong>9.</strong> <strong>时间是最大的朋友</strong></p>
+  <p><strong>10.</strong> <strong>不要试图预测市场，而是做好准备</strong></p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 终极练习</h2>
+  <div class="exercise"><div class="exercise-label">✏️ 练习</div><h3>练习1：个人财务规划</h3>
+  <p>制定你的5年财务规划：</p>
+  <p><strong>1.</strong> 收入目标</p>
+  <p><strong>2.</strong> 储蓄率</p>
+  <p><strong>3.</strong> 资产配置</p>
+  <p><strong>4.</strong> 风险管理</p>
+  <div class="exercise"><div class="exercise-label">✏️ 练习</div><h3>练习2：投资清单</h3>
+  <p class="exercise-question">列出你的"投资清单"——如果明天发生金融危机，你会买入什么？</p>
+  <textarea placeholder="写下你的思考..." rows="3"></textarea>
+  <div class="exercise"><div class="exercise-label">✏️ 练习</div><h3>练习3：终身学习计划</h3>
+  <p>制定你的年度学习计划：</p>
+  <p>• 读哪些书？</p>
+  <p>• 学什么技能？</p>
+  <p>• 关注哪些行业？</p>
+  </div>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 结语</h2>
+  <p><strong>恭喜你完成康波研究院全部30门课程！</strong></p>
+  <p>你现在拥有了一个完整的投资世界观：</p>
+  <p>• 康波理论帮你理解大趋势</p>
+  <p>• 经典理论帮你建立思维框架</p>
+  <p>• 生活经济学帮你做日常决策</p>
+  <p>• 未来展望帮你把握方向</p>
+  <p>记住：<strong>投资不是赌博，而是认知的变现。</strong></p>
+  <p>你的认知水平，决定了你的财富上限。</p>
+  <p><strong>春种夏长秋收冬藏，愿你在周期的浪潮中，找到属于自己的财富之路。</strong></p>
+</div>
+<div class="section">
+  <h2><span class="icon"></span> </h2>
+  <p><em>康波研究院 · 第30课 · 未来十年</em></p>
+</div>
+
+
+<!-- BOTTOM NAV -->
+<div class="bottom-nav">
+  <a href="lesson29.html" class="prev">← 第29课</a>
+  <span></span>
+</div>
+
+</div>
+
+<script>
+// Reading progress
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement;
+  const pct=(h.scrollTop)/(h.scrollHeight-h.clientHeight)*100;
+  document.getElementById('progressFill').style.width=pct+'%';
+});
+
+// Audio player
+function toggleAudio(){
+  const audio=document.getElementById('courseAudio');
+  const btn=document.getElementById('playBtn');
+  if(audio.paused){audio.play();btn.textContent='⏸️'}else{audio.pause();btn.textContent='▶️'}
+}
+</script>
+
+</body>
+</html>

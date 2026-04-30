@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第22课：置身事内 — 理解中国政府与经济 — 康波研究院</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#09090b;--bg2:#0f0f13;--card:#1c1c21;--card2:#222228;--card3:#2a2a32;--border:#27272a;--border2:#3f3f46;--text:#fafafa;--text2:#a1a1aa;--text3:#71717a;--gold:#e2b64f;--gold2:#f5d98a;--green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;--orange:#f59e0b;--red:#ef4444;--serif:'Noto Serif SC',serif;--sans:'Inter',sans-serif;--radius:16px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:2;font-size:18px}
+a{color:var(--gold);text-decoration:none}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(9,9,11,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);height:56px;display:flex;align-items:center}
+.nav-inner{max-width:900px;margin:0 auto;padding:0 24px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-left{display:flex;align-items:center;gap:16px}
+.nav-back{font-size:0.9rem;color:var(--text3);transition:color .2s}.nav-back:hover{color:var(--gold)}
+.nav-title{font-size:0.9rem;color:var(--text2);font-weight:500}
+.nav-right{display:flex;align-items:center;gap:12px}
+.nav-lesson{font-size:0.8rem;color:var(--text3);background:var(--card2);padding:4px 14px;border-radius:6px}
+
+/* PROGRESS BAR */
+.progress-bar{position:fixed;top:56px;left:0;right:0;height:3px;background:var(--border);z-index:99}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));transition:width .3s;width:0%}
+
+/* MAIN */
+.main{max-width:800px;margin:0 auto;padding:80px 28px 60px}
+
+/* LESSON HEADER */
+.lesson-header{margin-bottom:56px;text-align:center}
+.lesson-cat{display:inline-block;font-size:0.75rem;color:var(--gold);background:rgba(226,182,79,0.1);padding:4px 14px;border-radius:20px;margin-bottom:16px;letter-spacing:0.1em}
+.lesson-header h1{font-family:var(--serif);font-size:clamp(2rem,5vw,2.8rem);font-weight:900;line-height:1.3;margin-bottom:16px;background:linear-gradient(135deg,var(--text),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lesson-meta{display:flex;gap:20px;justify-content:center;flex-wrap:wrap}
+.lesson-meta span{font-size:0.85rem;color:var(--text3);display:flex;align-items:center;gap:6px}
+
+/* SECTIONS */
+.section{margin-bottom:48px}
+.section h2{font-size:1.4rem;font-weight:700;margin-bottom:20px;color:var(--text);display:flex;align-items:center;gap:10px}
+.section h2 .icon{font-size:1.2rem}
+.section h3{font-size:1.15rem;font-weight:600;margin:28px 0 12px;color:var(--gold2)}
+.section p{color:var(--text2);font-size:1.05rem;margin-bottom:14px;line-height:2}
+
+/* CALLOUT */
+.callout{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:28px;margin:24px 0}
+.callout.gold{border-left:4px solid var(--gold)}
+.callout.green{border-left:4px solid var(--green)}
+.callout.blue{border-left:4px solid var(--blue)}
+.callout-title{font-size:0.85rem;font-weight:600;color:var(--gold);margin-bottom:10px;text-transform:uppercase;letter-spacing:0.08em}
+.callout p{color:var(--text2);font-size:1rem;line-height:1.9}
+
+/* TABLE */
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:0.95rem}
+.data-table th{text-align:left;padding:12px 14px;background:var(--card2);color:var(--text3);font-weight:600;font-size:0.85rem;text-transform:uppercase;letter-spacing:0.05em;border-bottom:2px solid var(--border)}
+.data-table td{padding:12px 14px;border-bottom:1px solid var(--border);color:var(--text2)}
+.data-table tr:hover td{background:var(--card)}
+
+/* EXERCISE */
+.exercise{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:32px;margin:28px 0}
+.exercise-label{display:inline-flex;align-items:center;gap:6px;font-size:0.8rem;font-weight:600;color:var(--blue);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:14px}
+.exercise h3{font-size:1.1rem;margin-bottom:10px;color:var(--text)}
+.exercise p{color:var(--text2);font-size:1rem;margin-bottom:14px}
+.exercise-question{color:var(--text);font-weight:500;font-size:1.05rem}
+.exercise textarea{width:100%;min-height:90px;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:16px;color:var(--text);font-family:var(--sans);font-size:1rem;resize:vertical;transition:border-color .2s;line-height:1.8}
+.exercise textarea:focus{outline:none;border-color:var(--gold)}
+.exercise textarea::placeholder{color:var(--text3)}
+
+/* BOTTOM NAV */
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;padding:36px 0;margin-top:48px;border-top:1px solid var(--border)}
+.bottom-nav a{display:flex;align-items:center;gap:8px;padding:14px 24px;border-radius:12px;font-size:1rem;font-weight:500;transition:all .2s}
+.bottom-nav .prev{color:var(--text3);border:1px solid var(--border)}
+.bottom-nav .prev:hover{border-color:var(--gold);color:var(--gold)}
+.bottom-nav .next{background:var(--gold);color:#000}
+.bottom-nav .next:hover{background:var(--gold2)}
+
+/* AUDIO PLAYER */
+.audio-player{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin:24px 0;display:flex;align-items:center;gap:16px}
+.audio-player .play-btn{width:48px;height:48px;border-radius:50%;background:var(--gold);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.2rem;transition:background .2s;flex-shrink:0}
+.audio-player .play-btn:hover{background:var(--gold2)}
+.audio-player .audio-info{flex:1}
+.audio-player .audio-title{font-size:0.9rem;font-weight:600;color:var(--text);margin-bottom:4px}
+.audio-player .audio-sub{font-size:0.8rem;color:var(--text3)}
+
+/* RESPONSIVE */
+@media(max-width:640px){
+  .main{padding:72px 16px 40px}
+  .lesson-header h1{font-size:1.8rem}
+  .section h2{font-size:1.2rem}
+  .data-table{font-size:0.85rem}
+  .data-table th,.data-table td{padding:8px 10px}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-left">
+      <a href="index.html" class="nav-back">← 返回首页</a>
+      <span class="nav-title">第22课</span>
+    </div>
+    <div class="nav-right">
+      <span class="nav-lesson">22 / 20</span>
+    </div>
+  </div>
+</nav>
+<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+
+<div class="main">
+
+<!-- HEADER -->
+<div class="lesson-header">
+  <div class="lesson-cat">趋势洞察</div>
+  <h1>🏛️ 置身事内 — 理解中国政府与经济</h1>
+  <div class="lesson-meta">
+    <span>📖 阅读约35分钟</span>
+    <span>✏️ 6道练习题</span>
+    <span>🎯 进阶</span>
+  </div>
+</div>
+
+<!-- AUDIO OVERVIEW -->
+<div class="audio-player">
+  <button class="play-btn" onclick="toggleAudio()" id="playBtn">▶️</button>
+  <div class="audio-info">
+    <div class="audio-title">🎧 课程音频概述</div>
+    <div class="audio-sub">点击播放课程核心内容摘要</div>
+  </div>
+  <audio id="courseAudio" preload="none">
+    <source src="audio/lesson22.mp3" type="audio/mpeg">
+  </audio>
+</div>
+
+
+
+<div class="section">
+  <h2><span class="icon"></span> </h2>
+  <p># 第22课：置身事内 — 理解中国政府与经济</p>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p><strong>推荐书籍</strong>：《置身事内》（兰小欢）</p></div>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 开篇：为什么理解政府很重要？</h2>
+  <p><strong>在中国投资，不理解政府就等于盲人摸象。</strong></p>
+  <p>兰小欢说：中国经济的特殊之处在于，政府不仅是裁判员，还是运动员。地方政府之间的竞争，是中国经济增长的核心动力之一。</p>
+  <p>如果你想理解房价、理解产业政策、理解为什么某些城市崛起而某些城市衰落，你必须先理解政府的运作逻辑。</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 地方政府的竞争模式</h2>
+  <h3>2.1 "GDP锦标赛"</h3>
+  <p>中国地方政府之间存在激烈的竞争：</p>
+  <p>• 市长/书记的晋升与GDP增速挂钩</p>
+  <p>• 各地争相招商、建产业园、修基础设施</p>
+  <p>• 这种竞争推动了中国经济的高速增长</p>
+  <h3>2.2 土地财政的逻辑</h3>
+  <p>地方政府的主要收入来源：</p>
+  <table class="data-table"><thead><tr><th>收入来源</th><th>占比</th><th>说明</th></tr></thead><tbody>
+  <tr><td>土地出让金</td><td>30-40%</td><td>卖地收入</td></tr>
+  <tr><td>税收</td><td>40-50%</td><td>增值税、企业所得税</td></tr>
+  <tr><td>转移支付</td><td>10-20%</td><td>中央补贴</td></tr>
+  </tbody></table>
+  <p>|----------|------|------|</p>
+  <p><strong>关键洞察</strong>：地方政府有强烈的动机推高地价，因为地价高→收入多→基建好→GDP高→晋升快。</p>
+  <h3>2.3 土地财政的风险</h3>
+  <p>• 房价过高，年轻人买不起</p>
+  <p>• 地方债务累积（隐性债务超60万亿）</p>
+  <p>• 经济过度依赖房地产</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 产业政策如何塑造行业</h2>
+  <h3>3.1 政府引导基金</h3>
+  <p>中国各级政府设立了大量产业引导基金：</p>
+  <p>• 国家集成电路大基金（超3000亿）</p>
+  <p>• 各地新能源汽车补贴</p>
+  <p>• 半导体、AI、生物医药等领域的专项支持</p>
+  <h3>3.2 产业政策的"中国特色"</h3>
+  <table class="data-table"><thead><tr><th>模式</th><th>说明</th><th>例子</th></tr></thead><tbody>
+  <tr><td>补贴</td><td>直接资金支持</td><td>新能源汽车补贴</td></tr>
+  <tr><td>减税</td><td>税收优惠</td><td>高新技术企业15%税率</td></tr>
+  <tr><td>土地</td><td>低价供地</td><td>产业园用地</td></tr>
+  <tr><td>市场</td><td>政府采购</td><td>国产替代优先</td></tr>
+  </tbody></table>
+  <p>|------|------|------|</p>
+  <p><strong>启示</strong>：在中国投资，要看政策风向。政策支持的行业，往往有超额收益。</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 地方债务与金融风险</h2>
+  <h3>4.1 地方债务的规模</h3>
+  <p>• 显性债务：约35万亿</p>
+  <p>• 隐性债务（城投债等）：约60万亿</p>
+  <p>• 合计近100万亿，占GDP的80%</p>
+  <h3>4.2 城投平台的逻辑</h3>
+  <p>地方政府通过城投公司融资：</p>
+  <p>• 城投公司发行债券</p>
+  <p>• 用于基础设施建设</p>
+  <p>• 用土地出让金偿还</p>
+  <p><strong>风险</strong>：如果房价下跌→土地卖不出去→城投债违约→金融风险。</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 核心概念总结</h2>
+  <h3>你需要记住的5个关键点</h3>
+  <p><strong>1.</strong> <strong>政府是中国经济的核心参与者</strong>，不仅仅是监管者</p>
+  <p><strong>2.</strong> <strong>土地财政是理解中国房价的钥匙</strong></p>
+  <p><strong>3.</strong> <strong>产业政策创造了巨大的投资机会</strong></p>
+  <p><strong>4.</strong> <strong>地方债务是系统性风险的来源之一</strong></p>
+  <p><strong>5.</strong> <strong>政策风向是投资决策的重要参考</strong></p>
+  <h3>你需要打破的3个误区</h3>
+  <p><strong>误区1</strong>："政府干预总是低效的"</p>
+  <p>→ 中国的高铁、5G、新能源车证明，政府在特定领域可以非常高效。</p>
+  <p><strong>误区2</strong>："房价只涨不跌"</p>
+  <p>→ 土地财政不可持续。人口下降+债务累积=长期压力。</p>
+  <p><strong>误区3</strong>："投资不需要关注政策"</p>
+  <p>→ 在中国，政策是最大的变量。新能源、半导体、AI的崛起都与政策密切相关。</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 练习题</h2>
+  <div class="exercise"><div class="exercise-label">✏️ 练习</div><h3>练习1：土地财政分析</h3>
+  <p class="exercise-question">你所在城市的土地出让金占财政收入的比例大约是多少？这如何影响了当地的房价和基础设施建设？</p>
+  <textarea placeholder="写下你的思考..." rows="3"></textarea>
+  <div class="exercise"><div class="exercise-label">✏️ 练习</div><h3>练习2：产业政策跟踪</h3>
+  <p class="exercise-question">选择一个你感兴趣的行业（半导体、新能源、AI等），分析近3年国家和地方的产业政策。这些政策如何影响了行业的发展？</p>
+  <textarea placeholder="写下你的思考..." rows="3"></textarea>
+  <div class="exercise"><div class="exercise-label">✏️ 练习</div><h3>练习3：债务风险评估</h3>
+  <p class="exercise-question">你认为你所在省份的地方债务风险如何？有哪些信号可以观察？</p>
+  <textarea placeholder="写下你的思考..." rows="3"></textarea>
+  </div>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 练习题参考答案</h2>
+  <div class="exercise"><div class="exercise-label">✏️ 练习</div><h3>练习1参考答案</h3>
+  <p>以杭州为例：</p>
+  <p>• 土地出让金占财政收入约40%</p>
+  <p>• 高地价推高房价（均价3-4万/平）</p>
+  <p>• 但也带来了良好的基础设施（地铁、公园）</p>
+  <div class="exercise"><div class="exercise-label">✏️ 练习</div><h3>练习2参考答案</h3>
+  <p>以新能源汽车为例：</p>
+  <p>• 国家补贴从2015年开始，最高时单车补贴超10万</p>
+  <p>• 地方政府争相建设新能源汽车产业园</p>
+  <p>• 结果：中国成为全球最大的新能源汽车市场</p>
+  <div class="exercise"><div class="exercise-label">✏️ 练习</div><h3>练习3思路提示</h3>
+  <p>观察信号：</p>
+  <p><strong>1.</strong> 城投债的发行利率（利率越高，风险越大）</p>
+  <p><strong>2.</strong> 土地流拍率（流拍越多，财政越紧张）</p>
+  <p><strong>3.</strong> 公务员/教师工资是否按时发放</p>
+  </div>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 下节预告</h2>
+  <p><strong>第23课：债务危机 — 达里奥的全天候思维</strong></p>
+  <p>达里奥将教你理解债务周期的本质：</p>
+  <p>• 为什么债务危机反复发生</p>
+  <p>• 如何在危机中保护自己的财富</p>
+  <p>• "美丽的去杠杆"是什么意思</p>
+</div>
+<div class="section">
+  <h2><span class="icon"></span> </h2>
+  <p><em>康波研究院 · 第22课 · 置身事内</em></p>
+</div>
+
+
+<!-- BOTTOM NAV -->
+<div class="bottom-nav">
+  <a href="lesson21.html" class="prev">← 第21课</a>
+  <span></span>
+</div>
+
+</div>
+
+<script>
+// Reading progress
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement;
+  const pct=(h.scrollTop)/(h.scrollHeight-h.clientHeight)*100;
+  document.getElementById('progressFill').style.width=pct+'%';
+});
+
+// Audio player
+function toggleAudio(){
+  const audio=document.getElementById('courseAudio');
+  const btn=document.getElementById('playBtn');
+  if(audio.paused){audio.play();btn.textContent='⏸️'}else{audio.pause();btn.textContent='▶️'}
+}
+</script>
+
+</body>
+</html>

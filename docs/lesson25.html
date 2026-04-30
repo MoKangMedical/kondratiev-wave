@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第25课：贫穷的本质 — 诺贝尔奖得主的反直觉发现 — 康波研究院</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#09090b;--bg2:#0f0f13;--card:#1c1c21;--card2:#222228;--card3:#2a2a32;--border:#27272a;--border2:#3f3f46;--text:#fafafa;--text2:#a1a1aa;--text3:#71717a;--gold:#e2b64f;--gold2:#f5d98a;--green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;--orange:#f59e0b;--red:#ef4444;--serif:'Noto Serif SC',serif;--sans:'Inter',sans-serif;--radius:16px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:2;font-size:18px}
+a{color:var(--gold);text-decoration:none}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(9,9,11,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);height:56px;display:flex;align-items:center}
+.nav-inner{max-width:900px;margin:0 auto;padding:0 24px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-left{display:flex;align-items:center;gap:16px}
+.nav-back{font-size:0.9rem;color:var(--text3);transition:color .2s}.nav-back:hover{color:var(--gold)}
+.nav-title{font-size:0.9rem;color:var(--text2);font-weight:500}
+.nav-right{display:flex;align-items:center;gap:12px}
+.nav-lesson{font-size:0.8rem;color:var(--text3);background:var(--card2);padding:4px 14px;border-radius:6px}
+
+/* PROGRESS BAR */
+.progress-bar{position:fixed;top:56px;left:0;right:0;height:3px;background:var(--border);z-index:99}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));transition:width .3s;width:0%}
+
+/* MAIN */
+.main{max-width:800px;margin:0 auto;padding:80px 28px 60px}
+
+/* LESSON HEADER */
+.lesson-header{margin-bottom:56px;text-align:center}
+.lesson-cat{display:inline-block;font-size:0.75rem;color:var(--gold);background:rgba(226,182,79,0.1);padding:4px 14px;border-radius:20px;margin-bottom:16px;letter-spacing:0.1em}
+.lesson-header h1{font-family:var(--serif);font-size:clamp(2rem,5vw,2.8rem);font-weight:900;line-height:1.3;margin-bottom:16px;background:linear-gradient(135deg,var(--text),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lesson-meta{display:flex;gap:20px;justify-content:center;flex-wrap:wrap}
+.lesson-meta span{font-size:0.85rem;color:var(--text3);display:flex;align-items:center;gap:6px}
+
+/* SECTIONS */
+.section{margin-bottom:48px}
+.section h2{font-size:1.4rem;font-weight:700;margin-bottom:20px;color:var(--text);display:flex;align-items:center;gap:10px}
+.section h2 .icon{font-size:1.2rem}
+.section h3{font-size:1.15rem;font-weight:600;margin:28px 0 12px;color:var(--gold2)}
+.section p{color:var(--text2);font-size:1.05rem;margin-bottom:14px;line-height:2}
+
+/* CALLOUT */
+.callout{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:28px;margin:24px 0}
+.callout.gold{border-left:4px solid var(--gold)}
+.callout.green{border-left:4px solid var(--green)}
+.callout.blue{border-left:4px solid var(--blue)}
+.callout-title{font-size:0.85rem;font-weight:600;color:var(--gold);margin-bottom:10px;text-transform:uppercase;letter-spacing:0.08em}
+.callout p{color:var(--text2);font-size:1rem;line-height:1.9}
+
+/* TABLE */
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:0.95rem}
+.data-table th{text-align:left;padding:12px 14px;background:var(--card2);color:var(--text3);font-weight:600;font-size:0.85rem;text-transform:uppercase;letter-spacing:0.05em;border-bottom:2px solid var(--border)}
+.data-table td{padding:12px 14px;border-bottom:1px solid var(--border);color:var(--text2)}
+.data-table tr:hover td{background:var(--card)}
+
+/* EXERCISE */
+.exercise{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:32px;margin:28px 0}
+.exercise-label{display:inline-flex;align-items:center;gap:6px;font-size:0.8rem;font-weight:600;color:var(--blue);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:14px}
+.exercise h3{font-size:1.1rem;margin-bottom:10px;color:var(--text)}
+.exercise p{color:var(--text2);font-size:1rem;margin-bottom:14px}
+.exercise-question{color:var(--text);font-weight:500;font-size:1.05rem}
+.exercise textarea{width:100%;min-height:90px;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:16px;color:var(--text);font-family:var(--sans);font-size:1rem;resize:vertical;transition:border-color .2s;line-height:1.8}
+.exercise textarea:focus{outline:none;border-color:var(--gold)}
+.exercise textarea::placeholder{color:var(--text3)}
+
+/* BOTTOM NAV */
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;padding:36px 0;margin-top:48px;border-top:1px solid var(--border)}
+.bottom-nav a{display:flex;align-items:center;gap:8px;padding:14px 24px;border-radius:12px;font-size:1rem;font-weight:500;transition:all .2s}
+.bottom-nav .prev{color:var(--text3);border:1px solid var(--border)}
+.bottom-nav .prev:hover{border-color:var(--gold);color:var(--gold)}
+.bottom-nav .next{background:var(--gold);color:#000}
+.bottom-nav .next:hover{background:var(--gold2)}
+
+/* AUDIO PLAYER */
+.audio-player{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin:24px 0;display:flex;align-items:center;gap:16px}
+.audio-player .play-btn{width:48px;height:48px;border-radius:50%;background:var(--gold);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.2rem;transition:background .2s;flex-shrink:0}
+.audio-player .play-btn:hover{background:var(--gold2)}
+.audio-player .audio-info{flex:1}
+.audio-player .audio-title{font-size:0.9rem;font-weight:600;color:var(--text);margin-bottom:4px}
+.audio-player .audio-sub{font-size:0.8rem;color:var(--text3)}
+
+/* RESPONSIVE */
+@media(max-width:640px){
+  .main{padding:72px 16px 40px}
+  .lesson-header h1{font-size:1.8rem}
+  .section h2{font-size:1.2rem}
+  .data-table{font-size:0.85rem}
+  .data-table th,.data-table td{padding:8px 10px}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-left">
+      <a href="index.html" class="nav-back">← 返回首页</a>
+      <span class="nav-title">第25课</span>
+    </div>
+    <div class="nav-right">
+      <span class="nav-lesson">25 / 20</span>
+    </div>
+  </div>
+</nav>
+<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+
+<div class="main">
+
+<!-- HEADER -->
+<div class="lesson-header">
+  <div class="lesson-cat">生活经济</div>
+  <h1>💡 贫穷的本质 — 诺贝尔奖得主的反直觉发现</h1>
+  <div class="lesson-meta">
+    <span>📖 阅读约30分钟</span>
+    <span>✏️ 2道练习题</span>
+    <span>🎯 基础</span>
+  </div>
+</div>
+
+<!-- AUDIO OVERVIEW -->
+<div class="audio-player">
+  <button class="play-btn" onclick="toggleAudio()" id="playBtn">▶️</button>
+  <div class="audio-info">
+    <div class="audio-title">🎧 课程音频概述</div>
+    <div class="audio-sub">点击播放课程核心内容摘要</div>
+  </div>
+  <audio id="courseAudio" preload="none">
+    <source src="audio/lesson25.mp3" type="audio/mpeg">
+  </audio>
+</div>
+
+
+
+<div class="section">
+  <h2><span class="icon"></span> </h2>
+  <p># 第25课：贫穷的本质 — 诺贝尔奖得主的反直觉发现</p>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p><strong>推荐书籍</strong>：《贫穷的本质》（巴纳吉、迪弗洛）</p></div>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 开篇：穷人为什么不"理性"？</h2>
+  <p><strong>给你100美元，你会怎么花？存起来？投资？还是买点好吃的？</strong></p>
+  <p>诺贝尔经济学奖得主巴纳吉和迪弗洛发现：穷人拿到钱后，往往买电视机、办婚礼、买零食，而不是投资教育或健康。</p>
+  <p>这不是因为他们"懒"或"笨"，而是因为<strong>贫穷改变了人的思维方式</strong>。</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 贫穷的五个陷阱</h2>
+  <h3>2.1 信息陷阱</h3>
+  <p>穷人缺乏信息：</p>
+  <p>• 不知道疫苗能预防疾病</p>
+  <p>• 不知道教育能提高收入</p>
+  <p>• 不知道复利能增长财富</p>
+  <p><strong>启示</strong>：你不知道的东西，会伤害你。投资理财的第一步是学习。</p>
+  <h3>2.2 规模陷阱</h3>
+  <p>很多"好的投资"有门槛：</p>
+  <p>• 好学校需要学费</p>
+  <p>• 好工作需要技能</p>
+  <p>• 好投资需要本金</p>
+  <p>穷人跨不过门槛，就永远在低水平循环。</p>
+  <h3>2.3 贴现率陷阱</h3>
+  <p>穷人更看重当下：</p>
+  <p>• 今天的100块 > 明天的120块</p>
+  <p>• 因为明天可能有紧急情况</p>
+  <p>• 所以他们不储蓄、不投资</p>
+  <p><strong>反思</strong>：你是不是也有这种思维？月光族就是"穷人心态"。</p>
+  <h3>2.4 风险陷阱</h3>
+  <p>穷人承受不起风险：</p>
+  <p>• 一次疾病可能倾家荡产</p>
+  <p>• 一次失败可能万劫不复</p>
+  <p>• 所以他们选择保守策略</p>
+  <p><strong>启示</strong>：风险管理是财富增长的基础。先买保险，再谈投资。</p>
+  <h3>2.5 制度陷阱</h3>
+  <p>穷人缺乏制度支持：</p>
+  <p>• 没有银行账户</p>
+  <p>• 没有社会保障</p>
+  <p>• 没有法律保护</p>
+  <p><strong>启示</strong>：利用好制度（社保、公积金、税收优惠）是中产的优势。</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 这些发现如何适用于你的理财</h2>
+  <h3>3.1 避免"穷人思维"</h3>
+  <table class="data-table"><thead><tr><th>穷人思维</th><th>富人思维</th></tr></thead><tbody>
+  <tr><td>今天花完</td><td>先存后花</td></tr>
+  <tr><td>只看眼前</td><td>规划未来</td></tr>
+  <tr><td>害怕风险</td><td>管理风险</td></tr>
+  <tr><td>不学习</td><td>持续学习</td></tr>
+  </tbody></table>
+  <p>|----------|----------|</p>
+  <h3>3.2 克服"信息陷阱"</h3>
+  <p>• 每月读一本理财书</p>
+  <p>• 关注经济新闻（但不被噪音干扰）</p>
+  <p>• 学习基本的财务知识</p>
+  <h3>3.3 跨越"规模陷阱"</h3>
+  <p>• 从100元开始定投</p>
+  <p>• 利用复利效应</p>
+  <p>• 时间是最好的朋友</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 核心概念总结</h2>
+  <h3>你需要记住的5个关键点</h3>
+  <p><strong>1.</strong> <strong>贫穷不是因为懒或笨</strong>，而是因为环境和制度</p>
+  <p><strong>2.</strong> <strong>信息、规模、贴现率、风险、制度</strong>是五个贫穷陷阱</p>
+  <p><strong>3.</strong> <strong>"穷人思维"存在于每个人身上</strong>——月光族、冲动消费都是表现</p>
+  <p><strong>4.</strong> <strong>克服穷人思维的方法</strong>：先存后花、持续学习、管理风险</p>
+  <p><strong>5.</strong> <strong>利用好制度</strong>是中产阶级的优势</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 练习题</h2>
+  <div class="exercise"><div class="exercise-label">✏️ 练习</div><h3>练习1：自我诊断</h3>
+  <p class="exercise-question">你有没有"穷人思维"的表现？列出3个并制定改进计划。</p>
+  <textarea placeholder="写下你的思考..." rows="3"></textarea>
+  <div class="exercise"><div class="exercise-label">✏️ 练习</div><h3>练习2：风险管理</h3>
+  <p class="exercise-question">你目前有哪些风险保障？（社保、商业保险、应急资金）还缺什么？</p>
+  <textarea placeholder="写下你的思考..." rows="3"></textarea>
+  </div>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 下节预告</h2>
+  <p><strong>第26课：薛兆丰经济学讲义 — 用经济学思维看世界</strong></p>
+  <p>薛兆丰将教你：</p>
+  <p>• 价格是如何形成的？</p>
+  <p>• 为什么"免费"的东西最贵？</p>
+  <p>• 如何用经济学思维做日常决策？</p>
+</div>
+<div class="section">
+  <h2><span class="icon"></span> </h2>
+  <p><em>康波研究院 · 第25课 · 贫穷的本质</em></p>
+</div>
+
+
+<!-- BOTTOM NAV -->
+<div class="bottom-nav">
+  <a href="lesson24.html" class="prev">← 第24课</a>
+  <span></span>
+</div>
+
+</div>
+
+<script>
+// Reading progress
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement;
+  const pct=(h.scrollTop)/(h.scrollHeight-h.clientHeight)*100;
+  document.getElementById('progressFill').style.width=pct+'%';
+});
+
+// Audio player
+function toggleAudio(){
+  const audio=document.getElementById('courseAudio');
+  const btn=document.getElementById('playBtn');
+  if(audio.paused){audio.play();btn.textContent='⏸️'}else{audio.pause();btn.textContent='▶️'}
+}
+</script>
+
+</body>
+</html>

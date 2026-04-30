@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第27课：激荡三十年 — 中国经济的奇迹与教训 — 康波研究院</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#09090b;--bg2:#0f0f13;--card:#1c1c21;--card2:#222228;--card3:#2a2a32;--border:#27272a;--border2:#3f3f46;--text:#fafafa;--text2:#a1a1aa;--text3:#71717a;--gold:#e2b64f;--gold2:#f5d98a;--green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;--orange:#f59e0b;--red:#ef4444;--serif:'Noto Serif SC',serif;--sans:'Inter',sans-serif;--radius:16px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:2;font-size:18px}
+a{color:var(--gold);text-decoration:none}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(9,9,11,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);height:56px;display:flex;align-items:center}
+.nav-inner{max-width:900px;margin:0 auto;padding:0 24px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-left{display:flex;align-items:center;gap:16px}
+.nav-back{font-size:0.9rem;color:var(--text3);transition:color .2s}.nav-back:hover{color:var(--gold)}
+.nav-title{font-size:0.9rem;color:var(--text2);font-weight:500}
+.nav-right{display:flex;align-items:center;gap:12px}
+.nav-lesson{font-size:0.8rem;color:var(--text3);background:var(--card2);padding:4px 14px;border-radius:6px}
+
+/* PROGRESS BAR */
+.progress-bar{position:fixed;top:56px;left:0;right:0;height:3px;background:var(--border);z-index:99}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));transition:width .3s;width:0%}
+
+/* MAIN */
+.main{max-width:800px;margin:0 auto;padding:80px 28px 60px}
+
+/* LESSON HEADER */
+.lesson-header{margin-bottom:56px;text-align:center}
+.lesson-cat{display:inline-block;font-size:0.75rem;color:var(--gold);background:rgba(226,182,79,0.1);padding:4px 14px;border-radius:20px;margin-bottom:16px;letter-spacing:0.1em}
+.lesson-header h1{font-family:var(--serif);font-size:clamp(2rem,5vw,2.8rem);font-weight:900;line-height:1.3;margin-bottom:16px;background:linear-gradient(135deg,var(--text),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lesson-meta{display:flex;gap:20px;justify-content:center;flex-wrap:wrap}
+.lesson-meta span{font-size:0.85rem;color:var(--text3);display:flex;align-items:center;gap:6px}
+
+/* SECTIONS */
+.section{margin-bottom:48px}
+.section h2{font-size:1.4rem;font-weight:700;margin-bottom:20px;color:var(--text);display:flex;align-items:center;gap:10px}
+.section h2 .icon{font-size:1.2rem}
+.section h3{font-size:1.15rem;font-weight:600;margin:28px 0 12px;color:var(--gold2)}
+.section p{color:var(--text2);font-size:1.05rem;margin-bottom:14px;line-height:2}
+
+/* CALLOUT */
+.callout{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:28px;margin:24px 0}
+.callout.gold{border-left:4px solid var(--gold)}
+.callout.green{border-left:4px solid var(--green)}
+.callout.blue{border-left:4px solid var(--blue)}
+.callout-title{font-size:0.85rem;font-weight:600;color:var(--gold);margin-bottom:10px;text-transform:uppercase;letter-spacing:0.08em}
+.callout p{color:var(--text2);font-size:1rem;line-height:1.9}
+
+/* TABLE */
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:0.95rem}
+.data-table th{text-align:left;padding:12px 14px;background:var(--card2);color:var(--text3);font-weight:600;font-size:0.85rem;text-transform:uppercase;letter-spacing:0.05em;border-bottom:2px solid var(--border)}
+.data-table td{padding:12px 14px;border-bottom:1px solid var(--border);color:var(--text2)}
+.data-table tr:hover td{background:var(--card)}
+
+/* EXERCISE */
+.exercise{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:32px;margin:28px 0}
+.exercise-label{display:inline-flex;align-items:center;gap:6px;font-size:0.8rem;font-weight:600;color:var(--blue);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:14px}
+.exercise h3{font-size:1.1rem;margin-bottom:10px;color:var(--text)}
+.exercise p{color:var(--text2);font-size:1rem;margin-bottom:14px}
+.exercise-question{color:var(--text);font-weight:500;font-size:1.05rem}
+.exercise textarea{width:100%;min-height:90px;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:16px;color:var(--text);font-family:var(--sans);font-size:1rem;resize:vertical;transition:border-color .2s;line-height:1.8}
+.exercise textarea:focus{outline:none;border-color:var(--gold)}
+.exercise textarea::placeholder{color:var(--text3)}
+
+/* BOTTOM NAV */
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;padding:36px 0;margin-top:48px;border-top:1px solid var(--border)}
+.bottom-nav a{display:flex;align-items:center;gap:8px;padding:14px 24px;border-radius:12px;font-size:1rem;font-weight:500;transition:all .2s}
+.bottom-nav .prev{color:var(--text3);border:1px solid var(--border)}
+.bottom-nav .prev:hover{border-color:var(--gold);color:var(--gold)}
+.bottom-nav .next{background:var(--gold);color:#000}
+.bottom-nav .next:hover{background:var(--gold2)}
+
+/* AUDIO PLAYER */
+.audio-player{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin:24px 0;display:flex;align-items:center;gap:16px}
+.audio-player .play-btn{width:48px;height:48px;border-radius:50%;background:var(--gold);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.2rem;transition:background .2s;flex-shrink:0}
+.audio-player .play-btn:hover{background:var(--gold2)}
+.audio-player .audio-info{flex:1}
+.audio-player .audio-title{font-size:0.9rem;font-weight:600;color:var(--text);margin-bottom:4px}
+.audio-player .audio-sub{font-size:0.8rem;color:var(--text3)}
+
+/* RESPONSIVE */
+@media(max-width:640px){
+  .main{padding:72px 16px 40px}
+  .lesson-header h1{font-size:1.8rem}
+  .section h2{font-size:1.2rem}
+  .data-table{font-size:0.85rem}
+  .data-table th,.data-table td{padding:8px 10px}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-left">
+      <a href="index.html" class="nav-back">← 返回首页</a>
+      <span class="nav-title">第27课</span>
+    </div>
+    <div class="nav-right">
+      <span class="nav-lesson">27 / 20</span>
+    </div>
+  </div>
+</nav>
+<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+
+<div class="main">
+
+<!-- HEADER -->
+<div class="lesson-header">
+  <div class="lesson-cat">生活经济</div>
+  <h1>🚀 激荡三十年 — 中国经济的奇迹与教训</h1>
+  <div class="lesson-meta">
+    <span>📖 阅读约35分钟</span>
+    <span>✏️ 2道练习题</span>
+    <span>🎯 基础</span>
+  </div>
+</div>
+
+<!-- AUDIO OVERVIEW -->
+<div class="audio-player">
+  <button class="play-btn" onclick="toggleAudio()" id="playBtn">▶️</button>
+  <div class="audio-info">
+    <div class="audio-title">🎧 课程音频概述</div>
+    <div class="audio-sub">点击播放课程核心内容摘要</div>
+  </div>
+  <audio id="courseAudio" preload="none">
+    <source src="audio/lesson27.mp3" type="audio/mpeg">
+  </audio>
+</div>
+
+
+
+<div class="section">
+  <h2><span class="icon"></span> </h2>
+  <p># 第27课：激荡三十年 — 中国经济的奇迹与教训</p>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p><strong>推荐书籍</strong>：《激荡三十年》《激荡十年》（吴晓波）</p></div>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 开篇：中国经济的奇迹</h2>
+  <p><strong>1978年，中国人均GDP只有156美元。2023年，超过12000美元。</strong></p>
+  <p>这是人类历史上最大规模的经济奇迹。40年间，8亿人脱贫，中国成为世界第二大经济体。</p>
+  <p>但奇迹的背后，也有无数的失败、泡沫和教训。</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 四个关键阶段</h2>
+  <h3>2.1 1978-1992：破冰</h3>
+  <p>• 农村改革（家庭联产承包责任制）</p>
+  <p>• 乡镇企业崛起</p>
+  <p>• 个体户出现</p>
+  <p>• 价格双轨制</p>
+  <p><strong>教训</strong>：改革是渐进的，不是一蹴而就的。</p>
+  <h3>2.2 1992-2002：市场化</h3>
+  <p>• 邓小平南巡</p>
+  <p>• 股票市场建立</p>
+  <p>• 国企改革（抓大放小）</p>
+  <p>• 亚洲金融危机</p>
+  <p><strong>教训</strong>：市场化带来效率，但也带来风险。</p>
+  <h3>2.3 2002-2012：全球化</h3>
+  <p>• 加入WTO</p>
+  <p>• 房地产崛起</p>
+  <p>• 制造业成为世界工厂</p>
+  <p>• 2008年四万亿刺激</p>
+  <p><strong>教训</strong>：全球化带来机遇，但也带来依赖。</p>
+  <h3>2.4 2012-2022：新常态</h3>
+  <p>• 经济增速换挡</p>
+  <p>• 互联网经济爆发</p>
+  <p>• 供给侧改革</p>
+  <p>• 中美贸易摩擦</p>
+  <p><strong>教训</strong>：高速增长不可持续，高质量发展才是出路。</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 那些崛起和陨落的企业</h2>
+  <h3>3.1 崛起的故事</h3>
+  <table class="data-table"><thead><tr><th>企业</th><th>崛起原因</th><th>关键时刻</th></tr></thead><tbody>
+  <tr><td>华为</td><td>技术研发+狼性文化</td><td>2019年制裁后转型</td></tr>
+  <tr><td>比亚迪</td><td>新能源+垂直整合</td><td>2020年刀片电池</td></tr>
+  <tr><td>字节跳动</td><td>算法+全球化</td><td>2016年抖音上线</td></tr>
+  <tr><td>企业</td><td>陨落原因</td><td>教训</td></tr>
+  </tbody></table>
+  <p>|------|----------|----------|</p>
+  <h3>3.2 陨落的故事</h3>
+  <p>|------|----------|------|</p>
+  <table class="data-table"><thead><tr><th>柯达</th><th>忽视数码技术</th><th>不能忽视技术变革</th></tr></thead><tbody>
+  <tr><td>诺基亚</td><td>错判智能手机</td><td>不能傲慢</td></tr>
+  <tr><td>恒大</td><td>过度杠杆</td><td>不能过度负债</td></tr>
+  </tbody></table>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 历史给我们的投资启示</h2>
+  <h3>4.1 顺势而为</h3>
+  <p>• 1990年代：买制造业股票</p>
+  <p>• 2000年代：买房地产</p>
+  <p>• 2010年代：买互联网股票</p>
+  <p>• 2020年代：买新能源/AI股票</p>
+  <h3>4.2 警惕泡沫</h3>
+  <p>• 2007年A股6000点</p>
+  <p>• 2015年创业板泡沫</p>
+  <p>• 2021年核心资产泡沫</p>
+  <h3>4.3 控制杠杆</h3>
+  <p>• 恒大的教训：过度杠杆=死亡</p>
+  <p>• 个人的教训：不要借钱炒股</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 核心概念总结</h2>
+  <h3>你需要记住的5个关键点</h3>
+  <p><strong>1.</strong> <strong>中国经济奇迹是渐进式改革的结果</strong></p>
+  <p><strong>2.</strong> <strong>每10年都有一次大的产业变迁</strong></p>
+  <p><strong>3.</strong> <strong>顺势而为是投资的核心</strong></p>
+  <p><strong>4.</strong> <strong>泡沫和危机是周期性的</strong></p>
+  <p><strong>5.</strong> <strong>控制杠杆是生存的基础</strong></p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 练习题</h2>
+  <div class="exercise"><div class="exercise-label">✏️ 练习</div><h3>练习1：产业趋势</h3>
+  <p class="exercise-question">你认为2020-2030年的主导产业是什么？为什么？</p>
+  <textarea placeholder="写下你的思考..." rows="3"></textarea>
+  <div class="exercise"><div class="exercise-label">✏️ 练习</div><h3>练习2：企业分析</h3>
+  <p>选择一个中国崛起的企业（华为、比亚迪、字节跳动等），分析它成功的关键因素。</p>
+  </div>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 下节预告</h2>
+  <p><strong>第28课：房子、教育、医疗 — 三大民生经济学</strong></p>
+  <p>这是与每个人生活最相关的经济学：</p>
+  <p>• 房价还会涨吗？</p>
+  <p>• 教育投资值得吗？</p>
+  <p>• 医疗费用如何规划？</p>
+</div>
+<div class="section">
+  <h2><span class="icon"></span> </h2>
+  <p><em>康波研究院 · 第27课 · 激荡三十年</em></p>
+</div>
+
+
+<!-- BOTTOM NAV -->
+<div class="bottom-nav">
+  <a href="lesson26.html" class="prev">← 第26课</a>
+  <span></span>
+</div>
+
+</div>
+
+<script>
+// Reading progress
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement;
+  const pct=(h.scrollTop)/(h.scrollHeight-h.clientHeight)*100;
+  document.getElementById('progressFill').style.width=pct+'%';
+});
+
+// Audio player
+function toggleAudio(){
+  const audio=document.getElementById('courseAudio');
+  const btn=document.getElementById('playBtn');
+  if(audio.paused){audio.play();btn.textContent='⏸️'}else{audio.pause();btn.textContent='▶️'}
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第29课：数字经济时代 — 你的钱去哪了 — 康波研究院</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#09090b;--bg2:#0f0f13;--card:#1c1c21;--card2:#222228;--card3:#2a2a32;--border:#27272a;--border2:#3f3f46;--text:#fafafa;--text2:#a1a1aa;--text3:#71717a;--gold:#e2b64f;--gold2:#f5d98a;--green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;--orange:#f59e0b;--red:#ef4444;--serif:'Noto Serif SC',serif;--sans:'Inter',sans-serif;--radius:16px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:2;font-size:18px}
+a{color:var(--gold);text-decoration:none}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(9,9,11,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);height:56px;display:flex;align-items:center}
+.nav-inner{max-width:900px;margin:0 auto;padding:0 24px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-left{display:flex;align-items:center;gap:16px}
+.nav-back{font-size:0.9rem;color:var(--text3);transition:color .2s}.nav-back:hover{color:var(--gold)}
+.nav-title{font-size:0.9rem;color:var(--text2);font-weight:500}
+.nav-right{display:flex;align-items:center;gap:12px}
+.nav-lesson{font-size:0.8rem;color:var(--text3);background:var(--card2);padding:4px 14px;border-radius:6px}
+
+/* PROGRESS BAR */
+.progress-bar{position:fixed;top:56px;left:0;right:0;height:3px;background:var(--border);z-index:99}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));transition:width .3s;width:0%}
+
+/* MAIN */
+.main{max-width:800px;margin:0 auto;padding:80px 28px 60px}
+
+/* LESSON HEADER */
+.lesson-header{margin-bottom:56px;text-align:center}
+.lesson-cat{display:inline-block;font-size:0.75rem;color:var(--gold);background:rgba(226,182,79,0.1);padding:4px 14px;border-radius:20px;margin-bottom:16px;letter-spacing:0.1em}
+.lesson-header h1{font-family:var(--serif);font-size:clamp(2rem,5vw,2.8rem);font-weight:900;line-height:1.3;margin-bottom:16px;background:linear-gradient(135deg,var(--text),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lesson-meta{display:flex;gap:20px;justify-content:center;flex-wrap:wrap}
+.lesson-meta span{font-size:0.85rem;color:var(--text3);display:flex;align-items:center;gap:6px}
+
+/* SECTIONS */
+.section{margin-bottom:48px}
+.section h2{font-size:1.4rem;font-weight:700;margin-bottom:20px;color:var(--text);display:flex;align-items:center;gap:10px}
+.section h2 .icon{font-size:1.2rem}
+.section h3{font-size:1.15rem;font-weight:600;margin:28px 0 12px;color:var(--gold2)}
+.section p{color:var(--text2);font-size:1.05rem;margin-bottom:14px;line-height:2}
+
+/* CALLOUT */
+.callout{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:28px;margin:24px 0}
+.callout.gold{border-left:4px solid var(--gold)}
+.callout.green{border-left:4px solid var(--green)}
+.callout.blue{border-left:4px solid var(--blue)}
+.callout-title{font-size:0.85rem;font-weight:600;color:var(--gold);margin-bottom:10px;text-transform:uppercase;letter-spacing:0.08em}
+.callout p{color:var(--text2);font-size:1rem;line-height:1.9}
+
+/* TABLE */
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:0.95rem}
+.data-table th{text-align:left;padding:12px 14px;background:var(--card2);color:var(--text3);font-weight:600;font-size:0.85rem;text-transform:uppercase;letter-spacing:0.05em;border-bottom:2px solid var(--border)}
+.data-table td{padding:12px 14px;border-bottom:1px solid var(--border);color:var(--text2)}
+.data-table tr:hover td{background:var(--card)}
+
+/* EXERCISE */
+.exercise{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:32px;margin:28px 0}
+.exercise-label{display:inline-flex;align-items:center;gap:6px;font-size:0.8rem;font-weight:600;color:var(--blue);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:14px}
+.exercise h3{font-size:1.1rem;margin-bottom:10px;color:var(--text)}
+.exercise p{color:var(--text2);font-size:1rem;margin-bottom:14px}
+.exercise-question{color:var(--text);font-weight:500;font-size:1.05rem}
+.exercise textarea{width:100%;min-height:90px;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:16px;color:var(--text);font-family:var(--sans);font-size:1rem;resize:vertical;transition:border-color .2s;line-height:1.8}
+.exercise textarea:focus{outline:none;border-color:var(--gold)}
+.exercise textarea::placeholder{color:var(--text3)}
+
+/* BOTTOM NAV */
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;padding:36px 0;margin-top:48px;border-top:1px solid var(--border)}
+.bottom-nav a{display:flex;align-items:center;gap:8px;padding:14px 24px;border-radius:12px;font-size:1rem;font-weight:500;transition:all .2s}
+.bottom-nav .prev{color:var(--text3);border:1px solid var(--border)}
+.bottom-nav .prev:hover{border-color:var(--gold);color:var(--gold)}
+.bottom-nav .next{background:var(--gold);color:#000}
+.bottom-nav .next:hover{background:var(--gold2)}
+
+/* AUDIO PLAYER */
+.audio-player{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin:24px 0;display:flex;align-items:center;gap:16px}
+.audio-player .play-btn{width:48px;height:48px;border-radius:50%;background:var(--gold);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.2rem;transition:background .2s;flex-shrink:0}
+.audio-player .play-btn:hover{background:var(--gold2)}
+.audio-player .audio-info{flex:1}
+.audio-player .audio-title{font-size:0.9rem;font-weight:600;color:var(--text);margin-bottom:4px}
+.audio-player .audio-sub{font-size:0.8rem;color:var(--text3)}
+
+/* RESPONSIVE */
+@media(max-width:640px){
+  .main{padding:72px 16px 40px}
+  .lesson-header h1{font-size:1.8rem}
+  .section h2{font-size:1.2rem}
+  .data-table{font-size:0.85rem}
+  .data-table th,.data-table td{padding:8px 10px}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-left">
+      <a href="index.html" class="nav-back">← 返回首页</a>
+      <span class="nav-title">第29课</span>
+    </div>
+    <div class="nav-right">
+      <span class="nav-lesson">29 / 20</span>
+    </div>
+  </div>
+</nav>
+<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+
+<div class="main">
+
+<!-- HEADER -->
+<div class="lesson-header">
+  <div class="lesson-cat">生活经济</div>
+  <h1>📱 数字经济时代 — 你的钱去哪了</h1>
+  <div class="lesson-meta">
+    <span>📖 阅读约35分钟</span>
+    <span>✏️ 2道练习题</span>
+    <span>🎯 进阶</span>
+  </div>
+</div>
+
+<!-- AUDIO OVERVIEW -->
+<div class="audio-player">
+  <button class="play-btn" onclick="toggleAudio()" id="playBtn">▶️</button>
+  <div class="audio-info">
+    <div class="audio-title">🎧 课程音频概述</div>
+    <div class="audio-sub">点击播放课程核心内容摘要</div>
+  </div>
+  <audio id="courseAudio" preload="none">
+    <source src="audio/lesson29.mp3" type="audio/mpeg">
+  </audio>
+</div>
+
+
+
+<div class="section">
+  <h2><span class="icon"></span> </h2>
+  <p># 第29课：数字经济时代 — 你的钱去哪了</p>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p><strong>推荐书籍</strong>：《平台革命》、《监控资本主义时代》</p></div>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 开篇：你的钱正在被"算法"操控</h2>
+  <p><strong>你有没有发现：你刚和朋友聊完某个商品，手机就开始推送广告？</strong></p>
+  <p>这不是巧合，而是算法在"读心"。数字经济时代，你的每一次点击、每一次浏览、每一次消费，都在被记录、分析、利用。</p>
+  <p><strong>关键问题</strong>：在这个时代，你的钱是怎么被"偷走"的？</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 平台经济的定价逻辑</h2>
+  <h3>2.1 大数据杀熟</h3>
+  <table class="data-table"><thead><tr><th>平台</th><th>杀熟方式</th><th>例子</th></tr></thead><tbody>
+  <tr><td>电商</td><td>同一商品不同价格</td><td>老用户看到更高价格</td></tr>
+  <tr><td>打车</td><td>动态定价</td><td>苹果手机用户看到更高价格</td></tr>
+  <tr><td>外卖</td><td>配送费差异化</td><td>距离相同但费用不同</td></tr>
+  </tbody></table>
+  <p>|------|----------|------|</p>
+  <h3>2.2 算法推荐的陷阱</h3>
+  <p>• 信息茧房：只看到你想看的</p>
+  <p>• 冲动消费：限时优惠、凑单满减</p>
+  <p>• 消费升级：算法推动你买更贵的</p>
+  <h3>2.3 如何对抗算法？</h3>
+  <p><strong>1.</strong> <strong>清除浏览记录</strong></p>
+  <p><strong>2.</strong> <strong>多平台比价</strong></p>
+  <p><strong>3.</strong> <strong>延迟消费</strong>（想买的东西等24小时）</p>
+  <p><strong>4.</strong> <strong>关闭个性化推荐</strong></p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 数据隐私的价值</h2>
+  <h3>3.1 你的数据值多少钱？</h3>
+  <p>• 一条个人信息：0.1-1元</p>
+  <p>• 一个人的完整画像：100-1000元</p>
+  <p>• 一个行业的用户数据：数亿元</p>
+  <h3>3.2 数据是新时代的"石油"</h3>
+  <p>• 平台靠数据赚钱</p>
+  <p>• 广告商靠数据精准投放</p>
+  <p>• AI靠数据训练模型</p>
+  <h3>3.3 如何保护你的数据？</h3>
+  <p><strong>1.</strong> <strong>最小化授权</strong></p>
+  <p><strong>2.</strong> <strong>使用隐私浏览器</strong></p>
+  <p><strong>3.</strong> <strong>定期清理Cookie</strong></p>
+  <p><strong>4.</strong> <strong>谨慎填写个人信息</strong></p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 数字货币的未来</h2>
+  <h3>4.1 数字人民币</h3>
+  <p>• 央行发行的法定数字货币</p>
+  <p>• 可控匿名（政府可以看到交易）</p>
+  <p>• 可能取代现金</p>
+  <h3>4.2 加密货币</h3>
+  <p>• 比特币：数字黄金</p>
+  <p>• 以太坊：智能合约平台</p>
+  <p>• 稳定币：锚定法币</p>
+  <h3>4.3 数字货币对你的影响</h3>
+  <table class="data-table"><thead><tr><th>影响</th><th>说明</th></tr></thead><tbody>
+  <tr><td>支付</td><td>更便捷，但隐私减少</td></tr>
+  <tr><td>投资</td><td>新的资产类别</td></tr>
+  <tr><td>货币政策</td><td>央行调控更精准</td></tr>
+  </tbody></table>
+  <p>|------|------|</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 核心概念总结</h2>
+  <h3>你需要记住的5个关键点</h3>
+  <p><strong>1.</strong> <strong>算法正在"操控"你的消费</strong></p>
+  <p><strong>2.</strong> <strong>大数据杀熟是真实存在的</strong></p>
+  <p><strong>3.</strong> <strong>你的数据是有价值的资产</strong></p>
+  <p><strong>4.</strong> <strong>数字货币将改变支付和投资</strong></p>
+  <p><strong>5.</strong> <strong>对抗算法的方法</strong>：比价、延迟消费、关闭推荐</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 练习题</h2>
+  <div class="exercise"><div class="exercise-label">✏️ 练习</div><h3>练习1：算法诊断</h3>
+  <p class="exercise-question">检查你的手机：哪些App在收集你的数据？你授权了哪些权限？</p>
+  <textarea placeholder="写下你的思考..." rows="3"></textarea>
+  <div class="exercise"><div class="exercise-label">✏️ 练习</div><h3>练习2：消费审计</h3>
+  <p class="exercise-question">回顾你过去一个月的消费：有多少是"冲动消费"？有多少是算法推荐的？</p>
+  <textarea placeholder="写下你的思考..." rows="3"></textarea>
+  </div>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 下节预告</h2>
+  <p><strong>第30课：未来十年 — 普通人如何守住财富</strong></p>
+  <p>终极课程：</p>
+  <p>• 未来十年的确定性趋势</p>
+  <p>• 普通人的资产配置策略</p>
+  <p>• 构建你的投资世界观</p>
+</div>
+<div class="section">
+  <h2><span class="icon"></span> </h2>
+  <p><em>康波研究院 · 第29课 · 数字经济时代</em></p>
+</div>
+
+
+<!-- BOTTOM NAV -->
+<div class="bottom-nav">
+  <a href="lesson28.html" class="prev">← 第28课</a>
+  <span></span>
+</div>
+
+</div>
+
+<script>
+// Reading progress
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement;
+  const pct=(h.scrollTop)/(h.scrollHeight-h.clientHeight)*100;
+  document.getElementById('progressFill').style.width=pct+'%';
+});
+
+// Audio player
+function toggleAudio(){
+  const audio=document.getElementById('courseAudio');
+  const btn=document.getElementById('playBtn');
+  if(audio.paused){audio.play();btn.textContent='⏸️'}else{audio.pause();btn.textContent='▶️'}
+}
+</script>
+
+</body>
+</html>

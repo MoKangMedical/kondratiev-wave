@@ -35,6 +35,16 @@ COURSE_META = {
     "18": {"title": "地缘政治经济学", "difficulty": "高级", "time": "40分钟", "icon": "🌍", "category": "专题研究"},
     "19": {"title": "技术奇点 — 当AI超越人类", "difficulty": "高级", "time": "40分钟", "icon": "🤖", "category": "专题研究"},
     "20": {"title": "终极整合 — 构建你的投资世界观", "difficulty": "高级", "time": "50分钟", "icon": "🎯", "category": "终极整合"},
+    "21": {"title": "有温度的经济学 — 何帆与中国经济的微观脉搏", "difficulty": "基础", "time": "30分钟", "icon": "🌡️", "category": "趋势洞察"},
+    "22": {"title": "置身事内 — 理解中国政府与经济", "difficulty": "进阶", "time": "35分钟", "icon": "🏛️", "category": "趋势洞察"},
+    "23": {"title": "债务危机 — 达里奥的全天候思维", "difficulty": "进阶", "time": "35分钟", "icon": "💳", "category": "趋势洞察"},
+    "24": {"title": "21世纪资本论 — 贫富分化的真相", "difficulty": "进阶", "time": "30分钟", "icon": "📊", "category": "趋势洞察"},
+    "25": {"title": "贫穷的本质 — 诺贝尔奖得主的反直觉发现", "difficulty": "基础", "time": "30分钟", "icon": "💡", "category": "生活经济"},
+    "26": {"title": "薛兆丰经济学讲义 — 用经济学思维看世界", "difficulty": "基础", "time": "30分钟", "icon": "🧠", "category": "生活经济"},
+    "27": {"title": "激荡三十年 — 中国经济的奇迹与教训", "difficulty": "基础", "time": "35分钟", "icon": "🚀", "category": "生活经济"},
+    "28": {"title": "房子、教育、医疗 — 三大民生经济学", "difficulty": "进阶", "time": "40分钟", "icon": "🏠", "category": "生活经济"},
+    "29": {"title": "数字经济时代 — 你的钱去哪了", "difficulty": "进阶", "time": "35分钟", "icon": "📱", "category": "生活经济"},
+    "30": {"title": "未来十年 — 普通人如何守住财富", "difficulty": "高级", "time": "45分钟", "icon": "🎯", "category": "终极整合"},
 }
 
 # SVG插图模板

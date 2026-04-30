@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第28课：房子、教育、医疗 — 三大民生经济学 — 康波研究院</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#09090b;--bg2:#0f0f13;--card:#1c1c21;--card2:#222228;--card3:#2a2a32;--border:#27272a;--border2:#3f3f46;--text:#fafafa;--text2:#a1a1aa;--text3:#71717a;--gold:#e2b64f;--gold2:#f5d98a;--green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;--orange:#f59e0b;--red:#ef4444;--serif:'Noto Serif SC',serif;--sans:'Inter',sans-serif;--radius:16px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:2;font-size:18px}
+a{color:var(--gold);text-decoration:none}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(9,9,11,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);height:56px;display:flex;align-items:center}
+.nav-inner{max-width:900px;margin:0 auto;padding:0 24px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-left{display:flex;align-items:center;gap:16px}
+.nav-back{font-size:0.9rem;color:var(--text3);transition:color .2s}.nav-back:hover{color:var(--gold)}
+.nav-title{font-size:0.9rem;color:var(--text2);font-weight:500}
+.nav-right{display:flex;align-items:center;gap:12px}
+.nav-lesson{font-size:0.8rem;color:var(--text3);background:var(--card2);padding:4px 14px;border-radius:6px}
+
+/* PROGRESS BAR */
+.progress-bar{position:fixed;top:56px;left:0;right:0;height:3px;background:var(--border);z-index:99}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));transition:width .3s;width:0%}
+
+/* MAIN */
+.main{max-width:800px;margin:0 auto;padding:80px 28px 60px}
+
+/* LESSON HEADER */
+.lesson-header{margin-bottom:56px;text-align:center}
+.lesson-cat{display:inline-block;font-size:0.75rem;color:var(--gold);background:rgba(226,182,79,0.1);padding:4px 14px;border-radius:20px;margin-bottom:16px;letter-spacing:0.1em}
+.lesson-header h1{font-family:var(--serif);font-size:clamp(2rem,5vw,2.8rem);font-weight:900;line-height:1.3;margin-bottom:16px;background:linear-gradient(135deg,var(--text),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lesson-meta{display:flex;gap:20px;justify-content:center;flex-wrap:wrap}
+.lesson-meta span{font-size:0.85rem;color:var(--text3);display:flex;align-items:center;gap:6px}
+
+/* SECTIONS */
+.section{margin-bottom:48px}
+.section h2{font-size:1.4rem;font-weight:700;margin-bottom:20px;color:var(--text);display:flex;align-items:center;gap:10px}
+.section h2 .icon{font-size:1.2rem}
+.section h3{font-size:1.15rem;font-weight:600;margin:28px 0 12px;color:var(--gold2)}
+.section p{color:var(--text2);font-size:1.05rem;margin-bottom:14px;line-height:2}
+
+/* CALLOUT */
+.callout{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:28px;margin:24px 0}
+.callout.gold{border-left:4px solid var(--gold)}
+.callout.green{border-left:4px solid var(--green)}
+.callout.blue{border-left:4px solid var(--blue)}
+.callout-title{font-size:0.85rem;font-weight:600;color:var(--gold);margin-bottom:10px;text-transform:uppercase;letter-spacing:0.08em}
+.callout p{color:var(--text2);font-size:1rem;line-height:1.9}
+
+/* TABLE */
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:0.95rem}
+.data-table th{text-align:left;padding:12px 14px;background:var(--card2);color:var(--text3);font-weight:600;font-size:0.85rem;text-transform:uppercase;letter-spacing:0.05em;border-bottom:2px solid var(--border)}
+.data-table td{padding:12px 14px;border-bottom:1px solid var(--border);color:var(--text2)}
+.data-table tr:hover td{background:var(--card)}
+
+/* EXERCISE */
+.exercise{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:32px;margin:28px 0}
+.exercise-label{display:inline-flex;align-items:center;gap:6px;font-size:0.8rem;font-weight:600;color:var(--blue);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:14px}
+.exercise h3{font-size:1.1rem;margin-bottom:10px;color:var(--text)}
+.exercise p{color:var(--text2);font-size:1rem;margin-bottom:14px}
+.exercise-question{color:var(--text);font-weight:500;font-size:1.05rem}
+.exercise textarea{width:100%;min-height:90px;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:16px;color:var(--text);font-family:var(--sans);font-size:1rem;resize:vertical;transition:border-color .2s;line-height:1.8}
+.exercise textarea:focus{outline:none;border-color:var(--gold)}
+.exercise textarea::placeholder{color:var(--text3)}
+
+/* BOTTOM NAV */
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;padding:36px 0;margin-top:48px;border-top:1px solid var(--border)}
+.bottom-nav a{display:flex;align-items:center;gap:8px;padding:14px 24px;border-radius:12px;font-size:1rem;font-weight:500;transition:all .2s}
+.bottom-nav .prev{color:var(--text3);border:1px solid var(--border)}
+.bottom-nav .prev:hover{border-color:var(--gold);color:var(--gold)}
+.bottom-nav .next{background:var(--gold);color:#000}
+.bottom-nav .next:hover{background:var(--gold2)}
+
+/* AUDIO PLAYER */
+.audio-player{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin:24px 0;display:flex;align-items:center;gap:16px}
+.audio-player .play-btn{width:48px;height:48px;border-radius:50%;background:var(--gold);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.2rem;transition:background .2s;flex-shrink:0}
+.audio-player .play-btn:hover{background:var(--gold2)}
+.audio-player .audio-info{flex:1}
+.audio-player .audio-title{font-size:0.9rem;font-weight:600;color:var(--text);margin-bottom:4px}
+.audio-player .audio-sub{font-size:0.8rem;color:var(--text3)}
+
+/* RESPONSIVE */
+@media(max-width:640px){
+  .main{padding:72px 16px 40px}
+  .lesson-header h1{font-size:1.8rem}
+  .section h2{font-size:1.2rem}
+  .data-table{font-size:0.85rem}
+  .data-table th,.data-table td{padding:8px 10px}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-left">
+      <a href="index.html" class="nav-back">← 返回首页</a>
+      <span class="nav-title">第28课</span>
+    </div>
+    <div class="nav-right">
+      <span class="nav-lesson">28 / 20</span>
+    </div>
+  </div>
+</nav>
+<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+
+<div class="main">
+
+<!-- HEADER -->
+<div class="lesson-header">
+  <div class="lesson-cat">生活经济</div>
+  <h1>🏠 房子、教育、医疗 — 三大民生经济学</h1>
+  <div class="lesson-meta">
+    <span>📖 阅读约40分钟</span>
+    <span>✏️ 3道练习题</span>
+    <span>🎯 进阶</span>
+  </div>
+</div>
+
+<!-- AUDIO OVERVIEW -->
+<div class="audio-player">
+  <button class="play-btn" onclick="toggleAudio()" id="playBtn">▶️</button>
+  <div class="audio-info">
+    <div class="audio-title">🎧 课程音频概述</div>
+    <div class="audio-sub">点击播放课程核心内容摘要</div>
+  </div>
+  <audio id="courseAudio" preload="none">
+    <source src="audio/lesson28.mp3" type="audio/mpeg">
+  </audio>
+</div>
+
+
+
+<div class="section">
+  <h2><span class="icon"></span> </h2>
+  <p># 第28课：房子、教育、医疗 — 三大民生经济学</p>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p><strong>推荐书籍</strong>：《置身事内》（兰小欢）、《贫穷的本质》（巴纳吉）</p></div>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 开篇：三大支出决定你的生活质量</h2>
+  <p><strong>一个人一生最大的三笔支出：房子、教育、医疗。</strong></p>
+  <p>这三项支出加起来，可能占到你一生收入的70%以上。理解它们的经济学逻辑，是财务规划的基础。</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 房子：最大的资产还是最大的负债？</h2>
+  <h3>2.1 房价的决定因素</h3>
+  <table class="data-table"><thead><tr><th>因素</th><th>影响方向</th><th>当前状态</th></tr></thead><tbody>
+  <tr><td>人口</td><td>长期需求</td><td>下降趋势</td></tr>
+  <tr><td>利率</td><td>购买力</td><td>低位</td></tr>
+  <tr><td>收入</td><td>支付能力</td><td>增长放缓</td></tr>
+  <tr><td>政策</td><td>供需调控</td><td>因城施策</td></tr>
+  </tbody></table>
+  <p>|------|----------|----------|</p>
+  <h3>2.2 买房的经济学分析</h3>
+  <p><strong>买房 = 消费 + 投资 + 杠杆</strong></p>
+  <p>• 消费：居住价值（租金替代）</p>
+  <p>• 投资：资产增值</p>
+  <p>• 杠杆：房贷放大收益/风险</p>
+  <h3>2.3 什么时候该买房？</h3>
+  <p>• 自住需求：有稳定收入、有家庭规划</p>
+  <p>• 投资需求：核心城市、好地段、长期持有</p>
+  <p>• 不该买：借钱炒房、三四线城市投资</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 教育：最值得的投资还是最大的消费陷阱？</h2>
+  <h3>3.1 教育的收益率</h3>
+  <table class="data-table"><thead><tr><th>教育程度</th><th>平均收入</th><th>投资回报率</th></tr></thead><tbody>
+  <tr><td>高中</td><td>5万/年</td><td>基准</td></tr>
+  <tr><td>本科</td><td>8万/年</td><td>60%</td></tr>
+  <tr><td>硕士</td><td>12万/年</td><td>140%</td></tr>
+  <tr><td>博士</td><td>18万/年</td><td>260%</td></tr>
+  </tbody></table>
+  <p>|----------|----------|------------|</p>
+  <p><strong>关键洞察</strong>：教育的回报率很高，但不是所有教育都值得。</p>
+  <h3>3.2 教育投资的陷阱</h3>
+  <p>• 名校溢价过高（学区房、国际学校）</p>
+  <p>• 专业选择错误（冷门专业就业难）</p>
+  <p>• 过度教育（读博不一定比硕士赚得多）</p>
+  <h3>3.3 教育投资的原则</h3>
+  <p><strong>1.</strong> <strong>选择有市场需求的专业</strong></p>
+  <p><strong>2.</strong> <strong>能力比学历更重要</strong></p>
+  <p><strong>3.</strong> <strong>持续学习比一次性教育更重要</strong></p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 医疗：最大的不确定性</h2>
+  <h3>4.1 医疗费用的增长</h3>
+  <p>• 中国医疗费用年均增长10%以上</p>
+  <p>• 一场大病可能花费50-100万</p>
+  <p>• 医保只能覆盖60-70%</p>
+  <h3>4.2 医疗费用规划</h3>
+  <table class="data-table"><thead><tr><th>层次</th><th>工具</th><th>作用</th></tr></thead><tbody>
+  <tr><td>基础</td><td>社保医保</td><td>覆盖常见疾病</td></tr>
+  <tr><td>补充</td><td>百万医疗险</td><td>覆盖大病</td></tr>
+  <tr><td>高端</td><td>重疾险</td><td>收入补偿</td></tr>
+  </tbody></table>
+  <p>|------|------|------|</p>
+  <h3>4.3 预防是最好的投资</h3>
+  <p>• 定期体检</p>
+  <p>• 健康生活方式</p>
+  <p>• 适度运动</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 核心概念总结</h2>
+  <h3>你需要记住的5个关键点</h3>
+  <p><strong>1.</strong> <strong>房子是消费+投资+杠杆</strong>，不是稳赚不赔的</p>
+  <p><strong>2.</strong> <strong>教育回报率很高</strong>，但要选择正确的方向</p>
+  <p><strong>3.</strong> <strong>医疗费用是最大的不确定性</strong>，需要提前规划</p>
+  <p><strong>4.</strong> <strong>预防比治疗更划算</strong>——健康是最好的投资</p>
+  <p><strong>5.</strong> <strong>三大支出需要长期规划</strong>，不能临时抱佛脚</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 练习题</h2>
+  <div class="exercise"><div class="exercise-label">✏️ 练习</div><h3>练习1：买房决策</h3>
+  <p class="exercise-question">你现在应该买房吗？用经济学思维分析（自住需求、投资需求、杠杆风险）。</p>
+  <textarea placeholder="写下你的思考..." rows="3"></textarea>
+  <div class="exercise"><div class="exercise-label">✏️ 练习</div><h3>练习2：教育规划</h3>
+  <p class="exercise-question">你或你的孩子应该接受什么样的教育？考虑专业选择、成本收益、持续学习。</p>
+  <textarea placeholder="写下你的思考..." rows="3"></textarea>
+  <div class="exercise"><div class="exercise-label">✏️ 练习</div><h3>练习3：医疗保障</h3>
+  <p class="exercise-question">你目前的医疗保障够吗？列出你的保障清单，找出缺口。</p>
+  <textarea placeholder="写下你的思考..." rows="3"></textarea>
+  </div>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 下节预告</h2>
+  <p><strong>第29课：数字经济时代 — 你的钱去哪了</strong></p>
+  <p>数字经济如何改变你的钱包：</p>
+  <p>• 平台经济的定价逻辑</p>
+  <p>• 数据隐私的价值</p>
+  <p>• 数字货币的未来</p>
+</div>
+<div class="section">
+  <h2><span class="icon"></span> </h2>
+  <p><em>康波研究院 · 第28课 · 三大民生经济学</em></p>
+</div>
+
+
+<!-- BOTTOM NAV -->
+<div class="bottom-nav">
+  <a href="lesson27.html" class="prev">← 第27课</a>
+  <span></span>
+</div>
+
+</div>
+
+<script>
+// Reading progress
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement;
+  const pct=(h.scrollTop)/(h.scrollHeight-h.clientHeight)*100;
+  document.getElementById('progressFill').style.width=pct+'%';
+});
+
+// Audio player
+function toggleAudio(){
+  const audio=document.getElementById('courseAudio');
+  const btn=document.getElementById('playBtn');
+  if(audio.paused){audio.play();btn.textContent='⏸️'}else{audio.pause();btn.textContent='▶️'}
+}
+</script>
+
+</body>
+</html>

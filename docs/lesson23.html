@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第23课：债务危机 — 达里奥的全天候思维 — 康波研究院</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#09090b;--bg2:#0f0f13;--card:#1c1c21;--card2:#222228;--card3:#2a2a32;--border:#27272a;--border2:#3f3f46;--text:#fafafa;--text2:#a1a1aa;--text3:#71717a;--gold:#e2b64f;--gold2:#f5d98a;--green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;--orange:#f59e0b;--red:#ef4444;--serif:'Noto Serif SC',serif;--sans:'Inter',sans-serif;--radius:16px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:2;font-size:18px}
+a{color:var(--gold);text-decoration:none}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(9,9,11,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);height:56px;display:flex;align-items:center}
+.nav-inner{max-width:900px;margin:0 auto;padding:0 24px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-left{display:flex;align-items:center;gap:16px}
+.nav-back{font-size:0.9rem;color:var(--text3);transition:color .2s}.nav-back:hover{color:var(--gold)}
+.nav-title{font-size:0.9rem;color:var(--text2);font-weight:500}
+.nav-right{display:flex;align-items:center;gap:12px}
+.nav-lesson{font-size:0.8rem;color:var(--text3);background:var(--card2);padding:4px 14px;border-radius:6px}
+
+/* PROGRESS BAR */
+.progress-bar{position:fixed;top:56px;left:0;right:0;height:3px;background:var(--border);z-index:99}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));transition:width .3s;width:0%}
+
+/* MAIN */
+.main{max-width:800px;margin:0 auto;padding:80px 28px 60px}
+
+/* LESSON HEADER */
+.lesson-header{margin-bottom:56px;text-align:center}
+.lesson-cat{display:inline-block;font-size:0.75rem;color:var(--gold);background:rgba(226,182,79,0.1);padding:4px 14px;border-radius:20px;margin-bottom:16px;letter-spacing:0.1em}
+.lesson-header h1{font-family:var(--serif);font-size:clamp(2rem,5vw,2.8rem);font-weight:900;line-height:1.3;margin-bottom:16px;background:linear-gradient(135deg,var(--text),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lesson-meta{display:flex;gap:20px;justify-content:center;flex-wrap:wrap}
+.lesson-meta span{font-size:0.85rem;color:var(--text3);display:flex;align-items:center;gap:6px}
+
+/* SECTIONS */
+.section{margin-bottom:48px}
+.section h2{font-size:1.4rem;font-weight:700;margin-bottom:20px;color:var(--text);display:flex;align-items:center;gap:10px}
+.section h2 .icon{font-size:1.2rem}
+.section h3{font-size:1.15rem;font-weight:600;margin:28px 0 12px;color:var(--gold2)}
+.section p{color:var(--text2);font-size:1.05rem;margin-bottom:14px;line-height:2}
+
+/* CALLOUT */
+.callout{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:28px;margin:24px 0}
+.callout.gold{border-left:4px solid var(--gold)}
+.callout.green{border-left:4px solid var(--green)}
+.callout.blue{border-left:4px solid var(--blue)}
+.callout-title{font-size:0.85rem;font-weight:600;color:var(--gold);margin-bottom:10px;text-transform:uppercase;letter-spacing:0.08em}
+.callout p{color:var(--text2);font-size:1rem;line-height:1.9}
+
+/* TABLE */
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:0.95rem}
+.data-table th{text-align:left;padding:12px 14px;background:var(--card2);color:var(--text3);font-weight:600;font-size:0.85rem;text-transform:uppercase;letter-spacing:0.05em;border-bottom:2px solid var(--border)}
+.data-table td{padding:12px 14px;border-bottom:1px solid var(--border);color:var(--text2)}
+.data-table tr:hover td{background:var(--card)}
+
+/* EXERCISE */
+.exercise{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:32px;margin:28px 0}
+.exercise-label{display:inline-flex;align-items:center;gap:6px;font-size:0.8rem;font-weight:600;color:var(--blue);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:14px}
+.exercise h3{font-size:1.1rem;margin-bottom:10px;color:var(--text)}
+.exercise p{color:var(--text2);font-size:1rem;margin-bottom:14px}
+.exercise-question{color:var(--text);font-weight:500;font-size:1.05rem}
+.exercise textarea{width:100%;min-height:90px;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:16px;color:var(--text);font-family:var(--sans);font-size:1rem;resize:vertical;transition:border-color .2s;line-height:1.8}
+.exercise textarea:focus{outline:none;border-color:var(--gold)}
+.exercise textarea::placeholder{color:var(--text3)}
+
+/* BOTTOM NAV */
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;padding:36px 0;margin-top:48px;border-top:1px solid var(--border)}
+.bottom-nav a{display:flex;align-items:center;gap:8px;padding:14px 24px;border-radius:12px;font-size:1rem;font-weight:500;transition:all .2s}
+.bottom-nav .prev{color:var(--text3);border:1px solid var(--border)}
+.bottom-nav .prev:hover{border-color:var(--gold);color:var(--gold)}
+.bottom-nav .next{background:var(--gold);color:#000}
+.bottom-nav .next:hover{background:var(--gold2)}
+
+/* AUDIO PLAYER */
+.audio-player{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin:24px 0;display:flex;align-items:center;gap:16px}
+.audio-player .play-btn{width:48px;height:48px;border-radius:50%;background:var(--gold);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.2rem;transition:background .2s;flex-shrink:0}
+.audio-player .play-btn:hover{background:var(--gold2)}
+.audio-player .audio-info{flex:1}
+.audio-player .audio-title{font-size:0.9rem;font-weight:600;color:var(--text);margin-bottom:4px}
+.audio-player .audio-sub{font-size:0.8rem;color:var(--text3)}
+
+/* RESPONSIVE */
+@media(max-width:640px){
+  .main{padding:72px 16px 40px}
+  .lesson-header h1{font-size:1.8rem}
+  .section h2{font-size:1.2rem}
+  .data-table{font-size:0.85rem}
+  .data-table th,.data-table td{padding:8px 10px}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-left">
+      <a href="index.html" class="nav-back">← 返回首页</a>
+      <span class="nav-title">第23课</span>
+    </div>
+    <div class="nav-right">
+      <span class="nav-lesson">23 / 20</span>
+    </div>
+  </div>
+</nav>
+<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+
+<div class="main">
+
+<!-- HEADER -->
+<div class="lesson-header">
+  <div class="lesson-cat">趋势洞察</div>
+  <h1>💳 债务危机 — 达里奥的全天候思维</h1>
+  <div class="lesson-meta">
+    <span>📖 阅读约35分钟</span>
+    <span>✏️ 6道练习题</span>
+    <span>🎯 进阶</span>
+  </div>
+</div>
+
+<!-- AUDIO OVERVIEW -->
+<div class="audio-player">
+  <button class="play-btn" onclick="toggleAudio()" id="playBtn">▶️</button>
+  <div class="audio-info">
+    <div class="audio-title">🎧 课程音频概述</div>
+    <div class="audio-sub">点击播放课程核心内容摘要</div>
+  </div>
+  <audio id="courseAudio" preload="none">
+    <source src="audio/lesson23.mp3" type="audio/mpeg">
+  </audio>
+</div>
+
+
+
+<div class="section">
+  <h2><span class="icon"></span> </h2>
+  <p># 第23课：债务危机 — 达里奥的全天候思维</p>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p><strong>推荐书籍</strong>：《债务危机》（达里奥）、《原则》（达里奥）</p></div>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 开篇：为什么债务危机反复发生？</h2>
+  <p><strong>2008年金融危机、2020年疫情冲击、2022年地产暴雷——债务危机每10-15年就会来一次。</strong></p>
+  <p>达里奥研究了过去100年的48次债务危机，发现它们都有相同的模式：</p>
+  <p><strong>1.</strong> 借钱容易→债务增长快于收入</p>
+  <p><strong>2.</strong> 泡沫形成→资产价格虚高</p>
+  <p><strong>3.</strong> 泡沫破裂→债务违约</p>
+  <p><strong>4.</strong> 去杠杆→经济收缩</p>
+  <p><strong>关键洞察</strong>：债务危机不是意外，而是<strong>必然</strong>。问题是：你准备好了吗？</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 达里奥的债务周期模型</h2>
+  <h3>2.1 短期债务周期（5-8年）</h3>
+  <p>• 央行降息→借贷增加→经济扩张→通胀上升→央行加息→借贷减少→经济收缩</p>
+  <h3>2.2 长期债务周期（50-75年）</h3>
+  <p>• 债务累积→泡沫→危机→去杠杆→复苏→新一轮债务累积</p>
+  <p><strong>关键洞察</strong>：短期周期叠加在长期周期上。当两者同时向下时，就是大萧条。</p>
+  <h3>2.3 当前位置</h3>
+  <p>• 美国：长期债务周期的晚期（债务/GDP超130%）</p>
+  <p>• 中国：长期债务周期的中期（债务/GDP约300%）</p>
+  <p>• 全球：低利率时代结束，高债务+高利率=压力</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 美丽的去杠杆</h2>
+  <h3>3.1 什么是"美丽的去杠杆"？</h3>
+  <p>达里奥提出，去杠杆有四种方式：</p>
+  <table class="data-table"><thead><tr><th>方式</th><th>效果</th><th>例子</th></tr></thead><tbody>
+  <tr><td>紧缩</td><td>减少支出</td><td>希腊</td></tr>
+  <tr><td>债务违约</td><td>坏账出清</td><td>雷曼兄弟</td></tr>
+  <tr><td>财富转移</td><td>向富人征税</td><td>皮凯蒂建议</td></tr>
+  <tr><td>印钞</td><td>稀释债务</td><td>美联储QE</td></tr>
+  </tbody></table>
+  <p>|------|------|------|</p>
+  <p><strong>美丽的去杠杆</strong> = 四种方式的平衡组合。不能太紧缩（导致萧条），也不能太宽松（导致通胀）。</p>
+  <h3>3.2 美丽去杠杆的条件</h3>
+  <p>• 央行有足够工具（利率>0，有QE空间）</p>
+  <p>• 债务以本币计价（可以印钱还）</p>
+  <p>• 政府有财政空间（可以发债）</p>
+  <p>• 社会稳定（不会动乱）</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 普通人如何应对债务危机</h2>
+  <h3>4.1 危机前的准备</h3>
+  <p>• 减少负债（尤其是高息负债）</p>
+  <p>• 增加现金储备</p>
+  <p>• 分散资产（不把鸡蛋放一个篮子）</p>
+  <p>• 保持流动性（能随时变现的资产）</p>
+  <h3>4.2 危机中的机会</h3>
+  <p>• 优质资产被错杀时是买入机会</p>
+  <p>• 现金为王，等待抄底</p>
+  <p>• 不要恐慌性卖出</p>
+  <h3>4.3 危机后的布局</h3>
+  <p>• 经济复苏初期买股票</p>
+  <p>• 通胀初期买实物资产</p>
+  <p>• 新技术萌芽期买成长股</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 核心概念总结</h2>
+  <h3>你需要记住的5个关键点</h3>
+  <p><strong>1.</strong> <strong>债务危机是周期性的</strong>，每10-15年必然发生</p>
+  <p><strong>2.</strong> <strong>短期周期叠加长期周期</strong>，当两者同时向下时就是大危机</p>
+  <p><strong>3.</strong> <strong>美丽的去杠杆</strong>需要平衡紧缩、违约、转移和印钞</p>
+  <p><strong>4.</strong> <strong>危机前要减少负债、增加现金</strong></p>
+  <p><strong>5.</strong> <strong>危机中是买入优质资产的最佳时机</strong></p>
+  <h3>你需要打破的3个误区</h3>
+  <p><strong>误区1</strong>："债务危机可以避免"</p>
+  <p>→ 不可以。它是由人性驱动的——贪婪和恐惧的循环。</p>
+  <p><strong>误区2</strong>："印钞可以解决一切"</p>
+  <p>→ 印钞可以缓解短期痛苦，但会导致长期通胀和贫富分化。</p>
+  <p><strong>误区3</strong>："危机中应该恐慌卖出"</p>
+  <p>→ 恐慌卖出是最差的策略。历史证明，危机后3-5年市场都会创新高。</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 练习题</h2>
+  <div class="exercise"><div class="exercise-label">✏️ 练习</div><h3>练习1：债务周期定位</h3>
+  <p class="exercise-question">你认为当前全球处于长期债务周期的哪个阶段？为什么？</p>
+  <textarea placeholder="写下你的思考..." rows="3"></textarea>
+  <div class="exercise"><div class="exercise-label">✏️ 练习</div><h3>练习2：个人资产负债表</h3>
+  <p class="exercise-question">列出你的资产和负债，计算你的资产负债率。如果经济危机来临时，你能撑多久？</p>
+  <textarea placeholder="写下你的思考..." rows="3"></textarea>
+  <div class="exercise"><div class="exercise-label">✏️ 练习</div><h3>练习3：危机情景模拟</h3>
+  <p class="exercise-question">假设2025年发生全球金融危机，你的投资组合会如何表现？你会采取什么行动？</p>
+  <textarea placeholder="写下你的思考..." rows="3"></textarea>
+  </div>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 练习题参考答案</h2>
+  <div class="exercise"><div class="exercise-label">✏️ 练习</div><h3>练习1参考答案</h3>
+  <p>全球处于长期债务周期的晚期：</p>
+  <p>• 美国债务/GDP超130%</p>
+  <p>• 全球利率从低位开始上升</p>
+  <p>• 地缘政治风险加剧</p>
+  <p>• 但AI等新技术可能带来新的增长动力</p>
+  <div class="exercise"><div class="exercise-label">✏️ 练习</div><h3>练习2思路提示</h3>
+  <p>资产负债率 = 总负债 / 总资产</p>
+  <p>• 健康水平：<50%</p>
+  <p>• 警戒水平：50-70%</p>
+  <p>• 危险水平：>70%</p>
+  <div class="exercise"><div class="exercise-label">✏️ 练习</div><h3>练习3思路提示</h3>
+  <p>危机应对策略：</p>
+  <p><strong>1.</strong> 保留6个月生活费的现金</p>
+  <p><strong>2.</strong> 减少杠杆（尤其是股票融资）</p>
+  <p><strong>3.</strong> 准备"抄底清单"</p>
+  <p><strong>4.</strong> 保持冷静，不恐慌卖出</p>
+  </div>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 下节预告</h2>
+  <p><strong>第24课：21世纪资本论 — 贫富分化的真相</strong></p>
+  <p>皮凯蒂将揭示：</p>
+  <p>• 为什么富人越来越富？</p>
+  <p>• 资本收益率 vs 劳动收益率</p>
+  <p>• 如何在分化时代保护自己的财富</p>
+</div>
+<div class="section">
+  <h2><span class="icon"></span> </h2>
+  <p><em>康波研究院 · 第23课 · 债务危机</em></p>
+</div>
+
+
+<!-- BOTTOM NAV -->
+<div class="bottom-nav">
+  <a href="lesson22.html" class="prev">← 第22课</a>
+  <span></span>
+</div>
+
+</div>
+
+<script>
+// Reading progress
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement;
+  const pct=(h.scrollTop)/(h.scrollHeight-h.clientHeight)*100;
+  document.getElementById('progressFill').style.width=pct+'%';
+});
+
+// Audio player
+function toggleAudio(){
+  const audio=document.getElementById('courseAudio');
+  const btn=document.getElementById('playBtn');
+  if(audio.paused){audio.play();btn.textContent='⏸️'}else{audio.pause();btn.textContent='▶️'}
+}
+</script>
+
+</body>
+</html>
