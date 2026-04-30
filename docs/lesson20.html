@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第20课：终极整合 — 构建你的投资世界观 — 康波研究院</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#09090b;--bg2:#0f0f13;--card:#1c1c21;--card2:#222228;--card3:#2a2a32;--border:#27272a;--border2:#3f3f46;--text:#fafafa;--text2:#a1a1aa;--text3:#71717a;--gold:#e2b64f;--gold2:#f5d98a;--green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;--orange:#f59e0b;--red:#ef4444;--serif:'Noto Serif SC',serif;--sans:'Inter',sans-serif;--radius:16px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:2;font-size:18px}
+a{color:var(--gold);text-decoration:none}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(9,9,11,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);height:56px;display:flex;align-items:center}
+.nav-inner{max-width:900px;margin:0 auto;padding:0 24px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-left{display:flex;align-items:center;gap:16px}
+.nav-back{font-size:0.9rem;color:var(--text3);transition:color .2s}.nav-back:hover{color:var(--gold)}
+.nav-title{font-size:0.9rem;color:var(--text2);font-weight:500}
+.nav-right{display:flex;align-items:center;gap:12px}
+.nav-lesson{font-size:0.8rem;color:var(--text3);background:var(--card2);padding:4px 14px;border-radius:6px}
+
+/* PROGRESS BAR */
+.progress-bar{position:fixed;top:56px;left:0;right:0;height:3px;background:var(--border);z-index:99}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));transition:width .3s;width:0%}
+
+/* MAIN */
+.main{max-width:800px;margin:0 auto;padding:80px 28px 60px}
+
+/* LESSON HEADER */
+.lesson-header{margin-bottom:56px;text-align:center}
+.lesson-cat{display:inline-block;font-size:0.75rem;color:var(--gold);background:rgba(226,182,79,0.1);padding:4px 14px;border-radius:20px;margin-bottom:16px;letter-spacing:0.1em}
+.lesson-header h1{font-family:var(--serif);font-size:clamp(2rem,5vw,2.8rem);font-weight:900;line-height:1.3;margin-bottom:16px;background:linear-gradient(135deg,var(--text),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lesson-meta{display:flex;gap:20px;justify-content:center;flex-wrap:wrap}
+.lesson-meta span{font-size:0.85rem;color:var(--text3);display:flex;align-items:center;gap:6px}
+
+/* SECTIONS */
+.section{margin-bottom:48px}
+.section h2{font-size:1.4rem;font-weight:700;margin-bottom:20px;color:var(--text);display:flex;align-items:center;gap:10px}
+.section h2 .icon{font-size:1.2rem}
+.section h3{font-size:1.15rem;font-weight:600;margin:28px 0 12px;color:var(--gold2)}
+.section p{color:var(--text2);font-size:1.05rem;margin-bottom:14px;line-height:2}
+
+/* CALLOUT */
+.callout{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:28px;margin:24px 0}
+.callout.gold{border-left:4px solid var(--gold)}
+.callout.green{border-left:4px solid var(--green)}
+.callout.blue{border-left:4px solid var(--blue)}
+.callout-title{font-size:0.85rem;font-weight:600;color:var(--gold);margin-bottom:10px;text-transform:uppercase;letter-spacing:0.08em}
+.callout p{color:var(--text2);font-size:1rem;line-height:1.9}
+
+/* TABLE */
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:0.95rem}
+.data-table th{text-align:left;padding:12px 14px;background:var(--card2);color:var(--text3);font-weight:600;font-size:0.85rem;text-transform:uppercase;letter-spacing:0.05em;border-bottom:2px solid var(--border)}
+.data-table td{padding:12px 14px;border-bottom:1px solid var(--border);color:var(--text2)}
+.data-table tr:hover td{background:var(--card)}
+
+/* EXERCISE */
+.exercise{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:32px;margin:28px 0}
+.exercise-label{display:inline-flex;align-items:center;gap:6px;font-size:0.8rem;font-weight:600;color:var(--blue);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:14px}
+.exercise h3{font-size:1.1rem;margin-bottom:10px;color:var(--text)}
+.exercise p{color:var(--text2);font-size:1rem;margin-bottom:14px}
+.exercise-question{color:var(--text);font-weight:500;font-size:1.05rem}
+.exercise textarea{width:100%;min-height:90px;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:16px;color:var(--text);font-family:var(--sans);font-size:1rem;resize:vertical;transition:border-color .2s;line-height:1.8}
+.exercise textarea:focus{outline:none;border-color:var(--gold)}
+.exercise textarea::placeholder{color:var(--text3)}
+
+/* BOTTOM NAV */
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;padding:36px 0;margin-top:48px;border-top:1px solid var(--border)}
+.bottom-nav a{display:flex;align-items:center;gap:8px;padding:14px 24px;border-radius:12px;font-size:1rem;font-weight:500;transition:all .2s}
+.bottom-nav .prev{color:var(--text3);border:1px solid var(--border)}
+.bottom-nav .prev:hover{border-color:var(--gold);color:var(--gold)}
+.bottom-nav .next{background:var(--gold);color:#000}
+.bottom-nav .next:hover{background:var(--gold2)}
+
+/* AUDIO PLAYER */
+.audio-player{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin:24px 0;display:flex;align-items:center;gap:16px}
+.audio-player .play-btn{width:48px;height:48px;border-radius:50%;background:var(--gold);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.2rem;transition:background .2s;flex-shrink:0}
+.audio-player .play-btn:hover{background:var(--gold2)}
+.audio-player .audio-info{flex:1}
+.audio-player .audio-title{font-size:0.9rem;font-weight:600;color:var(--text);margin-bottom:4px}
+.audio-player .audio-sub{font-size:0.8rem;color:var(--text3)}
+
+/* RESPONSIVE */
+@media(max-width:640px){
+  .main{padding:72px 16px 40px}
+  .lesson-header h1{font-size:1.8rem}
+  .section h2{font-size:1.2rem}
+  .data-table{font-size:0.85rem}
+  .data-table th,.data-table td{padding:8px 10px}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-left">
+      <a href="index.html" class="nav-back">← 返回首页</a>
+      <span class="nav-title">第20课</span>
+    </div>
+    <div class="nav-right">
+      <span class="nav-lesson">20 / 20</span>
+    </div>
+  </div>
+</nav>
+<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+
+<div class="main">
+
+<!-- HEADER -->
+<div class="lesson-header">
+  <div class="lesson-cat">终极整合</div>
+  <h1>🎯 终极整合 — 构建你的投资世界观</h1>
+  <div class="lesson-meta">
+    <span>📖 阅读约50分钟</span>
+    <span>✏️ 0道练习题</span>
+    <span>🎯 高级</span>
+  </div>
+</div>
+
+<!-- AUDIO OVERVIEW -->
+<div class="audio-player">
+  <button class="play-btn" onclick="toggleAudio()" id="playBtn">▶️</button>
+  <div class="audio-info">
+    <div class="audio-title">🎧 课程音频概述</div>
+    <div class="audio-sub">点击播放课程核心内容摘要</div>
+  </div>
+  <audio id="courseAudio" preload="none">
+    <source src="audio/lesson20.mp3" type="audio/mpeg">
+  </audio>
+</div>
+
+
+
+<div class="section">
+  <h2><span class="icon"></span> </h2>
+  <p># 第20课：终极整合 — 构建你的投资世界观</p>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p><strong>参考著作</strong>：全部30+本经典著作</p></div>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 开篇：知识的孤岛 vs 体系的力量</h2>
+  <p><strong>你学了19课，读了30本书，但如果你的投资决策仍然是碎片化的，那你什么都没学到。</strong></p>
+  <p>真正的投资大师不是知道更多的人，而是能把知识连成体系的人：</p>
+  <table class="data-table"><thead><tr><th>投资者类型</th><th>特征</th><th>结果</th></tr></thead><tbody>
+  <tr><td>信息收集者</td><td>知道很多，但没有框架</td><td>随波逐流</td></tr>
+  <tr><td>单一理论者</td><td>只信一个流派</td><td>在特定市场有效，其他时候亏损</td></tr>
+  <tr><td>体系构建者</td><td>多维度整合，形成世界观</td><td>长期稳定盈利</td></tr>
+  </tbody></table>
+  <p>|------------|------|------|</p>
+  <p><strong>本课的目标</strong>：把你过去19课学到的所有理论，整合成一个可操作的投资决策框架。</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 19课知识地图</h2>
+  <h3>2.1 五大学科群</h3>
+  <table class="data-table"><thead><tr><th>学科群</th><th>包含课程</th><th>核心问题</th></tr></thead><tbody>
+  <tr><td><strong>周期理论</strong></td><td>1-3课</td><td>经济在哪里？要去哪里？</td></tr>
+  <tr><td><strong>投资哲学</strong></td><td>7-10课</td><td>如何选择标的？如何管理风险？</td></tr>
+  <tr><td><strong>货币制度</strong></td><td>5-6, 13-16课</td><td>货币环境如何影响资产？</td></tr>
+  <tr><td><strong>人口地缘</strong></td><td>4, 17-18课</td><td>结构性力量在哪里？</td></tr>
+  <tr><td><strong>技术未来</strong></td><td>3, 19课</td><td>下一波浪潮在哪里？</td></tr>
+  </tbody></table>
+  <p>|--------|----------|----------|</p>
+  <h3>2.2 理论之间的连接</h3>
+  <p><code>`</code></p>
+  <p>康波(第1课) ← 周金涛(第2课) ← 债务周期(第9课)</p>
+  <p>↓                              ↑</p>
+  <p>技术创新(第3,19课) → 人口周期(第17课) → 货币环境(第14,16课)</p>
+  <p>↓                              ↑</p>
+  <p>价值投资(第7课) ← 反身性(第8课) ← 明斯基时刻(第12课)</p>
+  <p>↓</p>
+  <p>投资操作(第6课) ← 20维度框架(本课)</p>
+  <p><code>`</code></p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 20维度投资评估框架</h2>
+  <h3>3.1 框架说明</h3>
+  <p>当你考虑任何一项投资时，用以下20个维度进行评估。每个维度1-10分，加权平均后得到总分。</p>
+  <h3>3.2 20个维度</h3>
+  <table class="data-table"><thead><tr><th>#</th><th>维度</th><th>权重</th><th>评估问题</th><th>来源课程</th></tr></thead><tbody>
+  <tr><td>1</td><td><strong>康波位置</strong></td><td>8%</td><td>当前处于康波的哪个阶段？春夏秋冬各阶段策略不同</td><td>第1-2课</td></tr>
+  <tr><td>2</td><td><strong>货币环境</strong></td><td>7%</td><td>全球央行是宽松还是紧缩？利率趋势如何？</td><td>第5,14课</td></tr>
+  <tr><td>3</td><td><strong>债务周期</strong></td><td>7%</td><td>私人债务/GDP处于什么位置？是否接近明斯基时刻？</td><td>第9,12课</td></tr>
+  <tr><td>4</td><td><strong>人口结构</strong></td><td>6%</td><td>劳动人口是增长还是下降？人口红利是否还在？</td><td>第17课</td></tr>
+  <tr><td>5</td><td><strong>技术创新</strong></td><td>6%</td><td>是否处于技术革命的导入期？第6轮康波的三驾马车</td><td>第3,19课</td></tr>
+  <tr><td>6</td><td><strong>地缘风险</strong></td><td>5%</td><td>大国关系是否紧张？供应链是否重构？</td><td>第18课</td></tr>
+  <tr><td>7</td><td><strong>估值水平</strong></td><td>5%</td><td>当前估值处于历史什么分位？安全边际是否充足？</td><td>第7课</td></tr>
+  <tr><td>8</td><td><strong>情绪周期</strong></td><td>5%</td><td>市场情绪是贪婪还是恐惧？动物精神是否过热？</td><td>第8,11课</td></tr>
+  <tr><td>9</td><td><strong>流动性</strong></td><td>5%</td><td>全球流动性是否充裕？M2增速如何？</td><td>第14课</td></tr>
+  <tr><td>10</td><td><strong>制度变迁</strong></td><td>4%</td><td>是否有重大制度变革？监管环境如何？</td><td>第13课</td></tr>
+  <tr><td>11</td><td><strong>气候因素</strong></td><td>4%</td><td>碳中和转型带来什么机会或风险？</td><td>综合</td></tr>
+  <tr><td>12</td><td><strong>供应链</strong></td><td>4%</td><td>全球供应链是否重构？近岸外包趋势？</td><td>第18课</td></tr>
+  <tr><td>13</td><td><strong>汇率趋势</strong></td><td>4%</td><td>本币是升值还是贬值周期？美元指数走势？</td><td>第5,16课</td></tr>
+  <tr><td>14</td><td><strong>利率趋势</strong></td><td>4%</td><td>利率处于上升还是下降通道？</td><td>第11课</td></tr>
+  <tr><td>15</td><td><strong>产业集中度</strong></td><td>3%</td><td>行业是否在加速集中？垄断趋势？</td><td>第15课</td></tr>
+  <tr><td>16</td><td><strong>监管环境</strong></td><td>3%</td><td>监管是收紧还是放松？</td><td>综合</td></tr>
+  <tr><td>17</td><td><strong>社会稳定</strong></td><td>3%</td><td>社会是否面临重大矛盾？贫富差距？</td><td>第15课</td></tr>
+  <tr><td>18</td><td><strong>教育资本</strong></td><td>3%</td><td>人力资本是否在提升？</td><td>综合</td></tr>
+  <tr><td>19</td><td><strong>能源转型</strong></td><td>3%</td><td>能源结构是否在变革？</td><td>第3课</td></tr>
+  <tr><td>20</td><td><strong>黑天鹅概率</strong></td><td>3%</td><td>尾部风险是否在累积？反脆弱性如何？</td><td>第10课</td></tr>
+  <tr><td>总分</td><td>投资建议</td></tr>
+  </tbody></table>
+  <p>|---|------|------|----------|----------|</p>
+  <h3>3.3 评分标准</h3>
+  <p>|------|----------|</p>
+  <table class="data-table"><thead><tr><th><strong>8.0-10.0</strong></th><th>强烈看好，积极建仓</th></tr></thead><tbody>
+  <tr><td><strong>6.5-8.0</strong></td><td>看好，正常配置</td></tr>
+  <tr><td><strong>5.0-6.5</strong></td><td>中性，观望或轻仓</td></tr>
+  <tr><td><strong>3.5-5.0</strong></td><td>谨慎，减仓或对冲</td></tr>
+  <tr><td><strong>< 3.5</strong></td><td>极度谨慎，大幅减仓</td></tr>
+  </tbody></table>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 个人投资宣言</h2>
+  <h3>4.1 为什么需要投资宣言？</h3>
+  <p>投资宣言是你的"宪法"，在市场波动时给你方向。没有宣言的投资者，就像没有罗盘的船。</p>
+  <h3>4.2 投资宣言模板</h3>
+  <p><code>`</code>markdown</p>
+  <p># 我的投资宣言</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 核心信念</h2>
+  <p>• 我相信周期是经济的本质规律</p>
+  <p>• 我相信价值终将回归</p>
+  <p>• 我相信[你的核心信念]</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 投资原则</h2>
+  <p><strong>1.</strong> 永远保留30%安全边际</p>
+  <p><strong>2.</strong> 永远不把超过20%的资产放在单一标的</p>
+  <p><strong>3.</strong> [你的原则]</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 当前周期定位</h2>
+  <p>• 康波位置：第6轮春初</p>
+  <p>• 货币环境：[你的判断]</p>
+  <p>• 债务周期：[你的判断]</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 资产配置目标</h2>
+  <p>• 股票：___%</p>
+  <p>• 债券：___%</p>
+  <p>• 黄金：___%</p>
+  <p>• 现金：___%</p>
+  <p>• 其他：___%</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 行动清单</h2>
+  <p>• 2026年：[具体行动]</p>
+  <p>• 2027-2030年：[具体行动]</p>
+  <p>• 2031-2040年：[具体行动]</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 风险红线</h2>
+  <p>• 如果[条件]，我将[行动]</p>
+  <p><code>`</code></p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 推荐书单（30+本）</h2>
+  <h3>周期理论（必读）</h3>
+  <p><strong>1.</strong> 《经济生活中的长波》康德拉季耶夫</p>
+  <p><strong>2.</strong> 《周金涛周期论集》周金涛</p>
+  <p><strong>3.</strong> 《时寒冰说：未来二十年》时寒冰</p>
+  <h3>投资哲学（必读）</h3>
+  <p><strong>4.</strong> 《聪明的投资者》格雷厄姆</p>
+  <p><strong>5.</strong> 《巴菲特致股东的信》巴菲特</p>
+  <p><strong>6.</strong> 《金融炼金术》索罗斯</p>
+  <p><strong>7.</strong> 《原则》达里奥</p>
+  <p><strong>8.</strong> 《债务危机》达里奥</p>
+  <h3>风险管理（必读）</h3>
+  <p><strong>9.</strong> 《黑天鹅》塔勒布</p>
+  <p><strong>10.</strong> 《反脆弱》塔勒布</p>
+  <p><strong>11.</strong> 《非对称风险》塔勒布</p>
+  <h3>货币制度（推荐）</h3>
+  <p><strong>12.</strong> 《货币战争》宋鸿兵</p>
+  <p><strong>13.</strong> 《The Deficit Myth》Kelton</p>
+  <p><strong>14.</strong> 《人的行为》米塞斯</p>
+  <p><strong>15.</strong> 《通往奴役之路》哈耶克</p>
+  <h3>金融危机（推荐）</h3>
+  <p><strong>16.</strong> 《稳定不稳定的经济》明斯基</p>
+  <p><strong>17.</strong> 《就业、利息和货币通论》凯恩斯</p>
+  <p><strong>18.</strong> 《The Big Devaluation》Baratta</p>
+  <h3>不平等与制度（推荐）</h3>
+  <p><strong>19.</strong> 《21世纪资本论》皮凯蒂</p>
+  <p><strong>20.</strong> 《资本论》马克思</p>
+  <h3>人口与地缘（推荐）</h3>
+  <p><strong>21.</strong> 《人口峭壁》Dent</p>
+  <p><strong>22.</strong> 《百岁人生》Gratton&Scott</p>
+  <p><strong>23.</strong> 《注定一战》Allison</p>
+  <p><strong>24.</strong> 《世界秩序》基辛格</p>
+  <h3>技术与未来（推荐）</h3>
+  <p><strong>25.</strong> 《奇点临近》Kurzweil</p>
+  <p><strong>26.</strong> 《Life 3.0》Tegmark</p>
+  <p><strong>27.</strong> 《AI Superpowers》李开复</p>
+  <p><strong>28.</strong> 《The Sovereign Individual》Davidson</p>
+  <h3>综合（进阶）</h3>
+  <p><strong>29.</strong> 《证券分析》格雷厄姆&多德</p>
+  <p><strong>30.</strong> 《随机漫步的傻瓜》塔勒布</p>
+  <p><strong>31.</strong> 《价格与生产》哈耶克</p>
+  <p><strong>32.</strong> 《The Long Wave in the World Economy》Devezas</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 终极测验</h2>
+  <h3>题目1：体系整合</h3>
+  <p>请用3句话，向一个从未学过投资的朋友解释"为什么2026年是投资的好时机"。</p>
+  <h3>题目2：多维度分析</h3>
+  <p>请选择一个你感兴趣的投资标的（股票、房产、黄金等），用20维度框架进行评估。</p>
+  <h3>题题3：周期定位</h3>
+  <p>结合第1课（康波）、第9课（债务周期）、第17课（人口周期），分析2026年中国经济处于什么位置？</p>
+  <h3>题目4：风险识别</h3>
+  <p>请列举当前全球最大的3个"黑天鹅"风险，并分析它们的概率和影响。</p>
+  <h3>题目5：个人投资宣言</h3>
+  <p>请撰写你的个人投资宣言（参考第四节模板），并提交给一位你信任的朋友审阅。</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 毕业寄语</h2>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p><strong>"人生就是一场康波。"</strong> — 周金涛</p></div>
+  <p>你已经完成了20课的学习，掌握了30+本经典著作的核心思想。</p>
+  <p>但请记住：<strong>知识不等于智慧，智慧不等于行动，行动不等于结果。</strong></p>
+  <p>真正的投资修炼，才刚刚开始。</p>
+  <p><strong>祝你在第六轮康波中，找到属于自己的财富机会。</strong></p>
+</div>
+<div class="section">
+  <h2><span class="icon"></span> </h2>
+  <p><em>康波研究院 © 2026 · MoKangMedical</em></p>
+</div>
+
+
+<!-- BOTTOM NAV -->
+<div class="bottom-nav">
+  <a href="lesson19.html" class="prev">← 第19课</a>
+  <span></span>
+</div>
+
+</div>
+
+<script>
+// Reading progress
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement;
+  const pct=(h.scrollTop)/(h.scrollHeight-h.clientHeight)*100;
+  document.getElementById('progressFill').style.width=pct+'%';
+});
+
+// Audio player
+function toggleAudio(){
+  const audio=document.getElementById('courseAudio');
+  const btn=document.getElementById('playBtn');
+  if(audio.paused){audio.play();btn.textContent='⏸️'}else{audio.pause();btn.textContent='▶️'}
+}
+</script>
+
+</body>
+</html>

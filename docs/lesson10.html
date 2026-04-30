@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第10课：塔勒布 — 黑天鹅与反脆弱 — 康波研究院</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#09090b;--bg2:#0f0f13;--card:#1c1c21;--card2:#222228;--card3:#2a2a32;--border:#27272a;--border2:#3f3f46;--text:#fafafa;--text2:#a1a1aa;--text3:#71717a;--gold:#e2b64f;--gold2:#f5d98a;--green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;--orange:#f59e0b;--red:#ef4444;--serif:'Noto Serif SC',serif;--sans:'Inter',sans-serif;--radius:16px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:2;font-size:18px}
+a{color:var(--gold);text-decoration:none}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(9,9,11,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);height:56px;display:flex;align-items:center}
+.nav-inner{max-width:900px;margin:0 auto;padding:0 24px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-left{display:flex;align-items:center;gap:16px}
+.nav-back{font-size:0.9rem;color:var(--text3);transition:color .2s}.nav-back:hover{color:var(--gold)}
+.nav-title{font-size:0.9rem;color:var(--text2);font-weight:500}
+.nav-right{display:flex;align-items:center;gap:12px}
+.nav-lesson{font-size:0.8rem;color:var(--text3);background:var(--card2);padding:4px 14px;border-radius:6px}
+
+/* PROGRESS BAR */
+.progress-bar{position:fixed;top:56px;left:0;right:0;height:3px;background:var(--border);z-index:99}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));transition:width .3s;width:0%}
+
+/* MAIN */
+.main{max-width:800px;margin:0 auto;padding:80px 28px 60px}
+
+/* LESSON HEADER */
+.lesson-header{margin-bottom:56px;text-align:center}
+.lesson-cat{display:inline-block;font-size:0.75rem;color:var(--gold);background:rgba(226,182,79,0.1);padding:4px 14px;border-radius:20px;margin-bottom:16px;letter-spacing:0.1em}
+.lesson-header h1{font-family:var(--serif);font-size:clamp(2rem,5vw,2.8rem);font-weight:900;line-height:1.3;margin-bottom:16px;background:linear-gradient(135deg,var(--text),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lesson-meta{display:flex;gap:20px;justify-content:center;flex-wrap:wrap}
+.lesson-meta span{font-size:0.85rem;color:var(--text3);display:flex;align-items:center;gap:6px}
+
+/* SECTIONS */
+.section{margin-bottom:48px}
+.section h2{font-size:1.4rem;font-weight:700;margin-bottom:20px;color:var(--text);display:flex;align-items:center;gap:10px}
+.section h2 .icon{font-size:1.2rem}
+.section h3{font-size:1.15rem;font-weight:600;margin:28px 0 12px;color:var(--gold2)}
+.section p{color:var(--text2);font-size:1.05rem;margin-bottom:14px;line-height:2}
+
+/* CALLOUT */
+.callout{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:28px;margin:24px 0}
+.callout.gold{border-left:4px solid var(--gold)}
+.callout.green{border-left:4px solid var(--green)}
+.callout.blue{border-left:4px solid var(--blue)}
+.callout-title{font-size:0.85rem;font-weight:600;color:var(--gold);margin-bottom:10px;text-transform:uppercase;letter-spacing:0.08em}
+.callout p{color:var(--text2);font-size:1rem;line-height:1.9}
+
+/* TABLE */
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:0.95rem}
+.data-table th{text-align:left;padding:12px 14px;background:var(--card2);color:var(--text3);font-weight:600;font-size:0.85rem;text-transform:uppercase;letter-spacing:0.05em;border-bottom:2px solid var(--border)}
+.data-table td{padding:12px 14px;border-bottom:1px solid var(--border);color:var(--text2)}
+.data-table tr:hover td{background:var(--card)}
+
+/* EXERCISE */
+.exercise{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:32px;margin:28px 0}
+.exercise-label{display:inline-flex;align-items:center;gap:6px;font-size:0.8rem;font-weight:600;color:var(--blue);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:14px}
+.exercise h3{font-size:1.1rem;margin-bottom:10px;color:var(--text)}
+.exercise p{color:var(--text2);font-size:1rem;margin-bottom:14px}
+.exercise-question{color:var(--text);font-weight:500;font-size:1.05rem}
+.exercise textarea{width:100%;min-height:90px;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:16px;color:var(--text);font-family:var(--sans);font-size:1rem;resize:vertical;transition:border-color .2s;line-height:1.8}
+.exercise textarea:focus{outline:none;border-color:var(--gold)}
+.exercise textarea::placeholder{color:var(--text3)}
+
+/* BOTTOM NAV */
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;padding:36px 0;margin-top:48px;border-top:1px solid var(--border)}
+.bottom-nav a{display:flex;align-items:center;gap:8px;padding:14px 24px;border-radius:12px;font-size:1rem;font-weight:500;transition:all .2s}
+.bottom-nav .prev{color:var(--text3);border:1px solid var(--border)}
+.bottom-nav .prev:hover{border-color:var(--gold);color:var(--gold)}
+.bottom-nav .next{background:var(--gold);color:#000}
+.bottom-nav .next:hover{background:var(--gold2)}
+
+/* AUDIO PLAYER */
+.audio-player{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin:24px 0;display:flex;align-items:center;gap:16px}
+.audio-player .play-btn{width:48px;height:48px;border-radius:50%;background:var(--gold);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.2rem;transition:background .2s;flex-shrink:0}
+.audio-player .play-btn:hover{background:var(--gold2)}
+.audio-player .audio-info{flex:1}
+.audio-player .audio-title{font-size:0.9rem;font-weight:600;color:var(--text);margin-bottom:4px}
+.audio-player .audio-sub{font-size:0.8rem;color:var(--text3)}
+
+/* RESPONSIVE */
+@media(max-width:640px){
+  .main{padding:72px 16px 40px}
+  .lesson-header h1{font-size:1.8rem}
+  .section h2{font-size:1.2rem}
+  .data-table{font-size:0.85rem}
+  .data-table th,.data-table td{padding:8px 10px}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-left">
+      <a href="index.html" class="nav-back">← 返回首页</a>
+      <span class="nav-title">第10课</span>
+    </div>
+    <div class="nav-right">
+      <span class="nav-lesson">10 / 20</span>
+    </div>
+  </div>
+</nav>
+<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+
+<div class="main">
+
+<!-- HEADER -->
+<div class="lesson-header">
+  <div class="lesson-cat">投资大师</div>
+  <h1>🦢 塔勒布 — 黑天鹅与反脆弱</h1>
+  <div class="lesson-meta">
+    <span>📖 阅读约35分钟</span>
+    <span>✏️ 0道练习题</span>
+    <span>🎯 进阶</span>
+  </div>
+</div>
+
+<!-- AUDIO OVERVIEW -->
+<div class="audio-player">
+  <button class="play-btn" onclick="toggleAudio()" id="playBtn">▶️</button>
+  <div class="audio-info">
+    <div class="audio-title">🎧 课程音频概述</div>
+    <div class="audio-sub">点击播放课程核心内容摘要</div>
+  </div>
+  <audio id="courseAudio" preload="none">
+    <source src="audio/lesson10.mp3" type="audio/mpeg">
+  </audio>
+</div>
+
+
+
+<div class="section">
+  <h2><span class="icon"></span> </h2>
+  <p># 第10课：塔勒布 — 黑天鹅与反脆弱</p>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p><strong>参考著作</strong>：《黑天鹅》《反脆弱》《随机漫步的傻瓜》《非对称风险》纳西姆·尼古拉斯·塔勒布</p></div>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 开篇：你的人生被什么改变？</h2>
+  <p>1987年黑色星期一，道琼斯单日暴跌22.6%——没有任何模型预测到。</p>
+  <p>2008年金融危机——"百年一遇"的事件隔几年就来一次。</p>
+  <p>2020年新冠大流行——整个全球经济瞬间停摆。</p>
+  <p><strong>这些事件有什么共同点？</strong></p>
+  <p>• 事前几乎无人预料</p>
+  <p>• 事后所有人都说"早就该想到"</p>
+  <p>• 影响极其深远，改变了世界的走向</p>
+  <p>塔勒布把这些事件称为<strong>黑天鹅</strong>，并用毕生精力研究如何在它们面前不仅不被摧毁，反而能从中获益。</p>
+  <p><strong>核心洞察</strong>：世界不是由"正常事件"驱动的，而是由"意外事件"驱动的。你的投资框架、人生规划、甚至整个社会科学，都在系统性地低估极端事件。</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 塔勒布其人</h2>
+  <h3>2.1 生平</h3>
+  <p>纳西姆·尼古拉斯·塔勒布（Nassim Nicholas Taleb, 1960-），黎巴嫩裔美国学者、期权交易员、作家。</p>
+  <table class="data-table"><thead><tr><th>阶段</th><th>经历</th></tr></thead><tbody>
+  <tr><td>少年时期</td><td>在黎巴嫩内战中长大，亲历"不可能发生"的战争</td></tr>
+  <tr><td>交易生涯</td><td>1987年黑色星期一大赚，因提前持有看跌期权</td></tr>
+  <tr><td>学术生涯</td><td>纽约大学特聘教授，研究概率与不确定性</td></tr>
+  <tr><td>写作生涯</td><td>写出"不确定性"四部曲，影响全球投资界</td></tr>
+  </tbody></table>
+  <p>|------|------|</p>
+  <h3>2.2 核心思想脉络</h3>
+  <p><code>`</code></p>
+  <p>《随机漫步的傻瓜》(2001) → 揭示运气被误认为实力</p>
+  <p>↓</p>
+  <p>《黑天鹅》(2007) → 极端事件主导世界</p>
+  <p>↓</p>
+  <p>《反脆弱》(2012) → 如何从混乱中获益</p>
+  <p>↓</p>
+  <p>《非对称风险》(2018) → 切身利害与道德对称</p>
+  <p><code>`</code></p>
+  <h3>2.3 他的独特之处</h3>
+  <p>塔勒布不是纯理论家。他是一个<strong>用真金白银下注的哲学家</strong>：</p>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p>"不要告诉我你怎么想，告诉我你持有什么仓位。"</p></div>
+  <p>他的所有理论都经过了市场的残酷验证。1987年、2000年、2008年——每一次危机都是他的"盈利时刻"。</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 黑天鹅理论</h2>
+  <h3>3.1 什么是黑天鹅？</h3>
+  <p>在17世纪之前，欧洲人认为所有天鹅都是白色的——直到在澳大利亚发现了黑天鹅。一个观察推翻了千年认知。</p>
+  <p>塔勒布定义的<strong>黑天鹅事件</strong>有三个特征：</p>
+  <table class="data-table"><thead><tr><th>特征</th><th>含义</th><th>举例</th></tr></thead><tbody>
+  <tr><td><strong>稀有性</strong></td><td>事前超出常规预期范围</td><td>9/11恐怖袭击</td></tr>
+  <tr><td><strong>极端影响</strong></td><td>一旦发生，影响巨大</td><td>2008年金融危机</td></tr>
+  <tr><td><strong>事后可解释性</strong></td><td>事后人们总能找到"原因"</td><td>每次危机后的复盘文章</td></tr>
+  </tbody></table>
+  <p>|------|------|------|</p>
+  <h3>3.2 为什么我们预测不到黑天鹅？</h3>
+  <p><strong>三个认知陷阱：</strong></p>
+  <p>#### 陷阱一：叙事谬误（Narrative Fallacy）</p>
+  <p>人类大脑天生喜欢故事。面对随机事件，我们会编造因果关系：</p>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p>事后看：房价泡沫"显然"不可持续</p></div>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p>事前看：几乎所有经济学家都说"房价不会全国性下跌"</p></div>
+  <p>#### 陷阱二：证实偏见（Confirmation Bias）</p>
+  <p>我们只关注支持自己观点的信息：</p>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p>你看好一只股票 → 只看利好消息</p></div>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p>你忽略所有危险信号 → 直到暴跌来临</p></div>
+  <p>#### 陷阱三：沉默的证据（Silent Evidence）</p>
+  <p>我们只看到幸存者，看不到失败者：</p>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p>比尔·盖茨辍学成功 → "辍学也能成功"</p></div>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p>一万个辍学失败的人 → 没人知道他们的故事</p></div>
+  <h3>3.3 高斯分布的骗局</h3>
+  <p>传统金融理论假设市场收益服从<strong>正态分布（钟形曲线）</strong>：</p>
+  <p><code>`</code></p>
+  <p>正态分布假设：</p>
+  <p>███</p>
+  <p>█████</p>
+  <p>███████</p>
+  <p>█████████</p>
+  <p>███████████</p>
+  <p>─────────────</p>
+  <p>-3σ  0  +3σ</p>
+  <p>现实分布（肥尾）：</p>
+  <p>█</p>
+  <p>█</p>
+  <p>██</p>
+  <p>███</p>
+  <p>█████</p>
+  <p>████████</p>
+  <p>███████████████████</p>
+  <p>─────────────────────────</p>
+  <p>-10σ  -3σ  0  +3σ  +10σ</p>
+  <p><code>`</code></p>
+  <p>正态分布下，10个标准差的事件概率约为 10⁻²³——宇宙年龄内都不该发生。</p>
+  <p><strong>但实际上</strong>：2008年金融危机期间，某些资产的单日波动超过20个标准差。</p>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p>"如果你用正态分布来管理风险，你就像一个不会游泳的人在浅水区学会了游泳，然后被扔进了大海。"</p></div>
+  <h3>3.4 极端斯坦的统计特征</h3>
+  <table class="data-table"><thead><tr><th>分布类型</th><th>特征</th><th>代表领域</th></tr></thead><tbody>
+  <tr><td>对数正态分布</td><td>单个样本不会显著影响总量</td><td>人的身高</td></tr>
+  <tr><td>幂律分布</td><td>单个样本可能主导总量</td><td>财富分布</td></tr>
+  </tbody></table>
+  <p>|----------|------|----------|</p>
+  <p><strong>关键区别</strong>：在幂律分布的世界里，"平均值"毫无意义。</p>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p>如果把比尔·盖茨放进一个1000人的房间，这个房间的"平均财富"可能高达数十亿美元——但这不能说明任何人的实际状况。</p></div>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 中庸斯坦 vs 极端斯坦</h2>
+  <h3>4.1 两个世界</h3>
+  <p>塔勒布把世界分为两个"国度"：</p>
+  <table class="data-table"><thead><tr><th></th><th>中庸斯坦（Mediocristan）</th><th>极端斯坦（Extremistan）</th></tr></thead><tbody>
+  <tr><td><strong>特征</strong></td><td>受物理约束，变化温和</td><td>受信息/网络驱动，极端波动</td></tr>
+  <tr><td><strong>典型代表</strong></td><td>身高、体重、IQ</td><td>财富、图书销量、城市人口</td></tr>
+  <tr><td><strong>单个样本的影响</strong></td><td>有限</td><td>可以主导全局</td></tr>
+  <tr><td><strong>历史的作用</strong></td><td>温和演变</td><td>被突发事件主导</td></tr>
+  <tr><td><strong>预测的可能性</strong></td><td>较高</td><td>几乎不可能</td></tr>
+  </tbody></table>
+  <p>|---|---|---|</p>
+  <h3>4.2 你在哪个世界？</h3>
+  <p><strong>中庸斯坦的例子</strong>：</p>
+  <p>• 一个人的身高不会影响全班平均身高</p>
+  <p>• 一家餐厅的收入不会改变全城餐饮业总量</p>
+  <p>• 一个工人的产能不会改变工厂总产量</p>
+  <p><strong>极端斯坦的例子</strong>：</p>
+  <p>• J.K.罗琳的版税收入 > 全英国其他作家之和</p>
+  <p>• 一个创业者可以创建万亿市值公司</p>
+  <p>• 一个病毒可以在几周内感染全球</p>
+  <h3>4.3 投资者的关键问题</h3>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p><strong>你必须先判断自己在哪个世界，然后选择对应的策略。</strong></p></div>
+  <p>大多数投资者用中庸斯坦的工具（均值-方差模型、正态分布假设）来应对极端斯坦的市场——这是系统性灾难的根源。</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 反脆弱：超越韧性</h2>
+  <h3>5.1 三种状态</h3>
+  <p>塔勒布提出了一个新概念——<strong>反脆弱（Antifragile）</strong>：</p>
+  <table class="data-table"><thead><tr><th>状态</th><th>受到压力时</th><th>例子</th></tr></thead><tbody>
+  <tr><td><strong>脆弱</strong></td><td>受损、崩溃</td><td>玻璃杯、银行系统</td></tr>
+  <tr><td><strong>坚韧/韧性</strong></td><td>不变、恢复</td><td>石头、稳定的基础设施</td></tr>
+  <tr><td><strong>反脆弱</strong></td><td>变强、获益</td><td>肌肉、进化、某些投资策略</td></tr>
+  </tbody></table>
+  <p>|------|-----------|------|</p>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p>"风不熄灭蜡烛，却能使篝火越烧越旺。你要成为篝火，而不是蜡烛。"</p></div>
+  <h3>5.2 反脆弱的运作原理</h3>
+  <p><code>`</code></p>
+  <p>压力/波动/混乱</p>
+  <p>↓</p>
+  <p>┌───────────┼───────────┐</p>
+  <p>↓           ↓           ↓</p>
+  <p>脆弱       韧性        反脆弱</p>
+  <p>崩溃      维持原状     变得更强</p>
+  <p><code>`</code></p>
+  <p><strong>反脆弱的生物学原理</strong>：</p>
+  <p>• <strong>肌肉</strong>：举重造成微损伤 → 修复后变得更强</p>
+  <p>• <strong>免疫系统</strong>：接触病原体 → 产生抗体 → 更强的免疫力</p>
+  <p>• <strong>进化</strong>：物种在压力下淘汰弱者 → 整体变强</p>
+  <p><strong>反脆弱的社会学原理</strong>：</p>
+  <p>• <strong>创业生态</strong>：90%的创业公司倒闭 → 幸存者极其强大</p>
+  <p>• <strong>科学进步</strong>：一个理论被证伪 → 更好的理论取而代之</p>
+  <p>• <strong>技术创新</strong>：旧技术被淘汰 → 新技术更高效</p>
+  <h3>5.3 反脆弱的"过度补偿"机制</h3>
+  <p>人体在压力下不只是"恢复原状"，而是会<strong>过度补偿</strong>：</p>
+  <table class="data-table"><thead><tr><th>压力</th><th>过度补偿</th></tr></thead><tbody>
+  <tr><td>饥饿（适度）</td><td>细胞自噬，清除受损细胞</td></tr>
+  <tr><td>运动</td><td>肌肉纤维增粗</td></tr>
+  <tr><td>高海拔</td><td>红细胞增多</td></tr>
+  <tr><td>小剂量毒物</td><td>毒物兴奋效应（Hormesis）</td></tr>
+  </tbody></table>
+  <p>|------|---------|</p>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p>这就是为什么"完全消除风险"反而会让你更脆弱——你剥夺了系统成长的机会。</p></div>
+  <h3>5.4 现代社会的脆弱化</h3>
+  <p>塔勒布尖锐地批评现代社会的"过度优化"：</p>
+  <table class="data-table"><thead><tr><th>做法</th><th>表面上的收益</th><th>实际的代价</th></tr></thead><tbody>
+  <tr><td>过度医疗</td><td>消除所有小病</td><td>免疫系统退化</td></tr>
+  <tr><td>过度保护</td><td>消除所有风险</td><td>无法应对大冲击</td></tr>
+  <tr><td>过度杠杆</td><td>提高短期收益</td><td>一次崩溃清零</td></tr>
+  <tr><td>中央集权</td><td>效率提升</td><td>系统性风险集中</td></tr>
+  </tbody></table>
+  <p>|------|------------|-----------|</p>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p>"当你试图消除所有波动时，你只是在积累最终的灾难。"</p></div>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 杠铃策略</h2>
+  <h3>6.1 核心思想</h3>
+  <p>塔勒布提出的<strong>杠铃策略（Barbell Strategy）</strong>是应对不确定性的最佳工具：</p>
+  <p><code>`</code></p>
+  <p>杠铃配置：</p>
+  <p>安全端（90%）              冒险端（10%）</p>
+  <p>████████████████████████    ██</p>
+  <p>国债、现金、黄金            高风险高回报期权</p>
+  <p>极度保守                    极度激进</p>
+  <p>─────────────────────────────────────────</p>
+  <p>中间地带（0%）：避免！</p>
+  <p>中等风险的投资</p>
+  <p>看似安全实则危险</p>
+  <p><code>`</code></p>
+  <h3>6.2 为什么中间地带最危险？</h3>
+  <p><strong>中等风险投资的陷阱</strong>：</p>
+  <table class="data-table"><thead><tr><th>策略</th><th>看起来</th><th>实际上</th></tr></thead><tbody>
+  <tr><td>投资级公司债</td><td>稳健</td><td>一旦违约损失巨大（如雷曼兄弟）</td></tr>
+  <tr><td>杠杆ETF</td><td>放大收益</td><td>波动损耗长期侵蚀本金</td></tr>
+  <tr><td>结构性产品</td><td>高收益低风险</td><td>黑天鹅来临时血本无归</td></tr>
+  <tr><td>房贷MBS</td><td>有房产抵押</td><td>系统性风险下全线崩溃</td></tr>
+  </tbody></table>
+  <p>|------|--------|--------|</p>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p>"中间地带是最危险的地方——你承担了风险，但没有获得对应的回报。"</p></div>
+  <h3>6.3 杠铃策略的实操</h3>
+  <p>#### 资产配置版</p>
+  <table class="data-table"><thead><tr><th>仓位</th><th>比例</th><th>配置</th><th>目的</th></tr></thead><tbody>
+  <tr><td>安全端</td><td>85-90%</td><td>短期国债、TIPS、现金、黄金</td><td>保本，保证生存</td></tr>
+  <tr><td>冒险端</td><td>10-15%</td><td>深度虚值期权、早期创业投资、加密资产</td><td>博取极端正收益</td></tr>
+  </tbody></table>
+  <p>|------|------|------|------|</p>
+  <p>#### 投资组合示例</p>
+  <p><code>`</code></p>
+  <p>总资产：100万元</p>
+  <p>安全端（90万）：</p>
+  <p>├── 40万 短期美国国债</p>
+  <p>├── 20万 通胀保护债券（TIPS）</p>
+  <p>├── 20万 现金及货币基金</p>
+  <p>└── 10万 实物黄金</p>
+  <p>冒险端（10万）：</p>
+  <p>├── 3万 深度虚值看跌期权（对冲尾部风险）</p>
+  <p>├── 3万 早期风投/天使投资</p>
+  <p>├── 2万 小市值加密资产</p>
+  <p>└── 2万 高成长小盘股投机</p>
+  <p><code>`</code></p>
+  <h3>6.4 杠铃策略的数学优势</h3>
+  <p>假设一年内：</p>
+  <table class="data-table"><thead><tr><th>情景</th><th>概率</th><th>安全端收益</th><th>冒险端收益</th><th>总收益</th></tr></thead><tbody>
+  <tr><td>市场平稳</td><td>70%</td><td>+3% (×90%)</td><td>-10% (×10%)</td><td><strong>+1.7%</strong></td></tr>
+  <tr><td>市场大跌</td><td>25%</td><td>+3% (×90%)</td><td>+200% (×10%)</td><td><strong>+22.7%</strong></td></tr>
+  <tr><td>市场崩盘</td><td>5%</td><td>+3% (×90%)</td><td>+1000% (×10%)</td><td><strong>+102.7%</strong></td></tr>
+  </tbody></table>
+  <p>|------|------|-----------|-----------|--------|</p>
+  <p><strong>关键观察</strong>：</p>
+  <p>• 70%的时间里，你小赚（1.7%）</p>
+  <p>• 25%的时间里，你大赚（22.7%）</p>
+  <p>• 5%的极端事件中，你暴赚（102.7%）</p>
+  <p>• <strong>你永远不会大亏</strong>——最坏情况也是赚钱</p>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p>这就是<strong>正凸性</strong>：不对称的回报结构让你在波动中获益。</p></div>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 非对称风险与切身利害</h2>
+  <h3>7.1 代理人问题</h3>
+  <p>塔勒布在《非对称风险》中指出，现代社会最大的道德问题是<strong>决策者不承担后果</strong>：</p>
+  <table class="data-table"><thead><tr><th>角色</th><th>收益</th><th>风险</th></tr></thead><tbody>
+  <tr><td>银行CEO</td><td>高额奖金</td><td>亏了由纳税人买单</td></tr>
+  <tr><td>基金经理</td><td>管理费</td><td>亏了是客户的钱</td></tr>
+  <tr><td>政客</td><td>政绩加分</td><td>战争死了是士兵的事</td></tr>
+  <tr><td>学者</td><td>发论文出名</td><td>理论错误不负责</td></tr>
+  </tbody></table>
+  <p>|------|------|------|</p>
+  <h3>7.2 解决方案：切身利害（Skin in the Game）</h3>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p>"永远不要听一个没有切身利害的人的建议。"</p></div>
+  <p><strong>切身利害原则</strong>：</p>
+  <p>• 你推荐的投资策略，你自己用了没有？</p>
+  <p>• 你制定的政策，你自己受不受影响？</p>
+  <p>• 你推销的产品，你自己敢不敢买？</p>
+  <h3>7.3 对投资者的启示</h3>
+  <table class="data-table"><thead><tr><th>建议来源</th><th>可信度</th><th>原因</th></tr></thead><tbody>
+  <tr><td>用自己钱投资的基金经理</td><td>高</td><td>有切身利害</td></tr>
+  <tr><td>只收管理费的基金公司</td><td>低</td><td>没有切身利害</td></tr>
+  <tr><td>卖研究报告的分析师</td><td>很低</td><td>卖报告赚钱，预测对不对无所谓</td></tr>
+  <tr><td>电视上的"专家"</td><td>最低</td><td>出名赚钱，错了也没惩罚</td></tr>
+  </tbody></table>
+  <p>|----------|--------|------|</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 应用到投资实践</h2>
+  <h3>8.1 识别脆弱与反脆弱企业</h3>
+  <table class="data-table"><thead><tr><th>脆弱企业特征</th><th>反脆弱企业特征</th></tr></thead><tbody>
+  <tr><td>高杠杆</td><td>低杠杆或零杠杆</td></tr>
+  <tr><td>高度依赖单一收入来源</td><td>多元化收入</td></tr>
+  <tr><td>供应链集中</td><td>冗余供应链</td></tr>
+  <tr><td>过度优化效率</td><td>保留冗余和弹性</td></tr>
+  <tr><td>政策敏感型</td><td>政策无关型</td></tr>
+  <tr><td>大型、不能倒</td><td>小型、可失败</td></tr>
+  </tbody></table>
+  <p>|-------------|---------------|</p>
+  <h3>8.2 塔勒布式投资检查清单</h3>
+  <p><code>`</code></p>
+  <p>✅ 我的投资组合在黑天鹅事件中会怎样？</p>
+  <p>✅ 我的最大亏损是否在可承受范围内？</p>
+  <p>✅ 我是否保留了足够的现金储备？</p>
+  <p>✅ 我是否在冒险端配置了正凸性资产？</p>
+  <p>✅ 我是否避免了"看似安全实则脆弱"的投资？</p>
+  <p>✅ 我的决策是否基于切身利害？</p>
+  <p>✅ 我是否在看别人的仓位而不是只听别人的话？</p>
+  <p><code>`</code></p>
+  <h3>8.3 与康德拉季耶夫周期的结合</h3>
+  <table class="data-table"><thead><tr><th>周期阶段</th><th>脆弱/反脆弱分析</th><th>策略建议</th></tr></thead><tbody>
+  <tr><td>春季（复苏）</td><td>系统修复中，脆弱性下降</td><td>逐步增加冒险端比例</td></tr>
+  <tr><td>夏季（繁荣）</td><td>过度乐观，脆弱性隐藏积累</td><td>加大安全端，购买尾部对冲</td></tr>
+  <tr><td>秋季（衰退）</td><td>脆弱性开始暴露</td><td>杠铃策略最为重要</td></tr>
+  <tr><td>冬季（萧条）</td><td>黑天鹅频发，脆弱系统崩溃</td><td>安全端保生存，冒险端抄底</td></tr>
+  </tbody></table>
+  <p>|----------|----------------|---------|</p>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p><strong>康波萧条期 + 塔勒布杠铃 = 最优生存策略</strong></p></div>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 常见误区</h2>
+  <h3>❌ 误区一："黑天鹅就是不可预测，所以不用管"</h3>
+  <p><strong>真相</strong>：你不需要预测黑天鹅，只需要<strong>确保自己在黑天鹅发生时不被摧毁</strong>。</p>
+  <h3>❌ 误区二："杠铃策略收益太低"</h3>
+  <p><strong>真相</strong>：杠铃策略的<strong>凸性</strong>意味着长期收益优于传统组合，尤其在极端斯坦。</p>
+  <h3>❌ 误区三："反脆弱就是拥抱风险"</h3>
+  <p><strong>真相</strong>：反脆弱是<strong>选择性地暴露在正凸性风险下</strong>，同时消除负凸性风险。</p>
+  <h3>❌ 误区四："分散投资就能防黑天鹅"</h3>
+  <p><strong>真相</strong>：2008年证明，<strong>相关性在危机中趋向1</strong>——你以为分散了，其实没有。</p>
+  <h3>❌ 误区五："过去没发生过，将来也不会发生"</h3>
+  <p><strong>真相</strong>：火鸡被喂了1000天，每天都"验证"了主人是好的——直到感恩节。</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 本课核心总结</h2>
+  <p><code>`</code></p>
+  <p>┌──────────────────────────────────────────────┐</p>
+  <p>│          塔勒布投资哲学核心框架                  │</p>
+  <p>├──────────────────────────────────────────────┤</p>
+  <p>│                                              │</p>
+  <p>│  1. 认知：世界由极端事件驱动（黑天鹅）          │</p>
+  <p>│     ↓                                        │</p>
+  <p>│  2. 分类：判断你在中庸斯坦还是极端斯坦          │</p>
+  <p>│     ↓                                        │</p>
+  <p>│  3. 目标：从"坚韧"升级为"反脆弱"              │</p>
+  <p>│     ↓                                        │</p>
+  <p>│  4. 策略：杠铃配置（90%安全+10%凸性）          │</p>
+  <p>│     ↓                                        │</p>
+  <p>│  5. 原则：切身利害，与风险共担                  │</p>
+  <p>│     ↓                                        │</p>
+  <p>│  6. 心态：承认无知，准备应对意外                │</p>
+  <p>│                                              │</p>
+  <p>└──────────────────────────────────────────────┘</p>
+  <p><code>`</code></p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 📝 课后测试</h2>
+  <h3>第1题</h3>
+  <p><strong>塔勒布定义的黑天鹅事件不包括以下哪个特征？</strong></p>
+  <p>A. 事件发生前超出常规预期范围</p>
+  <p>B. 事件发生后人们能找到合理解释</p>
+  <p>C. 事件发生前可以被精确预测</p>
+  <p>D. 事件一旦发生会产生极端影响</p>
+  <p><details></p>
+  <p><summary>查看答案</summary></p>
+  <p><strong>答案：C</strong></p>
+  <p>黑天鹅的核心特征之一恰恰是<strong>不可预测性</strong>——事前无法精确预测。事后可解释（B）是第三个特征，但事后解释不等于事前预测。</p>
+  <p></details></p>
+</div>
+<div class="section">
+  <h2><span class="icon"></span> </h2>
+  <h3>第2题</h3>
+  <p><strong>在塔勒布的杠铃策略中，"安全端"通常配置什么比例？</strong></p>
+  <p>A. 50%</p>
+  <p>B. 60%</p>
+  <p>C. 70%</p>
+  <p>D. 85-90%</p>
+  <p><details></p>
+  <p><summary>查看答案</summary></p>
+  <p><strong>答案：D</strong></p>
+  <p>杠铃策略的标准配置是85-90%极度保守（国债、现金、黄金），10-15%极度冒险（期权、风投）。中间地带（中等风险投资）应当避免。</p>
+  <p></details></p>
+</div>
+<div class="section">
+  <h2><span class="icon"></span> </h2>
+  <h3>第3题</h3>
+  <p><strong>以下哪个属于"中庸斯坦"（Mediocristan）？</strong></p>
+  <p>A. 一本书的销量</p>
+  <p>B. 一个人的身高</p>
+  <p>C. 一家科技公司的市值</p>
+  <p>D. 一个城市的房价</p>
+  <p><details></p>
+  <p><summary>查看答案</summary></p>
+  <p><strong>答案：B</strong></p>
+  <p>身高受物理约束，属于中庸斯坦——加一个极高的人不会显著改变全班平均身高。而书的销量、科技公司市值、城市房价都属于极端斯坦，可以被单个极端值主导。</p>
+  <p></details></p>
+</div>
+<div class="section">
+  <h2><span class="icon"></span> </h2>
+  <h3>第4题</h3>
+  <p><strong>"反脆弱"的正确含义是什么？</strong></p>
+  <p>A. 遭受打击后恢复原状</p>
+  <p>B. 永远不受任何伤害</p>
+  <p>C. 遭受打击后变得更强</p>
+  <p>D. 主动去寻找危险</p>
+  <p><details></p>
+  <p><summary>查看答案</summary></p>
+  <p><strong>答案：C</strong></p>
+  <p>反脆弱不等于韧性（韧性是恢复原状），反脆弱是<strong>在压力和波动中变得更强</strong>。就像肌肉在训练后变得更强壮，免疫系统在接触病原体后变得更强大。</p>
+  <p></details></p>
+</div>
+<div class="section">
+  <h2><span class="icon"></span> </h2>
+  <h3>第5题</h3>
+  <p><strong>塔勒布所说的"火鸡问题"说明了什么？</strong></p>
+  <p>A. 火鸡很愚蠢</p>
+  <p>B. 历史数据不能保证未来安全</p>
+  <p>C. 感恩节应该吃火鸡</p>
+  <p>D. 农场主是好人</p>
+  <p><details></p>
+  <p><summary>查看答案</summary></p>
+  <p><strong>答案：B</strong></p>
+  <p>火鸡被喂了1000天，每天的经历都"验证"了主人是友善的——直到感恩节来临。这说明<strong>过去的稳定不能证明未来的安全</strong>，尤其不能用历史数据来预测极端事件。这就是为什么"回测良好"的投资策略可能在下一次危机中毁灭。</p>
+  <p></details></p>
+</div>
+<div class="section">
+  <h2><span class="icon"></span> </h2>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p><strong>下一课预告</strong>：第11课 — 索罗斯：反身性与金融炼金术</p></div>
+</div>
+
+
+<!-- BOTTOM NAV -->
+<div class="bottom-nav">
+  <a href="lesson9.html" class="prev">← 第9课</a>
+  <a href="lesson11.html" class="next">第11课 →</a>
+</div>
+
+</div>
+
+<script>
+// Reading progress
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement;
+  const pct=(h.scrollTop)/(h.scrollHeight-h.clientHeight)*100;
+  document.getElementById('progressFill').style.width=pct+'%';
+});
+
+// Audio player
+function toggleAudio(){
+  const audio=document.getElementById('courseAudio');
+  const btn=document.getElementById('playBtn');
+  if(audio.paused){audio.play();btn.textContent='⏸️'}else{audio.pause();btn.textContent='▶️'}
+}
+</script>
+
+</body>
+</html>

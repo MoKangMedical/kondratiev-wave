@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第14课：现代货币理论 MMT — 康波研究院</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#09090b;--bg2:#0f0f13;--card:#1c1c21;--card2:#222228;--card3:#2a2a32;--border:#27272a;--border2:#3f3f46;--text:#fafafa;--text2:#a1a1aa;--text3:#71717a;--gold:#e2b64f;--gold2:#f5d98a;--green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;--orange:#f59e0b;--red:#ef4444;--serif:'Noto Serif SC',serif;--sans:'Inter',sans-serif;--radius:16px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:2;font-size:18px}
+a{color:var(--gold);text-decoration:none}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(9,9,11,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);height:56px;display:flex;align-items:center}
+.nav-inner{max-width:900px;margin:0 auto;padding:0 24px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-left{display:flex;align-items:center;gap:16px}
+.nav-back{font-size:0.9rem;color:var(--text3);transition:color .2s}.nav-back:hover{color:var(--gold)}
+.nav-title{font-size:0.9rem;color:var(--text2);font-weight:500}
+.nav-right{display:flex;align-items:center;gap:12px}
+.nav-lesson{font-size:0.8rem;color:var(--text3);background:var(--card2);padding:4px 14px;border-radius:6px}
+
+/* PROGRESS BAR */
+.progress-bar{position:fixed;top:56px;left:0;right:0;height:3px;background:var(--border);z-index:99}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));transition:width .3s;width:0%}
+
+/* MAIN */
+.main{max-width:800px;margin:0 auto;padding:80px 28px 60px}
+
+/* LESSON HEADER */
+.lesson-header{margin-bottom:56px;text-align:center}
+.lesson-cat{display:inline-block;font-size:0.75rem;color:var(--gold);background:rgba(226,182,79,0.1);padding:4px 14px;border-radius:20px;margin-bottom:16px;letter-spacing:0.1em}
+.lesson-header h1{font-family:var(--serif);font-size:clamp(2rem,5vw,2.8rem);font-weight:900;line-height:1.3;margin-bottom:16px;background:linear-gradient(135deg,var(--text),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lesson-meta{display:flex;gap:20px;justify-content:center;flex-wrap:wrap}
+.lesson-meta span{font-size:0.85rem;color:var(--text3);display:flex;align-items:center;gap:6px}
+
+/* SECTIONS */
+.section{margin-bottom:48px}
+.section h2{font-size:1.4rem;font-weight:700;margin-bottom:20px;color:var(--text);display:flex;align-items:center;gap:10px}
+.section h2 .icon{font-size:1.2rem}
+.section h3{font-size:1.15rem;font-weight:600;margin:28px 0 12px;color:var(--gold2)}
+.section p{color:var(--text2);font-size:1.05rem;margin-bottom:14px;line-height:2}
+
+/* CALLOUT */
+.callout{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:28px;margin:24px 0}
+.callout.gold{border-left:4px solid var(--gold)}
+.callout.green{border-left:4px solid var(--green)}
+.callout.blue{border-left:4px solid var(--blue)}
+.callout-title{font-size:0.85rem;font-weight:600;color:var(--gold);margin-bottom:10px;text-transform:uppercase;letter-spacing:0.08em}
+.callout p{color:var(--text2);font-size:1rem;line-height:1.9}
+
+/* TABLE */
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:0.95rem}
+.data-table th{text-align:left;padding:12px 14px;background:var(--card2);color:var(--text3);font-weight:600;font-size:0.85rem;text-transform:uppercase;letter-spacing:0.05em;border-bottom:2px solid var(--border)}
+.data-table td{padding:12px 14px;border-bottom:1px solid var(--border);color:var(--text2)}
+.data-table tr:hover td{background:var(--card)}
+
+/* EXERCISE */
+.exercise{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:32px;margin:28px 0}
+.exercise-label{display:inline-flex;align-items:center;gap:6px;font-size:0.8rem;font-weight:600;color:var(--blue);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:14px}
+.exercise h3{font-size:1.1rem;margin-bottom:10px;color:var(--text)}
+.exercise p{color:var(--text2);font-size:1rem;margin-bottom:14px}
+.exercise-question{color:var(--text);font-weight:500;font-size:1.05rem}
+.exercise textarea{width:100%;min-height:90px;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:16px;color:var(--text);font-family:var(--sans);font-size:1rem;resize:vertical;transition:border-color .2s;line-height:1.8}
+.exercise textarea:focus{outline:none;border-color:var(--gold)}
+.exercise textarea::placeholder{color:var(--text3)}
+
+/* BOTTOM NAV */
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;padding:36px 0;margin-top:48px;border-top:1px solid var(--border)}
+.bottom-nav a{display:flex;align-items:center;gap:8px;padding:14px 24px;border-radius:12px;font-size:1rem;font-weight:500;transition:all .2s}
+.bottom-nav .prev{color:var(--text3);border:1px solid var(--border)}
+.bottom-nav .prev:hover{border-color:var(--gold);color:var(--gold)}
+.bottom-nav .next{background:var(--gold);color:#000}
+.bottom-nav .next:hover{background:var(--gold2)}
+
+/* AUDIO PLAYER */
+.audio-player{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin:24px 0;display:flex;align-items:center;gap:16px}
+.audio-player .play-btn{width:48px;height:48px;border-radius:50%;background:var(--gold);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.2rem;transition:background .2s;flex-shrink:0}
+.audio-player .play-btn:hover{background:var(--gold2)}
+.audio-player .audio-info{flex:1}
+.audio-player .audio-title{font-size:0.9rem;font-weight:600;color:var(--text);margin-bottom:4px}
+.audio-player .audio-sub{font-size:0.8rem;color:var(--text3)}
+
+/* RESPONSIVE */
+@media(max-width:640px){
+  .main{padding:72px 16px 40px}
+  .lesson-header h1{font-size:1.8rem}
+  .section h2{font-size:1.2rem}
+  .data-table{font-size:0.85rem}
+  .data-table th,.data-table td{padding:8px 10px}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-left">
+      <a href="index.html" class="nav-back">← 返回首页</a>
+      <span class="nav-title">第14课</span>
+    </div>
+    <div class="nav-right">
+      <span class="nav-lesson">14 / 20</span>
+    </div>
+  </div>
+</nav>
+<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+
+<div class="main">
+
+<!-- HEADER -->
+<div class="lesson-header">
+  <div class="lesson-cat">经济学派</div>
+  <h1>🖨️ 现代货币理论 MMT</h1>
+  <div class="lesson-meta">
+    <span>📖 阅读约40分钟</span>
+    <span>✏️ 0道练习题</span>
+    <span>🎯 高级</span>
+  </div>
+</div>
+
+<!-- AUDIO OVERVIEW -->
+<div class="audio-player">
+  <button class="play-btn" onclick="toggleAudio()" id="playBtn">▶️</button>
+  <div class="audio-info">
+    <div class="audio-title">🎧 课程音频概述</div>
+    <div class="audio-sub">点击播放课程核心内容摘要</div>
+  </div>
+  <audio id="courseAudio" preload="none">
+    <source src="audio/lesson14.mp3" type="audio/mpeg">
+  </audio>
+</div>
+
+
+
+<div class="section">
+  <h2><span class="icon"></span> </h2>
+  <p># 课程14：现代货币理论（MMT）— 主权货币的真相</p>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p>"政府不是家庭。一个主权货币发行者，永远不会像你我一样面临破产。"</p></div>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p>—— 斯特凡妮·凯尔顿，《赤字神话》</p></div>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 课程概述</h2>
+  <p>现代货币理论（Modern Monetary Theory, MMT）是21世纪最具颠覆性的经济思想之一。它挑战了人们对政府财政、货币主权和国家债务的传统认知，揭示了主权货币体系运作的真实逻辑。本课程将系统介绍MMT的起源、核心框架、政策主张，并将其与康德拉季耶夫长波理论深度结合。</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 第一章：MMT的起源与思想谱系</h2>
+  <h3>1.1 历史根源</h3>
+  <p>MMT的思想可追溯至多个经济学传统：</p>
+  <p>• <strong>约翰·梅纳德·凯恩斯</strong>：《货币论》中对主权货币和国家信用的论述</p>
+  <p>• <strong>克纳普</strong>（Georg Knapp）：《国家货币理论》（1905年），提出"国家货币论"（Chartalism），主张货币价值源于国家权力</p>
+  <p>• <strong>勒纳</strong>（Abba Lerner）："功能财政"原则——政府财政应以充分就业和物价稳定为目标，而非追求预算平衡</p>
+  <p>• <strong>戈德利</strong>（Wynne Godley）：存量-流量一致性模型</p>
+  <p>• <strong>明斯基</strong>（Hyman Minsky）：金融不稳定假说，强调货币内生性</p>
+  <h3>1.2 三位核心人物</h3>
+  <p>#### 斯特凡妮·凯尔顿（Stephanie Kelton）</p>
+  <p>• 石溪大学经济学教授，曾任参议院预算委员会民主党首席经济学家</p>
+  <p>• 著作《赤字神话》（<em>The Deficit Myth</em>, 2020）——MMT最重要的公共传播</p>
+  <p>• 核心贡献：系统阐述"赤字不是问题，通胀才是真正约束"</p>
+  <p>#### 沃伦·莫斯勒（Warren Mosler）</p>
+  <p>• 金融家、经济学家，从市场操作中领悟主权货币逻辑</p>
+  <p>• 著作《七大致命的无辜欺诈》（<em>The 7 Deadly Innocent Frauds</em>, 2010）</p>
+  <p>• 核心贡献：用通俗语言揭示政策制定者的七大常见误解</p>
+  <p>#### L·兰德尔·雷（L. Randall Wray）</p>
+  <p>• 密苏里大学堪萨斯城分校教授，巴德学院利维研究所高级学者</p>
+  <p>• 著作《理解现代货币》（<em>Understanding Modern Money</em>, 1998）——MMT学术奠基作</p>
+  <p>• 核心贡献：将国家货币理论与功能财政结合，构建完整理论框架</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 第二章：MMT的核心思想</h2>
+  <h3>2.1 第一原理：政府不是家庭</h3>
+  <p><strong>传统观念的错误类比：</strong></p>
+  <p>• "家庭不能入不敷出，政府也不能"</p>
+  <p>• "政府需要先征税才能花钱"</p>
+  <p>• "国债是留给子孙后代的负担"</p>
+  <p><strong>MMT的反驳：</strong></p>
+  <table class="data-table"><thead><tr><th>维度</th><th>家庭/企业</th><th>主权货币政府</th></tr></thead><tbody>
+  <tr><td>货币发行</td><td>使用别人发行的货币</td><td>自己发行货币</td></tr>
+  <tr><td>收入来源</td><td>必须先赚钱才能花钱</td><td>先花钱才能收税</td></tr>
+  <tr><td>破产可能</td><td>可以破产</td><td>本币债务不会破产</td></tr>
+  <tr><td>预算约束</td><td>硬约束</td><td>软约束（真正的约束是通胀）</td></tr>
+  </tbody></table>
+  <p>|------|-----------|--------------|</p>
+  <p><strong>关键洞见：对主权货币发行者而言，"钱从哪里来"这个问题本身就是错误的。政府支出就是创造货币的过程本身。</strong></p>
+  <h3>2.2 第二原理：支出先于税收</h3>
+  <p><strong>历史逻辑：</strong> 在没有货币的社会中，政府必须先定义货币单位、先花出货币，然后才能向居民征税。税收不是"获取资金"的手段，而是创造对货币需求的手段。</p>
+  <p><strong>机制分析：</strong></p>
+  <p><code>`</code></p>
+  <p>政府支出 → 央行记账（贷记商业银行账户）→ 经济中货币增加</p>
+  <p>居民缴税 → 央行记账（借记商业银行账户）→ 经济中货币减少</p>
+  <p>净结果：政府支出 > 税收 = 净金融资产注入经济（即"赤字"）</p>
+  <p><code>`</code></p>
+  <p><strong>莫斯勒的比喻：</strong></p>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p>"政府花100元进市场买菜，征走70元的税——剩下30元就是我们手中的储蓄。政府的赤字，正好等于我们的净储蓄。"</p></div>
+  <h3>2.3 第三原理：赤字不是问题，通胀才是</h3>
+  <p><strong>部门平衡恒等式：</strong></p>
+  <p><code>`</code></p>
+  <p>政府赤字 = 私人部门盈余 + 外国部门盈余</p>
+  <p><code>`</code></p>
+  <p>• 政府追求"盈余" → 私人部门消耗储蓄 → 金融危机</p>
+  <p>• 历史验证：克林顿财政盈余（1998-2001）→ 私人部门债务飙升 → 2008年金融危机</p>
+  <p><strong>真正的约束是实物资源：</strong> 当经济存在闲置产能时，政府支出不会导致通胀；当需求超过生产能力时，才会出现通胀。</p>
+  <h3>2.4 第四原理：税收的真正功能</h3>
+  <p><strong>1.</strong> <strong>创造对货币的需求</strong>：迫使居民使用该货币</p>
+  <p><strong>2.</strong> <strong>调控总需求</strong>：加税减少支出，减税增加支出</p>
+  <p><strong>3.</strong> <strong>调节收入分配</strong>：累进税制缩小贫富差距</p>
+  <p><strong>4.</strong> <strong>抑制通胀</strong>：经济过热时加税减少流通货币</p>
+  <p><strong>5.</strong> <strong>引导社会行为</strong>：碳税、烟草税等</p>
+  <h3>2.5 第五原理：国债不是"债务"</h3>
+  <p>• 国债本质是"政府提供的计息储蓄工具"</p>
+  <p>• 国债 = 政府支出后留在经济中的"钱"的另一种形式</p>
+  <p>• 发行国债只是将银行准备金（无息）兑换为国债（有息），"钱"的总量不变</p>
+  <p>• 偿还国债 = 将国债换回准备金，总量仍不变</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 第三章：就业保障计划（Job Guarantee）</h2>
+  <h3>3.1 核心框架</h3>
+  <p>由帕夫利娜·切尔内娃等人深入发展的MMT核心政策主张：</p>
+  <p>• <strong>巴德学院利维研究所</strong>（Levy Economics Institute）：Wray、Fullwiner等研究货币操作与央行机制</p>
+  <p>• <strong>新经济思想研究所</strong>（INET）：多位学者推动后凯恩斯主义综合</p>
+  <p>• <strong>密苏里大学堪萨斯城分校</strong>（UMKC）：MMT学术重镇，培养了大量MMT学者</p>
+  <p>• 政府承诺为每个愿意工作的人提供就业岗位</p>
+  <p>• 设定固定工资水平（最低生活工资）</p>
+  <p>• 由地方政府和非营利组织实施，联邦政府提供资金</p>
+  <h3>3.2 自动稳定器功能</h3>
+  <table class="data-table"><thead><tr><th>传统政策</th><th>优点</th><th>缺点</th></tr></thead><tbody>
+  <tr><td>财政刺激</td><td>创造就业</td><td>滞后性强，不能覆盖所有人</td></tr>
+  <tr><td>货币政策</td><td>操作灵活</td><td>间接传导，可能推高资产泡沫</td></tr>
+  <tr><td>失业保险</td><td>安全网</td><td>不消除失业</td></tr>
+  <tr><td><strong>就业保障</strong></td><td><strong>直接消除失业，自动稳定器</strong></td><td><strong>需精心设计工作内容</strong></td></tr>
+  </tbody></table>
+  <p>|----------|------|------|</p>
+  <p><strong>经济衰退时：</strong> 失业者自动进入JG → 政府支出增加 → 支撑总需求</p>
+  <p><strong>经济复苏时：</strong> 私人部门招聘增加 → JG员工流出 → 支出自动减少</p>
+  <h3>3.3 历史先例</h3>
+  <p>• <strong>罗斯福新政</strong>：WPA雇佣约850万人</p>
+  <p>• <strong>印度NREGA</strong>（2005年）：为农村家庭提供每年100天最低工资就业</p>
+  <p>• <strong>阿根廷Jefes计划</strong>（2002年）：金融危机后为家庭户主提供就业</p>
+  <p>• <strong>中国"以工代赈"</strong>：类似的公共就业项目传统，为农村贫困人口提供就业机会</p>
+  <h3>3.4 与全民基本收入（UBI）的区别</h3>
+  <table class="data-table"><thead><tr><th>维度</th><th>就业保障（JG）</th><th>全民基本收入（UBI）</th></tr></thead><tbody>
+  <tr><td>核心理念</td><td>工作权利，社会贡献</td><td>无条件收入保障</td></tr>
+  <tr><td>参与要求</td><td>必须参与工作</td><td>无要求</td></tr>
+  <tr><td>技能培养</td><td>包含职业培训</td><td>不涉及</td></tr>
+  <tr><td>通胀风险</td><td>较低（创造实际产出）</td><td>较高（可能不对应产出）</td></tr>
+  <tr><td>社会融入</td><td>增强社会联系</td><td>可能导致社会孤立</td></tr>
+  </tbody></table>
+  <p>|------|---------------|-------------------|</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 第四章：美元霸权与石油美元体系</h2>
+  <h3>4.1 美元霸权的形成</h3>
+  <p><strong>布雷顿森林体系（1944-1971）：</strong> 美元与黄金挂钩（35美元/盎司），美国货币政策受黄金约束。</p>
+  <p><strong>后布雷顿森林时代（1971年至今）：</strong> 尼克松关闭黄金兑换窗口，美元成为纯粹的法定货币，获得新的支撑体系。</p>
+  <h3>4.2 石油美元体系（Petrodollar System）</h3>
+  <p>1974年美沙历史性协议：</p>
+  <p><strong>1.</strong> 沙特以美元定价和结算石油</p>
+  <p><strong>2.</strong> 沙特将石油收入投资于美国国债</p>
+  <p><strong>3.</strong> 美国提供军事安全保障</p>
+  <p><strong>意义：</strong> 全球各国需要储备美元购买石油 → 对美元持续需求 → 石油美元回流美国金融市场 → 美国获得"过度特权"，可长期维持贸易逆差。</p>
+  <h3>4.3 美元周期与康波的关联</h3>
+  <table class="data-table"><thead><tr><th>康波阶段</th><th>美元趋势</th><th>机制</th></tr></thead><tbody>
+  <tr><td>春季（复苏）</td><td>美元走强</td><td>资本流入，创新驱动</td></tr>
+  <tr><td>夏季（繁荣）</td><td>高位震荡</td><td>全球贸易扩张</td></tr>
+  <tr><td>秋季（滞胀）</td><td>美元走弱</td><td>通胀侵蚀信心</td></tr>
+  <tr><td>冬季（萧条）</td><td>先强后弱</td><td>危机避险推升，但长期信用受损</td></tr>
+  </tbody></table>
+  <p>|----------|----------|------|</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 第五章：MMT对紧缩政策的批判</h2>
+  <h3>5.1 紧缩的逻辑谬误</h3>
+  <table class="data-table"><thead><tr><th>紧缩论据</th><th>MMT反驳</th></tr></thead><tbody>
+  <tr><td>"削减赤字恢复信心"</td><td>减少支出直接打击收入和信心</td></tr>
+  <tr><td>"国债过高导致违约"</td><td>主权货币发行者不会违约于本币债务</td></tr>
+  <tr><td>"紧缩促进增长"</td><td>历史数据明确显示紧缩导致收缩</td></tr>
+  <tr><td>"市场惩罚不负责任政府"</td><td>日本国债占GDP超260%，利率几乎为零</td></tr>
+  </tbody></table>
+  <p>|----------|---------|</p>
+  <h3>5.2 历史案例</h3>
+  <p><strong>希腊悲剧（2010-2018）：</strong> 加入欧元区后丧失货币主权，三轮紧缩救助 → GDP下降25%，失业率达27%。MMT解释：欧元区是固定汇率体系，希腊等同于"借外币债务"的国家。</p>
+  <p><strong>日本"失去的三十年"：</strong> 国债占GDP超260%，但无通胀危机、无利率飙升、无主权违约。MMT解释：日元债务不会导致破产，日本问题是私人部门需求不足。</p>
+  <p><strong>美国克林顿盈余（1998-2001）：</strong> 政府盈余 = 私人部门赤字 → 债务泡沫 → 2008年金融危机。MMT解释：政府不应追求"财政盈余"，这会挤压私人部门储蓄空间。</p>
+  <p><strong>奥巴马刺激不足（2009-2010）：</strong> 7870亿美元刺激法案虽阻止了萧条，但规模不够大 → 复苏缓慢。MMT解释：在大规模失业和闲置产能存在时，应实施更大规模的财政刺激。</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 第六章：MMT视角下的中国与康波理论</h2>
+  <h3>6.1 中国的货币主权</h3>
+  <p>• 人民币由央行发行，不可自由兑换，国债几乎全部以人民币计价</p>
+  <p>• 中国不存在"没钱"的问题，真正的约束是产能、资源和通胀</p>
+  <p>• 地方政府债务问题根源是财政体制设计，不是"缺钱"</p>
+  <h3>6.2 中国面临的独特挑战</h3>
+  <p><strong>1.</strong> <strong>内需不足</strong>：高储蓄率导致消费不足，依赖投资和出口。MMT视角：政府可通过财政转移支付直接增加居民可支配收入</p>
+  <p><strong>2.</strong> <strong>地方政府债务</strong>：城投平台债务本质上是地方政府隐性负债。MMT视角：中央政府作为主权货币发行者，有能力整合和化解地方债务</p>
+  <p><strong>3.</strong> <strong>房地产泡沫</strong>：货币宽松容易催生资产泡沫。MMT强调"定向财政政策"优于泛泛的货币宽松</p>
+  <h3>6.3 MMT与康波周期的结合</h3>
+  <table class="data-table"><thead><tr><th>康波阶段</th><th>特征</th><th>MMT政策建议</th></tr></thead><tbody>
+  <tr><td>春季（复苏）</td><td>新货币秩序建立</td><td>充分利用财政空间，实施就业保障</td></tr>
+  <tr><td>夏季（繁荣）</td><td>信贷扩张、金融化</td><td>不追求财政盈余，关注分配公平</td></tr>
+  <tr><td>秋季（滞胀）</td><td>货币政策失效</td><td>结构性财政政策精准应对</td></tr>
+  <tr><td>冬季（萧条）</td><td>大规模失业</td><td>实施大规模就业保障和基建投资</td></tr>
+  </tbody></table>
+  <p>|----------|------|------------|</p>
+  <h3>6.4 当前康波位置与政策启示</h3>
+  <p>我们可能处于第五轮康波冬季或向新春季过渡阶段：</p>
+  <table class="data-table"><thead><tr><th>当前特征</th><th>MMT政策建议</th></tr></thead><tbody>
+  <tr><td>全球增长放缓</td><td>增加财政支出</td></tr>
+  <tr><td>大规模就业不足</td><td>实施就业保障计划</td></tr>
+  <tr><td>货币政策空间收窄</td><td>财政政策应成为主要工具</td></tr>
+  <tr><td>技术变革（AI等）</td><td>通过就业保障应对结构性失业</td></tr>
+  </tbody></table>
+  <p>|----------|------------|</p>
+  <h3>6.5 人民币国际化与新康波</h3>
+  <p>• <strong>DCEP/e-CNY</strong>：央行数字货币为人民币国际化提供技术基础</p>
+  <p>• <strong>"一带一路"</strong>：基础设施投资扩大人民币使用范围</p>
+  <p>• <strong>金砖国家货币合作</strong>：多元货币体系挑战美元霸权</p>
+  <p>• <strong>MMT视角</strong>：人民币国际化扩大了政策空间和国际影响力</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 第七章：MMT的批评与回应</h2>
+  <h3>7.1 常见批评与回应</h3>
+  <table class="data-table"><thead><tr><th>批评</th><th>MMT回应</th></tr></thead><tbody>
+  <tr><td>"会导致恶性通胀"</td><td>MMT从未主张无限印钞，通胀是真正的约束</td></tr>
+  <tr><td>"只适用于美国"</td><td>适用于所有主权货币国家，程度取决于货币主权完整性</td></tr>
+  <tr><td>"忽略汇率风险"</td><td>MMT学者非常重视汇率问题</td></tr>
+  <tr><td>"为政客开空白支票"</td><td>MMT要求对真实资源管理更审慎</td></tr>
+  <tr><td>议题</td><td>主流经济学</td><td>MMT</td></tr>
+  </tbody></table>
+  <p>|------|---------|</p>
+  <h3>7.2 MMT与主流经济学的对比</h3>
+  <p>|------|------------|-----|</p>
+  <table class="data-table"><thead><tr><th>货币来源</th><th>央行控制货币供应量</th><th>货币内生创造于银行信贷</th></tr></thead><tbody>
+  <tr><td>政府财政</td><td>预算约束（量入为出）</td><td>真实资源约束（非名义约束）</td></tr>
+  <tr><td>国债</td><td>挤出私人投资</td><td>国债是储蓄工具，不存在"挤出"</td></tr>
+  <tr><td>通胀</td><td>货币供应过多</td><td>总需求超过生产能力</td></tr>
+  <tr><td>央行角色</td><td>独立性至上</td><td>央行应配合财政政策</td></tr>
+  <tr><td>就业</td><td>由市场自然决定</td><td>政府有责任保障充分就业</td></tr>
+  </tbody></table>
+  <h3>7.3 中国语境下的适用性</h3>
+  <p>• <strong>货币主权完整性</strong>：人民币不可自由兑换，中国拥有完整的货币主权</p>
+  <p>• <strong>资本管制</strong>：为财政政策提供了更大的操作空间</p>
+  <p>• <strong>央行独立性</strong>：央行在国务院领导下运作，财政与货币政策的协调空间更大</p>
+  <p>• <strong>实践启示</strong>：2008年4万亿刺激计划在某种程度上体现了MMT精神</p>
+  <p>• <strong>风险警示</strong>：需要警惕过度政府干预和资源配置效率低下</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 课后测试</h2>
+  <p><strong>题目1：</strong> 根据MMT理论，主权货币发行国政府支出的真正约束是什么？</p>
+  <p>A. 税收收入的上限</p>
+  <p>B. 国债规模不能超过GDP</p>
+  <p>C. 通货膨胀和实际资源的可用性</p>
+  <p>D. 外国投资者的购买意愿</p>
+  <p><strong>正确答案：C</strong> — MMT认为主权货币发行者不会"没钱花"，真正的约束是经济中的实际资源。当支出超过生产能力时才会出现通胀。</p>
+  <p><strong>题目2：</strong> 部门平衡恒等式告诉我们：如果政府实现财政盈余，必然对应什么？</p>
+  <p>A. 经济增长加快</p>
+  <p>B. 私人部门和/或外国部门金融资产净值减少</p>
+  <p>C. 通货膨胀率下降</p>
+  <p>D. 失业率自动降低</p>
+  <p><strong>正确答案：B</strong> — 恒等式：政府余额 + 私人部门余额 + 外国部门余额 = 0。政府盈余意味着私人部门在消耗储蓄。克林顿盈余时期私人部门债务急增最终引发2008年危机。</p>
+  <p><strong>题目3：</strong> 就业保障计划（JG）的核心机制是什么？</p>
+  <p>A. 直接向所有公民发放现金</p>
+  <p>B. 为所有愿意工作的人提供固定工资岗位，作为"缓冲就业池"</p>
+  <p>C. 通过降低利率刺激私人部门创造就业</p>
+  <p>D. 实施贸易保护减少岗位外流</p>
+  <p><strong>正确答案：B</strong> — JG是政府作为"雇主最后手段"，形成"缓冲就业池"取代传统的"缓冲失业池"。</p>
+  <p><strong>题目4：</strong> 石油美元体系对美国最重要的意义是什么？</p>
+  <p>A. 获得廉价石油供应</p>
+  <p>B. 为美元创造持续全球需求，使美国可长期维持贸易逆差而不贬值</p>
+  <p>C. 控制全球石油产量</p>
+  <p>D. 确保美国通胀率永远为零</p>
+  <p><strong>正确答案：B</strong> — 全球石油贸易以美元计价意味着所有国家必须储备美元，为美元创造持续需求，使美国享受"过度特权"。</p>
+  <p><strong>题目5：</strong> 为什么日本国债占GDP超260%仍未发生主权债务危机？</p>
+  <p>A. 日本经济增长率非常高</p>
+  <p>B. 日本拥有大量海外资产</p>
+  <p>C. 日本是日元主权发行者，国债全部以本币计价，央行拥有无限兑付能力</p>
+  <p>D. 日本税率全球最高</p>
+  <p><strong>正确答案：C</strong> — 主权货币发行者的本币债务不存在违约风险。日本面临的是需求不足和通缩，不是财政破产。</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 总结</h2>
+  <table class="data-table"><thead><tr><th>章节</th><th>核心要点</th></tr></thead><tbody>
+  <tr><td>第一章</td><td>MMT源自国家货币论和功能财政传统，由凯尔顿、莫斯勒和雷系统化</td></tr>
+  <tr><td>第二章</td><td>政府不是家庭，支出先于税收，赤字是私人部门盈余，通胀才是真正约束</td></tr>
+  <tr><td>第三章</td><td>就业保障计划是MMT核心政策工具，具有自动稳定器功能</td></tr>
+  <tr><td>第四章</td><td>美元霸权通过石油美元体系维持，但面临结构性挑战</td></tr>
+  <tr><td>第五章</td><td>紧缩政策在逻辑上错误、历史上灾难性</td></tr>
+  <tr><td>第六章</td><td>中国拥有完整货币主权，MMT为理解康波货币维度提供新视角</td></tr>
+  </tbody></table>
+  <p>|------|----------|</p>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p><strong>下节课预告：</strong> 课程15将探讨全球债务体系与康波萧条期的历史规律。</p></div>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 推荐阅读</h2>
+  <h3>核心文献</h3>
+  <p><strong>1.</strong> <strong>凯尔顿（2020）：《赤字神话》</strong> — MMT最佳入门读物，语言通俗，案例丰富</p>
+  <p><strong>2.</strong> <strong>莫斯勒（2010）：《七大致命的无辜欺诈》</strong> — 从金融从业者视角揭示政策误区（免费在线阅读）</p>
+  <p><strong>3.</strong> <strong>雷（1998）：《理解现代货币》</strong> — MMT学术奠基之作</p>
+  <h3>进阶阅读</h3>
+  <p><strong>4.</strong> <strong>切尔内娃（2020）：《就业保障》</strong> — JG方案的深入分析</p>
+  <p><strong>5.</strong> <strong>哈德森（2022）：《文明的抉择》</strong> — 关于债务与金融化的分析</p>
+  <p><strong>6.</strong> <strong>米切尔等（2019）：《宏观经济学》</strong> — MMT视角的宏观经济学教科书</p>
+</div>
+<div class="section">
+  <h2><span class="icon"></span> </h2>
+  <p><em>参考文献：凯尔顿《赤字神话》（2020）；莫斯勒《七大致命的无辜欺诈》（2010）；雷《理解现代货币》（1998）</em></p>
+</div>
+
+
+<!-- BOTTOM NAV -->
+<div class="bottom-nav">
+  <a href="lesson13.html" class="prev">← 第13课</a>
+  <a href="lesson15.html" class="next">第15课 →</a>
+</div>
+
+</div>
+
+<script>
+// Reading progress
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement;
+  const pct=(h.scrollTop)/(h.scrollHeight-h.clientHeight)*100;
+  document.getElementById('progressFill').style.width=pct+'%';
+});
+
+// Audio player
+function toggleAudio(){
+  const audio=document.getElementById('courseAudio');
+  const btn=document.getElementById('playBtn');
+  if(audio.paused){audio.play();btn.textContent='⏸️'}else{audio.pause();btn.textContent='▶️'}
+}
+</script>
+
+</body>
+</html>

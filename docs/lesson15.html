@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第15课：马克思 — 资本积累与危机理论 — 康波研究院</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#09090b;--bg2:#0f0f13;--card:#1c1c21;--card2:#222228;--card3:#2a2a32;--border:#27272a;--border2:#3f3f46;--text:#fafafa;--text2:#a1a1aa;--text3:#71717a;--gold:#e2b64f;--gold2:#f5d98a;--green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;--orange:#f59e0b;--red:#ef4444;--serif:'Noto Serif SC',serif;--sans:'Inter',sans-serif;--radius:16px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:2;font-size:18px}
+a{color:var(--gold);text-decoration:none}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(9,9,11,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);height:56px;display:flex;align-items:center}
+.nav-inner{max-width:900px;margin:0 auto;padding:0 24px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-left{display:flex;align-items:center;gap:16px}
+.nav-back{font-size:0.9rem;color:var(--text3);transition:color .2s}.nav-back:hover{color:var(--gold)}
+.nav-title{font-size:0.9rem;color:var(--text2);font-weight:500}
+.nav-right{display:flex;align-items:center;gap:12px}
+.nav-lesson{font-size:0.8rem;color:var(--text3);background:var(--card2);padding:4px 14px;border-radius:6px}
+
+/* PROGRESS BAR */
+.progress-bar{position:fixed;top:56px;left:0;right:0;height:3px;background:var(--border);z-index:99}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));transition:width .3s;width:0%}
+
+/* MAIN */
+.main{max-width:800px;margin:0 auto;padding:80px 28px 60px}
+
+/* LESSON HEADER */
+.lesson-header{margin-bottom:56px;text-align:center}
+.lesson-cat{display:inline-block;font-size:0.75rem;color:var(--gold);background:rgba(226,182,79,0.1);padding:4px 14px;border-radius:20px;margin-bottom:16px;letter-spacing:0.1em}
+.lesson-header h1{font-family:var(--serif);font-size:clamp(2rem,5vw,2.8rem);font-weight:900;line-height:1.3;margin-bottom:16px;background:linear-gradient(135deg,var(--text),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lesson-meta{display:flex;gap:20px;justify-content:center;flex-wrap:wrap}
+.lesson-meta span{font-size:0.85rem;color:var(--text3);display:flex;align-items:center;gap:6px}
+
+/* SECTIONS */
+.section{margin-bottom:48px}
+.section h2{font-size:1.4rem;font-weight:700;margin-bottom:20px;color:var(--text);display:flex;align-items:center;gap:10px}
+.section h2 .icon{font-size:1.2rem}
+.section h3{font-size:1.15rem;font-weight:600;margin:28px 0 12px;color:var(--gold2)}
+.section p{color:var(--text2);font-size:1.05rem;margin-bottom:14px;line-height:2}
+
+/* CALLOUT */
+.callout{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:28px;margin:24px 0}
+.callout.gold{border-left:4px solid var(--gold)}
+.callout.green{border-left:4px solid var(--green)}
+.callout.blue{border-left:4px solid var(--blue)}
+.callout-title{font-size:0.85rem;font-weight:600;color:var(--gold);margin-bottom:10px;text-transform:uppercase;letter-spacing:0.08em}
+.callout p{color:var(--text2);font-size:1rem;line-height:1.9}
+
+/* TABLE */
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:0.95rem}
+.data-table th{text-align:left;padding:12px 14px;background:var(--card2);color:var(--text3);font-weight:600;font-size:0.85rem;text-transform:uppercase;letter-spacing:0.05em;border-bottom:2px solid var(--border)}
+.data-table td{padding:12px 14px;border-bottom:1px solid var(--border);color:var(--text2)}
+.data-table tr:hover td{background:var(--card)}
+
+/* EXERCISE */
+.exercise{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:32px;margin:28px 0}
+.exercise-label{display:inline-flex;align-items:center;gap:6px;font-size:0.8rem;font-weight:600;color:var(--blue);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:14px}
+.exercise h3{font-size:1.1rem;margin-bottom:10px;color:var(--text)}
+.exercise p{color:var(--text2);font-size:1rem;margin-bottom:14px}
+.exercise-question{color:var(--text);font-weight:500;font-size:1.05rem}
+.exercise textarea{width:100%;min-height:90px;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:16px;color:var(--text);font-family:var(--sans);font-size:1rem;resize:vertical;transition:border-color .2s;line-height:1.8}
+.exercise textarea:focus{outline:none;border-color:var(--gold)}
+.exercise textarea::placeholder{color:var(--text3)}
+
+/* BOTTOM NAV */
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;padding:36px 0;margin-top:48px;border-top:1px solid var(--border)}
+.bottom-nav a{display:flex;align-items:center;gap:8px;padding:14px 24px;border-radius:12px;font-size:1rem;font-weight:500;transition:all .2s}
+.bottom-nav .prev{color:var(--text3);border:1px solid var(--border)}
+.bottom-nav .prev:hover{border-color:var(--gold);color:var(--gold)}
+.bottom-nav .next{background:var(--gold);color:#000}
+.bottom-nav .next:hover{background:var(--gold2)}
+
+/* AUDIO PLAYER */
+.audio-player{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin:24px 0;display:flex;align-items:center;gap:16px}
+.audio-player .play-btn{width:48px;height:48px;border-radius:50%;background:var(--gold);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.2rem;transition:background .2s;flex-shrink:0}
+.audio-player .play-btn:hover{background:var(--gold2)}
+.audio-player .audio-info{flex:1}
+.audio-player .audio-title{font-size:0.9rem;font-weight:600;color:var(--text);margin-bottom:4px}
+.audio-player .audio-sub{font-size:0.8rem;color:var(--text3)}
+
+/* RESPONSIVE */
+@media(max-width:640px){
+  .main{padding:72px 16px 40px}
+  .lesson-header h1{font-size:1.8rem}
+  .section h2{font-size:1.2rem}
+  .data-table{font-size:0.85rem}
+  .data-table th,.data-table td{padding:8px 10px}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-left">
+      <a href="index.html" class="nav-back">← 返回首页</a>
+      <span class="nav-title">第15课</span>
+    </div>
+    <div class="nav-right">
+      <span class="nav-lesson">15 / 20</span>
+    </div>
+  </div>
+</nav>
+<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+
+<div class="main">
+
+<!-- HEADER -->
+<div class="lesson-header">
+  <div class="lesson-cat">经济学派</div>
+  <h1>⚙️ 马克思 — 资本积累与危机理论</h1>
+  <div class="lesson-meta">
+    <span>📖 阅读约40分钟</span>
+    <span>✏️ 0道练习题</span>
+    <span>🎯 高级</span>
+  </div>
+</div>
+
+<!-- AUDIO OVERVIEW -->
+<div class="audio-player">
+  <button class="play-btn" onclick="toggleAudio()" id="playBtn">▶️</button>
+  <div class="audio-info">
+    <div class="audio-title">🎧 课程音频概述</div>
+    <div class="audio-sub">点击播放课程核心内容摘要</div>
+  </div>
+  <audio id="courseAudio" preload="none">
+    <source src="audio/lesson15.mp3" type="audio/mpeg">
+  </audio>
+</div>
+
+
+
+<div class="section">
+  <h2><span class="icon"></span> </h2>
+  <p># 第十五课：马克思 — 资本积累与危机理论</p>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p>"资本来到世间，从头到脚，每个毛孔都滴着血和肮脏的东西。" —— 卡尔·马克思《资本论》</p></div>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 课程概览</h2>
+  <p>本课深入探讨卡尔·马克思的经济理论体系，重点关注资本积累规律、利润率下降趋势、周期性危机以及垄断资本的形成。通过将马克思的分析框架与凯恩斯主义和奥地利学派进行对比，我们将理解马克思如何预言了现代资本主义的结构性矛盾，并探讨这些理论对21世纪不平等加剧和康德拉季耶夫长波周期的解释力。</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 马克思生平与思想背景</h2>
+  <h3>1.1 生平年表</h3>
+  <table class="data-table"><thead><tr><th>年份</th><th>事件</th></tr></thead><tbody>
+  <tr><td>1818</td><td>出生于普鲁士特里尔城，犹太裔家庭</td></tr>
+  <tr><td>1841</td><td>获耶拿大学哲学博士学位</td></tr>
+  <tr><td>1844</td><td>与恩格斯结识，撰写《经济学哲学手稿》</td></tr>
+  <tr><td>1848</td><td>发表《共产党宣言》，欧洲革命浪潮</td></tr>
+  <tr><td>1849</td><td>流亡伦敦，定居至终</td></tr>
+  <tr><td>1867</td><td>《资本论》第一卷出版</td></tr>
+  <tr><td>1883</td><td>逝世于伦敦，安葬于海格特公墓</td></tr>
+  </tbody></table>
+  <p>|------|------|</p>
+  <h3>1.2 思想渊源</h3>
+  <p>马克思的理论建立在三大思想来源之上：</p>
+  <p>• <strong>德国古典哲学</strong>：黑格尔的辩证法，费尔巴哈的唯物主义 → 形成历史唯物主义</p>
+  <p>• <strong>英国古典政治经济学</strong>：亚当·斯密和大卫·李嘉图的劳动价值论 → 发展为剩余价值理论</p>
+  <p>• <strong>法国空想社会主义</strong>：圣西门、傅立叶、欧文的社会改造理想 → 转化为科学社会主义</p>
+  <h3>1.3 核心方法论</h3>
+  <p>马克思采用<strong>辩证唯物主义</strong>方法：</p>
+  <p><code>`</code></p>
+  <p>历史唯物主义公式：</p>
+  <p>生产力 → 生产关系（经济基础）→ 上层建筑（政治、法律、意识形态）</p>
+  <p>当生产力与生产关系产生矛盾 → 社会革命</p>
+  <p><code>`</code></p>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p><strong>关键概念</strong>：马克思认为经济基础决定上层建筑，而非相反。这是与唯心主义哲学的根本分野。</p></div>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 劳动价值论</h2>
+  <h3>2.1 商品的二重性</h3>
+  <p>马克思从商品这个"资本主义社会的经济细胞"出发，商品具有使用价值（满足需要的有用性）和交换价值（交换比例）二重性，其价值由凝结在其中的抽象劳动即社会必要劳动时间决定。</p>
+  <h3>2.2 劳动的二重性</h3>
+  <p>劳动具有二重性：具体劳动创造使用价值，抽象劳动形成价值。价值量由<strong>社会必要劳动时间</strong>决定——即社会正常生产条件下制造某种使用价值所需的时间。</p>
+  <h3>2.3 剩余价值理论</h3>
+  <p>马克思最核心的发现：</p>
+  <p><code>`</code></p>
+  <p>商品价值 = c + v + m</p>
+  <p>其中：</p>
+  <p>c = 不变资本（机器、原料等转移的价值）</p>
+  <p>v = 可变资本（劳动力价值/工资）</p>
+  <p>m = 剩余价值（工人创造的超出劳动力价值的部分）</p>
+  <p><code>`</code></p>
+  <p><strong>剩余价值率</strong>：$s' = m / v$</p>
+  <p><strong>剩余价值的两种形式</strong>：</p>
+  <p>• <strong>绝对剩余价值</strong>：延长工作日长度（如12小时→14小时）</p>
+  <p>• <strong>相对剩余价值</strong>：通过技术进步缩短必要劳动时间（如6小时→4小时）</p>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p><strong>核心矛盾</strong>：劳动力是唯一能创造大于自身价值的商品。资本家购买劳动力的使用价值，获得了超过支付价格的价值，这就是利润的真正来源。</p></div>
+  <h3>2.4 资本循环与周转</h3>
+  <p><code>`</code></p>
+  <p>产业资本：M — C ... P ... C' — M'（货币→商品→生产→更多商品→更多货币）</p>
+  <p>商业资本：G — W — G'（买是为了卖得更贵）</p>
+  <p>金融资本：G — G'（货币生货币，最具拜物教色彩）</p>
+  <p><code>`</code></p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 利润率趋向下降规律（TRPF）</h2>
+  <h3>3.1 核心命题</h3>
+  <p><strong>马克思在《资本论》第三卷中提出的最重要趋势之一</strong>：</p>
+  <p>随着资本积累的推进，资本有机构成（c/v）不断提高，导致一般利润率呈现下降趋势。</p>
+  <p><code>`</code></p>
+  <p>资本有机构成 = c / v（不变资本与可变资本的比率）</p>
+  <p>利润率 = m / (c + v)</p>
+  <p>当 c/v ↑ → 利润率 ↓（假定剩余价值率不变）</p>
+  <p><code>`</code></p>
+  <h3>3.2 数值示例</h3>
+  <table class="data-table"><thead><tr><th>阶段</th><th>c（不变资本）</th><th>v（可变资本）</th><th>m（剩余价值）</th><th>有机构成 c/v</th><th>利润率 m/(c+v)</th></tr></thead><tbody>
+  <tr><td>早期</td><td>50</td><td>100</td><td>100</td><td>0.5</td><td>66.7%</td></tr>
+  <tr><td>中期</td><td>100</td><td>100</td><td>100</td><td>1.0</td><td>50.0%</td></tr>
+  <tr><td>成熟</td><td>200</td><td>100</td><td>100</td><td>2.0</td><td>33.3%</td></tr>
+  <tr><td>高度发展</td><td>400</td><td>100</td><td>100</td><td>4.0</td><td>20.0%</td></tr>
+  </tbody></table>
+  <p>|------|--------------|--------------|--------------|-------------|----------------|</p>
+  <h3>3.3 反趋势因素</h3>
+  <p>马克思也指出存在阻碍利润率下降的反趋势：</p>
+  <p><strong>1.</strong> <strong>提高剥削率</strong>：延长劳动时间、加强劳动强度</p>
+  <p><strong>2.</strong> <strong>压低工资</strong>：将工资压至劳动力价值以下</p>
+  <p><strong>3.</strong> <strong>便宜的不变资本</strong>：技术进步降低生产资料价格</p>
+  <p><strong>4.</strong> <strong>对外贸易</strong>：从落后国家获取廉价原材料和劳动力</p>
+  <p><strong>5.</strong> <strong>资本输出</strong>：将资本转移到有机构成较低的地区</p>
+  <p><strong>6.</strong> <strong>股份资本</strong>：分散风险，集中利润</p>
+  <h3>3.4 现代验证</h3>
+  <table class="data-table"><thead><tr><th>时期</th><th>全球平均利润率趋势</th><th>关键事件</th></tr></thead><tbody>
+  <tr><td>1945-1965</td><td>高位稳定</td><td>战后重建、福利国家</td></tr>
+  <tr><td>1965-1982</td><td>显著下降</td><td>滞胀、石油危机</td></tr>
+  <tr><td>1982-1997</td><td>部分恢复</td><td>新自由主义改革、全球化</td></tr>
+  <tr><td>1997-2008</td><td>再次下降</td><td>金融化加速</td></tr>
+  <tr><td>2008-2020</td><td>低位徘徊</td><td>量化宽松、零利率</td></tr>
+  </tbody></table>
+  <p>|------|-------------------|---------|</p>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p><strong>重要发现</strong>：经济学家罗伯茨（Michael Roberts）的研究显示，20世纪全球主要经济体的平均利润率从1940年代的约25%下降到2000年代的约15%，基本验证了马克思的长期趋势判断。</p></div>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 资本集中与垄断</h2>
+  <h3>4.1 资本积聚与集中</h3>
+  <p>马克思区分了两种资本增长方式：</p>
+  <p><code>`</code></p>
+  <p>资本积聚（Accumulation）：</p>
+  <p>单个资本通过剩余价值资本化而增大 → 渐进的、量变的</p>
+  <p>资本集中（Concentration）：</p>
+  <p>已有资本通过竞争、兼并、信用等手段合并 → 迅速的、质变的</p>
+  <p>"资本吸引资本"的规律</p>
+  <p><code>`</code></p>
+  <h3>4.2 竞争导致垄断的必然逻辑</h3>
+  <p><code>`</code></p>
+  <p>自由竞争 → 利润率平均化 → 大资本吞并小资本 → 少数大资本形成</p>
+  <p>具体机制：</p>
+  <p><strong>1.</strong> 规模经济优势 → 大企业成本更低</p>
+  <p><strong>2.</strong> 信用制度 → 为大资本提供融资杠杆</p>
+  <p><strong>3.</strong> 股份公司 → "资本家的资本家"，突破个人资本限制</p>
+  <p><strong>4.</strong> 危机周期 → 每次危机都是集中的加速器</p>
+  <p><code>`</code></p>
+  <h3>4.3 垄断的阶段演变</h3>
+  <table class="data-table"><thead><tr><th>阶段</th><th>时期</th><th>特征</th></tr></thead><tbody>
+  <tr><td>自由竞争资本主义</td><td>18世纪-19世纪中叶</td><td>分散的小资本，完全竞争</td></tr>
+  <tr><td>垄断资本主义（列宁）</td><td>19世纪末-20世纪初</td><td>卡特尔、辛迪加、托拉斯</td></tr>
+  <tr><td>国家垄断资本主义</td><td>二战后-1970s</td><td>国家干预，凯恩斯主义</td></tr>
+  <tr><td>全球垄断金融资本主义</td><td>1980s至今</td><td>跨国公司、金融衍生品、平台垄断</td></tr>
+  </tbody></table>
+  <p>|------|------|------|</p>
+  <h3>4.4 21世纪的垄断新形态</h3>
+  <p>• <strong>数字平台垄断</strong>：GAFA形成"赢家通吃"格局</p>
+  <p>• <strong>数据垄断</strong>：用户数据成为新型不变资本</p>
+  <p>• <strong>网络效应</strong>：边际成本趋零导致自然垄断</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 周期性危机理论</h2>
+  <h3>5.1 资本主义危机的根源</h3>
+  <p>马克思认为危机不是偶然的外在冲击，而是资本主义制度的<strong>内在必然</strong>：</p>
+  <p><code>`</code></p>
+  <p>危机的根本原因：</p>
+  <p>生产的社会性 ←→ 占有的私人性</p>
+  <p>具体表现：</p>
+  <p>1. 生产无限扩大的趋势 ←→ 劳动群众有限的购买力</p>
+  <p>2. 各部门有计划的生产 ←→ 整个社会生产的无政府状态</p>
+  <p>3. 资本追求剩余价值 ←→ 利润率下降趋势</p>
+  <p><code>`</code></p>
+  <h3>5.2 危机的周期性阶段</h3>
+  <p><code>`</code></p>
+  <p>繁荣（Boom）</p>
+  <p>↓ 利润率高，投资旺盛，就业充分</p>
+  <p>过度积累（Over-accumulation）</p>
+  <p>↓ 资本有机构成提高，利润率下降</p>
+  <p>过热（Over-heating）</p>
+  <p>↓ 投机盛行，信用膨胀，生产过剩</p>
+  <p>危机（Crisis）</p>
+  <p>↓ 商品滞销，企业破产，银行倒闭</p>
+  <p>萧条（Depression）</p>
+  <p>↓ 大量失业，资本贬值</p>
+  <p>复苏（Recovery）</p>
+  <p>↓ 低价购入资产，技术革新，新一轮积累</p>
+  <p>↓</p>
+  <p>回到繁荣...（约每7-11年一个周期）</p>
+  <p><code>`</code></p>
+  <h3>5.3 固定资本更新与危机周期</h3>
+  <p>马克思的独到发现：<strong>固定资本的更新周期是危机周期性重复的物质基础</strong>。</p>
+  <p><code>`</code></p>
+  <p>固定资本（机器、厂房）的平均寿命 → 约10年</p>
+  <p>更新周期逻辑：</p>
+  <p>1. 大量固定资本投入 → 扩大再生产</p>
+  <p>2. 固定资本折旧完成 → 需要大规模更新</p>
+  <p>3. 大规模更新 → 新一轮投资热潮</p>
+  <p>4. 更新完成后 → 投资需求骤降 → 危机</p>
+  <p><code>`</code></p>
+  <h3>5.4 金融化与危机深化</h3>
+  <p><code>`</code></p>
+  <p>马克思对信用和虚拟资本的分析：</p>
+  <p>虚拟资本膨胀路径：实体利润 → 股票 → 债券 → 期货/期权 → CDO/CDS</p>
+  <p>每一步都在放大杠杆、远离实体价值，最终虚拟资本崩溃引发实体经济危机。</p>
+  <p><code>`</code></p>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p><strong>2008年金融危机的马克思解读</strong>：次贷危机本质上是生产过剩危机的金融化表现。实体经济利润率下降 → 资本涌入金融领域 → 金融泡沫膨胀 → 崩溃。这完美印证了马克思关于"信用加速危机爆发"的论述。</p></div>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 马克思 vs 凯恩斯 vs 奥地利学派</h2>
+  <h3>6.1 三大经济学派核心对比</h3>
+  <table class="data-table"><thead><tr><th>维度</th><th>马克思</th><th>凯恩斯</th><th>奥地利学派</th></tr></thead><tbody>
+  <tr><td><strong>价值理论</strong></td><td>劳动价值论</td><td>有效需求决定</td><td>主观价值论</td></tr>
+  <tr><td><strong>利润来源</strong></td><td>剩余价值（剥削）</td><td>企业家精神+风险</td><td>时间偏好+不确定性</td></tr>
+  <tr><td><strong>危机根源</strong></td><td>资本主义内在矛盾</td><td>有效需求不足</td><td>信贷扩张扭曲</td></tr>
+  <tr><td><strong>政府角色</strong></td><td>最终消灭私有制</td><td>积极财政干预</td><td>最小政府</td></tr>
+  <tr><td><strong>货币观</strong></td><td>商品货币→信用货币</td><td>管理通货</td><td>金本位/自由银行</td></tr>
+  <tr><td><strong>周期解释</strong></td><td>利润率下降→过度积累</td><td>投资边际效率崩溃</td><td>人为低利率→误投资</td></tr>
+  <tr><td><strong>解决路径</strong></td><td>社会主义革命</td><td>财政刺激+再分配</td><td>让市场自我清算</td></tr>
+  <tr><td><strong>长期趋势</strong></td><td>资本主义必然灭亡</td><td>可以管理的资本主义</td><td>自由市场自我修正</td></tr>
+  <tr><td>学派</td><td>2008年危机解释</td></tr>
+  </tbody></table>
+  <p>|------|--------|--------|-----------|</p>
+  <h3>6.2 对2008年危机的解释差异</h3>
+  <p>|------|----------------|</p>
+  <table class="data-table"><thead><tr><th>马克思</th><th>利润率下降→资本涌入金融→虚拟资本膨胀→系统性崩溃</th></tr></thead><tbody>
+  <tr><td>凯恩斯</td><td>动物精神崩溃→投资预期骤降→有效需求不足→乘数衰退</td></tr>
+  <tr><td>奥地利学派</td><td>人为低利率→错误投资→房地产泡沫→必须经历清算</td></tr>
+  <tr><td>马克思</td><td>预言未实现；低估国家调控能力；"转形问题"未解</td></tr>
+  <tr><td>凯恩斯</td><td>滞胀困境；政府失灵；未触及根本矛盾</td></tr>
+  <tr><td>奥地利学派</td><td>处方过于残酷；忽视权力不对称；理想化</td></tr>
+  </tbody></table>
+  <h3>6.3 理论局限性</h3>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 21世纪不平等与康波理论的马克思主义解读</h2>
+  <h3>7.1 皮凯蒂的《21世纪资本论》</h3>
+  <p>托马斯·皮凯蒂（Thomas Piketty）2013年的巨著与马克思形成了跨越世纪的对话：</p>
+  <p><code>`</code></p>
+  <p>皮凯蒂核心公式：r > g</p>
+  <p>r = 资本回报率（股票、房产、债券等收益）</p>
+  <p>g = 经济增长率（GDP增速）</p>
+  <p>当 r > g 时：</p>
+  <p>资本所有者的收入增长快于劳动收入增长</p>
+  <p>→ 财富集中度持续上升</p>
+  <p>→ 不平等加剧（除非战争、瘟疫等"暴力均等器"）</p>
+  <p><code>`</code></p>
+  <p><strong>皮凯蒂 vs 马克思</strong>：马克思认为不平等根源于生产资料私有制和剥削，解决路径是革命消灭私有制；皮凯蒂认为不平等根源于r > g的结构趋势，解决路径是全球累进资本税改良。马克思采用辩证唯物主义方法，皮凯蒂依赖实证历史统计。</p>
+  <h3>7.2 康波周期与马克思危机理论的结合</h3>
+  <p>康德拉季耶夫长波（约40-60年）与马克思理论的对应关系：</p>
+  <p><code>`</code></p>
+  <p>康波上升期（A段）：</p>
+  <p>新技术范式确立 → 资本有机构成暂时下降</p>
+  <p>→ 利润率回升 → 大规模投资 → 经济繁荣</p>
+  <p>→ 与马克思"反趋势"因素发挥作用对应</p>
+  <p>康波繁荣顶点（B段）：</p>
+  <p>技术扩散完成 → 竞争加剧 → 资本有机构成快速上升</p>
+  <p>→ 利润率下降 → 过度积累 → 垄断化加速</p>
+  <p>康波下降期（C段）：</p>
+  <p>利润率持续走低 → 投机盛行 → 金融危机</p>
+  <p>→ 与马克思的"危机阶段"高度吻合</p>
+  <p>→ 旧技术范式的危机需要新技术范式来解决</p>
+  <p>康波萧条期（D段）：</p>
+  <p>资本贬值 → 大量资本被摧毁</p>
+  <p>→ "创造性毁灭"（熊彼特术语）</p>
+  <p>→ 为下一轮康波上升准备条件</p>
+  <p><code>`</code></p>
+  <h3>7.3 当前第五轮康波的马克思主义分析</h3>
+  <p>第五轮康波（信息技术范式）上升期约1980s-2008，下降期2008至今。马克思主义解读：信息技术使资本有机构成大幅提高，实体经济利润率持续下降，资本涌入金融虚拟经济，2008年危机是本轮康波下降期起点，r > g在全球范围内得到验证。</p>
+  <h3>7.4 不平等的量化数据</h3>
+  <table class="data-table"><thead><tr><th>指标</th><th>1980年</th><th>2020年</th><th>趋势</th></tr></thead><tbody>
+  <tr><td>全球前1%收入占比</td><td>16%</td><td>20%</td><td>↑</td></tr>
+  <tr><td>美国CEO/工人薪酬比</td><td>30:1</td><td>350:1</td><td>↑↑</td></tr>
+  <tr><td>全球基尼系数</td><td>0.66</td><td>0.70</td><td>↑</td></tr>
+  <tr><td>最富1%财富占比</td><td>44%</td><td>46%</td><td>↑</td></tr>
+  <tr><td>全球债务/GDP</td><td>120%</td><td>350%</td><td>↑↑↑</td></tr>
+  </tbody></table>
+  <p>|------|--------|--------|------|</p>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p><strong>马克思的预言正在应验？</strong> 资本集中度的持续上升、金融化程度的加深、利润率的长期下降趋势、周期性危机的频发——这些都与马克思在150年前的分析高度一致。但马克思预言的社会主义革命并未在发达资本主义国家发生，这需要我们辩证地思考。</p></div>
+  <h3>7.5 AI时代的资本积累新特征</h3>
+  <p>• <strong>不变资本极端化</strong>：机器人+AI替代劳动力，有机构成趋向极端，利润率是否趋向零？</p>
+  <p>• <strong>新型剩余价值榨取</strong>：平台经济的零工劳动形成"数字无产阶级"，用户数据被平台无偿占有</p>
+  <p>• <strong>康波新范式</strong>：AI是开启第六轮康波上升期，还是加速利润率下降引发更深层危机？</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 课程总结与思考</h2>
+  <h3>核心要点</h3>
+  <p><strong>1.</strong> 劳动价值论揭示利润来源——工人的无偿劳动</p>
+  <p><strong>2.</strong> 利润率下降趋势已被现代数据部分验证</p>
+  <p><strong>3.</strong> 资本集中与垄断是竞争的必然结果</p>
+  <p><strong>4.</strong> 周期性危机是资本主义的结构性特征</p>
+  <p><strong>5.</strong> 21世纪不平等（r > g）延续了马克思的资本集中判断</p>
+  <p><strong>6.</strong> 康波周期可与马克思利润率变化周期相结合</p>
+  <h3>开放性问题</h3>
+  <p>马克思的利润率下降规律在AI数字经济中是否仍成立？康波周期是技术驱动还是制度驱动？如何超越"革命vs改良"的二元对立？</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 推荐阅读</h2>
+  <table class="data-table"><thead><tr><th>书目</th><th>作者</th><th>说明</th></tr></thead><tbody>
+  <tr><td>《资本论》（三卷）</td><td>卡尔·马克思</td><td>核心理论原著</td></tr>
+  <tr><td>《21世纪资本论》</td><td>托马斯·皮凯蒂</td><td>当代不平等实证研究</td></tr>
+  <tr><td>《利润率趋向下降的规律》</td><td>迈克尔·罗伯茨</td><td>现代数据验证</td></tr>
+  </tbody></table>
+  <p>|------|------|------|</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 课后测验</h2>
+  <h3>题目一：劳动价值论</h3>
+  <p>马克思认为商品的价值由什么决定？剩余价值是如何产生的？为什么说劳动力是一种特殊的商品？</p>
+  <p><strong>参考答案</strong>：</p>
+  <p>商品的价值由生产该商品的社会必要劳动时间决定。剩余价值是工人在劳动过程中创造的超过其劳动力价值（工资）的部分。劳动力之所以特殊，是因为它是一种其使用价值能够创造出大于自身交换价值的商品——工人劳动一天创造的价值可能相当于其工资的两倍，差额即为剩余价值，被资本家无偿占有。</p>
+  <h3>题目二：利润率下降趋势</h3>
+  <p>用马克思的公式解释为什么资本有机构成提高会导致利润率下降。列举至少三个反趋势因素。</p>
+  <p><strong>参考答案</strong>：</p>
+  <p>利润率 = m/(c+v)。当资本有机构成c/v提高时，意味着不变资本c相对于可变资本v增大，分母增大而分子（剩余价值m）不变，因此利润率下降。反趋势因素包括：（1）提高剥削率（延长劳动时间或加强劳动强度）；（2）压低工资至劳动力价值以下；（3）技术进步使不变资本要素变便宜；（4）对外贸易获取廉价资源；（5）资本输出到有机构成较低的地区。</p>
+  <h3>题目三：周期性危机</h3>
+  <p>马克思如何解释资本主义经济危机的周期性？"固定资本更新"在其中扮演什么角色？</p>
+  <p><strong>参考答案</strong>：</p>
+  <p>马克思认为危机根源于资本主义基本矛盾——生产的社会性与占有的私人性之间的矛盾。这导致生产无限扩大与群众有限购买力之间的矛盾，周期性地爆发生产过剩危机。固定资本（机器、厂房等，平均寿命约10年）的更新周期是危机周期性重复的物质基础：大规模固定资本更新推动繁荣，更新完成后投资需求骤降导致危机，随后低价购入资产开启新一轮积累。</p>
+  <h3>题目四：三大学派对比</h3>
+  <p>面对2008年金融危机，马克思、凯恩斯和奥地利学派分别会给出怎样的诊断和药方？</p>
+  <p><strong>参考答案</strong>：</p>
+  <p>马克思：诊断——实体经济利润率长期下降，资本涌入金融投机，虚拟资本过度膨胀，最终崩溃是资本主义内在矛盾的必然爆发。药方——资本主义制度本身需要被取代。</p>
+  <p>凯恩斯：诊断——投资的边际效率突然崩溃，动物精神从乐观转向悲观，有效需求急剧下降。药方——政府实施积极财政政策，扩大公共支出以弥补私人投资缺口。</p>
+  <p>奥地利学派：诊断——美联储长期人为压低利率导致大规模错误投资，特别是房地产领域的信贷泡沫。药方——停止干预，让市场自行清算不良投资，尽管短期痛苦但有利于长期健康。</p>
+  <h3>题目五：21世纪应用</h3>
+  <p>解释皮凯蒂的"r > g"公式，并讨论它与马克思利润率下降趋势理论之间的关系。AI时代这一公式是否仍然成立？</p>
+  <p><strong>参考答案</strong>：</p>
+  <p>r > g表示资本回报率持续高于经济增长率，导致财富不断向资本所有者集中，不平等加剧。与马克思的利润率下降趋势看似矛盾（一个说利润率高，一个说利润率低），但实则互补：马克思关注的是产业资本利润率的长期趋势，而皮凯蒂的r指的是已经积累的存量资本的回报率。即使产业利润率下降，由于财富基数巨大，r仍可高于g。在AI时代，一方面自动化可能进一步压低产业利润率（马克思逻辑），另一方面掌握AI的科技巨头可能获得超高资本回报（皮凯蒂逻辑），两极分化可能进一步加剧。</p>
+</div>
+<div class="section">
+  <h2><span class="icon"></span> </h2>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p><strong>下一课预告</strong>：第十六课将探讨凯恩斯 — 有效需求与政府干预理论，理解"看得见的手"如何试图拯救资本主义。</p></div>
+</div>
+
+
+<!-- BOTTOM NAV -->
+<div class="bottom-nav">
+  <a href="lesson14.html" class="prev">← 第14课</a>
+  <a href="lesson16.html" class="next">第16课 →</a>
+</div>
+
+</div>
+
+<script>
+// Reading progress
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement;
+  const pct=(h.scrollTop)/(h.scrollHeight-h.clientHeight)*100;
+  document.getElementById('progressFill').style.width=pct+'%';
+});
+
+// Audio player
+function toggleAudio(){
+  const audio=document.getElementById('courseAudio');
+  const btn=document.getElementById('playBtn');
+  if(audio.paused){audio.play();btn.textContent='⏸️'}else{audio.pause();btn.textContent='▶️'}
+}
+</script>
+
+</body>
+</html>

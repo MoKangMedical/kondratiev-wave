@@ -3,119 +3,92 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>第一课：康波理论 — 康波研究院</title>
+<title>第1课：康波理论 — 为什么经济有"四季"？ — 康波研究院</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{--bg:#09090b;--bg2:#0f0f13;--card:#1c1c21;--card2:#222228;--card3:#2a2a32;--border:#27272a;--border2:#3f3f46;--text:#fafafa;--text2:#a1a1aa;--text3:#71717a;--gold:#e2b64f;--gold2:#f5d98a;--green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;--orange:#f59e0b;--red:#ef4444;--serif:'Noto Serif SC',serif;--sans:'Inter',sans-serif;--radius:16px}
-body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.8}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:2;font-size:18px}
 a{color:var(--gold);text-decoration:none}
 
 /* NAV */
 .nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(9,9,11,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);height:56px;display:flex;align-items:center}
 .nav-inner{max-width:900px;margin:0 auto;padding:0 24px;width:100%;display:flex;align-items:center;justify-content:space-between}
 .nav-left{display:flex;align-items:center;gap:16px}
-.nav-back{font-size:0.85rem;color:var(--text3);transition:color .2s}.nav-back:hover{color:var(--gold)}
-.nav-title{font-size:0.85rem;color:var(--text2);font-weight:500}
+.nav-back{font-size:0.9rem;color:var(--text3);transition:color .2s}.nav-back:hover{color:var(--gold)}
+.nav-title{font-size:0.9rem;color:var(--text2);font-weight:500}
 .nav-right{display:flex;align-items:center;gap:12px}
-.nav-lesson{font-size:0.75rem;color:var(--text3);background:var(--card2);padding:4px 12px;border-radius:6px}
+.nav-lesson{font-size:0.8rem;color:var(--text3);background:var(--card2);padding:4px 14px;border-radius:6px}
 
 /* PROGRESS BAR */
 .progress-bar{position:fixed;top:56px;left:0;right:0;height:3px;background:var(--border);z-index:99}
 .progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));transition:width .3s;width:0%}
 
 /* MAIN */
-.main{max-width:740px;margin:0 auto;padding:80px 24px 60px}
+.main{max-width:800px;margin:0 auto;padding:80px 28px 60px}
 
 /* LESSON HEADER */
-.lesson-header{margin-bottom:48px}
-.lesson-num{display:inline-flex;align-items:center;gap:8px;font-size:0.8rem;color:var(--gold);font-weight:600;margin-bottom:12px;letter-spacing:0.08em}
-.lesson-num .line{width:32px;height:1px;background:var(--gold)}
-.lesson-header h1{font-family:var(--serif);font-size:clamp(1.8rem,4vw,2.4rem);font-weight:900;line-height:1.3;margin-bottom:12px}
-.lesson-meta{display:flex;gap:16px;flex-wrap:wrap}
-.lesson-meta span{font-size:0.8rem;color:var(--text3);display:flex;align-items:center;gap:4px}
+.lesson-header{margin-bottom:56px;text-align:center}
+.lesson-cat{display:inline-block;font-size:0.75rem;color:var(--gold);background:rgba(226,182,79,0.1);padding:4px 14px;border-radius:20px;margin-bottom:16px;letter-spacing:0.1em}
+.lesson-header h1{font-family:var(--serif);font-size:clamp(2rem,5vw,2.8rem);font-weight:900;line-height:1.3;margin-bottom:16px;background:linear-gradient(135deg,var(--text),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lesson-meta{display:flex;gap:20px;justify-content:center;flex-wrap:wrap}
+.lesson-meta span{font-size:0.85rem;color:var(--text3);display:flex;align-items:center;gap:6px}
 
 /* SECTIONS */
-.section{margin-bottom:40px}
-.section h2{font-size:1.2rem;font-weight:700;margin-bottom:16px;color:var(--text);display:flex;align-items:center;gap:8px}
-.section h2 .icon{font-size:1.1rem}
-.section p{color:var(--text2);font-size:0.95rem;margin-bottom:12px}
+.section{margin-bottom:48px}
+.section h2{font-size:1.4rem;font-weight:700;margin-bottom:20px;color:var(--text);display:flex;align-items:center;gap:10px}
+.section h2 .icon{font-size:1.2rem}
+.section h3{font-size:1.15rem;font-weight:600;margin:28px 0 12px;color:var(--gold2)}
+.section p{color:var(--text2);font-size:1.05rem;margin-bottom:14px;line-height:2}
 
 /* CALLOUT */
-.callout{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;margin:20px 0}
-.callout.gold{border-left:3px solid var(--gold)}
-.callout.green{border-left:3px solid var(--green)}
-.callout.blue{border-left:3px solid var(--blue)}
-.callout-title{font-size:0.8rem;font-weight:600;color:var(--gold);margin-bottom:8px;text-transform:uppercase;letter-spacing:0.08em}
-.callout p{color:var(--text2);font-size:0.9rem}
+.callout{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:28px;margin:24px 0}
+.callout.gold{border-left:4px solid var(--gold)}
+.callout.green{border-left:4px solid var(--green)}
+.callout.blue{border-left:4px solid var(--blue)}
+.callout-title{font-size:0.85rem;font-weight:600;color:var(--gold);margin-bottom:10px;text-transform:uppercase;letter-spacing:0.08em}
+.callout p{color:var(--text2);font-size:1rem;line-height:1.9}
 
 /* TABLE */
-.data-table{width:100%;border-collapse:collapse;margin:16px 0;font-size:0.88rem}
-.data-table th{text-align:left;padding:10px 12px;background:var(--card2);color:var(--text3);font-weight:600;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.05em;border-bottom:1px solid var(--border)}
-.data-table td{padding:10px 12px;border-bottom:1px solid var(--border);color:var(--text2)}
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:0.95rem}
+.data-table th{text-align:left;padding:12px 14px;background:var(--card2);color:var(--text3);font-weight:600;font-size:0.85rem;text-transform:uppercase;letter-spacing:0.05em;border-bottom:2px solid var(--border)}
+.data-table td{padding:12px 14px;border-bottom:1px solid var(--border);color:var(--text2)}
 .data-table tr:hover td{background:var(--card)}
 
-/* TIMELINE INTERACTIVE */
-.timeline-interactive{position:relative;margin:24px 0;padding-left:24px}
-.timeline-interactive::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--green),var(--orange),var(--blue),var(--purple))}
-.tl-item{position:relative;margin-bottom:20px;padding-left:24px;cursor:pointer;transition:all .3s}
-.tl-item::before{content:'';position:absolute;left:-20px;top:8px;width:12px;height:12px;border-radius:50%;border:2px solid var(--border2);background:var(--bg);transition:all .3s}
-.tl-item:hover::before{border-color:var(--gold);background:var(--gold)}
-.tl-item.active::before{border-color:var(--gold);background:var(--gold);box-shadow:0 0 12px rgba(226,182,79,0.4)}
-.tl-item .tl-title{font-weight:600;font-size:0.95rem;margin-bottom:4px}
-.tl-item .tl-period{font-size:0.8rem;color:var(--text3);margin-bottom:4px}
-.tl-item .tl-detail{max-height:0;overflow:hidden;transition:max-height .4s;font-size:0.88rem;color:var(--text2)}
-.tl-item.active .tl-detail{max-height:200px}
-
-/* ASSET MAPPING */
-.asset-phase{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:16px 0}
-.phase-btn{padding:12px 8px;border-radius:10px;border:1px solid var(--border);background:var(--card);cursor:pointer;text-align:center;transition:all .3s;font-size:0.82rem}
-.phase-btn:hover{border-color:var(--border2)}
-.phase-btn.active{border-color:var(--gold);background:rgba(226,182,79,0.08)}
-.phase-btn .emoji{font-size:1.2rem;display:block;margin-bottom:4px}
-.phase-btn .name{font-weight:600;color:var(--text)}
-.phase-btn .sub{font-size:0.7rem;color:var(--text3);margin-top:2px}
-.phase-result{min-height:120px}
-
 /* EXERCISE */
-.exercise{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:28px;margin:24px 0}
-.exercise-label{display:inline-flex;align-items:center;gap:6px;font-size:0.75rem;font-weight:600;color:var(--blue);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:12px}
-.exercise h3{font-size:1.05rem;margin-bottom:8px}
-.exercise p{color:var(--text2);font-size:0.9rem;margin-bottom:16px}
-.exercise textarea{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:14px;color:var(--text);font-family:var(--sans);font-size:0.9rem;resize:vertical;transition:border-color .2s}
+.exercise{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:32px;margin:28px 0}
+.exercise-label{display:inline-flex;align-items:center;gap:6px;font-size:0.8rem;font-weight:600;color:var(--blue);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:14px}
+.exercise h3{font-size:1.1rem;margin-bottom:10px;color:var(--text)}
+.exercise p{color:var(--text2);font-size:1rem;margin-bottom:14px}
+.exercise-question{color:var(--text);font-weight:500;font-size:1.05rem}
+.exercise textarea{width:100%;min-height:90px;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:16px;color:var(--text);font-family:var(--sans);font-size:1rem;resize:vertical;transition:border-color .2s;line-height:1.8}
 .exercise textarea:focus{outline:none;border-color:var(--gold)}
 .exercise textarea::placeholder{color:var(--text3)}
-.exercise .hint{margin-top:12px}
-.exercise .hint-btn{background:transparent;border:1px solid var(--border2);color:var(--text3);padding:8px 16px;border-radius:8px;font-size:0.82rem;cursor:pointer;transition:all .2s;font-family:var(--sans)}
-.exercise .hint-btn:hover{border-color:var(--gold);color:var(--gold)}
-.exercise .hint-answer{display:none;margin-top:12px;padding:14px;background:var(--card2);border-radius:10px;font-size:0.88rem;color:var(--green);line-height:1.7}
-.exercise .hint-answer.show{display:block}
-
-/* MULTI-CHOICE */
-.choices{display:flex;flex-direction:column;gap:8px;margin:12px 0}
-.choice{padding:12px 16px;background:var(--card2);border:1px solid var(--border);border-radius:10px;cursor:pointer;transition:all .25s;font-size:0.9rem;display:flex;align-items:center;gap:10px}
-.choice:hover{border-color:var(--border2)}
-.choice.selected{border-color:var(--gold);background:rgba(226,182,79,0.08)}
-.choice.correct{border-color:var(--green);background:rgba(34,197,94,0.08)}
-.choice.wrong{border-color:var(--red);background:rgba(239,68,68,0.05)}
-.choice .letter{width:28px;height:28px;border-radius:8px;background:var(--card3);display:flex;align-items:center;justify-content:center;font-weight:600;font-size:0.8rem;flex-shrink:0}
-.choice.correct .letter{background:var(--green);color:#000}
-.choice.wrong .letter{background:var(--red);color:#fff}
 
 /* BOTTOM NAV */
-.bottom-nav{display:flex;justify-content:space-between;align-items:center;padding:32px 0;margin-top:40px;border-top:1px solid var(--border)}
-.bottom-nav a{display:flex;align-items:center;gap:8px;padding:12px 20px;border-radius:10px;font-size:0.9rem;font-weight:500;transition:all .2s}
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;padding:36px 0;margin-top:48px;border-top:1px solid var(--border)}
+.bottom-nav a{display:flex;align-items:center;gap:8px;padding:14px 24px;border-radius:12px;font-size:1rem;font-weight:500;transition:all .2s}
 .bottom-nav .prev{color:var(--text3);border:1px solid var(--border)}
 .bottom-nav .prev:hover{border-color:var(--gold);color:var(--gold)}
 .bottom-nav .next{background:var(--gold);color:#000}
 .bottom-nav .next:hover{background:var(--gold2)}
 
-/* COMPLETION */
-.completion{text-align:center;padding:40px;background:var(--card);border-radius:var(--radius);border:1px solid var(--gold);margin-top:32px;display:none}
-.completion.show{display:block}
-.completion .check{font-size:3rem;margin-bottom:12px}
-.completion h3{color:var(--gold);margin-bottom:8px}
-.completion p{color:var(--text2);font-size:0.9rem}
+/* AUDIO PLAYER */
+.audio-player{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin:24px 0;display:flex;align-items:center;gap:16px}
+.audio-player .play-btn{width:48px;height:48px;border-radius:50%;background:var(--gold);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.2rem;transition:background .2s;flex-shrink:0}
+.audio-player .play-btn:hover{background:var(--gold2)}
+.audio-player .audio-info{flex:1}
+.audio-player .audio-title{font-size:0.9rem;font-weight:600;color:var(--text);margin-bottom:4px}
+.audio-player .audio-sub{font-size:0.8rem;color:var(--text3)}
+
+/* RESPONSIVE */
+@media(max-width:640px){
+  .main{padding:72px 16px 40px}
+  .lesson-header h1{font-size:1.8rem}
+  .section h2{font-size:1.2rem}
+  .data-table{font-size:0.85rem}
+  .data-table th,.data-table td{padding:8px 10px}
+}
 </style>
 </head>
 <body>
@@ -124,10 +97,10 @@ a{color:var(--gold);text-decoration:none}
   <div class="nav-inner">
     <div class="nav-left">
       <a href="index.html" class="nav-back">← 返回首页</a>
-      <span class="nav-title">第一课</span>
+      <span class="nav-title">第1课</span>
     </div>
     <div class="nav-right">
-      <span class="nav-lesson">1 / 6</span>
+      <span class="nav-lesson">1 / 20</span>
     </div>
   </div>
 </nav>
@@ -137,199 +110,311 @@ a{color:var(--gold);text-decoration:none}
 
 <!-- HEADER -->
 <div class="lesson-header">
-  <div class="lesson-num"><span class="line"></span> LESSON 01</div>
-  <h1>康波理论 — 为什么经济有"四季"？</h1>
+  <div class="lesson-cat">理论基础</div>
+  <h1>🌊 康波理论 — 为什么经济有"四季"？</h1>
   <div class="lesson-meta">
-    <span>📖 阅读约15分钟</span>
-    <span>✏️ 3道练习题</span>
-    <span>🎯 基础篇</span>
+    <span>📖 阅读约30分钟</span>
+    <span>✏️ 6道练习题</span>
+    <span>🎯 基础</span>
   </div>
 </div>
 
-<!-- 1.1 -->
+<!-- AUDIO OVERVIEW -->
+<div class="audio-player">
+  <button class="play-btn" onclick="toggleAudio()" id="playBtn">▶️</button>
+  <div class="audio-info">
+    <div class="audio-title">🎧 课程音频概述</div>
+    <div class="audio-sub">点击播放课程核心内容摘要</div>
+  </div>
+  <audio id="courseAudio" preload="none">
+    <source src="audio/lesson1.mp3" type="audio/mpeg">
+  </audio>
+</div>
+
+<svg viewBox="0 0 600 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:600px;margin:20px auto;display:block">
+  <defs>
+    <linearGradient id="spring" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#22c55e;stop-opacity:0.3"/><stop offset="100%" style="stop-color:#22c55e;stop-opacity:0.1"/></linearGradient>
+    <linearGradient id="summer" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#f59e0b;stop-opacity:0.3"/><stop offset="100%" style="stop-color:#f59e0b;stop-opacity:0.1"/></linearGradient>
+    <linearGradient id="autumn" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#f97316;stop-opacity:0.3"/><stop offset="100%" style="stop-color:#f97316;stop-opacity:0.1"/></linearGradient>
+    <linearGradient id="winter" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#3b82f6;stop-opacity:0.3"/><stop offset="100%" style="stop-color:#3b82f6;stop-opacity:0.1"/></linearGradient>
+  </defs>
+  <path d="M50,150 Q125,140 150,100 T250,80 T350,60 T450,100 T550,150" fill="none" stroke="#e2b64f" stroke-width="3" stroke-dasharray="8,4"/>
+  <circle cx="50" cy="150" r="8" fill="#22c55e"/><text x="50" y="175" text-anchor="middle" fill="#a1a1aa" font-size="12">冬末</text>
+  <circle cx="150" cy="100" r="8" fill="#22c55e"/><text x="150" y="90" text-anchor="middle" fill="#22c55e" font-size="13" font-weight="600">春 🌱</text>
+  <circle cx="250" cy="80" r="8" fill="#f59e0b"/><text x="250" y="70" text-anchor="middle" fill="#f59e0b" font-size="13" font-weight="600">夏 ☀️</text>
+  <circle cx="350" cy="60" r="8" fill="#f97316"/><text x="350" y="50" text-anchor="middle" fill="#f97316" font-size="13" font-weight="600">秋 🍂</text>
+  <circle cx="450" cy="100" r="8" fill="#3b82f6"/><text x="450" y="90" text-anchor="middle" fill="#3b82f6" font-size="13" font-weight="600">冬 ❄️</text>
+  <circle cx="550" cy="150" r="8" fill="#22c55e"/><text x="550" y="175" text-anchor="middle" fill="#a1a1aa" font-size="12">下轮春</text>
+  <text x="300" y="195" text-anchor="middle" fill="#71717a" font-size="11">← 50-60年一个完整周期 →</text>
+</svg><svg viewBox="0 0 700 180" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:700px;margin:20px auto;display:block">
+  <line x1="30" y1="140" x2="670" y2="140" stroke="#27272a" stroke-width="1"/>
+  <g transform="translate(50,0)"><rect x="0" y="60" width="90" height="70" rx="6" fill="#1c1c21" stroke="#22c55e" stroke-width="1.5"/><text x="45" y="85" text-anchor="middle" fill="#22c55e" font-size="11" font-weight="600">蒸汽机</text><text x="45" y="105" text-anchor="middle" fill="#a1a1aa" font-size="10">1780-1845</text><text x="45" y="120" text-anchor="middle" fill="#71717a" font-size="9">65年</text></g>
+  <g transform="translate(155,0)"><rect x="0" y="50" width="90" height="80" rx="6" fill="#1c1c21" stroke="#3b82f6" stroke-width="1.5"/><text x="45" y="75" text-anchor="middle" fill="#3b82f6" font-size="11" font-weight="600">钢铁铁路</text><text x="45" y="95" text-anchor="middle" fill="#a1a1aa" font-size="10">1845-1900</text><text x="45" y="110" text-anchor="middle" fill="#71717a" font-size="9">55年</text></g>
+  <g transform="translate(260,0)"><rect x="0" y="40" width="90" height="90" rx="6" fill="#1c1c21" stroke="#a78bfa" stroke-width="1.5"/><text x="45" y="65" text-anchor="middle" fill="#a78bfa" font-size="11" font-weight="600">电气化</text><text x="45" y="85" text-anchor="middle" fill="#a1a1aa" font-size="10">1900-1950</text><text x="45" y="100" text-anchor="middle" fill="#71717a" font-size="9">50年</text></g>
+  <g transform="translate(365,0)"><rect x="0" y="30" width="90" height="100" rx="6" fill="#1c1c21" stroke="#f59e0b" stroke-width="1.5"/><text x="45" y="55" text-anchor="middle" fill="#f59e0b" font-size="11" font-weight="600">石油化工</text><text x="45" y="75" text-anchor="middle" fill="#a1a1aa" font-size="10">1950-1990</text><text x="45" y="90" text-anchor="middle" fill="#71717a" font-size="9">40年</text></g>
+  <g transform="translate(470,0)"><rect x="0" y="20" width="90" height="110" rx="6" fill="#1c1c21" stroke="#ef4444" stroke-width="1.5"/><text x="45" y="45" text-anchor="middle" fill="#ef4444" font-size="11" font-weight="600">信息技术</text><text x="45" y="65" text-anchor="middle" fill="#a1a1aa" font-size="10">1990-2025</text><text x="45" y="80" text-anchor="middle" fill="#71717a" font-size="9">35年</text></g>
+  <g transform="translate(575,0)"><rect x="0" y="10" width="90" height="120" rx="6" fill="rgba(226,182,79,0.1)" stroke="#e2b64f" stroke-width="2" stroke-dasharray="4,2"/><text x="45" y="35" text-anchor="middle" fill="#e2b64f" font-size="11" font-weight="700">AI+新能源</text><text x="45" y="55" text-anchor="middle" fill="#e2b64f" font-size="10">2025-?</text><text x="45" y="70" text-anchor="middle" fill="#e2b64f" font-size="9">第六轮</text></g>
+  <text x="350" y="165" text-anchor="middle" fill="#71717a" font-size="11">每轮康波由一个主导技术群驱动 → 周期在缩短</text>
+</svg>
+
 <div class="section">
-  <h2><span class="icon">💡</span> 一个反直觉的发现</h2>
-  <p>1925年，苏联经济学家尼古拉·康德拉季耶夫做了一件当时没人做过的事：他把英、法、美三国近100年的商品价格数据画成图表，发现了一个惊人的规律——</p>
-  
-  <div class="callout gold">
-    <div class="callout-title">核心发现</div>
-    <p><strong>经济存在50-60年的超长波动周期。</strong>这个规律跨越国家、跨越战争、跨越政权更替。每一次长波都由一个<strong>主导技术群</strong>驱动。</p>
-  </div>
+  <h2><span class="icon"></span> </h2>
+  <p># 第1课：康波理论 — 为什么经济有"四季"？</p>
 </div>
-
-<!-- 1.2 六轮康波 -->
 <div class="section">
-  <h2><span class="icon">📊</span> 六轮康波，240年经济史</h2>
-  <p>点击展开每一轮康波的详细信息：</p>
-  
-  <div class="timeline-interactive">
-    <div class="tl-item" onclick="toggleTL(this)">
-      <div class="tl-title">第一轮 · 蒸汽机时代</div>
-      <div class="tl-period">1780-1845 · 持续65年</div>
-      <div class="tl-detail">蒸汽机+纺织机械+铁路。瓦特改良蒸汽机(1785)开启工业革命，英国棉纺织业机械化(1793)，铁路时代到来(1825)。1837年经济恐慌结束这一轮。</div>
-    </div>
-    <div class="tl-item" onclick="toggleTL(this)">
-      <div class="tl-title">第二轮 · 钢铁铁路时代</div>
-      <div class="tl-period">1845-1900 · 持续55年</div>
-      <div class="tl-detail">钢铁+铁路网+电报。美国横贯大陆铁路(1869)，贝塞麦炼钢法推广。1873年维也纳股市崩盘开启长期萧条。</div>
-    </div>
-    <div class="tl-item" onclick="toggleTL(this)">
-      <div class="tl-title">第三轮 · 电气化时代</div>
-      <div class="tl-period">1900-1950 · 持续50年</div>
-      <div class="tl-detail">电气化+化工+汽车。福特T型车(1908)开启流水线生产，1920s"咆哮的二十年代"，1929年华尔街崩盘→大萧条→罗斯福新政→二战。</div>
-    </div>
-    <div class="tl-item" onclick="toggleTL(this)">
-      <div class="tl-title">第四轮 · 石油化工时代</div>
-      <div class="tl-period">1950-1990 · 持续40年</div>
-      <div class="tl-detail">石油化工+喷气机+电子。日本经济奇迹，1971年尼克松关闭黄金窗口，石油危机(1973)，沃尔克加息抗通胀(1980)。</div>
-    </div>
-    <div class="tl-item" onclick="toggleTL(this)">
-      <div class="tl-title">第五轮 · 信息技术时代</div>
-      <div class="tl-period">1990-2030 · 你正在经历的</div>
-      <div class="tl-detail">信息技术+互联网+移动通信。互联网商业化(1995)，互联网泡沫(2000)，iPhone(2007)，金融危机(2008)，ChatGPT(2022)。<strong>当前处于萧条末期(95%)</strong>。</div>
-    </div>
-    <div class="tl-item" onclick="toggleTL(this)">
-      <div class="tl-title">第六轮 · AI+生物科技+新能源 ⭐</div>
-      <div class="tl-period">2025-2070 · 你即将经历的</div>
-      <div class="tl-detail">人工智能+生物科技+新能源+量子计算。<strong>当前处于回升初期(5%)</strong>。AI大模型已突破，新能源成本到达拐点，这是第六轮的起点。</div>
-    </div>
-  </div>
+  <h2><span class="icon">📖</span> 开篇：一个改变你认知的问题</h2>
+  <p><strong>为什么2008年买房的人赚了十倍，而2021年买房的人在亏？</strong></p>
+  <p>不是因为他们更聪明，也不是因为他们更努力。而是因为他们在不同的<strong>时间</strong>做了同样的事。</p>
+  <p>这就是康波理论的核心洞察：<strong>资产价格的涨跌，80%取决于你在周期的哪个位置买入，只有20%取决于你买的是什么。</strong></p>
+  <p>如果你能理解这个50-60年的经济大周期，你就能回答人生中最关键的财务问题：</p>
+  <p>• 什么时候该买房？</p>
+  <p>• 什么时候该投资股票？</p>
+  <p>• 什么时候该持有现金？</p>
+  <p>• 什么时候该冒险创业？</p>
 </div>
-
-<!-- 1.3 四季模型 -->
 <div class="section">
-  <h2><span class="icon">🌿</span> 康波的"四季模型"</h2>
-  <p>每一轮康波都像四季更替，分为四个阶段。点击选择一个季节查看特征：</p>
-  
-  <div class="asset-phase">
-    <div class="phase-btn active" onclick="showPhase('spring',this)"><span class="emoji">🌱</span><span class="name">春季</span><span class="sub">回升期</span></div>
-    <div class="phase-btn" onclick="showPhase('summer',this)"><span class="emoji">☀️</span><span class="name">夏季</span><span class="sub">繁荣期</span></div>
-    <div class="phase-btn" onclick="showPhase('autumn',this)"><span class="emoji">🍂</span><span class="name">秋季</span><span class="sub">衰退期</span></div>
-    <div class="phase-btn" onclick="showPhase('winter',this)"><span class="emoji">❄️</span><span class="name">冬季</span><span class="sub">萧条期</span></div>
-  </div>
-  
-  <div class="phase-result" id="phaseResult">
-    <div class="callout green">
-      <div class="callout-title">🌱 春季（回升期）— 10-15年</div>
-      <p><strong>经济特征：</strong>新技术开始商业化，基建投资加速<br>
-      <strong>增长-通胀：</strong>增长↑ 通胀↓（技术效率提升压制价格）<br>
-      <strong>利率：</strong>低位，信贷扩张<br>
-      <strong>社会情绪：</strong>从萧条中恢复，谨慎乐观<br>
-      <strong>历史案例：</strong>2009-2019（互联网最后的渗透期）</p>
-    </div>
-  </div>
+  <h2><span class="icon">📖</span> 康波理论的起源</h2>
+  <h3>2.1 康德拉季耶夫是谁？</h3>
+  <p>尼古拉·康德拉季耶夫（Nikolai Kondratiev），1892-1938，苏联经济学家。</p>
+  <p>1925年，他发表了一篇改变经济学史的论文：《经济生活中的长波》。他发现，从18世纪末开始，西方主要国家的经济数据中存在一个惊人的规律：</p>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p><strong>每隔50-60年，经济就会经历一个完整的"上升-下降"周期。</strong></p></div>
+  <p>这个发现太超前了。当时的苏联政府认为他的理论是"资产阶级伪科学"，将他关进监狱，最终在1938年被处决。但历史证明他是对的。</p>
+  <h3>2.2 康波的本质是什么？</h3>
+  <p>想象一下四季：</p>
+  <table class="data-table"><thead><tr><th>季节</th><th>经济表现</th><th>比喻</th></tr></thead><tbody>
+  <tr><td>春（回升期）</td><td>经济触底回升，新产业萌芽</td><td>冰雪消融，万物复苏</td></tr>
+  <tr><td>夏（繁荣期）</td><td>经济高速增长，资产泡沫形成</td><td>烈日炎炎，万物繁盛</td></tr>
+  <tr><td>秋（衰退期）</td><td>增速放缓，泡沫开始破裂</td><td>秋风萧瑟，果实落地</td></tr>
+  <tr><td>冬（萧条期）</td><td>经济收缩，资产价格触底</td><td>寒冬凛冽，万物蛰伏</td></tr>
+  </tbody></table>
+  <p>|------|----------|------|</p>
+  <p><strong>关键认知</strong>：这不是偶然的波动，而是由技术创新驱动的<strong>结构性规律</strong>。</p>
 </div>
-
-<!-- 1.4 资产映射 -->
 <div class="section">
-  <h2><span class="icon">💰</span> 不同季节，最佳资产完全不同</h2>
-  
-  <table class="data-table">
-    <thead><tr><th>阶段</th><th>最佳资产</th><th>最差资产</th></tr></thead>
-    <tbody>
-      <tr><td>🌱 回升</td><td style="color:var(--green)">股票（成长股）</td><td style="color:var(--red)">现金</td></tr>
-      <tr><td>☀️ 繁荣</td><td style="color:var(--green)">房地产</td><td style="color:var(--red)">债券</td></tr>
-      <tr><td>🍂 衰退</td><td style="color:var(--green)">黄金</td><td style="color:var(--red)">股票</td></tr>
-      <tr><td>❄️ 萧条早期</td><td style="color:var(--green)">现金/国债</td><td style="color:var(--red)">房地产</td></tr>
-      <tr><td>❄️ 萧条晚期</td><td style="color:var(--green)">核心资产（抄底）</td><td style="color:var(--red)">过度持有现金</td></tr>
-    </tbody>
-  </table>
+  <h2><span class="icon">📖</span> 五轮康波历史复盘（1780-2025）</h2>
+  <h3>第一轮：蒸汽机时代（1780-1845，65年）</h3>
+  <p><strong>核心驱动力</strong>：蒸汽机 + 纺织机械</p>
+  <p>• 春（1780-1810）：瓦特改良蒸汽机，纺织业机械化起步</p>
+  <p>• 夏（1810-1825）：英国工业革命高潮，铁路建设兴起</p>
+  <p>• 秋（1825-1835）：第一次经济危机（1825年），投机泡沫破裂</p>
+  <p>• 冬（1835-1845）：经济收缩，为下一轮技术革命积蓄力量</p>
+  <p><strong>资产表现</strong>：</p>
+  <p>• 英国运河股票在繁荣期涨幅超过300%</p>
+  <p>• 1825年危机中暴跌80%以上</p>
+  <p><strong>启示</strong>：新技术带来巨大财富，但泡沫终会破裂。</p>
+  <h3>第二轮：钢铁铁路时代（1845-1900，55年）</h3>
+  <p><strong>核心驱动力</strong>：钢铁 + 铁路网 + 电报</p>
+  <p>• 春（1845-1865）：铁路网快速扩张，钢铁需求爆发</p>
+  <p>• 夏（1865-1880）：美国"镀金时代"，铁路股票狂潮</p>
+  <p>• 秋（1880-1890）：1873年"长萧条"，铁路泡沫破裂</p>
+  <p>• 冬（1890-1900）：经济收缩，电气化技术开始萌芽</p>
+  <p><strong>资产表现</strong>：</p>
+  <p>• 美国铁路股票在1860-1873年间涨幅超过500%</p>
+  <p>• 1873年危机后，铁路股票跌去70%</p>
+  <p><strong>案例</strong>：范德比尔特家族通过铁路投资成为美国首富，但在1873年危机中也遭受重大损失。</p>
+  <h3>第三轮：电气化时代（1900-1950，50年）</h3>
+  <p><strong>核心驱动力</strong>：电气化 + 化工 + 汽车</p>
+  <p>• 春（1900-1920）：电力普及，福特T型车，化工产业兴起</p>
+  <p>• 夏（1920-1929）："咆哮的二十年代"，股市疯狂上涨</p>
+  <p>• 秋（1929-1940）：1929年大崩盘，大萧条</p>
+  <p>• 冬（1940-1950）：二战，经济在战争中重建</p>
+  <p><strong>资产表现</strong>：</p>
+  <p>• 道琼斯指数1921-1929年涨幅超过500%</p>
+  <p>• 1929-1932年暴跌89%，直到1954年才收复失地</p>
+  <p><strong>警示</strong>：这是最惨烈的一轮康波，大萧条让无数人倾家荡产。但1932年买入股票的人，在此后20年获得了惊人的回报。</p>
+  <h3>第四轮：石油化工时代（1950-1990，40年）</h3>
+  <p><strong>核心驱动力</strong>：石油化工 + 喷气机 + 电子</p>
+  <p>• 春（1950-1965）：战后重建，石油成为核心能源，汽车普及</p>
+  <p>• 夏（1965-1973）：经济高速增长，通胀开始抬头</p>
+  <p>• 秋（1973-1980）：石油危机，滞胀，美元与黄金脱钩</p>
+  <p>• 冬（1980-1990）：沃尔克加息治理通胀，经济出清</p>
+  <p><strong>资产表现</strong>：</p>
+  <p>• 美国股市1950-1968年涨幅超过400%</p>
+  <p>• 1968-1982年（14年），道琼斯指数几乎原地踏步（扣除通胀实际亏损）</p>
+  <p>• 1982年后开启超级牛市</p>
+  <p><strong>启示</strong>：即使是最强大的市场，也可能沉寂14年。耐心是最大的投资武器。</p>
+  <h3>第五轮：信息技术时代（1990-2025，35年）</h3>
+  <p><strong>核心驱动力</strong>：信息技术 + 互联网 + 移动通信</p>
+  <p>• 春（1990-2000）：互联网萌芽，纳斯达克狂潮</p>
+  <p>• 夏（2000-2008）：互联网泡沫破裂后的调整，房地产泡沫</p>
+  <p>• 秋（2008-2020）：金融危机，量化宽松，数字货币兴起</p>
+  <p>• 冬（2020-2025）：疫情冲击，通胀飙升，AI技术突破</p>
+  <p><strong>资产表现</strong>：</p>
+  <p>• 纳斯达克1990-2000年涨幅超过1000%</p>
+  <p>• 2000-2002年暴跌78%</p>
+  <p>• 2009-2021年涨幅超过1000%</p>
+  <p>• 2022年再次大幅调整</p>
+  <p><strong>当前位置</strong>：我们正处于第五轮康波的萧条末期（冬末），同时也是第六轮康波的回升初期（春初）。这是一个历史性的转折点。</p>
 </div>
-
-<!-- EXERCISE 1 -->
-<div class="exercise" id="ex1">
-  <div class="exercise-label">✏️ 练习 1/3</div>
-  <h3>周期定位</h3>
-  <p>当前（2026年），你认为第五轮康波处于哪个阶段？第六轮处于哪个阶段？写出你的判断依据。</p>
-  <textarea placeholder="写下你的答案..."></textarea>
-  <div class="hint">
-    <button class="hint-btn" onclick="this.nextElementSibling.classList.toggle('show')">💡 查看参考答案</button>
-    <div class="hint-answer">第五轮处于<strong>萧条末期</strong>（95%完成）。依据：AI大模型突破(2022-2024)、全球利率见顶、大宗商品调整、中国地产去杠杆基本完成。<br><br>第六轮处于<strong>回升初期</strong>（5-10%完成）。依据：AI技术已确立但商业化刚起步，类似1993-1995年的互联网。</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 四阶段模型详解</h2>
+  <h3>4.1 春（回升期）：10-15年</h3>
+  <p><strong>特征</strong>：</p>
+  <p>• 经济从底部回升</p>
+  <p>• 新技术开始商业化</p>
+  <p>• 失业率逐步下降</p>
+  <p>• 通胀温和</p>
+  <p>• 资产价格从底部开始上涨</p>
+  <p><strong>投资策略</strong>：</p>
+  <p>• 核心：买入新产业龙头股票</p>
+  <p>• 辅助：配置成长型资产</p>
+  <p>• 避免：过度持有现金（会被通胀侵蚀）</p>
+  <p><strong>典型案例</strong>：</p>
+  <p>• 1945-1960年（第三轮冬→第四轮春）：买入石油、汽车、化工股票</p>
+  <p>• 1982-2000年（第四轮冬→第五轮春）：买入科技股</p>
+  <h3>4.2 夏（繁荣期）：15-20年</h3>
+  <p><strong>特征</strong>：</p>
+  <p>• 经济高速增长</p>
+  <p>• 新技术大规模普及</p>
+  <p>• 就业充分</p>
+  <p>• 通胀逐步上升</p>
+  <p>• 资产价格加速上涨，泡沫形成</p>
+  <p><strong>投资策略</strong>：</p>
+  <p>• 核心：持有主流资产，享受泡沫</p>
+  <p>• 辅助：逐步减持高估值资产</p>
+  <p>• 避免：在泡沫顶部重仓买入</p>
+  <p><strong>典型案例</strong>：</p>
+  <p>• 1920-1929年："咆哮的二十年代"</p>
+  <p>• 1995-2000年：互联网泡沫</p>
+  <h3>4.3 秋（衰退期）：10-15年</h3>
+  <p><strong>特征</strong>：</p>
+  <p>• 经济增速放缓</p>
+  <p>• 泡沫破裂</p>
+  <p>• 失业率上升</p>
+  <p>• 通胀或通缩交替</p>
+  <p>• 资产价格大幅下跌</p>
+  <p><strong>投资策略</strong>：</p>
+  <p>• 核心：减少风险资产，增加防御性配置</p>
+  <p>• 辅助：持有黄金、国债等避险资产</p>
+  <p>• 避免：抄底过早</p>
+  <p><strong>典型案例</strong>：</p>
+  <p>• 2000-2008年：互联网泡沫破裂，房地产泡沫</p>
+  <p>• 2008年：金融危机</p>
+  <h3>4.4 冬（萧条期）：10-15年</h3>
+  <p><strong>特征</strong>：</p>
+  <p>• 经济收缩或低增长</p>
+  <p>• 资产价格触底</p>
+  <p>• 通缩压力</p>
+  <p>• 新技术在底部孕育</p>
+  <p>• 大量优质资产被低估</p>
+  <p><strong>投资策略</strong>：</p>
+  <p>• 核心：在底部区域逐步建仓</p>
+  <p>• 辅助：现金为王，等待机会</p>
+  <p>• 避免：恐慌性卖出</p>
+  <p><strong>典型案例</strong>：</p>
+  <p>• 1932年：大萧条底部，此后股票上涨数十倍</p>
+  <p>• 2009年：金融危机底部，此后美股牛市持续12年</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 康波与中短周期的嵌套</h2>
+  <p>康波不是孤立存在的。它内部嵌套着更短的周期：</p>
+  <table class="data-table"><thead><tr><th>周期</th><th>时长</th><th>驱动力</th><th>示例</th></tr></thead><tbody>
+  <tr><td>康波（长波）</td><td>50-60年</td><td>重大技术创新</td><td>信息技术革命</td></tr>
+  <tr><td>房地产周期</td><td>18-25年</td><td>土地与信贷</td><td>中国房地产2000-2021</td></tr>
+  <tr><td>资本支出周期</td><td>7-11年</td><td>企业设备投资</td><td>朱格拉周期</td></tr>
+  <tr><td>库存周期</td><td>3-5年</td><td>企业库存管理</td><td>基钦周期</td></tr>
+  </tbody></table>
+  <p>|------|------|--------|------|</p>
+  <p><strong>关键洞察</strong>：当多个周期同时处于上升阶段时，会产生<strong>共振效应</strong>，资产价格暴涨；当多个周期同时处于下降阶段时，会产生<strong>共振下跌</strong>，资产价格暴跌。</p>
+  <p><strong>周金涛的核心贡献</strong>就是发现了这四个周期的嵌套关系，并用它来预测资产价格的拐点。</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 核心概念总结</h2>
+  <h3>你需要记住的5个关键点</h3>
+  <p><strong>1.</strong> <strong>康波是50-60年的经济长周期</strong>，由技术创新驱动，分为春夏秋冬四个阶段</p>
+  <p><strong>2.</strong> <strong>我们目前处于第五轮冬末和第六轮春初</strong>，这是一个历史性的转折点</p>
+  <p><strong>3.</strong> <strong>资产价格80%取决于周期位置</strong>，只有20%取决于具体标的</p>
+  <p><strong>4.</strong> <strong>康波内部嵌套着更短的周期</strong>（房地产、资本支出、库存），它们的叠加决定了价格波动的幅度</p>
+  <p><strong>5.</strong> <strong>每一轮康波的冬末春初都是最佳的建仓时机</strong>，历史上在这个位置买入的人获得了最大的回报</p>
+  <h3>你需要打破的3个误区</h3>
+  <p><strong>误区1</strong>："我不需要理解宏观，我只关注个股"</p>
+  <p>→ 错。在熊市中，90%的股票都会下跌，无论你选得多么精妙。宏观决定了你的胜率。</p>
+  <p><strong>误区2</strong>："周期理论太玄了，不如看K线"</p>
+  <p>→ K线是"天气预报"，告诉你明天可能下雨；康波是"气候模型"，告诉你现在是冬天还是夏天。两者不是替代关系，而是不同维度。</p>
+  <p><strong>误区3</strong>："历史不会重复"</p>
+  <p>→ 马克·吐温说："历史不会重复，但会押韵。"康波的节奏不完全相同，但模式高度相似。五轮康波的四季更替从未失约。</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 练习题</h2>
+  <div class="exercise"><div class="exercise-label">✏️ 练习</div><h3>练习1：周期定位</h3>
+  <p>请根据以下描述，判断该经济现象属于康波的哪个阶段：</p>
+  <p><strong>1.</strong> 新技术开始商业化，失业率下降，通胀温和</p>
+  <p><strong>2.</strong> 经济高速增长，资产价格加速上涨，人人都在谈论股票</p>
+  <p><strong>3.</strong> 经济增速放缓，泡沫破裂，大量企业倒闭</p>
+  <p><strong>4.</strong> 资产价格触底，通缩压力，新技术在底部孕育</p>
+  <div class="exercise"><div class="exercise-label">✏️ 练习</div><h3>练习2：历史分析</h3>
+  <p>选择以下一个历史事件，分析它处于康波的哪个阶段：</p>
+  <p>• 1929年大崩盘</p>
+  <p>• 1973年石油危机</p>
+  <p>• 2000年互联网泡沫破裂</p>
+  <p>• 2008年金融危机</p>
+  <div class="exercise"><div class="exercise-label">✏️ 练习</div><h3>练习3：思考题</h3>
+  <p class="exercise-question">你目前的人生阶段（年龄、资产、负债情况）与康波的当前位置如何匹配？你认为现在应该采取什么策略？</p>
+  <textarea placeholder="写下你的思考..." rows="3"></textarea>
   </div>
 </div>
-
-<!-- EXERCISE 2 -->
-<div class="exercise" id="ex2">
-  <div class="exercise-label">✏️ 练习 2/3</div>
-  <h3>历史映射</h3>
-  <p>以下历史事件分别对应康波的哪个阶段？</p>
-  <div class="choices" id="q2a">
-    <p style="font-size:0.9rem;margin-bottom:8px"><strong>1929年华尔街崩盘</strong></p>
-    <div class="choice" onclick="selectChoice(this,'q2a','correct')"><span class="letter">A</span> 第三轮繁荣顶点→衰退开始</div>
-    <div class="choice" onclick="selectChoice(this,'q2a','wrong')"><span class="letter">B</span> 第四轮萧条期</div>
-    <div class="choice" onclick="selectChoice(this,'q2a','wrong')"><span class="letter">C</span> 第三轮回升期</div>
-  </div>
-  <div class="choices" id="q2b" style="margin-top:16px">
-    <p style="font-size:0.9rem;margin-bottom:8px"><strong>2022年ChatGPT发布</strong></p>
-    <div class="choice" onclick="selectChoice(this,'q2b','wrong')"><span class="letter">A</span> 第六轮繁荣期</div>
-    <div class="choice" onclick="selectChoice(this,'q2b','correct')"><span class="letter">B</span> 第五轮萧条期，第六轮技术种子播下</div>
-    <div class="choice" onclick="selectChoice(this,'q2b','wrong')"><span class="letter">C</span> 第五回升期</div>
-  </div>
-</div>
-
-<!-- EXERCISE 3 -->
-<div class="exercise" id="ex3">
-  <div class="exercise-label">✏️ 练习 3/3</div>
-  <h3>资产选择</h3>
-  <p>如果你确信经济正在从萧条期过渡到回升期，你会优先配置哪三类资产？为什么？</p>
-  <textarea placeholder="写下你的答案..."></textarea>
-  <div class="hint">
-    <button class="hint-btn" onclick="this.nextElementSibling.classList.toggle('show')">💡 查看参考答案</button>
-    <div class="hint-answer">推荐配置：<br>1. <strong>股票（成长股/科技股）</strong>——回升期增长加速，成长股受益最大<br>2. <strong>大宗商品</strong>——需求恢复推动价格上涨<br>3. <strong>核心城市房产</strong>——回升期资产价格启动<br><br>应减少：现金（通胀侵蚀）、长期债券（利率上升受损）</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 练习题参考答案</h2>
+  <div class="exercise"><div class="exercise-label">✏️ 练习</div><h3>练习1答案</h3>
+  <p><strong>1.</strong> <strong>春（回升期）</strong> — 新技术萌芽，经济回暖</p>
+  <p><strong>2.</strong> <strong>夏（繁荣期）</strong> — 泡沫形成阶段</p>
+  <p><strong>3.</strong> <strong>秋（衰退期）</strong> — 泡沫破裂</p>
+  <p><strong>4.</strong> <strong>冬（萧条期）</strong> — 底部孕育</p>
+  <div class="exercise"><div class="exercise-label">✏️ 练习</div><h3>练习2参考答案（以2008年金融危机为例）</h3>
+  <p>2008年金融危机处于<strong>第五轮康波的秋→冬转折点</strong>。</p>
+  <p>分析：</p>
+  <p>• 第五轮康波（信息技术）的夏（繁荣期）在2000年互联网泡沫时达到顶点</p>
+  <p>• 2000-2008年是秋（衰退期），房地产泡沫是第二波泡沫</p>
+  <p>• 2008年金融危机标志着正式进入冬（萧条期）</p>
+  <p>• 此后通过量化宽松维持经济，但本质上是萧条期的延缓</p>
+  <p>验证：2008年后，尽管股市上涨，但实体经济增速持续下降，贫富差距加大，这正是萧条期的典型特征。</p>
+  <div class="exercise"><div class="exercise-label">✏️ 练习</div><h3>练习3思路提示</h3>
+  <p>思考框架：</p>
+  <p><strong>1.</strong> <strong>你多大？</strong> → 你还能经历几个完整的康波？</p>
+  <p><strong>2.</strong> <strong>你有多少资产？</strong> → 你能承受多大的波动？</p>
+  <p><strong>3.</strong> <strong>你现在处于什么阶段？</strong> → 冬末春初是最好的建仓窗口</p>
+  <p><strong>4.</strong> <strong>你的风险偏好如何？</strong> → 周期位置决定了风险收益比</p>
   </div>
 </div>
-
-<!-- COMPLETION -->
-<div class="completion" id="completion">
-  <div class="check">✅</div>
-  <h3>第一课完成！</h3>
-  <p>你已掌握康波理论的基础框架。下一课我们将学习周金涛的"人生就是一场康波"。</p>
+<div class="section">
+  <h2><span class="icon">📖</span> 下节预告</h2>
+  <p><strong>第2课：周金涛 — "人生就是一场康波"</strong></p>
+  <p>在下一课中，我们将深入学习"周期天王"周金涛的核心理论：</p>
+  <p>• 四周期嵌套模型的数学原理</p>
+  <p>• "一生只有三次财富机会"的精确计算</p>
+  <p>• 不同年代出生的人如何适配周期</p>
+  <p>• 周金涛预测的历史验证</p>
+  <p><strong>预告问题</strong>：周金涛说"85后的人生第一次机会在2019年"，这个预测准确吗？为什么？</p>
 </div>
+<div class="section">
+  <h2><span class="icon"></span> </h2>
+  <p><em>康波研究院 · 第1课 · 康波理论基础</em></p>
+</div>
+
 
 <!-- BOTTOM NAV -->
 <div class="bottom-nav">
-  <a href="index.html" class="prev">← 返回首页</a>
-  <a href="lesson2.html" class="next">下一课：周金涛 →</a>
+  <span></span>
+  <a href="lesson2.html" class="next">第2课 →</a>
 </div>
 
 </div>
 
 <script>
-// Progress bar
+// Reading progress
 window.addEventListener('scroll',()=>{
-  const h=document.documentElement.scrollHeight-window.innerHeight;
-  const p=Math.min(100,window.scrollY/h*100);
-  document.getElementById('progressFill').style.width=p+'%';
-  if(p>95)document.getElementById('completion').classList.add('show');
+  const h=document.documentElement;
+  const pct=(h.scrollTop)/(h.scrollHeight-h.clientHeight)*100;
+  document.getElementById('progressFill').style.width=pct+'%';
 });
 
-// Timeline toggle
-function toggleTL(el){el.classList.toggle('active')}
-
-// Phase display
-const phaseData={
-  spring:{title:'🌱 春季（回升期）— 10-15年',color:'var(--green)',text:'<strong>经济特征：</strong>新技术开始商业化，基建投资加速<br><strong>增长-通胀：</strong>增长↑ 通胀↓<br><strong>利率：</strong>低位，信贷扩张<br><strong>社会情绪：</strong>从萧条中恢复，谨慎乐观<br><strong>历史案例：</strong>2009-2019'},
-  summer:{title:'☀️ 夏季（繁荣期）— 15-20年',color:'var(--orange)',text:'<strong>经济特征：</strong>新技术全面渗透，经济高速增长，资产价格飙升<br><strong>增长-通胀：</strong>增长↑ 通胀↑（需求过热）<br><strong>利率：</strong>上升，但被增长掩盖<br><strong>社会情绪：</strong>极度乐观，"这次不一样"<br><strong>历史案例：</strong>1995-2008'},
-  autumn:{title:'🍂 秋季（衰退期）— 10-15年',color:'var(--red)',text:'<strong>经济特征：</strong>技术红利消退，产能过剩，债务积压<br><strong>增长-通胀：</strong>增长↓ 通胀↑（滞胀）<br><strong>利率：</strong>先升后降<br><strong>社会情绪：</strong>焦虑、分化加剧<br><strong>历史案例：</strong>2008-2019'},
-  winter:{title:'❄️ 冬季（萧条期）— 10-15年',color:'var(--blue)',text:'<strong>经济特征：</strong>去杠杆，通缩，旧产业淘汰，孕育新技术<br><strong>增长-通胀：</strong>增长↓ 通胀↓（通缩）<br><strong>利率：</strong>极低甚至负利率<br><strong>社会情绪：</strong>绝望→底部→新希望萌芽<br><strong>历史案例：</strong>2019-2026（现在！）'}
-};
-function showPhase(key,btn){
-  document.querySelectorAll('.phase-btn').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  const d=phaseData[key];
-  document.getElementById('phaseResult').innerHTML=`<div class="callout" style="border-left:3px solid ${d.color}"><div class="callout-title" style="color:${d.color}">${d.title}</div><p>${d.text}</p></div>`;
-}
-
-// Choice selection
-function selectChoice(el,groupId,correct){
-  const group=document.getElementById(groupId);
-  group.querySelectorAll('.choice').forEach(c=>{c.classList.remove('selected','correct','wrong')});
-  el.classList.add(correct==='correct'?'correct':'wrong');
-  if(correct==='correct'){
-    // mark others as wrong
-    group.querySelectorAll('.choice').forEach(c=>{if(c!==el)c.classList.add('wrong')});
-  }
+// Audio player
+function toggleAudio(){
+  const audio=document.getElementById('courseAudio');
+  const btn=document.getElementById('playBtn');
+  if(audio.paused){audio.play();btn.textContent='⏸️'}else{audio.pause();btn.textContent='▶️'}
 }
 </script>
+
 </body>
 </html>

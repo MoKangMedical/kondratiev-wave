@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第7课：价值投资 — 从格雷厄姆到巴菲特 — 康波研究院</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#09090b;--bg2:#0f0f13;--card:#1c1c21;--card2:#222228;--card3:#2a2a32;--border:#27272a;--border2:#3f3f46;--text:#fafafa;--text2:#a1a1aa;--text3:#71717a;--gold:#e2b64f;--gold2:#f5d98a;--green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;--orange:#f59e0b;--red:#ef4444;--serif:'Noto Serif SC',serif;--sans:'Inter',sans-serif;--radius:16px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:2;font-size:18px}
+a{color:var(--gold);text-decoration:none}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(9,9,11,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);height:56px;display:flex;align-items:center}
+.nav-inner{max-width:900px;margin:0 auto;padding:0 24px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-left{display:flex;align-items:center;gap:16px}
+.nav-back{font-size:0.9rem;color:var(--text3);transition:color .2s}.nav-back:hover{color:var(--gold)}
+.nav-title{font-size:0.9rem;color:var(--text2);font-weight:500}
+.nav-right{display:flex;align-items:center;gap:12px}
+.nav-lesson{font-size:0.8rem;color:var(--text3);background:var(--card2);padding:4px 14px;border-radius:6px}
+
+/* PROGRESS BAR */
+.progress-bar{position:fixed;top:56px;left:0;right:0;height:3px;background:var(--border);z-index:99}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));transition:width .3s;width:0%}
+
+/* MAIN */
+.main{max-width:800px;margin:0 auto;padding:80px 28px 60px}
+
+/* LESSON HEADER */
+.lesson-header{margin-bottom:56px;text-align:center}
+.lesson-cat{display:inline-block;font-size:0.75rem;color:var(--gold);background:rgba(226,182,79,0.1);padding:4px 14px;border-radius:20px;margin-bottom:16px;letter-spacing:0.1em}
+.lesson-header h1{font-family:var(--serif);font-size:clamp(2rem,5vw,2.8rem);font-weight:900;line-height:1.3;margin-bottom:16px;background:linear-gradient(135deg,var(--text),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lesson-meta{display:flex;gap:20px;justify-content:center;flex-wrap:wrap}
+.lesson-meta span{font-size:0.85rem;color:var(--text3);display:flex;align-items:center;gap:6px}
+
+/* SECTIONS */
+.section{margin-bottom:48px}
+.section h2{font-size:1.4rem;font-weight:700;margin-bottom:20px;color:var(--text);display:flex;align-items:center;gap:10px}
+.section h2 .icon{font-size:1.2rem}
+.section h3{font-size:1.15rem;font-weight:600;margin:28px 0 12px;color:var(--gold2)}
+.section p{color:var(--text2);font-size:1.05rem;margin-bottom:14px;line-height:2}
+
+/* CALLOUT */
+.callout{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:28px;margin:24px 0}
+.callout.gold{border-left:4px solid var(--gold)}
+.callout.green{border-left:4px solid var(--green)}
+.callout.blue{border-left:4px solid var(--blue)}
+.callout-title{font-size:0.85rem;font-weight:600;color:var(--gold);margin-bottom:10px;text-transform:uppercase;letter-spacing:0.08em}
+.callout p{color:var(--text2);font-size:1rem;line-height:1.9}
+
+/* TABLE */
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:0.95rem}
+.data-table th{text-align:left;padding:12px 14px;background:var(--card2);color:var(--text3);font-weight:600;font-size:0.85rem;text-transform:uppercase;letter-spacing:0.05em;border-bottom:2px solid var(--border)}
+.data-table td{padding:12px 14px;border-bottom:1px solid var(--border);color:var(--text2)}
+.data-table tr:hover td{background:var(--card)}
+
+/* EXERCISE */
+.exercise{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:32px;margin:28px 0}
+.exercise-label{display:inline-flex;align-items:center;gap:6px;font-size:0.8rem;font-weight:600;color:var(--blue);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:14px}
+.exercise h3{font-size:1.1rem;margin-bottom:10px;color:var(--text)}
+.exercise p{color:var(--text2);font-size:1rem;margin-bottom:14px}
+.exercise-question{color:var(--text);font-weight:500;font-size:1.05rem}
+.exercise textarea{width:100%;min-height:90px;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:16px;color:var(--text);font-family:var(--sans);font-size:1rem;resize:vertical;transition:border-color .2s;line-height:1.8}
+.exercise textarea:focus{outline:none;border-color:var(--gold)}
+.exercise textarea::placeholder{color:var(--text3)}
+
+/* BOTTOM NAV */
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;padding:36px 0;margin-top:48px;border-top:1px solid var(--border)}
+.bottom-nav a{display:flex;align-items:center;gap:8px;padding:14px 24px;border-radius:12px;font-size:1rem;font-weight:500;transition:all .2s}
+.bottom-nav .prev{color:var(--text3);border:1px solid var(--border)}
+.bottom-nav .prev:hover{border-color:var(--gold);color:var(--gold)}
+.bottom-nav .next{background:var(--gold);color:#000}
+.bottom-nav .next:hover{background:var(--gold2)}
+
+/* AUDIO PLAYER */
+.audio-player{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin:24px 0;display:flex;align-items:center;gap:16px}
+.audio-player .play-btn{width:48px;height:48px;border-radius:50%;background:var(--gold);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.2rem;transition:background .2s;flex-shrink:0}
+.audio-player .play-btn:hover{background:var(--gold2)}
+.audio-player .audio-info{flex:1}
+.audio-player .audio-title{font-size:0.9rem;font-weight:600;color:var(--text);margin-bottom:4px}
+.audio-player .audio-sub{font-size:0.8rem;color:var(--text3)}
+
+/* RESPONSIVE */
+@media(max-width:640px){
+  .main{padding:72px 16px 40px}
+  .lesson-header h1{font-size:1.8rem}
+  .section h2{font-size:1.2rem}
+  .data-table{font-size:0.85rem}
+  .data-table th,.data-table td{padding:8px 10px}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-left">
+      <a href="index.html" class="nav-back">← 返回首页</a>
+      <span class="nav-title">第7课</span>
+    </div>
+    <div class="nav-right">
+      <span class="nav-lesson">7 / 20</span>
+    </div>
+  </div>
+</nav>
+<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+
+<div class="main">
+
+<!-- HEADER -->
+<div class="lesson-header">
+  <div class="lesson-cat">投资大师</div>
+  <h1>💎 价值投资 — 从格雷厄姆到巴菲特</h1>
+  <div class="lesson-meta">
+    <span>📖 阅读约35分钟</span>
+    <span>✏️ 3道练习题</span>
+    <span>🎯 基础</span>
+  </div>
+</div>
+
+<!-- AUDIO OVERVIEW -->
+<div class="audio-player">
+  <button class="play-btn" onclick="toggleAudio()" id="playBtn">▶️</button>
+  <div class="audio-info">
+    <div class="audio-title">🎧 课程音频概述</div>
+    <div class="audio-sub">点击播放课程核心内容摘要</div>
+  </div>
+  <audio id="courseAudio" preload="none">
+    <source src="audio/lesson7.mp3" type="audio/mpeg">
+  </audio>
+</div>
+
+
+
+<div class="section">
+  <h2><span class="icon"></span> </h2>
+  <p># 第7课：价值投资 — 从格雷厄姆到巴菲特</p>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p><strong>参考著作</strong>：《聪明的投资者》格雷厄姆、《证券分析》格雷厄姆&多德、《巴菲特致股东的信》</p></div>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 开篇：为什么90%的散户亏钱？</h2>
+  <p><strong>因为他们买的是"股票代码"，而不是"企业本身"。</strong></p>
+  <p>格雷厄姆说过："投资是基于深入分析，承诺本金安全并获得适当回报的操作。不满足这些条件的就是投机。"</p>
+  <p>大多数人的问题不是买错了股票，而是用错了方法：</p>
+  <table class="data-table"><thead><tr><th>方法</th><th>本质</th><th>结果</th></tr></thead><tbody>
+  <tr><td>追涨杀跌</td><td>赌博</td><td>90%亏损</td></tr>
+  <tr><td>听消息买股票</td><td>投机</td><td>70%亏损</td></tr>
+  <tr><td>价值投资</td><td>做企业股东</td><td>长期正收益</td></tr>
+  </tbody></table>
+  <p>|------|------|------|</p>
+  <p><strong>核心洞察</strong>：价值投资不是"买便宜股票"，而是"用合理价格买优秀企业"。</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 格雷厄姆：价值投资之父</h2>
+  <h3>2.1 生平</h3>
+  <p>本杰明·格雷厄姆（Benjamin Graham, 1894-1976），华尔街教父，巴菲特的老师。</p>
+  <p>1929年大崩盘中损失惨重，但从中总结出价值投资的核心原则，写成《证券分析》(1934)和《聪明的投资者》(1949)。</p>
+  <h3>2.2 核心概念</h3>
+  <p>#### 内在价值（Intrinsic Value）</p>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p>一家公司的内在价值，是其未来现金流的折现值。</p></div>
+  <p>简单说：一家公司值多少钱，取决于它未来能赚多少钱。</p>
+  <p><strong>计算公式</strong>（简化版）：</p>
+  <p><code>`</code></p>
+  <p>内在价值 = 未来10年净利润之和 × 折现系数</p>
+  <p><code>`</code></p>
+  <p>#### 安全边际（Margin of Safety）</p>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p>永远以低于内在价值的价格买入，差额就是你的安全边际。</p></div>
+  <p>格雷厄姆建议：<strong>至少打7折买入</strong>（安全边际30%以上）。</p>
+  <p><strong>为什么需要安全边际？</strong></p>
+  <p>• 你的估值可能有误差</p>
+  <p>• 未来可能有意外</p>
+  <p>• 市场可能长期不理性</p>
+  <p>#### 市场先生（Mr. Market）</p>
+  <p>格雷厄姆的著名比喻：</p>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p>想象你有一个合伙人叫"市场先生"，他每天给你报价，有时乐观（报高价），有时悲观（报低价）。你有权接受或忽略他的报价。</p></div>
+  <p><strong>关键认知</strong>：市场先生是你的仆人，不是你的主人。你应该利用他的情绪波动，而不是被他左右。</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 巴菲特：从"捡烟蒂"到"买护城河"</h2>
+  <h3>3.1 进化</h3>
+  <p>巴菲特早期完全遵循格雷厄姆的方法——买便宜货（"捡烟蒂"）。但在芒格的启发下，他进化了：</p>
+  <table class="data-table"><thead><tr><th>阶段</th><th>策略</th><th>代表作</th></tr></thead><tbody>
+  <tr><td>早期(1950s)</td><td>买低于清算价值的股票</td><td>伯克希尔纺织厂</td></tr>
+  <tr><td>中期(1970s)</td><td>买合理价格的优秀企业</td><td>可口可乐、GEICO</td></tr>
+  <tr><td>后期(2000s)</td><td>买具有持久竞争优势的企业</td><td>苹果、比亚迪</td></tr>
+  </tbody></table>
+  <p>|------|------|--------|</p>
+  <h3>3.2 护城河理论（Economic Moat）</h3>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p>好的企业就像一座城堡，需要有护城河来保护它免受竞争者的攻击。</p></div>
+  <p><strong>护城河的类型</strong>：</p>
+  <p><strong>1.</strong> <strong>品牌护城河</strong>：可口可乐、茅台</p>
+  <p><strong>2.</strong> <strong>网络效应</strong>：微信、Visa</p>
+  <p><strong>3.</strong> <strong>成本优势</strong>：沃尔玛、比亚迪</p>
+  <p><strong>4.</strong> <strong>转换成本</strong>：微软Office、Oracle</p>
+  <p><strong>5.</strong> <strong>规模经济</strong>：台积电、宁德时代</p>
+  <h3>3.3 巴菲特的核心原则</h3>
+  <p><strong>1.</strong> <strong>能力圈</strong>：只投资你能理解的企业</p>
+  <p><strong>2.</strong> <strong>长期持有</strong>："我最喜欢的持有期限是永远"</p>
+  <p><strong>3.</strong> <strong>逆向投资</strong>："在别人贪婪时恐惧，在别人恐惧时贪婪"</p>
+  <p><strong>4.</strong> <strong>管理层诚信</strong>：投资就是投人</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 价值投资与康波的结合</h2>
+  <h3>4.1 周期位置决定估值水平</h3>
+  <table class="data-table"><thead><tr><th>康波阶段</th><th>市场特征</th><th>价值投资策略</th></tr></thead><tbody>
+  <tr><td>春（回升期）</td><td>估值低，情绪悲观</td><td>大量买入低估优质股</td></tr>
+  <tr><td>夏（繁荣期）</td><td>估值高，情绪狂热</td><td>减持高估值，持有现金</td></tr>
+  <tr><td>秋（衰退期）</td><td>估值下降，情绪恐惧</td><td>等待更好的买入机会</td></tr>
+  <tr><td>冬（萧条期）</td><td>估值极低，情绪绝望</td><td>最佳建仓时机</td></tr>
+  </tbody></table>
+  <p>|----------|----------|--------------|</p>
+  <h3>4.2 格雷厄姆指数</h3>
+  <p>格雷厄姆提出的市场温度计：</p>
+  <p><code>`</code></p>
+  <p>格雷厄姆指数 = 全市场市盈率 × 全市场股息率</p>
+  <p><code>`</code></p>
+  <p>• <strong>< 1.0</strong>：市场严重低估，大胆买入</p>
+  <p>• <strong>1.0-1.5</strong>：市场合理，精选个股</p>
+  <p>• <strong>> 2.0</strong>：市场高估，谨慎减仓</p>
+  <h3>4.3 实操建议</h3>
+  <p><strong>1.</strong> <strong>建立观察清单</strong>：列出10-20家你理解的优秀企业</p>
+  <p><strong>2.</strong> <strong>计算内在价值</strong>：用DCF或相对估值法</p>
+  <p><strong>3.</strong> <strong>设定买入价</strong>：在内在价值的70%以下</p>
+  <p><strong>4.</strong> <strong>耐心等待</strong>：等待市场给你机会</p>
+  <p><strong>5.</strong> <strong>长期持有</strong>：除非基本面恶化，否则不卖</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 核心概念总结</h2>
+  <h3>你需要记住的5个关键点</h3>
+  <p><strong>1.</strong> <strong>内在价值</strong>：企业值多少钱，取决于它未来能赚多少钱</p>
+  <p><strong>2.</strong> <strong>安全边际</strong>：永远以低于内在价值的价格买入</p>
+  <p><strong>3.</strong> <strong>市场先生</strong>：利用市场的情绪波动，而不是被它左右</p>
+  <p><strong>4.</strong> <strong>护城河</strong>：好的企业需要有持久的竞争优势</p>
+  <p><strong>5.</strong> <strong>周期结合</strong>：在康波冬末春初大量买入，在夏末秋初减持</p>
+  <h3>你需要打破的3个误区</h3>
+  <p><strong>1.</strong> <strong>误区1</strong>："价值投资就是买低PE股票" → 错。低PE可能是因为企业基本面恶化，不是价值投资。</p>
+  <p><strong>2.</strong> <strong>误区2</strong>："价值投资不看宏观" → 错。格雷厄姆和巴菲特都强调宏观环境的重要性。</p>
+  <p><strong>3.</strong> <strong>误区3</strong>："价值投资不适合中国市场" → 错。A股的波动更大，安全边际更重要。</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 练习题</h2>
+  <div class="exercise"><div class="exercise-label">✏️ 练习</div><h3>练习1：护城河识别</h3>
+  <p>请分析以下企业，判断它们的护城河类型：</p>
+  <p><strong>1.</strong> 贵州茅台</p>
+  <p><strong>2.</strong> 腾讯</p>
+  <p><strong>3.</strong> 宁德时代</p>
+  <p><strong>4.</strong> 拼多多</p>
+  <div class="exercise"><div class="exercise-label">✏️ 练习</div><h3>练习2：安全边际计算</h3>
+  <p class="exercise-question">一家公司未来5年预计净利润分别为：10亿、12亿、14亿、16亿、18亿。折现率8%，你认为合理估值是多少？如果要求30%安全边际，买入价应该是多少？</p>
+  <textarea placeholder="写下你的思考..." rows="3"></textarea>
+  <div class="exercise"><div class="exercise-label">✏️ 练习</div><h3>练习3：周期与价值</h3>
+  <p class="exercise-question">结合第1课的康波理论，分析当前（2026年）A股市场的估值水平是否适合价值投资？</p>
+  <textarea placeholder="写下你的思考..." rows="3"></textarea>
+  </div>
+</div>
+
+
+<!-- BOTTOM NAV -->
+<div class="bottom-nav">
+  <a href="lesson6.html" class="prev">← 第6课</a>
+  <a href="lesson8.html" class="next">第8课 →</a>
+</div>
+
+</div>
+
+<script>
+// Reading progress
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement;
+  const pct=(h.scrollTop)/(h.scrollHeight-h.clientHeight)*100;
+  document.getElementById('progressFill').style.width=pct+'%';
+});
+
+// Audio player
+function toggleAudio(){
+  const audio=document.getElementById('courseAudio');
+  const btn=document.getElementById('playBtn');
+  if(audio.paused){audio.play();btn.textContent='⏸️'}else{audio.pause();btn.textContent='▶️'}
+}
+</script>
+
+</body>
+</html>

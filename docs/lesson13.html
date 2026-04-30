@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第13课：奥地利学派 — 货币周期与自由 — 康波研究院</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#09090b;--bg2:#0f0f13;--card:#1c1c21;--card2:#222228;--card3:#2a2a32;--border:#27272a;--border2:#3f3f46;--text:#fafafa;--text2:#a1a1aa;--text3:#71717a;--gold:#e2b64f;--gold2:#f5d98a;--green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;--orange:#f59e0b;--red:#ef4444;--serif:'Noto Serif SC',serif;--sans:'Inter',sans-serif;--radius:16px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:2;font-size:18px}
+a{color:var(--gold);text-decoration:none}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(9,9,11,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);height:56px;display:flex;align-items:center}
+.nav-inner{max-width:900px;margin:0 auto;padding:0 24px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-left{display:flex;align-items:center;gap:16px}
+.nav-back{font-size:0.9rem;color:var(--text3);transition:color .2s}.nav-back:hover{color:var(--gold)}
+.nav-title{font-size:0.9rem;color:var(--text2);font-weight:500}
+.nav-right{display:flex;align-items:center;gap:12px}
+.nav-lesson{font-size:0.8rem;color:var(--text3);background:var(--card2);padding:4px 14px;border-radius:6px}
+
+/* PROGRESS BAR */
+.progress-bar{position:fixed;top:56px;left:0;right:0;height:3px;background:var(--border);z-index:99}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));transition:width .3s;width:0%}
+
+/* MAIN */
+.main{max-width:800px;margin:0 auto;padding:80px 28px 60px}
+
+/* LESSON HEADER */
+.lesson-header{margin-bottom:56px;text-align:center}
+.lesson-cat{display:inline-block;font-size:0.75rem;color:var(--gold);background:rgba(226,182,79,0.1);padding:4px 14px;border-radius:20px;margin-bottom:16px;letter-spacing:0.1em}
+.lesson-header h1{font-family:var(--serif);font-size:clamp(2rem,5vw,2.8rem);font-weight:900;line-height:1.3;margin-bottom:16px;background:linear-gradient(135deg,var(--text),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lesson-meta{display:flex;gap:20px;justify-content:center;flex-wrap:wrap}
+.lesson-meta span{font-size:0.85rem;color:var(--text3);display:flex;align-items:center;gap:6px}
+
+/* SECTIONS */
+.section{margin-bottom:48px}
+.section h2{font-size:1.4rem;font-weight:700;margin-bottom:20px;color:var(--text);display:flex;align-items:center;gap:10px}
+.section h2 .icon{font-size:1.2rem}
+.section h3{font-size:1.15rem;font-weight:600;margin:28px 0 12px;color:var(--gold2)}
+.section p{color:var(--text2);font-size:1.05rem;margin-bottom:14px;line-height:2}
+
+/* CALLOUT */
+.callout{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:28px;margin:24px 0}
+.callout.gold{border-left:4px solid var(--gold)}
+.callout.green{border-left:4px solid var(--green)}
+.callout.blue{border-left:4px solid var(--blue)}
+.callout-title{font-size:0.85rem;font-weight:600;color:var(--gold);margin-bottom:10px;text-transform:uppercase;letter-spacing:0.08em}
+.callout p{color:var(--text2);font-size:1rem;line-height:1.9}
+
+/* TABLE */
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:0.95rem}
+.data-table th{text-align:left;padding:12px 14px;background:var(--card2);color:var(--text3);font-weight:600;font-size:0.85rem;text-transform:uppercase;letter-spacing:0.05em;border-bottom:2px solid var(--border)}
+.data-table td{padding:12px 14px;border-bottom:1px solid var(--border);color:var(--text2)}
+.data-table tr:hover td{background:var(--card)}
+
+/* EXERCISE */
+.exercise{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:32px;margin:28px 0}
+.exercise-label{display:inline-flex;align-items:center;gap:6px;font-size:0.8rem;font-weight:600;color:var(--blue);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:14px}
+.exercise h3{font-size:1.1rem;margin-bottom:10px;color:var(--text)}
+.exercise p{color:var(--text2);font-size:1rem;margin-bottom:14px}
+.exercise-question{color:var(--text);font-weight:500;font-size:1.05rem}
+.exercise textarea{width:100%;min-height:90px;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:16px;color:var(--text);font-family:var(--sans);font-size:1rem;resize:vertical;transition:border-color .2s;line-height:1.8}
+.exercise textarea:focus{outline:none;border-color:var(--gold)}
+.exercise textarea::placeholder{color:var(--text3)}
+
+/* BOTTOM NAV */
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;padding:36px 0;margin-top:48px;border-top:1px solid var(--border)}
+.bottom-nav a{display:flex;align-items:center;gap:8px;padding:14px 24px;border-radius:12px;font-size:1rem;font-weight:500;transition:all .2s}
+.bottom-nav .prev{color:var(--text3);border:1px solid var(--border)}
+.bottom-nav .prev:hover{border-color:var(--gold);color:var(--gold)}
+.bottom-nav .next{background:var(--gold);color:#000}
+.bottom-nav .next:hover{background:var(--gold2)}
+
+/* AUDIO PLAYER */
+.audio-player{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin:24px 0;display:flex;align-items:center;gap:16px}
+.audio-player .play-btn{width:48px;height:48px;border-radius:50%;background:var(--gold);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.2rem;transition:background .2s;flex-shrink:0}
+.audio-player .play-btn:hover{background:var(--gold2)}
+.audio-player .audio-info{flex:1}
+.audio-player .audio-title{font-size:0.9rem;font-weight:600;color:var(--text);margin-bottom:4px}
+.audio-player .audio-sub{font-size:0.8rem;color:var(--text3)}
+
+/* RESPONSIVE */
+@media(max-width:640px){
+  .main{padding:72px 16px 40px}
+  .lesson-header h1{font-size:1.8rem}
+  .section h2{font-size:1.2rem}
+  .data-table{font-size:0.85rem}
+  .data-table th,.data-table td{padding:8px 10px}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-left">
+      <a href="index.html" class="nav-back">← 返回首页</a>
+      <span class="nav-title">第13课</span>
+    </div>
+    <div class="nav-right">
+      <span class="nav-lesson">13 / 20</span>
+    </div>
+  </div>
+</nav>
+<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+
+<div class="main">
+
+<!-- HEADER -->
+<div class="lesson-header">
+  <div class="lesson-cat">经济学派</div>
+  <h1>🗽 奥地利学派 — 货币周期与自由</h1>
+  <div class="lesson-meta">
+    <span>📖 阅读约35分钟</span>
+    <span>✏️ 0道练习题</span>
+    <span>🎯 进阶</span>
+  </div>
+</div>
+
+<!-- AUDIO OVERVIEW -->
+<div class="audio-player">
+  <button class="play-btn" onclick="toggleAudio()" id="playBtn">▶️</button>
+  <div class="audio-info">
+    <div class="audio-title">🎧 课程音频概述</div>
+    <div class="audio-sub">点击播放课程核心内容摘要</div>
+  </div>
+  <audio id="courseAudio" preload="none">
+    <source src="audio/lesson13.mp3" type="audio/mpeg">
+  </audio>
+</div>
+
+
+
+<div class="section">
+  <h2><span class="icon"></span> </h2>
+  <p># 第13课：奥地利学派 — 货币、周期与自由</p>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p><strong>参考著作</strong>：《人的行为》米塞斯、《通往奴役之路》哈耶克、《价格与生产》哈耶克</p></div>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 开篇：被主流忽视的深刻洞见</h2>
+  <p><strong>"信贷扩张制造的繁荣，从一开始就注定要崩溃。"</strong> —— 路德维希·冯·米塞斯</p>
+  <p>在经济学的版图上，奥地利学派是一个异类。它不追求精美的数学模型，不迷信统计数据，却一次又一次地准确预言了重大经济危机。1929年大萧条、2000年互联网泡沫、2008年次贷危机——每一次，奥地利学派学者都曾发出警告。</p>
+  <p>与凯恩斯主义主张政府积极干预不同，奥地利学派的核心主张是：<strong>政府对货币和信贷的干预，恰恰是经济周期波动的根源</strong>。不是市场失灵导致危机，而是政府"纠正市场"的努力制造了更严重的危机。</p>
+  <table class="data-table"><thead><tr><th>维度</th><th>凯恩斯主义</th><th>奥地利学派</th></tr></thead><tbody>
+  <tr><td>经济危机根源</td><td>有效需求不足</td><td>信用扩张导致错误投资</td></tr>
+  <tr><td>核心药方</td><td>政府扩大支出，降低利率</td><td>停止信贷扩张，让市场自行调整</td></tr>
+  <tr><td>对政府角色的态度</td><td>积极干预的"救火队"</td><td>经济周期的"纵火犯"</td></tr>
+  <tr><td>代表性国家/地区</td><td>美国、欧洲主流政策</td><td>19世纪金本位时期、中国香港</td></tr>
+  <tr><td>方法论</td><td>数学建模、总量分析</td><td>个人行为逻辑推理、主观价值论</td></tr>
+  </tbody></table>
+  <p>|------|-----------|-----------|</p>
+  <p><strong>核心洞察</strong>：奥地利学派提供了理解经济周期的"另一把钥匙"——不是从需求不足找原因，而是从货币和信用的扭曲找根源。</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 两位巨人：米塞斯与哈耶克</h2>
+  <h3>2.1 路德维希·冯·米塞斯（Ludwig von Mises, 1881-1973）</h3>
+  <p>米塞斯是20世纪最伟大的经济学家之一，也是奥地利学派的集大成者。他在一个集体主义狂潮席卷全球的时代，坚定地捍卫自由市场和个人选择。</p>
+  <table class="data-table"><thead><tr><th>年份</th><th>事件</th></tr></thead><tbody>
+  <tr><td>1881</td><td>出生于奥匈帝国伦贝格（今乌克兰利沃夫），犹太家庭</td></tr>
+  <tr><td>1906</td><td>维也纳大学法学博士</td></tr>
+  <tr><td>1912</td><td>发表《货币与信用理论》，提出商业周期理论雏形</td></tr>
+  <tr><td>1920</td><td>发表《社会主义共同体中的经济计算》，证明计划经济的不可能性</td></tr>
+  <tr><td>1934</td><td>因纳粹威胁离开维也纳，迁往日内瓦</td></tr>
+  <tr><td>1940</td><td>移居美国纽约</td></tr>
+  <tr><td>1949</td><td>出版巨著《人的行为》（Human Action），系统阐述奥地利学派经济学</td></tr>
+  <tr><td>1973</td><td>在纽约去世，享年92岁</td></tr>
+  </tbody></table>
+  <p>|------|------|</p>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p><strong>米塞斯的历史地位</strong>：他预言了社会主义计划经济的崩溃——整整提前了70年。他提出的"经济计算问题"至今仍是所有计划经济必须面对的根本挑战。</p></div>
+  <h3>2.2 弗里德里希·哈耶克（Friedrich August von Hayek, 1899-1992）</h3>
+  <p>哈耶克是米塞斯最杰出的学生，1974年诺贝尔经济学奖得主。他的贡献横跨经济学、政治哲学和认识论，是20世纪最重要的自由主义思想家之一。</p>
+  <table class="data-table"><thead><tr><th>年份</th><th>事件</th></tr></thead><tbody>
+  <tr><td>1899</td><td>出生于维也纳，书香门第</td></tr>
+  <tr><td>1921</td><td>维也纳大学法学博士，次年获政治学博士</td></tr>
+  <tr><td>1927</td><td>创建奥地利商业周期研究所，任首任所长</td></tr>
+  <tr><td>1931</td><td>应邀赴伦敦经济学院任教，与凯恩斯展开著名论战</td></tr>
+  <tr><td>1936</td><td>发表《价格与生产》，系统阐述ABCT</td></tr>
+  <tr><td>1944</td><td>出版《通往奴役之路》，警告计划经济的危险</td></tr>
+  <tr><td>1960</td><td>出版《自由秩序原理》，构建自由主义哲学体系</td></tr>
+  <tr><td>1974</td><td>获诺贝尔经济学奖</td></tr>
+  <tr><td>1988</td><td>出版《致命的自负》，批判社会主义的"理性狂妄"</td></tr>
+  <tr><td>1992</td><td>在弗莱堡去世，享年93岁</td></tr>
+  </tbody></table>
+  <p>|------|------|</p>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p><strong>哈耶克-凯恩斯之争</strong>：1930年代，哈耶克与凯恩斯展开经济学史上最著名的论战。凯恩斯认为萧条需要政府扩大支出；哈耶克认为萧条是信贷扩张的必然后果，政府干预只会延长痛苦。凯恩斯暂时"胜出"，但2008年金融危机后，哈耶克思想重新获得关注。</p></div>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 奥地利学派的核心方法论</h2>
+  <p>奥地利学派的方法论建立在三个基石之上：</p>
+  <p><strong>① 主观价值论<strong>：价值不是物品的客观属性，而是个人主观赋予的。一杯水对沙漠旅人价值连城，对城市居民几乎一文不值。由此推导出：</strong>没有人能够代替另一个人决定什么对他最好。</strong></p>
+  <p><strong>② 方法论个人主义</strong>：从<strong>个人行为</strong>出发理解经济现象，而非从"总需求""总供给"等抽象总量出发。</p>
+  <p><strong>③ 人的行为学（Praxeology）</strong>：米塞斯在《人的行为》中提出，经济学从"人是有目的的行为"这一公理出发，通过逻辑推理得出经济规律。</p>
+  <table class="data-table"><thead><tr><th>方法论</th><th>分析起点</th><th>代表学派</th></tr></thead><tbody>
+  <tr><td>方法论个人主义</td><td>个人的选择与行为</td><td>奥地利学派</td></tr>
+  <tr><td>方法论集体主义</td><td>国家/阶级/总量</td><td>凯恩斯主义、马克思主义</td></tr>
+  </tbody></table>
+  <p>|----------|---------|---------|</p>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p><strong>"人是有目的的行为的存在。"</strong> —— 《人的行为》开篇，奥地利学派大厦的基石。</p></div>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 奥地利商业周期理论（ABCT）</h2>
+  <h3>4.1 核心命题</h3>
+  <p>奥地利商业周期理论（Austrian Business Cycle Theory, ABCT）是奥地利学派最核心的经济周期理论，主要由米塞斯提出、哈耶克发展完善。其核心命题可以用一句话概括：</p>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p><strong>央行人为压低利率，导致信用扩张，引发错误投资，泡沫破裂后经济陷入衰退——衰退不是市场失灵，而是对之前人为繁荣的必要清算。</strong></p></div>
+  <h3>4.2 自然利率与市场利率</h3>
+  <p>理解ABCT的关键是区分两个概念：</p>
+  <table class="data-table"><thead><tr><th>概念</th><th>定义</th><th>由谁决定</th></tr></thead><tbody>
+  <tr><td><strong>自然利率</strong></td><td>社会真实的时间偏好——人们愿意为延迟消费要求的补偿</td><td>储蓄者与消费者的集体选择</td></tr>
+  <tr><td><strong>市场利率</strong></td><td>实际借贷市场上的利率水平</td><td>央行货币政策 + 市场供需</td></tr>
+  </tbody></table>
+  <p>|------|------|---------|</p>
+  <p>当央行通过印钞和降低利率，使<strong>市场利率低于自然利率</strong>时，问题就开始了。</p>
+  <h3>4.3 ABCT的完整逻辑链条</h3>
+  <p><code>`</code></p>
+  <p>央行降低利率（低于自然利率）</p>
+  <p>↓</p>
+  <p>银行信贷扩张，大量廉价资金涌入市场</p>
+  <p>↓</p>
+  <p>企业获得廉价贷款，开始投资长期项目（房地产、基建、重工业）</p>
+  <p>↓</p>
+  <p>生产结构被人为"拉长"——远离消费端的资本品行业繁荣</p>
+  <p>↓</p>
+  <p>资源被错误配置：劳动力、原材料流向长期项目</p>
+  <p>↓</p>
+  <p>短期繁荣——就业增加，股市上涨，GDP增长</p>
+  <p>↓</p>
+  <p>但是：消费者的实际储蓄/时间偏好并未改变</p>
+  <p>↓</p>
+  <p>消费品价格上涨，通胀压力显现</p>
+  <p>↓</p>
+  <p>央行被迫提高利率（或市场自然收紧）</p>
+  <p>↓</p>
+  <p>廉价资金消失，长期项目无法继续融资</p>
+  <p>↓</p>
+  <p>错误投资暴露——半完工的楼盘、无法盈利的工厂</p>
+  <p>↓</p>
+  <p>资源必须重新配置回消费者真正需要的方向</p>
+  <p>↓</p>
+  <p>经济衰退（"清算"阶段）</p>
+  <p><code>`</code></p>
+  <h3>4.4 关键概念：错误投资（Malinvestment）</h3>
+  <p>奥地利学派使用"错误投资"（Malinvestment）而非"过度投资"（Overinvestment）来描述繁荣期的问题。</p>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p><strong>关键区别</strong>：问题不在于"投资太多"，而在于"投资错了方向"。信贷扩张扭曲了价格信号（利率），导致企业家误判消费者的真实偏好，将资源投入了消费者并不需要的领域。</p></div>
+  <table class="data-table"><thead><tr><th>概念</th><th>含义</th><th>例子</th></tr></thead><tbody>
+  <tr><td><strong>错误投资（Malinvestment）</strong></td><td>投资方向错误，与消费者偏好不匹配</td><td>在需求不足的城市大量建设豪华住宅</td></tr>
+  <tr><td><strong>过度投资（Overinvestment）</strong></td><td>投资总量超过了储蓄许可的水平</td><td>奥地利学派认为这并非主要问题</td></tr>
+  </tbody></table>
+  <p>|------|------|------|</p>
+  <p><strong>2008年次贷危机就是典型的错误投资案例</strong>：大量资金被投入房地产建设，但实际上消费者的真实储蓄和需求无法支撑如此大规模的住房供给。当信贷收缩后，这些错误投资被暴露——大量空置房屋、烂尾楼。</p>
+  <h3>4.5 ABCT的四个阶段</h3>
+  <table class="data-table"><thead><tr><th>阶段</th><th>特征</th><th>对应现象</th></tr></thead><tbody>
+  <tr><td><strong>① 信用扩张期</strong></td><td>央行降息，信贷宽松</td><td>低利率、量化宽松、信贷井喷</td></tr>
+  <tr><td><strong>② 人为繁荣期</strong></td><td>错误投资大量涌入长期项目</td><td>股市上涨、房地产火热、GDP高增长</td></tr>
+  <tr><td><strong>③ 危机爆发期</strong></td><td>通胀上升或信贷收紧</td><td>利率上调、资金链断裂、资产抛售</td></tr>
+  <tr><td><strong>④ 清算/衰退期</strong></td><td>错误投资被暴露和清算</td><td>破产增加、失业上升、资源重新配置</td></tr>
+  </tbody></table>
+  <p>|------|------|---------|</p>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p><strong>米塞斯的警示</strong>：每个信用扩张期都是一颗定时炸弹。问题不是"会不会崩溃"，而是"什么时候崩溃"以及"崩溃有多严重"——而这两个变量取决于之前信贷扩张的规模和持续时间。</p></div>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 货币与信用扩张机制</h2>
+  <h3>5.1 货币不是"中性"的</h3>
+  <p>主流经济学通常假设货币是"中性"的——增加货币供给只会等比例提高所有价格，不影响实际经济。奥地利学派强烈反对这一假设。</p>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p><strong>"新货币不是像雨露一样均匀降落在整个经济体上的。它通过特定的管道（银行信贷）注入，首先惠及靠近信贷源头的人和行业，然后才逐渐扩散。"</strong></p></div>
+  <p>这种"非中性"意味着：<strong>信用扩张不仅制造通胀，更重要的是扭曲了相对价格结构，从而误导企业家的投资决策。</strong></p>
+  <h3>5.2 坎蒂隆效应（Cantillon Effect）</h3>
+  <p>新货币的注入具有"先来后到"的分配效应，称为坎蒂隆效应：</p>
+  <table class="data-table"><thead><tr><th>获益顺序</th><th>受益群体</th><th>原因</th></tr></thead><tbody>
+  <tr><td>第一批</td><td>银行、金融机构、政府</td><td>直接获得新货币</td></tr>
+  <tr><td>第二批</td><td>大型企业、房地产商</td><td>容易获得贷款</td></tr>
+  <tr><td>第三批</td><td>普通劳动者、退休人员</td><td>工资和养老金滞后于物价上涨</td></tr>
+  <tr><td>最后</td><td>储蓄者、固定收入者</td><td>购买力被通胀侵蚀</td></tr>
+  </tbody></table>
+  <p>|----------|---------|------|</p>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p><strong>坎蒂隆效应的现实含义</strong>：每一次量化宽松，实际上都是一次从穷人到富人的隐性财富转移。这就是为什么"放水"之后，贫富差距通常会扩大。</p></div>
+  <h3>5.3 哈耶克的"三角"：生产结构的扭曲</h3>
+  <p>哈耶克在《价格与生产》中用一个"哈耶克三角"来解释信用扩张如何扭曲生产结构：</p>
+  <p><code>`</code></p>
+  <p>消费品（最终产品）</p>
+  <p>/                    \</p>
+  <p>中间品                  消费品生产</p>
+  <p>/        \              （靠近消费端）</p>
+  <p>原材料                    生产周期较短</p>
+  <p>\</p>
+  <p>资本品（远离消费端）</p>
+  <p>生产周期长，依赖长期投资</p>
+  <p><code>`</code></p>
+  <p>正常情况下，利率反映消费者的时间偏好。当央行人为压低利率时：</p>
+  <p>• 远离消费端的<strong>长期资本品行业</strong>获得大量投资（如矿业、基建、房地产）</p>
+  <p>• 靠近消费端的<strong>消费品行业</strong>相对收缩</p>
+  <p>• 整个生产结构被"拉长"</p>
+  <p>• 当利率回归正常，"拉长"的部分就会被"压缩回去"——这就是衰退</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 自发秩序 vs 中央计划</h2>
+  <h3>6.1 哈耶克的"自发秩序"（Spontaneous Order）</h3>
+  <p>哈耶克毕生的核心思想之一是"自发秩序"：<strong>复杂的社会秩序无需中央设计者，它可以通过无数个体的自发互动自然涌现。</strong></p>
+  <table class="data-table"><thead><tr><th>秩序类型</th><th>特征</th><th>例子</th></tr></thead><tbody>
+  <tr><td><strong>人造秩序（Taxis）</strong></td><td>有意设计，自上而下</td><td>公司组织结构、军队指挥系统</td></tr>
+  <tr><td><strong>自发秩序（Cosmos）</strong></td><td>自然涌现，自下而上</td><td>语言、市场价格、普通法</td></tr>
+  </tbody></table>
+  <p>|----------|------|------|</p>
+  <h3>6.2 知识问题：计划经济的根本缺陷</h3>
+  <p>哈耶克在经典论文《知识在社会中的运用》中指出：<strong>经济问题的核心不是"资源如何分配"，而是"分散的知识如何被利用"。</strong></p>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p><strong>"关于特定时间和地点的情境的知识——这些知识永远不可能被集中到一个单一的头脑中。"</strong></p></div>
+  <h3>6.3 《通往奴役之路》的核心警告</h3>
+  <p>《通往奴役之路》（1944）的核心论点是：</p>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p><strong>即使出发点是善意的，计划经济必然走向极权——因为控制经济意味着控制人的生活。</strong></p></div>
+  <table class="data-table"><thead><tr><th>阶段</th><th>表现</th></tr></thead><tbody>
+  <tr><td>第一步</td><td>政府以"公共利益"为名干预经济</td></tr>
+  <tr><td>第二步</td><td>干预失败 → 需要更多干预来"修复"</td></tr>
+  <tr><td>第三步</td><td>经济控制扩大到社会生活的方方面面</td></tr>
+  <tr><td>第四步</td><td>个人自由被系统性侵蚀</td></tr>
+  <tr><td>最终</td><td>通向奴役之路</td></tr>
+  </tbody></table>
+  <p>|------|------|</p>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p><strong>哈耶克的警告至今仍有深刻现实意义</strong>：在每一次危机中，政府的权力都会扩大——2008年金融危机后的金融监管扩张、2020年疫情中的管控措施——哈耶克的"滑坡"逻辑值得深思。</p></div>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 金本位 vs 法定货币之争</h2>
+  <p>奥地利学派认为：<strong>法定货币是经济不稳定的根源，货币不应被政府垄断。</strong></p>
+  <table class="data-table"><thead><tr><th>货币制度</th><th>特征</th><th>奥地利学派评价</th></tr></thead><tbody>
+  <tr><td><strong>金本位</strong></td><td>货币发行受黄金储备约束</td><td>限制了政府滥发货币的能力</td></tr>
+  <tr><td><strong>法定货币（Fiat）</strong></td><td>政府可无限制发行</td><td>为信用扩张和通胀打开了大门</td></tr>
+  </tbody></table>
+  <p>|----------|------|---------------|</p>
+  <p>哈耶克在《货币非国家化》（1976）中提出大胆设想：</p>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p><strong>允许私人机构发行竞争性货币，让市场而非政府决定使用什么货币。</strong></p></div>
+  <p>这一思想是<strong>加密货币的理论先驱</strong>。比特币的去中心化、供应量有限（2100万枚）、不受政府控制等设计，与哈耶克思想高度一致。</p>
+  <table class="data-table"><thead><tr><th>特征</th><th>金本位</th><th>哈耶克方案</th><th>比特币</th></tr></thead><tbody>
+  <tr><td>供应约束</td><td>黄金产量</td><td>市场竞争约束</td><td>算法固定上限</td></tr>
+  <tr><td>发行主体</td><td>政府（锚定黄金）</td><td>私人机构竞争</td><td>去中心化网络</td></tr>
+  <tr><td>政府控制</td><td>受限但仍存在</td><td>最小化</td><td>几乎无法控制</td></tr>
+  <tr><td>信息透明</td><td>一般</td><td>取决于发行者</td><td>完全透明（区块链）</td></tr>
+  </tbody></table>
+  <p>|------|--------|-----------|--------|</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> ABCT与康波理论的整合</h2>
+  <h3>8.1 ABCT作为康波的微观机制</h3>
+  <p>康波理论描述50-60年的长周期，但主要是<strong>描述性理论</strong>。ABCT恰好提供了<strong>微观机制解释</strong>：</p>
+  <table class="data-table"><thead><tr><th>层面</th><th>理论</th><th>解释内容</th></tr></thead><tbody>
+  <tr><td>宏观层面</td><td>康波理论</td><td>描述50-60年的长波周期</td></tr>
+  <tr><td>微观机制</td><td>ABCT</td><td>解释信用扩张→错误投资→危机的内在逻辑</td></tr>
+  <tr><td>整合视角</td><td>ABCT+康波</td><td>每轮康波的上升期对应一次大规模信用扩张，下降期对应清算</td></tr>
+  </tbody></table>
+  <p>|------|------|---------|</p>
+  <h3>8.2 每轮康波中的ABCT模式</h3>
+  <p>将ABCT逻辑应用于康波的各个阶段：</p>
+  <table class="data-table"><thead><tr><th>康波阶段</th><th>ABCT对应</th><th>信用状态</th><th>典型表现</th></tr></thead><tbody>
+  <tr><td><strong>繁荣期（Spring）</strong></td><td>信用扩张初期</td><td>信贷快速扩张</td><td>新技术+新货币创造，投资热情高涨</td></tr>
+  <tr><td><strong>过热期（Summer）</strong></td><td>人为繁荣期</td><td>信贷过度扩张</td><td>错误投资累积，资产泡沫膨胀</td></tr>
+  <tr><td><strong>衰退期（Autumn）</strong></td><td>危机爆发期</td><td>信贷收缩</td><td>泡沫破裂，错误投资暴露</td></tr>
+  <tr><td><strong>萧条期（Winter）</strong></td><td>清算期</td><td>信贷紧缩</td><td>破产重组，资源重新配置</td></tr>
+  </tbody></table>
+  <p>|----------|---------|---------|---------|</p>
+  <h3>8.3 六轮康波中的信用扩张与清算</h3>
+  <p>奥地利学派框架可与熊彼特创新理论整合：</p>
+  <p><code>`</code></p>
+  <p>新技术革命出现（熊彼特的"创造性破坏"）</p>
+  <p>↓</p>
+  <p>央行和银行体系为新技术提供大量信贷（ABCT的信用扩张）</p>
+  <p>↓</p>
+  <p>新技术+新信贷=大规模投资热潮（康波上升期）</p>
+  <p>↓</p>
+  <p>投资从创新领域溢出到投机领域（ABCT的错误投资）</p>
+  <p>↓</p>
+  <p>资产泡沫膨胀（康波繁荣顶峰）</p>
+  <p>↓</p>
+  <p>信贷收缩/通胀压力（ABCT的危机触发）</p>
+  <p>↓</p>
+  <p>泡沫破裂，错误投资被清算（康波下降期）</p>
+  <p>↓</p>
+  <p>萧条期完成清算，为下一轮技术革命创造条件</p>
+  <p><code>`</code></p>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p><strong>整合结论</strong>：康波是"技术革命（熊彼特）+ 信用扩张与收缩（ABCT）"共同驱动的。技术革命提供"题材"，信用扩张提供"燃料"，两者的叠加创造了50-60年的长波。</p></div>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 奥地利学派的现实应用与反思</h2>
+  <h3>9.1 2008年金融危机的奥地利学派解读</h3>
+  <table class="data-table"><thead><tr><th>ABCT阶段</th><th>2008年危机对应</th></tr></thead><tbody>
+  <tr><td>信用扩张期</td><td>2001-2004年，美联储将利率从6.5%降至1%</td></tr>
+  <tr><td>人为繁荣期</td><td>2004-2006年，房地产热、次贷大爆发</td></tr>
+  <tr><td>危机爆发期</td><td>2007-2008年，次贷违约→雷曼破产</td></tr>
+  <tr><td>清算衰退期</td><td>2008-2009年，全球衰退、大规模去杠杆</td></tr>
+  </tbody></table>
+  <p>|----------|---------------|</p>
+  <h3>9.2 对"量化宽松"的批评</h3>
+  <p>2008年后各国央行的量化宽松（QE）政策，从奥地利学派视角来看：</p>
+  <table class="data-table"><thead><tr><th>政策</th><th>主流评价</th><th>奥地利学派评价</th></tr></thead><tbody>
+  <tr><td>QE（量化宽松）</td><td>挽救了经济，避免了大萧条重演</td><td>人为维持了错误投资，推迟了清算</td></tr>
+  <tr><td>零利率政策</td><td>刺激投资和消费</td><td>扭曲价格信号，制造新的泡沫</td></tr>
+  <tr><td>财政刺激</td><td>补充有效需求</td><td>浪费资源，加深债务问题</td></tr>
+  </tbody></table>
+  <p>|------|---------|---------------|</p>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p><strong>奥地利学派的预言</strong>：每次"救市"都是在为下一次更大的危机埋下种子。2008年用QE"救"了市场，但2020年代的通胀和资产泡沫正是QE的必然后果。</p></div>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 总结与反思</h2>
+  <h3>核心要点回顾</h3>
+  <table class="data-table"><thead><tr><th>要点</th><th>内容</th></tr></thead><tbody>
+  <tr><td><strong>核心命题</strong></td><td>信用扩张→错误投资→危机→清算，循环往复</td></tr>
+  <tr><td><strong>米塞斯贡献</strong></td><td>ABCT理论、社会主义经济计算不可能性证明</td></tr>
+  <tr><td><strong>哈耶克贡献</strong></td><td>自发秩序、知识分散问题、货币非国家化</td></tr>
+  <tr><td><strong>ABCT机制</strong></td><td>人为压低利率扭曲价格信号，导致资源错配</td></tr>
+  <tr><td><strong>自发秩序</strong></td><td>复杂社会秩序无需中央设计，市场自我协调</td></tr>
+  <tr><td><strong>货币观</strong></td><td>反对法定货币，支持金本位或竞争性货币</td></tr>
+  <tr><td><strong>康波整合</strong></td><td>ABCT为康波提供微观机制，技术革命+信用扩张=长波</td></tr>
+  </tbody></table>
+  <p>|------|------|</p>
+  <h3>最后的思考</h3>
+  <p>奥地利学派最大的智慧在于<strong>谦逊</strong>：人类的理性是有限的，没有人能精确"管理"一个包含数十亿人的复杂经济体。每一次信贷扩张"刺激"，都是用人为信号替代真实市场信号——短期有效，长期必然制造更大的灾难。</p>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p><strong>"经济学的使命不是告诉政府如何管理经济，而是告诉政府为什么不应该管理经济。"</strong> —— 路德维希·冯·米塞斯</p></div>
+  <p>在康波框架下，奥地利学派提供了一个至关重要的视角：<strong>长波不是自然现象，也不是纯技术现象，而是人类（尤其是政府和央行）反复犯同一类错误的结果——用信贷扩张制造繁荣，然后承受繁荣破灭的痛苦。</strong> 理解这一点，或许是我们在这个充满不确定性的时代最重要的认知武器。</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 课后测验</h2>
+  <h3>题目一：核心概念</h3>
+  <p>奥地利商业周期理论（ABCT）认为经济危机的根本原因是什么？</p>
+  <p>• A. 有效需求不足</p>
+  <p>• B. 技术创新停滞</p>
+  <p>• C. 央行人为压低利率导致信用扩张和错误投资</p>
+  <p>• D. 消费者过度储蓄</p>
+  <p><strong>答案：C。</strong> ABCT的核心论点是：央行通过人为压低利率制造信用扩张，扭曲了价格信号，导致企业家做出错误的投资决策，最终泡沫破裂、危机爆发。</p>
+  <h3>题目二：概念辨析</h3>
+  <p>奥地利学派所说的"错误投资"（Malinvestment）是什么意思？</p>
+  <p>• A. 投资总量超过了储蓄许可的水平</p>
+  <p>• B. 投资方向与消费者的真实偏好不匹配</p>
+  <p>• C. 投资回报率低于银行利率</p>
+  <p>• D. 企业家投资了非法项目</p>
+  <p><strong>答案：B。</strong> 错误投资不是"投资太多"，而是"投资错了方向"。信贷扩张扭曲了利率信号，导致资源被投入消费者实际不需要的领域。</p>
+  <h3>题目三：哈耶克思想</h3>
+  <p>哈耶克在《通往奴役之路》中的核心警告是什么？</p>
+  <p>• A. 通货膨胀必然导致经济崩溃</p>
+  <p>• B. 自由市场会导致贫富分化</p>
+  <p>• C. 即使出于善意，计划经济也必然走向极权</p>
+  <p>• D. 凯恩斯主义政策必然失败</p>
+  <p><strong>答案：C。</strong> 哈耶克认为，控制经济意味着控制人的生活。即使出发点是"公共利益"，计划经济的逻辑必然导致个人自由被系统性侵蚀。</p>
+  <h3>题目四：货币理论</h3>
+  <p>奥地利学派反对法定货币（Fiat Money）的主要理由是什么？</p>
+  <p>• A. 法定货币无法在国际上流通</p>
+  <p>• B. 法定货币使政府能够无限制地进行信用扩张</p>
+  <p>• C. 法定货币的印刷成本太高</p>
+  <p>• D. 法定货币不便于携带</p>
+  <p><strong>答案：B。</strong> 法定货币没有实物（如黄金）约束，政府可以无限制印钞和扩张信用，而信用扩张正是ABCT所描述的经济周期波动的根源。</p>
+  <h3>题目五：理论整合</h3>
+  <p>将ABCT与康波理论整合后，以下哪项最准确地描述了"康波上升期"的形成机制？</p>
+  <p>• A. 纯粹由技术创新驱动，与货币无关</p>
+  <p>• B. 新技术革命提供投资"题材"，信用扩张提供"燃料"，两者叠加创造繁荣</p>
+  <p>• C. 完全由政府财政政策推动</p>
+  <p>• D. 国际贸易增长的自然结果</p>
+  <p><strong>答案：B。</strong> 康波是技术革命（熊彼特）与信用扩张收缩（ABCT）共同驱动的。新技术提供增长动力，信贷扩张放大投资热潮，两者叠加形成50-60年的长波上升期。</p>
+</div>
+<div class="section">
+  <h2><span class="icon"></span> </h2>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p>📖 <strong>延伸阅读</strong>：《人的行为》米塞斯、《通往奴役之路》哈耶克、《价格与生产》哈耶克、《自由秩序原理》哈耶克、《货币的非国家化》哈耶克、《奥地利学派经济学入门》兰德尔·霍尔库姆</p></div>
+</div>
+
+
+<!-- BOTTOM NAV -->
+<div class="bottom-nav">
+  <a href="lesson12.html" class="prev">← 第12课</a>
+  <a href="lesson14.html" class="next">第14课 →</a>
+</div>
+
+</div>
+
+<script>
+// Reading progress
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement;
+  const pct=(h.scrollTop)/(h.scrollHeight-h.clientHeight)*100;
+  document.getElementById('progressFill').style.width=pct+'%';
+});
+
+// Audio player
+function toggleAudio(){
+  const audio=document.getElementById('courseAudio');
+  const btn=document.getElementById('playBtn');
+  if(audio.paused){audio.play();btn.textContent='⏸️'}else{audio.pause();btn.textContent='▶️'}
+}
+</script>
+
+</body>
+</html>

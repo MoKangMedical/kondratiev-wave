@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第11课：凯恩斯 — 动物精神与政府干预 — 康波研究院</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#09090b;--bg2:#0f0f13;--card:#1c1c21;--card2:#222228;--card3:#2a2a32;--border:#27272a;--border2:#3f3f46;--text:#fafafa;--text2:#a1a1aa;--text3:#71717a;--gold:#e2b64f;--gold2:#f5d98a;--green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;--orange:#f59e0b;--red:#ef4444;--serif:'Noto Serif SC',serif;--sans:'Inter',sans-serif;--radius:16px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:2;font-size:18px}
+a{color:var(--gold);text-decoration:none}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(9,9,11,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);height:56px;display:flex;align-items:center}
+.nav-inner{max-width:900px;margin:0 auto;padding:0 24px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-left{display:flex;align-items:center;gap:16px}
+.nav-back{font-size:0.9rem;color:var(--text3);transition:color .2s}.nav-back:hover{color:var(--gold)}
+.nav-title{font-size:0.9rem;color:var(--text2);font-weight:500}
+.nav-right{display:flex;align-items:center;gap:12px}
+.nav-lesson{font-size:0.8rem;color:var(--text3);background:var(--card2);padding:4px 14px;border-radius:6px}
+
+/* PROGRESS BAR */
+.progress-bar{position:fixed;top:56px;left:0;right:0;height:3px;background:var(--border);z-index:99}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));transition:width .3s;width:0%}
+
+/* MAIN */
+.main{max-width:800px;margin:0 auto;padding:80px 28px 60px}
+
+/* LESSON HEADER */
+.lesson-header{margin-bottom:56px;text-align:center}
+.lesson-cat{display:inline-block;font-size:0.75rem;color:var(--gold);background:rgba(226,182,79,0.1);padding:4px 14px;border-radius:20px;margin-bottom:16px;letter-spacing:0.1em}
+.lesson-header h1{font-family:var(--serif);font-size:clamp(2rem,5vw,2.8rem);font-weight:900;line-height:1.3;margin-bottom:16px;background:linear-gradient(135deg,var(--text),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lesson-meta{display:flex;gap:20px;justify-content:center;flex-wrap:wrap}
+.lesson-meta span{font-size:0.85rem;color:var(--text3);display:flex;align-items:center;gap:6px}
+
+/* SECTIONS */
+.section{margin-bottom:48px}
+.section h2{font-size:1.4rem;font-weight:700;margin-bottom:20px;color:var(--text);display:flex;align-items:center;gap:10px}
+.section h2 .icon{font-size:1.2rem}
+.section h3{font-size:1.15rem;font-weight:600;margin:28px 0 12px;color:var(--gold2)}
+.section p{color:var(--text2);font-size:1.05rem;margin-bottom:14px;line-height:2}
+
+/* CALLOUT */
+.callout{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:28px;margin:24px 0}
+.callout.gold{border-left:4px solid var(--gold)}
+.callout.green{border-left:4px solid var(--green)}
+.callout.blue{border-left:4px solid var(--blue)}
+.callout-title{font-size:0.85rem;font-weight:600;color:var(--gold);margin-bottom:10px;text-transform:uppercase;letter-spacing:0.08em}
+.callout p{color:var(--text2);font-size:1rem;line-height:1.9}
+
+/* TABLE */
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:0.95rem}
+.data-table th{text-align:left;padding:12px 14px;background:var(--card2);color:var(--text3);font-weight:600;font-size:0.85rem;text-transform:uppercase;letter-spacing:0.05em;border-bottom:2px solid var(--border)}
+.data-table td{padding:12px 14px;border-bottom:1px solid var(--border);color:var(--text2)}
+.data-table tr:hover td{background:var(--card)}
+
+/* EXERCISE */
+.exercise{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:32px;margin:28px 0}
+.exercise-label{display:inline-flex;align-items:center;gap:6px;font-size:0.8rem;font-weight:600;color:var(--blue);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:14px}
+.exercise h3{font-size:1.1rem;margin-bottom:10px;color:var(--text)}
+.exercise p{color:var(--text2);font-size:1rem;margin-bottom:14px}
+.exercise-question{color:var(--text);font-weight:500;font-size:1.05rem}
+.exercise textarea{width:100%;min-height:90px;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:16px;color:var(--text);font-family:var(--sans);font-size:1rem;resize:vertical;transition:border-color .2s;line-height:1.8}
+.exercise textarea:focus{outline:none;border-color:var(--gold)}
+.exercise textarea::placeholder{color:var(--text3)}
+
+/* BOTTOM NAV */
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;padding:36px 0;margin-top:48px;border-top:1px solid var(--border)}
+.bottom-nav a{display:flex;align-items:center;gap:8px;padding:14px 24px;border-radius:12px;font-size:1rem;font-weight:500;transition:all .2s}
+.bottom-nav .prev{color:var(--text3);border:1px solid var(--border)}
+.bottom-nav .prev:hover{border-color:var(--gold);color:var(--gold)}
+.bottom-nav .next{background:var(--gold);color:#000}
+.bottom-nav .next:hover{background:var(--gold2)}
+
+/* AUDIO PLAYER */
+.audio-player{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin:24px 0;display:flex;align-items:center;gap:16px}
+.audio-player .play-btn{width:48px;height:48px;border-radius:50%;background:var(--gold);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.2rem;transition:background .2s;flex-shrink:0}
+.audio-player .play-btn:hover{background:var(--gold2)}
+.audio-player .audio-info{flex:1}
+.audio-player .audio-title{font-size:0.9rem;font-weight:600;color:var(--text);margin-bottom:4px}
+.audio-player .audio-sub{font-size:0.8rem;color:var(--text3)}
+
+/* RESPONSIVE */
+@media(max-width:640px){
+  .main{padding:72px 16px 40px}
+  .lesson-header h1{font-size:1.8rem}
+  .section h2{font-size:1.2rem}
+  .data-table{font-size:0.85rem}
+  .data-table th,.data-table td{padding:8px 10px}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-left">
+      <a href="index.html" class="nav-back">← 返回首页</a>
+      <span class="nav-title">第11课</span>
+    </div>
+    <div class="nav-right">
+      <span class="nav-lesson">11 / 20</span>
+    </div>
+  </div>
+</nav>
+<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+
+<div class="main">
+
+<!-- HEADER -->
+<div class="lesson-header">
+  <div class="lesson-cat">经济学派</div>
+  <h1>🏛️ 凯恩斯 — 动物精神与政府干预</h1>
+  <div class="lesson-meta">
+    <span>📖 阅读约30分钟</span>
+    <span>✏️ 0道练习题</span>
+    <span>🎯 基础</span>
+  </div>
+</div>
+
+<!-- AUDIO OVERVIEW -->
+<div class="audio-player">
+  <button class="play-btn" onclick="toggleAudio()" id="playBtn">▶️</button>
+  <div class="audio-info">
+    <div class="audio-title">🎧 课程音频概述</div>
+    <div class="audio-sub">点击播放课程核心内容摘要</div>
+  </div>
+  <audio id="courseAudio" preload="none">
+    <source src="audio/lesson11.mp3" type="audio/mpeg">
+  </audio>
+</div>
+
+
+
+<div class="section">
+  <h2><span class="icon"></span> </h2>
+  <p># 第十一课：凯恩斯 — 动物精神与政府干预</p>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p>"在长期中，我们都是死人。" —— 约翰·梅纳德·凯恩斯</p></div>
+  <p>></p>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p>参考文献：《就业、利息和货币通论》（The General Theory of Employment, Interest and Money, 1936）</p></div>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 课程导言</h2>
+  <p>约翰·梅纳德·凯恩斯是20世纪最具影响力的经济学家之一。他的思想彻底改变了人们对市场经济运行方式的理解，尤其是在经济危机和衰退时期。本课程将深入探讨凯恩斯的核心理论——有效需求、流动性陷阱、节俭悖论，以及最具争议性的"动物精神"概念，并将这些理论与康德拉季耶夫长波周期进行关联分析。</p>
+  <h3>本课学习目标</h3>
+  <p>完成本课程后，学员应能够：</p>
+  <p><strong>1.</strong> 理解凯恩斯有效需求原理及其对古典经济学的革命性挑战</p>
+  <p><strong>2.</strong> 解释流动性陷阱和节俭悖论的机制及其在康波萧条期的表现</p>
+  <p><strong>3.</strong> 阐述"动物精神"概念及其对经济周期非对称性的解释力</p>
+  <p><strong>4.</strong> 对比凯恩斯主义与奥地利学派在经济危机应对上的核心分歧</p>
+  <p><strong>5.</strong> 将凯恩斯理论框架应用于分析当前康波周期的阶段与政策选择</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 第一节：凯恩斯生平</h2>
+  <h3>1.1 早年与教育</h3>
+  <p>• <strong>出生</strong>：1883年6月5日，英国剑桥</p>
+  <p>• <strong>家庭背景</strong>：父亲约翰·内维尔·凯恩斯是剑桥大学的经济学家和逻辑学家，母亲弗洛伦斯·阿达是剑桥市第一批女性市议员之一</p>
+  <p>• <strong>教育经历</strong>：伊顿公学 → 剑桥大学国王学院，主修数学</p>
+  <p>• <strong>师承关系</strong>：师从阿尔弗雷德·马歇尔（Alfred Marshall）</p>
+  <h3>1.2 职业生涯</h3>
+  <table class="data-table"><thead><tr><th>时期</th><th>身份/角色</th><th>主要成就</th></tr></thead><tbody>
+  <tr><td>1906-1908</td><td>印度事务部公务员</td><td>研究印度货币与金融</td></tr>
+  <tr><td>1908-1944</td><td>剑桥大学讲师/研究员</td><td>经济理论的教学与研究</td></tr>
+  <tr><td>1915-1919</td><td>英国财政部</td><td>参与一战财政事务</td></tr>
+  <tr><td>1919</td><td>巴黎和会英国代表</td><td>因反对《凡尔赛条约》愤然辞职</td></tr>
+  <tr><td>1919-1946</td><td>金融投资家</td><td>在国际金融市场进行投机交易</td></tr>
+  <tr><td>1944</td><td>布雷顿森林会议</td><td>主导设计国际货币体系</td></tr>
+  </tbody></table>
+  <p>|------|----------|---------|</p>
+  <h3>1.3 关键人生节点</h3>
+  <p><strong>《凡尔赛条约》的觉醒时刻（1919）</strong></p>
+  <p>凯恩斯作为英国财政部首席代表参加巴黎和会，亲眼目睹战胜国对德国的极端苛刻要求。他预见到巨额赔款将导致德国经济崩溃和欧洲不稳定，愤然辞职并写下《和平的经济后果》（1919），准确预言了后来的大萧条和二战的种子。</p>
+  <p><strong>布雷顿森林体系的设计者（1944）</strong></p>
+  <p>凯恩斯提出建立国际清算联盟的方案，主张创建超主权货币"Bancor"以解决全球失衡问题。虽然最终采用了美国代表怀特的方案，但凯恩斯的思想深刻影响了战后国际金融体系。</p>
+  <p>• <strong>去世</strong>：1946年4月21日，心脏病发作</p>
+  <p>• <strong>思想遗产</strong>：凯恩斯主义成为战后西方国家经济政策的主流指导思想，催生了宏观经济学这一独立学科</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 第二节：《通论》核心思想</h2>
+  <h3>2.1 时代背景：大萧条的冲击</h3>
+  <p>1929年华尔街崩盘引发全球经济大萧条：美国GDP下降约30%，失业率飙升至25%，全球贸易萎缩60%。传统古典经济学无法解释为何市场无法自我修复。</p>
+  <p>凯恩斯认为，古典经济学关于"供给自动创造需求"（萨伊定律）的假设是错误的。市场并不总是能自动达到充分就业均衡，经济可能长期停留在低于充分就业的状态。</p>
+  <h3>2.2 有效需求原理（Effective Demand）</h3>
+  <p><strong>核心命题</strong>：就业量取决于有效需求，而有效需求取决于消费倾向和投资量。</p>
+  <p><code>`</code></p>
+  <p>有效需求 = 总消费 + 总投资</p>
+  <p>Y = C + I（封闭经济简化模型）</p>
+  <p>其中：</p>
+  <p>C = c₀ + cY（c为边际消费倾向，0 < c < 1）</p>
+  <p>I = I(r, E)（r为利率，E为预期）</p>
+  <p>乘数效应（Multiplier）：</p>
+  <p>ΔY = k × ΔI</p>
+  <p>其中 k = 1/(1-c)</p>
+  <p><code>`</code></p>
+  <p><strong>有效需求原理的革命性意义</strong>：</p>
+  <p>• 打破了萨伊定律——"供给自动创造需求"</p>
+  <p>• 证明了经济可以在低于充分就业水平上长期均衡</p>
+  <p>• 为政府干预提供了理论基础</p>
+  <p><strong>乘数效应的现实意义</strong>：</p>
+  <p>假设边际消费倾向 c = 0.8，则乘数 k = 1/(1-0.8) = 5。这意味着政府每增加1亿元支出，国民收入将增加5亿元。乘数效应通过以下链条传导：</p>
+  <p><code>`</code></p>
+  <p>政府投资1亿建桥 → 建筑工人收入增1亿 → 消费增0.8亿 → 零售/服务业收入增0.8亿</p>
+  <p>→ 消费增0.64亿 → ……→ 总收入增加5亿</p>
+  <p><code>`</code></p>
+  <p>在康波萧条期，由于闲置资源（劳动力、工厂）大量存在，乘数效应尤为显著——每一元政府支出都能被充分吸收而不产生"挤出效应"。</p>
+  <h3>2.3 流动性陷阱（Liquidity Trap）</h3>
+  <p>当利率降低到某一极低水平时，人们预期利率将上升（债券价格将下跌），宁愿持有现金而不愿购买债券。此时，增加货币供应量不再能降低利率，货币政策失效。</p>
+  <p><code>`</code></p>
+  <p>利率 r</p>
+  <p>│</p>
+  <p>│  \  正常区域：货币供给↑ → 利率↓</p>
+  <p>│   \</p>
+  <p>│    \_________</p>
+  <p>│              r*（陷阱利率）</p>
+  <p>│  ↑ 流动性陷阱区域</p>
+  <p>│  货币供给↑ → 利率不变（货币需求无限弹性）</p>
+  <p>│_________________________________ 货币供给 M</p>
+  <p><code>`</code></p>
+  <p><strong>对康波理论的启示</strong>：长波萧条期可能伴随流动性陷阱，货币政策在极端衰退中失效，需要财政政策作为主要刺激手段。日本"失去的二十年"是现代典型案例。</p>
+  <h3>2.4 节俭悖论（Paradox of Thrift）</h3>
+  <p>如果所有人都增加储蓄，总需求将下降，国民收入减少，最终每个人的储蓄反而下降——这就是"节俭悖论"。</p>
+  <p><code>`</code></p>
+  <p>设初始均衡：Y₁ = C₁ + I</p>
+  <p>储蓄增加后：C₂ = c₀ + c'Y₂（c' < c）</p>
+  <p>由于c' < c：Y₂ < Y₁</p>
+  <p>总储蓄 = Y - C</p>
+  <p>虽然储蓄率↑，但收入↓更多，所以总储蓄可能反而↓</p>
+  <p><code>`</code></p>
+  <p><strong>与康波的关联</strong>：康波萧条期社会整体趋向保守，储蓄率上升，节俭悖论导致经济进一步恶化，需要政府通过财政支出"替代"私人部门的储蓄行为。</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 第三节：动物精神（Animal Spirits）</h2>
+  <h3>3.1 概念起源</h3>
+  <p>"动物精神"出现在《通论》第12章"长期预期状态"中。凯恩斯用这个概念描述驱使人们做出经济决策的心理因素——那些无法用理性计算解释的本能冲动和情绪驱动。</p>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p>"我们的大部分经济决策……只能被理解为动物精神的自发乐观的结果，而非理性计算的产物。"</p></div>
+  <h3>3.2 传统经济学 vs 凯恩斯</h3>
+  <p>古典/新古典经济学假设：完全理性、完全信息、市场有效、均衡导向。</p>
+  <p>凯恩斯的挑战：在根本不确定性下，理性计算是不可能的。现实中的决策受到三种不确定性的影响——可计算的风险、无法计算的不确定性、以及根本无知（不知道自己不知道什么）。决策必然依赖直觉、从众心理、信心和传统惯例。</p>
+  <h3>3.3 动物精神的具体表现</h3>
+  <p><strong>投资决策中的"选美比赛"比喻</strong>：</p>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p>"投资如同报纸选美比赛——你不是选你认为最漂亮的脸，而是选你认为其他人会认为最漂亮的脸。"</p></div>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p>"市场可以保持非理性的时间，比你能保持偿付能力的时间更长。"</p></div>
+  <p><strong>信心的自我实现机制</strong>：</p>
+  <p><code>`</code></p>
+  <p>信心崩溃 → 投资骤降 → 收入减少 → 消费下降 → 更多失业</p>
+  <p>↑                                              │</p>
+  <p>└────────── 悲观预期自我强化 ←──────────────────┘</p>
+  <p>信心恢复 → 投资增加 → 收入增加 → 消费上升 → 更多就业</p>
+  <p>↑                                              │</p>
+  <p>└────────── 乐观预期自我强化 ←──────────────────┘</p>
+  <p><code>`</code></p>
+  <p><strong>阿克洛夫与席勒的《动物精神》（2009）</strong>将凯恩斯概念发展为五个维度：</p>
+  <p><strong>1.</strong> <strong>信心及其乘数效应</strong>：信心波动是经济波动的核心</p>
+  <p><strong>2.</strong> <strong>公平</strong>：人们对公平的感知影响经济行为</p>
+  <p><strong>3.</strong> <strong>腐败与反社会行为</strong>：经济繁荣期的道德风险</p>
+  <p><strong>4.</strong> <strong>货币幻觉</strong>：人们关注名义而非实际价值</p>
+  <p><strong>5.</strong> <strong>故事</strong>：人类通过叙事理解经济世界</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 第四节：凯恩斯主义 vs 奥地利学派</h2>
+  <h3>4.1 基本立场对比</h3>
+  <table class="data-table"><thead><tr><th>维度</th><th>凯恩斯主义</th><th>奥地利学派</th></tr></thead><tbody>
+  <tr><td>市场本质</td><td>市场存在内在不稳定性</td><td>市场自发协调，趋向均衡</td></tr>
+  <tr><td>经济危机成因</td><td>有效需求不足、信心崩溃</td><td>信贷扩张扭曲投资结构</td></tr>
+  <tr><td>政府角色</td><td>应积极干预稳定经济</td><td>干预只会制造更多问题</td></tr>
+  <tr><td>财政政策</td><td>衰退期扩大支出（逆周期）</td><td>财政赤字消耗资本</td></tr>
+  <tr><td>萧条对策</td><td>刺激总需求，创造就业</td><td>清算错误投资，恢复健康</td></tr>
+  <tr><td>储蓄观</td><td>节俭可能有害（节俭悖论）</td><td>储蓄是投资的基础</td></tr>
+  </tbody></table>
+  <p>|------|-----------|-----------|</p>
+  <h3>4.2 对大萧条的不同解释</h3>
+  <p><strong>凯恩斯主义</strong>：信心崩溃 → 有效需求严重不足 → 恶性循环 → 政府应通过大规模财政支出打破循环</p>
+  <p><strong>奥地利学派（哈耶克、米塞斯）</strong>：1920年代美联储过度宽松 → 人为低利率导致过度投资 → 泡沫破裂 → 危机是对错误投资的必要清算，政府干预只会延长痛苦</p>
+  <h3>4.3 两派在长波周期中的位置</h3>
+  <p><code>`</code></p>
+  <p>繁荣期（Spring）    → 两派共识：自由市场运作良好</p>
+  <p>上升期（Summer）    → 奥地利学派警告：信贷过度扩张</p>
+  <p>衰退期（Autumn）    → 争论开始：紧缩 vs 刺激？</p>
+  <p>萧条期（Winter）    → 凯恩斯主义：需要大规模干预</p>
+  <p>奥地利学派：让市场自我纠正</p>
+  <p><code>`</code></p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 第五节：凯恩斯理论与康波周期</h2>
+  <h3>5.1 凯恩斯框架下的长波解读</h3>
+  <table class="data-table"><thead><tr><th>康波阶段</th><th>凯恩斯概念对应</th></tr></thead><tbody>
+  <tr><td>上升期（春）</td><td>有效需求旺盛，动物精神乐观扩散，乘数效应正向运行</td></tr>
+  <tr><td>繁荣期（夏）</td><td>有效需求过热，过度乐观、投机狂热，流动性偏好降低</td></tr>
+  <tr><td>衰退期（秋）</td><td>有效需求开始不足，信心从乐观转向谨慎，乘数效应逆转</td></tr>
+  <tr><td>萧条期（冬）</td><td>有效需求严重不足，悲观恐惧蔓延，流动性陷阱出现，节俭悖论全面显现</td></tr>
+  </tbody></table>
+  <p>|----------|--------------|</p>
+  <h3>5.2 流动性陷阱与康波萧条期</h3>
+  <p><strong>历史案例</strong>：</p>
+  <p>• <strong>1930年代大萧条</strong>：美联储利率降至近零，但银行不愿放贷。最终通过罗斯福新政和二战军需走出</p>
+  <p>• <strong>1990年代日本</strong>：央行利率降至零（ZIRP），实施QE，但经济长期停滞</p>
+  <p>• <strong>2008年金融危机后</strong>：全球主要央行利率降至历史低位，中国实施4万亿刺激计划</p>
+  <h3>5.3 动物精神与康波拐点</h3>
+  <p><strong>康波顶点</strong>：社会弥漫极度乐观，"这次不一样"叙事流行，投机达到极端（1929年、2000年、2007年）</p>
+  <p><strong>康波底点</strong>：社会弥漫极度悲观，"永远不会好"叙事流行，投资停滞、现金为王（1932年、2009年）。但正是在这个点上，新的技术范式开始萌芽。</p>
+  <h3>5.4 政府干预在康波不同阶段的效果</h3>
+  <table class="data-table"><thead><tr><th>康波阶段</th><th>凯恩斯建议</th><th>实际效果</th><th>风险</th></tr></thead><tbody>
+  <tr><td>繁荣期</td><td>减少支出，积累财政空间</td><td>逆周期操作困难</td><td>过度紧缩引发衰退</td></tr>
+  <tr><td>衰退期</td><td>适度财政刺激</td><td>早期干预效果明显</td><td>可能延缓市场调整</td></tr>
+  <tr><td>萧条期</td><td>大规模财政扩张</td><td>短期有效打破恶性循环</td><td>债务累积、道德风险</td></tr>
+  <tr><td>复苏期</td><td>逐步退出刺激</td><td>退出时机判断困难</td><td>过早退出导致二次衰退</td></tr>
+  </tbody></table>
+  <p>|----------|-----------|---------|------|</p>
+  <h3>5.5 凯恩斯的"长期"与康波</h3>
+  <p>凯恩斯名言"在长期中，我们都是死人"在康波理论中具有深刻含义：康波一个周期约50-60年，投资者职业生涯约30-40年。不能因为"长期市场会自我修复"就不作为——在萧条期，"长期"可能意味着几十年的痛苦。日本"失去的二十年"就是例证。但奥地利学派反驳：正是因为政府持续干预延缓调整，才延长了萧条期。</p>
+  <h3>5.6 康波周期中的凯恩斯政策遗产</h3>
+  <p><code>`</code></p>
+  <p>1930s-1940s（第二次康波冬期）：</p>
+  <p>→ 凯恩斯理论诞生于大萧条</p>
+  <p>→ 罗斯福新政：凯恩斯主义的首次大规模实践</p>
+  <p>→ 结果：凯恩斯主义取得巨大成功，带来战后繁荣</p>
+  <p>1970s-1980s（第三次康波冬期）：</p>
+  <p>→ 滞胀（Stagflation）挑战凯恩斯主义</p>
+  <p>→ 弗里德曼的货币主义兴起</p>
+  <p>→ "凯恩斯主义已死"的声音</p>
+  <p>2008-2020s（第四/五次康波冬期？）：</p>
+  <p>→ "凯恩斯主义复兴"</p>
+  <p>→ 全球大规模QE和财政刺激</p>
+  <p>→ MMT（现代货币理论）的兴起</p>
+  <p><code>`</code></p>
+  <h3>5.7 课程要点总结</h3>
+  <table class="data-table"><thead><tr><th>概念</th><th>定义</th><th>康波意义</th></tr></thead><tbody>
+  <tr><td>有效需求</td><td>决定就业水平的总需求</td><td>康波波动的核心驱动力</td></tr>
+  <tr><td>流动性陷阱</td><td>货币政策失效的极端情况</td><td>萧条期的典型特征</td></tr>
+  <tr><td>节俭悖论</td><td>全民储蓄反而降低总收入</td><td>萧条期的恶性循环</td></tr>
+  <tr><td>动物精神</td><td>非理性心理驱动经济决策</td><td>康波拐点的心理基础</td></tr>
+  <tr><td>乘数效应</td><td>支出放大的经济效果</td><td>政府干预有效性的理论依据</td></tr>
+  </tbody></table>
+  <p>|------|------|---------|</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 课后测验</h2>
+  <h3>问题 1：有效需求原理</h3>
+  <p><strong>题目</strong>：凯恩斯的有效需求原理如何挑战了古典经济学的萨伊定律？在康波周期的萧条期，有效需求不足的表现是什么？</p>
+  <p><strong>参考答案</strong>：萨伊定律认为"供给自动创造需求"。凯恩斯反驳：储蓄可能导致需求缺口，投资不一定等于储蓄。有效需求取决于消费倾向和投资量，两者都受预期和信心影响。在康波萧条期，有效需求不足表现为：消费低迷（悲观预期导致储蓄增加）、投资停滞（对未来缺乏信心）、失业率居高不下。凯恩斯证明了经济可以在低于充分就业的水平上长期均衡。</p>
+  <h3>问题 2：流动性陷阱</h3>
+  <p><strong>题目</strong>：什么是流动性陷阱？为什么在其中传统货币政策会失效？这对康波萧条期的政策含义是什么？</p>
+  <p><strong>参考答案</strong>：流动性陷阱是利率降至极低水平时，人们预期利率将上升，因此无限偏好持有现金而非投资债券。此时LM曲线水平，货币需求利率弹性趋于无穷大，增加货币供应只是被人们以现金形式持有，不再能降低利率、刺激投资。政策含义：依赖货币政策无法走出衰退，必须依靠财政政策创造有效需求。历史案例：1930年代大萧条、日本失去的二十年、2008年后全球零利率环境。</p>
+  <h3>问题 3：节俭悖论</h3>
+  <p><strong>题目</strong>：用乘数效应逻辑推导节俭悖论。为什么在康波萧条期，个人理性行为会导致集体非理性结果？</p>
+  <p><strong>参考答案</strong>：所有人增加储蓄 → 消费减少 → 企业收入减少 → 裁员 → 居民收入减少 → 消费进一步减少。乘数效应放大这一过程：ΔY = -ΔC × 1/(1-c)。个人理性：不确定时期增加储蓄应对风险。集体非理性：总需求大幅下降，经济更深衰退，最终总储蓄反而下降。康波萧条期特别明显，社会整体趋向保守，形成悲观预期的自我强化循环。政策含义：需要政府通过财政支出"替代"私人部门减少的消费。</p>
+  <h3>问题 4：动物精神</h3>
+  <p><strong>题目</strong>：凯恩斯的"动物精神"如何解释经济周期的非对称性？与康波周期有何关联？</p>
+  <p><strong>参考答案</strong>：动物精神指驱动经济决策的非理性心理因素。繁荣期：乐观情绪自我强化 → 过度投资 → 资产泡沫 → "这次不一样"叙事。衰退期：悲观情绪自我强化 → 投资停滞 → "永远不会好"叙事。非对称性来源：人类对损失和收益的反应不对称（损失厌恶）。与康波关联：康波顶点对应动物精神的极端乐观（1929年、2000年、2007年），底点对应极端悲观。康波拐点的实质不仅是经济结构转折，也是社会心理状态的转折。</p>
+  <h3>问题 5：凯恩斯主义 vs 奥地利学派</h3>
+  <p><strong>题目</strong>：比较两派对康波萧条期的政策建议，分析各自优势和局限性，当前哪种理论可能更适用？</p>
+  <p><strong>参考答案</strong>：凯恩斯主义主张萧条期政府大规模财政干预，通过乘数效应打破恶性循环；奥地利学派主张萧条是对错误投资的必要清算，政府干预延长痛苦。凯恩斯主义优势：短期有效止血、减少社会痛苦；局限：债务累积、道德风险、退出困难。奥地利学派优势：正视长期结构问题、避免道德风险；局限：短期痛苦引发社会动荡、对"清算"缺乏精确指导。当前适用性：面临深度衰退时凯恩斯短期更实用，面临长期债务危机时奥地利学派的警示更应重视。理想政策是两者综合——短期凯恩斯式刺激与长期结构改革并行。</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 延伸阅读</h2>
+  <p><strong>1.</strong> <strong>凯恩斯</strong>：《就业、利息和货币通论》（1936）—— 本课核心参考</p>
+  <p><strong>2.</strong> <strong>凯恩斯</strong>：《和平的经济后果》（1919）—— 理解凯恩斯思想的缘起</p>
+  <p><strong>3.</strong> <strong>阿克洛夫 & 席勒</strong>：《动物精神》（2009）—— 动物精神的现代发展</p>
+  <p><strong>4.</strong> <strong>辜朝明</strong>：《大衰退》—— 流动性陷阱与资产负债表衰退</p>
+  <p><strong>5.</strong> <strong>哈耶克</strong>：《价格与生产》—— 奥地利学派对凯恩斯的回应</p>
+  <p><strong>6.</strong> <strong>斯基德尔斯基</strong>：《凯恩斯传》—— 最权威的凯恩斯传记</p>
+</div>
+<div class="section">
+  <h2><span class="icon"></span> </h2>
+  <p><strong>下一课预告</strong>：第十二课 — 熊彼特：创造性毁灭与长波动力</p>
+</div>
+<div class="section">
+  <h2><span class="icon"></span> </h2>
+  <p><em>课程编号：11 | 所属模块：经济周期理论家 | 最后更新：2024</em></p>
+</div>
+
+
+<!-- BOTTOM NAV -->
+<div class="bottom-nav">
+  <a href="lesson10.html" class="prev">← 第10课</a>
+  <a href="lesson12.html" class="next">第12课 →</a>
+</div>
+
+</div>
+
+<script>
+// Reading progress
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement;
+  const pct=(h.scrollTop)/(h.scrollHeight-h.clientHeight)*100;
+  document.getElementById('progressFill').style.width=pct+'%';
+});
+
+// Audio player
+function toggleAudio(){
+  const audio=document.getElementById('courseAudio');
+  const btn=document.getElementById('playBtn');
+  if(audio.paused){audio.play();btn.textContent='⏸️'}else{audio.pause();btn.textContent='▶️'}
+}
+</script>
+
+</body>
+</html>

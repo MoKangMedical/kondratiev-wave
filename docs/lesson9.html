@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第9课：达里奥 — 全天候策略与债务周期 — 康波研究院</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#09090b;--bg2:#0f0f13;--card:#1c1c21;--card2:#222228;--card3:#2a2a32;--border:#27272a;--border2:#3f3f46;--text:#fafafa;--text2:#a1a1aa;--text3:#71717a;--gold:#e2b64f;--gold2:#f5d98a;--green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;--orange:#f59e0b;--red:#ef4444;--serif:'Noto Serif SC',serif;--sans:'Inter',sans-serif;--radius:16px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:2;font-size:18px}
+a{color:var(--gold);text-decoration:none}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(9,9,11,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);height:56px;display:flex;align-items:center}
+.nav-inner{max-width:900px;margin:0 auto;padding:0 24px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-left{display:flex;align-items:center;gap:16px}
+.nav-back{font-size:0.9rem;color:var(--text3);transition:color .2s}.nav-back:hover{color:var(--gold)}
+.nav-title{font-size:0.9rem;color:var(--text2);font-weight:500}
+.nav-right{display:flex;align-items:center;gap:12px}
+.nav-lesson{font-size:0.8rem;color:var(--text3);background:var(--card2);padding:4px 14px;border-radius:6px}
+
+/* PROGRESS BAR */
+.progress-bar{position:fixed;top:56px;left:0;right:0;height:3px;background:var(--border);z-index:99}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));transition:width .3s;width:0%}
+
+/* MAIN */
+.main{max-width:800px;margin:0 auto;padding:80px 28px 60px}
+
+/* LESSON HEADER */
+.lesson-header{margin-bottom:56px;text-align:center}
+.lesson-cat{display:inline-block;font-size:0.75rem;color:var(--gold);background:rgba(226,182,79,0.1);padding:4px 14px;border-radius:20px;margin-bottom:16px;letter-spacing:0.1em}
+.lesson-header h1{font-family:var(--serif);font-size:clamp(2rem,5vw,2.8rem);font-weight:900;line-height:1.3;margin-bottom:16px;background:linear-gradient(135deg,var(--text),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lesson-meta{display:flex;gap:20px;justify-content:center;flex-wrap:wrap}
+.lesson-meta span{font-size:0.85rem;color:var(--text3);display:flex;align-items:center;gap:6px}
+
+/* SECTIONS */
+.section{margin-bottom:48px}
+.section h2{font-size:1.4rem;font-weight:700;margin-bottom:20px;color:var(--text);display:flex;align-items:center;gap:10px}
+.section h2 .icon{font-size:1.2rem}
+.section h3{font-size:1.15rem;font-weight:600;margin:28px 0 12px;color:var(--gold2)}
+.section p{color:var(--text2);font-size:1.05rem;margin-bottom:14px;line-height:2}
+
+/* CALLOUT */
+.callout{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:28px;margin:24px 0}
+.callout.gold{border-left:4px solid var(--gold)}
+.callout.green{border-left:4px solid var(--green)}
+.callout.blue{border-left:4px solid var(--blue)}
+.callout-title{font-size:0.85rem;font-weight:600;color:var(--gold);margin-bottom:10px;text-transform:uppercase;letter-spacing:0.08em}
+.callout p{color:var(--text2);font-size:1rem;line-height:1.9}
+
+/* TABLE */
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:0.95rem}
+.data-table th{text-align:left;padding:12px 14px;background:var(--card2);color:var(--text3);font-weight:600;font-size:0.85rem;text-transform:uppercase;letter-spacing:0.05em;border-bottom:2px solid var(--border)}
+.data-table td{padding:12px 14px;border-bottom:1px solid var(--border);color:var(--text2)}
+.data-table tr:hover td{background:var(--card)}
+
+/* EXERCISE */
+.exercise{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:32px;margin:28px 0}
+.exercise-label{display:inline-flex;align-items:center;gap:6px;font-size:0.8rem;font-weight:600;color:var(--blue);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:14px}
+.exercise h3{font-size:1.1rem;margin-bottom:10px;color:var(--text)}
+.exercise p{color:var(--text2);font-size:1rem;margin-bottom:14px}
+.exercise-question{color:var(--text);font-weight:500;font-size:1.05rem}
+.exercise textarea{width:100%;min-height:90px;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:16px;color:var(--text);font-family:var(--sans);font-size:1rem;resize:vertical;transition:border-color .2s;line-height:1.8}
+.exercise textarea:focus{outline:none;border-color:var(--gold)}
+.exercise textarea::placeholder{color:var(--text3)}
+
+/* BOTTOM NAV */
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;padding:36px 0;margin-top:48px;border-top:1px solid var(--border)}
+.bottom-nav a{display:flex;align-items:center;gap:8px;padding:14px 24px;border-radius:12px;font-size:1rem;font-weight:500;transition:all .2s}
+.bottom-nav .prev{color:var(--text3);border:1px solid var(--border)}
+.bottom-nav .prev:hover{border-color:var(--gold);color:var(--gold)}
+.bottom-nav .next{background:var(--gold);color:#000}
+.bottom-nav .next:hover{background:var(--gold2)}
+
+/* AUDIO PLAYER */
+.audio-player{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin:24px 0;display:flex;align-items:center;gap:16px}
+.audio-player .play-btn{width:48px;height:48px;border-radius:50%;background:var(--gold);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.2rem;transition:background .2s;flex-shrink:0}
+.audio-player .play-btn:hover{background:var(--gold2)}
+.audio-player .audio-info{flex:1}
+.audio-player .audio-title{font-size:0.9rem;font-weight:600;color:var(--text);margin-bottom:4px}
+.audio-player .audio-sub{font-size:0.8rem;color:var(--text3)}
+
+/* RESPONSIVE */
+@media(max-width:640px){
+  .main{padding:72px 16px 40px}
+  .lesson-header h1{font-size:1.8rem}
+  .section h2{font-size:1.2rem}
+  .data-table{font-size:0.85rem}
+  .data-table th,.data-table td{padding:8px 10px}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-left">
+      <a href="index.html" class="nav-back">← 返回首页</a>
+      <span class="nav-title">第9课</span>
+    </div>
+    <div class="nav-right">
+      <span class="nav-lesson">9 / 20</span>
+    </div>
+  </div>
+</nav>
+<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+
+<div class="main">
+
+<!-- HEADER -->
+<div class="lesson-header">
+  <div class="lesson-cat">投资大师</div>
+  <h1>🌦️ 达里奥 — 全天候策略与债务周期</h1>
+  <div class="lesson-meta">
+    <span>📖 阅读约40分钟</span>
+    <span>✏️ 0道练习题</span>
+    <span>🎯 进阶</span>
+  </div>
+</div>
+
+<!-- AUDIO OVERVIEW -->
+<div class="audio-player">
+  <button class="play-btn" onclick="toggleAudio()" id="playBtn">▶️</button>
+  <div class="audio-info">
+    <div class="audio-title">🎧 课程音频概述</div>
+    <div class="audio-sub">点击播放课程核心内容摘要</div>
+  </div>
+  <audio id="courseAudio" preload="none">
+    <source src="audio/lesson9.mp3" type="audio/mpeg">
+  </audio>
+</div>
+
+
+
+<div class="section">
+  <h2><span class="icon"></span> </h2>
+  <p># 第9课：达里奥 — 全天候与债务周期</p>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p><strong>参考著作</strong>：《原则》(Principles) 达里奥、《债务危机》(Big Debt Crises) 达里奥</p></div>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 开篇：为什么你需要"全天候"策略？</h2>
+  <p><strong>因为你无法预测明天会发生什么。</strong></p>
+  <p>大多数投资者犯的最大错误，是根据最近的市场表现来调整策略。2020年科技股暴涨就all in科技股，2022年暴跌又恐慌割肉——这不是投资，这是被市场牵着鼻子走。</p>
+  <p>达里奥的核心洞察：</p>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p>"我花了25年才明白一件事：我不知道的事情，远比我已知的多得多。所以，我需要一个不管发生什么都能存活的策略。"</p></div>
+  <p>这就是<strong>全天候策略（All Weather Strategy）</strong>的起源——不预测，只准备。</p>
+  <table class="data-table"><thead><tr><th>问题</th><th>传统策略</th><th>全天候策略</th></tr></thead><tbody>
+  <tr><td>经济增长超预期</td><td>股票大涨 ✅</td><td>股票+商品贡献收益 ✅</td></tr>
+  <tr><td>经济衰退</td><td>股票大跌 ❌</td><td>债券+黄金对冲 ✅</td></tr>
+  <tr><td>通胀飙升</td><td>现金贬值 ❌</td><td>黄金+商品对冲 ✅</td></tr>
+  <tr><td>通缩来袭</td><td>资产缩水 ❌</td><td>长期债券升值 ✅</td></tr>
+  </tbody></table>
+  <p>|------|----------|-----------|</p>
+  <p><strong>核心洞察</strong>：全天候不是追求最高回报，而是追求"在任何环境下都不崩溃"的生存能力。这与康波冬期的生存哲学完全一致。</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 雷·达里奥：全球最大对冲基金创始人</h2>
+  <h3>2.1 生平</h3>
+  <p>雷·达里奥（Ray Dalio, 1949-），桥水基金（Bridgewater Associates）创始人，管理资产规模峰值超过1500亿美元，是全球最大的对冲基金。</p>
+  <p>关键时间线：</p>
+  <p><code>`</code></p>
+  <p>1949年  出生于纽约长岛</p>
+  <p>1975年  在公寓中创立桥水基金</p>
+  <p>1987年  成功预测黑色星期一，声名大噪</p>
+  <p>2008年  金融危机中桥水逆势盈利，一战封神</p>
+  <p>2011年  发布"全天候"策略框架</p>
+  <p>2017年  出版《原则》(Principles)，全球畅销</p>
+  <p>2018年  出版《债务危机》(Big Debt Crises)</p>
+  <p>2022年  从桥水联席CIO位置退休</p>
+  <p><code>`</code></p>
+  <h3>2.2 达里奥的核心标签</h3>
+  <p>达里奥与巴菲特、索罗斯的最大区别：<strong>他是系统化思考者</strong>。</p>
+  <table class="data-table"><thead><tr><th>维度</th><th>巴菲特</th><th>索罗斯</th><th>达里奥</th></tr></thead><tbody>
+  <tr><td>核心方法</td><td>选股</td><td>押注宏观</td><td>资产配置</td></tr>
+  <tr><td>关注点</td><td>企业价值</td><td>市场偏差</td><td>经济机器</td></tr>
+  <tr><td>时间框架</td><td>永久持有</td><td>1-2年</td><td>永续</td></tr>
+  <tr><td>风格</td><td>集中</td><td>集中</td><td>分散</td></tr>
+  </tbody></table>
+  <p>|------|--------|--------|--------|</p>
+  <p><strong>达里奥的独特贡献</strong>：把投资从"选什么"变成了"怎么配"。</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 全天候投资组合（All Weather Portfolio）</h2>
+  <h3>3.1 理论基础：经济的两个驱动力</h3>
+  <p>达里奥认为，所有资产价格的变动都由两个核心变量驱动：</p>
+  <p><strong>1.</strong> <strong>经济增长</strong>（高于预期 vs 低于预期）</p>
+  <p><strong>2.</strong> <strong>通胀水平</strong>（高于预期 vs 低于预期）</p>
+  <p>这就形成了<strong>四种经济环境</strong>：</p>
+  <p><code>`</code></p>
+  <p>通胀上升</p>
+  <p>│</p>
+  <p>┌─────────────┼─────────────┐</p>
+  <p>│             │             │</p>
+  <p>│  滞胀环境    │  过热环境    │</p>
+  <p>│  (增长↓通胀↑) │  (增长↑通胀↑) │</p>
+  <p>│             │             │</p>
+  <p>增长下降 ────────────────┼──────────────── 增长上升</p>
+  <p>│             │             │</p>
+  <p>│  通缩环境    │  复苏环境    │</p>
+  <p>│  (增长↓通胀↓) │  (增长↑通胀↓) │</p>
+  <p>│             │             │</p>
+  <p>└─────────────┼─────────────┘</p>
+  <p>│</p>
+  <p>通胀下降</p>
+  <p><code>`</code></p>
+  <h3>3.2 标准全天候配置</h3>
+  <p><strong>资产配比</strong>：</p>
+  <table class="data-table"><thead><tr><th>资产类别</th><th>配比</th><th>作用</th></tr></thead><tbody>
+  <tr><td>美国大盘股（VTI）</td><td><strong>30%</strong></td><td>经济增长受益</td></tr>
+  <tr><td>长期美国国债（TLT）</td><td><strong>40%</strong></td><td>通缩/衰退保护</td></tr>
+  <tr><td>中期美国国债（IEI）</td><td><strong>15%</strong></td><td>稳定收益锚</td></tr>
+  <tr><td>黄金（GLD）</td><td><strong>7.5%</strong></td><td>通胀保护</td></tr>
+  <tr><td>大宗商品（DBC）</td><td><strong>7.5%</strong></td><td>通胀保护</td></tr>
+  </tbody></table>
+  <p>|----------|------|------|</p>
+  <h3>3.3 为什么这样配？</h3>
+  <p><strong>关键逻辑</strong>：</p>
+  <p><code>`</code></p>
+  <p>股票 30%  → 经济增长时表现最好（夏/春）</p>
+  <p>长期债 40% → 经济衰退/通缩时表现最好（冬/秋）</p>
+  <p>中期债 15% → 稳定收益，降低波动</p>
+  <p>黄金 7.5%  → 通胀飙升时的保险</p>
+  <p>商品 7.5%  → 通胀+经济增长时的对冲</p>
+  <p><code>`</code></p>
+  <p><strong>最反直觉的一点</strong>：为什么债券占55%？</p>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p>因为长期来看，经济衰退和通缩的杀伤力远大于通胀。40%长期国债是对"最坏情况"的最大保护。</p></div>
+  <h3>3.4 历史回测表现</h3>
+  <table class="data-table"><thead><tr><th>指标</th><th>全天候</th><th>纯股票</th></tr></thead><tbody>
+  <tr><td>年化收益</td><td>~7-8%</td><td>~10%</td></tr>
+  <tr><td>最大回撤</td><td>~12%</td><td>~50%</td></tr>
+  <tr><td>夏普比率</td><td>~0.5</td><td>~0.4</td></tr>
+  <tr><td>盈利年份</td><td>~85%</td><td>~75%</td></tr>
+  </tbody></table>
+  <p>|------|--------|--------|</p>
+  <p><strong>结论</strong>：全天候用约2-3%的年化收益"代价"，换取了4倍的回撤改善。对于普通人来说，这是极其划算的交换。</p>
+  <h3>3.5 中国版全天候调整</h3>
+  <table class="data-table"><thead><tr><th>资产类别</th><th>配比</th><th>对应标的</th></tr></thead><tbody>
+  <tr><td>沪深300/中证500</td><td>30%</td><td>510300/510500</td></tr>
+  <tr><td>中国10年期国债ETF</td><td>40%</td><td>511260</td></tr>
+  <tr><td>中国3-5年期国债ETF</td><td>15%</td><td>511010</td></tr>
+  <tr><td>黄金ETF</td><td>7.5%</td><td>518880</td></tr>
+  <tr><td>商品ETF（豆粕/有色）</td><td>7.5%</td><td>159985</td></tr>
+  </tbody></table>
+  <p>|----------|------|----------|</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 债务长周期理论</h2>
+  <h3>4.1 达里奥的经济机器模型</h3>
+  <p>达里奥用一部30分钟的动画《经济机器是怎样运行的》（How the Economic Machine Works）解释了他的核心框架：</p>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p>经济由无数笔交易组成。每笔交易都涉及买方用货币/信用交换卖方的商品/服务/金融资产。</p></div>
+  <p><strong>三大驱动力</strong>：</p>
+  <p><code>`</code></p>
+  <p>生产力增长（长期趋势线）</p>
+  <p>↑ 缓慢、稳定，年均约2%</p>
+  <p>短期债务周期（5-8年）</p>
+  <p>↑ 扩张→衰退→扩张→衰退...</p>
+  <p>长期债务周期（50-75年）</p>
+  <p>↑ 债务积累→去杠杆→债务重建...</p>
+  <p><code>`</code></p>
+  <h3>4.2 短期债务周期（5-8年）</h3>
+  <p>短期周期的本质：<strong>信贷的收缩与扩张</strong>。</p>
+  <p><code>`</code></p>
+  <p>经济扩张</p>
+  <p>│</p>
+  <p>│  收入增加 → 借贷增加 → 支出增加 → 价格上升</p>
+  <p>│</p>
+  <p>↓ 过热</p>
+  <p>│</p>
+  <p>│  通胀上升 → 央行加息 → 信贷收缩 → 支出减少</p>
+  <p>│</p>
+  <p>↓ 衰退</p>
+  <p>│</p>
+  <p>│  通胀下降 → 央行降息 → 信贷扩张 → 支出增加</p>
+  <p>│</p>
+  <p>↓ 新一轮扩张</p>
+  <p><code>`</code></p>
+  <p><strong>关键特征</strong>：</p>
+  <p>• 每个短期周期结束时，经济活动和债务水平都比上一轮更高</p>
+  <p>• 累积的债务最终会触发长期债务周期的转折</p>
+  <h3>4.3 长期债务周期（50-75年）</h3>
+  <p>这是达里奥最重要的贡献之一——<strong>长期债务周期理论</strong>。</p>
+  <p><code>`</code></p>
+  <p>债务/GDP比率</p>
+  <p>│</p>
+  <p>│                                    ╱ ← 债务危机爆发</p>
+  <p>│                                 ╱</p>
+  <p>│                              ╱</p>
+  <p>│                           ╱</p>
+  <p>│                        ╱  ← 债务持续积累</p>
+  <p>│                     ╱      （每个短期周期后</p>
+  <p>│                  ╱          债务都更高）</p>
+  <p>│               ╱</p>
+  <p>│            ╱</p>
+  <p>│         ╱ ← 新周期开始，债务水平低</p>
+  <p>│      ╱</p>
+  <p>└──────────────────────────────────────── 时间</p>
+  <p>0     10    20    30    40    50   (年)</p>
+  <p><code>`</code></p>
+  <p><strong>长期债务周期的四个阶段</strong>：</p>
+  <table class="data-table"><thead><tr><th>阶段</th><th>特征</th><th>持续时间</th></tr></thead><tbody>
+  <tr><td>早期</td><td>借贷健康，收入增长快于债务</td><td>20-30年</td></tr>
+  <tr><td>泡沫</td><td>债务增长快于收入，资产价格飙升</td><td>10-15年</td></tr>
+  <tr><td>顶部/危机</td><td>债务不可持续，资产价格崩溃</td><td>2-5年</td></tr>
+  <tr><td>去杠杆</td><td>债务重组/紧缩/货币化</td><td>5-10年</td></tr>
+  </tbody></table>
+  <p>|------|------|----------|</p>
+  <h3>4.4 泡沫的七大信号</h3>
+  <p>达里奥总结了识别债务泡沫的七个指标：</p>
+  <p><strong>1.</strong> <strong>价格相对于传统标准过高</strong></p>
+  <p><strong>2.</strong> <strong>价格已经反映了未来的快速升值</strong></p>
+  <p><strong>3.</strong> <strong>购买行为由高杠杆驱动</strong></p>
+  <p><strong>4.</strong> <strong>买家已经做了大量远期购买</strong>（提前透支需求）</p>
+  <p><strong>5.</strong> <strong>新参与者大量涌入</strong></p>
+  <p><strong>6.</strong> <strong>货币政策刺激泡沫进一步膨胀</strong></p>
+  <p><strong>7.</strong> <strong>空头被挤爆</strong></p>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p><strong>对照清单</strong>：2020年的美国科技股、2021年的加密货币、中国房地产——是否符合以上7条中的大部分？</p></div>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 漂亮去杠杆（Beautiful Deleveraging）</h2>
+  <h3>5.1 去杠杆的四种工具</h3>
+  <p>当债务危机爆发时，政府和央行有四种去杠杆工具：</p>
+  <table class="data-table"><thead><tr><th>工具</th><th>效果</th><th>代价</th><th>举例</th></tr></thead><tbody>
+  <tr><td>① 紧缩（减少支出）</td><td>降低债务</td><td>通缩/失业</td><td>希腊2010</td></tr>
+  <tr><td>② 债务违约/重组</td><td>减少债务</td><td>信用崩溃</td><td>雷曼2008</td></tr>
+  <tr><td>③ 财富转移（税收）</td><td>均衡负担</td><td>政治冲突</td><td>罗斯福新政</td></tr>
+  <tr><td>④ 债务货币化（印钞）</td><td>稀释债务</td><td>通胀/货币贬值</td><td>美联储2020</td></tr>
+  </tbody></table>
+  <p>|------|------|------|------|</p>
+  <h3>5.2 什么是"漂亮去杠杆"？</h3>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p>达里奥的核心判断：<strong>好的去杠杆，是四种工具的平衡使用。</strong></p></div>
+  <p><code>`</code></p>
+  <p>紧缩过多</p>
+  <p>│</p>
+  <p>│ → 通缩萧条</p>
+  <p>│   （如1930年代初的美国）</p>
+  <p>│</p>
+  <p>债务货币化过多 ──┼── 印钞过多</p>
+  <p>│</p>
+  <p>│ → 恶性通胀</p>
+  <p>│   （如魏玛德国、委内瑞拉）</p>
+  <p>│</p>
+  <p>│</p>
+  <p>漂亮去杠杆</p>
+  <p>（平衡使用四种工具）</p>
+  <p>│</p>
+  <p>│ → 债务/GDP下降</p>
+  <p>│   经济温和增长</p>
+  <p>│   不引发极端后果</p>
+  <p><code>`</code></p>
+  <p><strong>漂亮去杠杆的标准</strong>：</p>
+  <p><strong>1.</strong> 印钞速度要足够抵消通缩的力量</p>
+  <p><strong>2.</strong> 但不能过快以至于引发恶性通胀</p>
+  <p><strong>3.</strong> 名义利率保持低于名义增长率</p>
+  <p><strong>4.</strong> 债务/GDP比率逐步下降</p>
+  <h3>5.3 案例对比</h3>
+  <table class="data-table"><thead><tr><th>案例</th><th>策略</th><th>结果</th></tr></thead><tbody>
+  <tr><td>美国1930-33年</td><td>纯紧缩</td><td>大萧条</td></tr>
+  <tr><td>美国1933-37年</td><td>漂亮去杠杆</td><td>经济复苏</td></tr>
+  <tr><td>日本1990-2010</td><td>印钞不足</td><td>失去的20年</td></tr>
+  <tr><td>美国2008-12年</td><td>漂亮去杠杆</td><td>经济复苏</td></tr>
+  <tr><td>美国2020-21年</td><td>印钞过多</td><td>高通胀</td></tr>
+  <tr><td>希腊2010-15年</td><td>纯紧缩</td><td>GDP萎缩25%</td></tr>
+  </tbody></table>
+  <p>|------|------|------|</p>
+  <h3>5.4 如何判断当前处于哪种去杠杆？</h3>
+  <p><strong>达里奥的判断框架</strong>：</p>
+  <p><code>`</code></p>
+  <p>观察指标：</p>
+  <p>├── 货币增速（M2）</p>
+  <p>│   ├── 远超GDP增速 → 印钞过多</p>
+  <p>│   ├── 接近GDP增速 → 平衡</p>
+  <p>│   └── 低于GDP增速 → 紧缩</p>
+  <p>├── 名义利率 vs 名义GDP增速</p>
+  <p>│   ├── 利率 > 增速 → 紧缩环境</p>
+  <p>│   └── 利率 < 增速 → 宽松环境</p>
+  <p>└── 债务/GDP趋势</p>
+  <p>├── 上升 → 去杠杆未完成</p>
+  <p>└── 下降 → 去杠杆有效</p>
+  <p><code>`</code></p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 《原则》核心思想</h2>
+  <h3>6.1 达里奥的原则体系</h3>
+  <p>达里奥认为，成功的关键不是天赋，而是<strong>原则</strong>——一套系统化的决策规则。</p>
+  <p><strong>核心原则（精选）</strong>：</p>
+  <table class="data-table"><thead><tr><th>原则</th><th>含义</th><th>投资应用</th></tr></thead><tbody>
+  <tr><td>拥抱现实</td><td>面对真相，而非你希望的真相</td><td>承认判断错误，及时止损</td></tr>
+  <tr><td>极度透明</td><td>公开讨论错误和分歧</td><td>复盘每笔交易</td></tr>
+  <tr><td>理解人与人大不相同</td><td>不同的人有不同的思维方式</td><td>团队多元化决策</td></tr>
+  <tr><td>决策分两步</td><td>先确定目标，再设计方案</td><td>先定资产配置，再选标的</td></tr>
+  <tr><td>做到极度开放</td><td>听取不同意见</td><td>寻找反面论据</td></tr>
+  </tbody></table>
+  <p>|------|------|----------|</p>
+  <h3>6.2 生活原则 vs 工作原则 vs 投资原则</h3>
+  <p><code>`</code></p>
+  <p>生活原则</p>
+  <p>├── 痛苦 + 反思 = 进步</p>
+  <p>├── 五步流程：目标→问题→诊断→方案→执行</p>
+  <p>└── 保持极度开放</p>
+  <p>工作原则</p>
+  <p>├── 创意择优（最好的想法获胜）</p>
+  <p>├── 极度透明</p>
+  <p>└── 系统化决策</p>
+  <p>投资原则</p>
+  <p>├── 分散化是唯一的免费午餐</p>
+  <p>├── 理解经济机器的运行规律</p>
+  <p>├── 不要被短期波动干扰</p>
+  <p>└── 永远为"意外"留有余地</p>
+  <p><code>`</code></p>
+  <h3>6.3 "痛苦+反思=进步"</h3>
+  <p>达里奥的个人经历：</p>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p>1982年，达里奥判断美国经济将走向萧条，大量做空。结果市场暴涨，桥水几乎破产，不得不裁掉所有员工。</p></div>
+  <p><strong>这是他投资生涯中最痛苦的时刻，但也是最重要的转折点</strong>。从此他学会了：</p>
+  <p><strong>1.</strong> <strong>永远保留犯错的空间</strong></p>
+  <p><strong>2.</strong> <strong>极度分散，而非极度自信</strong></p>
+  <p><strong>3.</strong> <strong>建立系统，而非依赖判断</strong></p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 达里奥与康波理论的结合</h2>
+  <h3>7.1 债务周期 = 康波的底层引擎</h3>
+  <table class="data-table"><thead><tr><th>康波阶段</th><th>债务周期状态</th><th>全天候策略调整</th></tr></thead><tbody>
+  <tr><td>春（回升期）</td><td>债务重建，信贷扩张</td><td>偏进攻：增加股票至40%，减少债券至35%</td></tr>
+  <tr><td>夏（繁荣期）</td><td>债务加速积累</td><td>标准配置：维持30/40/15/7.5/7.5</td></tr>
+  <tr><td>秋（衰退期）</td><td>泡沫破裂，去杠杆开始</td><td>偏防御：增加黄金至15%，减少股票至20%</td></tr>
+  <tr><td>冬（萧条期）</td><td>漂亮去杠杆/紧缩</td><td>最大防御：黄金+长期债券为主</td></tr>
+  </tbody></table>
+  <p>|----------|-------------|--------------|</p>
+  <h3>7.2 长期债务周期 ≈ 康波长周期</h3>
+  <p><strong>周期对照</strong>：</p>
+  <p><code>`</code></p>
+  <p>康波周期：      春    夏    秋    冬    （40-60年一轮）</p>
+  <p>│     │     │     │</p>
+  <p>债务长周期：   早期  泡沫  顶部  去杠杆   （50-75年一轮）</p>
+  <p>│     │     │     │</p>
+  <p>技术革命：    导入期 繁荣期 衰退期 萧条期  （与康波同步）</p>
+  <p><code>`</code></p>
+  <p><strong>关键洞察</strong>：康波冬期 = 债务长周期的去杠杆阶段。这是最危险的时期，也是全天候策略价值最大的时期。</p>
+  <h3>7.3 第六轮康波与达里奥框架</h3>
+  <p>当前（2020s-2030s）的定位：</p>
+  <table class="data-table"><thead><tr><th>维度</th><th>状态</th><th>达里奥判断</th></tr></thead><tbody>
+  <tr><td>康波阶段</td><td>秋→冬过渡期</td><td>长期债务周期接近顶部</td></tr>
+  <tr><td>全球债务/GDP</td><td>历史新高</td><td>泡沫信号明确</td></tr>
+  <tr><td>货币政策</td><td>超级宽松已至极限</td><td>印钞空间收窄</td></tr>
+  <tr><td>地缘格局</td><td>多极化</td><td>大国债务周期分化</td></tr>
+  </tbody></table>
+  <p>|------|------|-----------|</p>
+  <p><strong>达里奥的公开判断</strong>（2023-2024年）：</p>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p>"我们正处于长期债务周期的晚期阶段。未来10年，美国将面临巨大的债务货币化压力。黄金和实物资产将比纸币更安全。"</p></div>
+  <h3>7.4 用达里奥框架指导康波冬期投资</h3>
+  <p><code>`</code></p>
+  <p>康波冬期生存策略（达里奥版）：</p>
+  <p><strong>1.</strong> 资产配置</p>
+  <p>└── 全天候为基底，冬期偏向黄金+长期债券</p>
+  <p><strong>2.</strong> 债务管理</p>
+  <p>└── 降低个人杠杆率</p>
+  <p>└── 避免长期固定利率债务（可能被通胀稀释，</p>
+  <p>但如果经济是通缩型则债务负担加重）</p>
+  <p><strong>3.</strong> 现金管理</p>
+  <p>└── 保持20-30%现金</p>
+  <p>└── 分散到多个货币体系（美元/人民币/黄金）</p>
+  <p><strong>4.</strong> 心态管理</p>
+  <p>└── 接受"低回报、低风险"的时代</p>
+  <p>└── "痛苦+反思=进步"</p>
+  <p><code>`</code></p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 核心概念总结</h2>
+  <h3>你需要记住的5个关键点</h3>
+  <p><strong>1.</strong> <strong>全天候配置</strong>：30%股票+40%长期债券+15%中期债券+7.5%黄金+7.5%商品——不预测，只准备</p>
+  <p><strong>2.</strong> <strong>两个驱动力</strong>：经济增长和通胀，四种组合（增长/通胀 × 上升/下降）决定了所有资产表现</p>
+  <p><strong>3.</strong> <strong>债务长周期</strong>：50-75年一轮，当前处于晚期泡沫→去杠杆阶段</p>
+  <p><strong>4.</strong> <strong>漂亮去杠杆</strong>：平衡使用紧缩、违约、财富转移和印钞——过多或过少都是灾难</p>
+  <p><strong>5.</strong> <strong>痛苦+反思=进步</strong>：达里奥1982年几乎破产，但从中建立了全球最大的对冲基金</p>
+  <h3>你需要打破的3个误区</h3>
+  <p><strong>1.</strong> <strong>误区1</strong>："全天候收益太低，不值得" → 错。全天候的核心是生存，然后才是收益。康波冬期，活着比赚钱重要。</p>
+  <p><strong>2.</strong> <strong>误区2</strong>："债券在低利率时代没用" → 错。债券的避险功能不取决于绝对利率，而取决于与股票的负相关性。</p>
+  <p><strong>3.</strong> <strong>误区3</strong>："去杠杆就是印钞" → 错。去杠杆有四种工具，印钞只是其中之一。过度依赖任何一种都会带来灾难。</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 练习题</h2>
+  <h3>问题1（选择题）</h3>
+  <p>全天候投资组合中，占比最大的资产类别是？</p>
+  <p>A. 美国大盘股（30%）</p>
+  <p>B. 长期美国国债（40%）</p>
+  <p>C. 黄金（7.5%）</p>
+  <p>D. 大宗商品（7.5%）</p>
+  <p><details></p>
+  <p><summary>查看答案</summary></p>
+  <p><strong>B. 长期美国国债（40%）</strong></p>
+  <p>解析：长期国债在全天候组合中占比40%，是最大的单一资产类别。这体现了达里奥的核心判断——长期来看，通缩/衰退的风险最大，长期债券是应对这种环境的最佳资产。</p>
+  <p></details></p>
+</div>
+<div class="section">
+  <h2><span class="icon"></span> </h2>
+  <h3>问题2（选择题）</h3>
+  <p>根据达里奥的理论，以下哪项不是"漂亮去杠杆"的工具？</p>
+  <p>A. 紧缩（减少支出）</p>
+  <p>B. 债务违约/重组</p>
+  <p>C. 量化紧缩（加息缩表）</p>
+  <p>D. 债务货币化（印钞）</p>
+  <p><details></p>
+  <p><summary>查看答案</summary></p>
+  <p><strong>C. 量化紧缩（加息缩表）</strong></p>
+  <p>解析：达里奥提出的四种去杠杆工具是：①紧缩、②债务违约/重组、③财富转移（税收）、④债务货币化（印钞）。量化紧缩属于货币政策紧缩的一部分，但不是达里奥框架中的独立工具。财富转移（向富人征税等）才是第四种工具。</p>
+  <p></details></p>
+</div>
+<div class="section">
+  <h2><span class="icon"></span> </h2>
+  <h3>问题3（判断题）</h3>
+  <p>达里奥认为，短期债务周期一般持续5-8年，长期债务周期一般持续50-75年。在长期债务周期的早期阶段，每个短期周期结束时，经济活动和债务水平都会比上一轮更低。（  ）</p>
+  <p><details></p>
+  <p><summary>查看答案</summary></p>
+  <p><strong>错误。</strong></p>
+  <p>解析：前半句正确，短期周期5-8年，长期周期50-75年。但后半句错误——在长期债务周期中，每个短期周期结束时，经济活动和债务水平都比上一轮<strong>更高</strong>，而非更低。正是这种"每轮都更高"的累积效应，最终导致债务不可持续，触发长期债务周期的转折点。</p>
+  <p></details></p>
+</div>
+<div class="section">
+  <h2><span class="icon"></span> </h2>
+  <h3>问题4（简答题）</h3>
+  <p>达里奥识别债务泡沫有七大信号，请至少列出其中四个。</p>
+  <p><details></p>
+  <p><summary>查看答案</summary></p>
+  <p>达里奥的泡沫七大信号：</p>
+  <p><strong>1.</strong> 价格相对于传统标准过高（如PE、房价收入比）</p>
+  <p><strong>2.</strong> 价格已经反映了未来的快速升值</p>
+  <p><strong>3.</strong> 购买行为由高杠杆驱动（借钱买资产）</p>
+  <p><strong>4.</strong> 买家已经做了大量远期购买（透支未来需求）</p>
+  <p><strong>5.</strong> 新参与者大量涌入（散户跑步入场）</p>
+  <p><strong>6.</strong> 货币政策刺激泡沫进一步膨胀（低利率/QE）</p>
+  <p><strong>7.</strong> 空头被挤爆（做空者被迫平仓）</p>
+  <p></details></p>
+</div>
+<div class="section">
+  <h2><span class="icon"></span> </h2>
+  <h3>问题5（分析题）</h3>
+  <p>结合康波理论和达里奥的债务周期框架，分析：当前（2026年）全球经济处于长期债务周期的哪个阶段？全天候投资组合应如何调整？</p>
+  <p><details></p>
+  <p><summary>参考答案</summary></p>
+  <p><strong>阶段判断</strong>：当前处于长期债务周期的<strong>晚期/泡沫→去杠杆过渡阶段</strong>。</p>
+  <p>依据：</p>
+  <p>• 全球债务/GDP处于历史高位</p>
+  <p>• 美国联邦债务超过34万亿美元，利息支出占财政收入比例创新高</p>
+  <p>• 2020-2021年的超级货币宽松已引发高通胀</p>
+  <p>• 多国央行被迫加息应对通胀，但债务负担限制了加息空间</p>
+  <p><strong>全天候调整建议</strong>：</p>
+  <p><strong>1.</strong> <strong>黄金比例上调至15%</strong>：应对货币信用下降风险</p>
+  <p><strong>2.</strong> <strong>长期债券谨慎</strong>：在去杠杆初期，债券可能因财政恶化而波动加大</p>
+  <p><strong>3.</strong> <strong>增加实物资产</strong>：商品比例上调至10%</p>
+  <p><strong>4.</strong> <strong>股票保持但偏防御</strong>：选择低负债、现金流稳定的行业</p>
+  <p><strong>5.</strong> <strong>增加现金比例</strong>：为去杠杆过程中的机会（优质资产暴跌）做准备</p>
+  <p></details></p>
+</div>
+
+
+<!-- BOTTOM NAV -->
+<div class="bottom-nav">
+  <a href="lesson8.html" class="prev">← 第8课</a>
+  <a href="lesson10.html" class="next">第10课 →</a>
+</div>
+
+</div>
+
+<script>
+// Reading progress
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement;
+  const pct=(h.scrollTop)/(h.scrollHeight-h.clientHeight)*100;
+  document.getElementById('progressFill').style.width=pct+'%';
+});
+
+// Audio player
+function toggleAudio(){
+  const audio=document.getElementById('courseAudio');
+  const btn=document.getElementById('playBtn');
+  if(audio.paused){audio.play();btn.textContent='⏸️'}else{audio.pause();btn.textContent='▶️'}
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第16课：巴拉塔 — 大贬值与货币重置 — 康波研究院</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#09090b;--bg2:#0f0f13;--card:#1c1c21;--card2:#222228;--card3:#2a2a32;--border:#27272a;--border2:#3f3f46;--text:#fafafa;--text2:#a1a1aa;--text3:#71717a;--gold:#e2b64f;--gold2:#f5d98a;--green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;--orange:#f59e0b;--red:#ef4444;--serif:'Noto Serif SC',serif;--sans:'Inter',sans-serif;--radius:16px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:2;font-size:18px}
+a{color:var(--gold);text-decoration:none}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(9,9,11,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);height:56px;display:flex;align-items:center}
+.nav-inner{max-width:900px;margin:0 auto;padding:0 24px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-left{display:flex;align-items:center;gap:16px}
+.nav-back{font-size:0.9rem;color:var(--text3);transition:color .2s}.nav-back:hover{color:var(--gold)}
+.nav-title{font-size:0.9rem;color:var(--text2);font-weight:500}
+.nav-right{display:flex;align-items:center;gap:12px}
+.nav-lesson{font-size:0.8rem;color:var(--text3);background:var(--card2);padding:4px 14px;border-radius:6px}
+
+/* PROGRESS BAR */
+.progress-bar{position:fixed;top:56px;left:0;right:0;height:3px;background:var(--border);z-index:99}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));transition:width .3s;width:0%}
+
+/* MAIN */
+.main{max-width:800px;margin:0 auto;padding:80px 28px 60px}
+
+/* LESSON HEADER */
+.lesson-header{margin-bottom:56px;text-align:center}
+.lesson-cat{display:inline-block;font-size:0.75rem;color:var(--gold);background:rgba(226,182,79,0.1);padding:4px 14px;border-radius:20px;margin-bottom:16px;letter-spacing:0.1em}
+.lesson-header h1{font-family:var(--serif);font-size:clamp(2rem,5vw,2.8rem);font-weight:900;line-height:1.3;margin-bottom:16px;background:linear-gradient(135deg,var(--text),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lesson-meta{display:flex;gap:20px;justify-content:center;flex-wrap:wrap}
+.lesson-meta span{font-size:0.85rem;color:var(--text3);display:flex;align-items:center;gap:6px}
+
+/* SECTIONS */
+.section{margin-bottom:48px}
+.section h2{font-size:1.4rem;font-weight:700;margin-bottom:20px;color:var(--text);display:flex;align-items:center;gap:10px}
+.section h2 .icon{font-size:1.2rem}
+.section h3{font-size:1.15rem;font-weight:600;margin:28px 0 12px;color:var(--gold2)}
+.section p{color:var(--text2);font-size:1.05rem;margin-bottom:14px;line-height:2}
+
+/* CALLOUT */
+.callout{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:28px;margin:24px 0}
+.callout.gold{border-left:4px solid var(--gold)}
+.callout.green{border-left:4px solid var(--green)}
+.callout.blue{border-left:4px solid var(--blue)}
+.callout-title{font-size:0.85rem;font-weight:600;color:var(--gold);margin-bottom:10px;text-transform:uppercase;letter-spacing:0.08em}
+.callout p{color:var(--text2);font-size:1rem;line-height:1.9}
+
+/* TABLE */
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:0.95rem}
+.data-table th{text-align:left;padding:12px 14px;background:var(--card2);color:var(--text3);font-weight:600;font-size:0.85rem;text-transform:uppercase;letter-spacing:0.05em;border-bottom:2px solid var(--border)}
+.data-table td{padding:12px 14px;border-bottom:1px solid var(--border);color:var(--text2)}
+.data-table tr:hover td{background:var(--card)}
+
+/* EXERCISE */
+.exercise{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:32px;margin:28px 0}
+.exercise-label{display:inline-flex;align-items:center;gap:6px;font-size:0.8rem;font-weight:600;color:var(--blue);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:14px}
+.exercise h3{font-size:1.1rem;margin-bottom:10px;color:var(--text)}
+.exercise p{color:var(--text2);font-size:1rem;margin-bottom:14px}
+.exercise-question{color:var(--text);font-weight:500;font-size:1.05rem}
+.exercise textarea{width:100%;min-height:90px;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:16px;color:var(--text);font-family:var(--sans);font-size:1rem;resize:vertical;transition:border-color .2s;line-height:1.8}
+.exercise textarea:focus{outline:none;border-color:var(--gold)}
+.exercise textarea::placeholder{color:var(--text3)}
+
+/* BOTTOM NAV */
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;padding:36px 0;margin-top:48px;border-top:1px solid var(--border)}
+.bottom-nav a{display:flex;align-items:center;gap:8px;padding:14px 24px;border-radius:12px;font-size:1rem;font-weight:500;transition:all .2s}
+.bottom-nav .prev{color:var(--text3);border:1px solid var(--border)}
+.bottom-nav .prev:hover{border-color:var(--gold);color:var(--gold)}
+.bottom-nav .next{background:var(--gold);color:#000}
+.bottom-nav .next:hover{background:var(--gold2)}
+
+/* AUDIO PLAYER */
+.audio-player{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin:24px 0;display:flex;align-items:center;gap:16px}
+.audio-player .play-btn{width:48px;height:48px;border-radius:50%;background:var(--gold);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.2rem;transition:background .2s;flex-shrink:0}
+.audio-player .play-btn:hover{background:var(--gold2)}
+.audio-player .audio-info{flex:1}
+.audio-player .audio-title{font-size:0.9rem;font-weight:600;color:var(--text);margin-bottom:4px}
+.audio-player .audio-sub{font-size:0.8rem;color:var(--text3)}
+
+/* RESPONSIVE */
+@media(max-width:640px){
+  .main{padding:72px 16px 40px}
+  .lesson-header h1{font-size:1.8rem}
+  .section h2{font-size:1.2rem}
+  .data-table{font-size:0.85rem}
+  .data-table th,.data-table td{padding:8px 10px}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-left">
+      <a href="index.html" class="nav-back">← 返回首页</a>
+      <span class="nav-title">第16课</span>
+    </div>
+    <div class="nav-right">
+      <span class="nav-lesson">16 / 20</span>
+    </div>
+  </div>
+</nav>
+<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+
+<div class="main">
+
+<!-- HEADER -->
+<div class="lesson-header">
+  <div class="lesson-cat">专题研究</div>
+  <h1>💰 巴拉塔 — 大贬值与货币重置</h1>
+  <div class="lesson-meta">
+    <span>📖 阅读约35分钟</span>
+    <span>✏️ 0道练习题</span>
+    <span>🎯 进阶</span>
+  </div>
+</div>
+
+<!-- AUDIO OVERVIEW -->
+<div class="audio-player">
+  <button class="play-btn" onclick="toggleAudio()" id="playBtn">▶️</button>
+  <div class="audio-info">
+    <div class="audio-title">🎧 课程音频概述</div>
+    <div class="audio-sub">点击播放课程核心内容摘要</div>
+  </div>
+  <audio id="courseAudio" preload="none">
+    <source src="audio/lesson16.mp3" type="audio/mpeg">
+  </audio>
+</div>
+
+
+
+<div class="section">
+  <h2><span class="icon"></span> </h2>
+  <p># 第16课：巴拉塔 — 大贬值与货币重置</p>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p><strong>参考文献</strong>：《The Big Devaluation》（Adam Baratta，2022）</p></div>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p><strong>课程定位</strong>：理解法币结构性崩溃、货币重置历史周期与黄金对冲逻辑</p></div>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p><strong>康德拉季耶夫周期关联</strong>：长波周期中的货币体系更替与信用收缩</p></div>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 作者简介：亚当·巴拉塔（Adam Baratta）</h2>
+  <p>亚当·巴拉塔是美国当代财经作家、企业家和投资教育家，长期关注货币体系的结构性脆弱性。他创办了 <strong>Gold Alliance</strong> 公司，专注于贵金属投资教育与咨询服务，帮助数以万计的客户通过黄金和白银实现资产保值。</p>
+  <h3>核心著作</h3>
+  <p>• <strong>《The Big Devaluation》</strong>（2022）：系统阐述美元结构性贬值的必然性</p>
+  <p>• <strong>《Dangerous Markets》</strong>：与 Gregory Mannarino 合著，聚焦金融崩盘预警</p>
+  <h3>思想脉络</h3>
+  <p>巴拉塔承袭了彼得·希夫（美元危机论）、穆雷·罗斯巴德（奥地利学派货币理论）、迈克·马隆尼（《货币的故事》）等人的思想。其独特贡献在于构建了一套<strong>四维共振分析框架</strong>，将历史周期、货币制度、价格信号与人性心理整合为统一模型。</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 核心命题：大贬值（The Big Devaluation）</h2>
+  <h3>什么是"大贬值"？</h3>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p><strong>"美元不是在'贬值'，而是在'大贬值'——一个不可逆的结构性过程，其终点是货币体系的全面重置。"</strong></p></div>
+  <table class="data-table"><thead><tr><th>维度</th><th>普通贬值</th><th>大贬值</th></tr></thead><tbody>
+  <tr><td>速度</td><td>渐进、缓慢</td><td>加速、指数级</td></tr>
+  <tr><td>性质</td><td>经济周期波动</td><td>结构性制度崩溃</td></tr>
+  <tr><td>可控性</td><td>央行可调控</td><td>央行失去控制力</td></tr>
+  <tr><td>结局</td><td>恢复平衡</td><td>体系重置</td></tr>
+  </tbody></table>
+  <p>|------|----------|--------|</p>
+  <h3>法币的结构性缺陷</h3>
+  <p><strong>1.</strong> <strong>无内在价值</strong>：纸币本身没有商品支撑，价值完全依赖政府信用</p>
+  <p><strong>2.</strong> <strong>无限供给</strong>：央行可无限制印刷，无物理约束</p>
+  <p><strong>3.</strong> <strong>政治激励扭曲</strong>：政客有天然动机通过印钞兑现承诺</p>
+  <p><strong>4.</strong> <strong>时间不一致性</strong>：短期刺激与长期稳定的矛盾无法调和</p>
+  <p>巴拉塔指出：<strong>"所有法定货币最终都会归零——这不是'是否'的问题，而是'何时'的问题。"</strong></p>
+  <h3>指数增长的死亡螺旋</h3>
+  <p>当货币增速持续超过实际经济增速时：</p>
+  <p>• 购买力加速下降</p>
+  <p>• 资产价格虚高（泡沫）</p>
+  <p>• 贫富差距急剧扩大</p>
+  <p>• 社会信任基础侵蚀</p>
+  <p>一旦越过临界点，进入<strong>自我强化的正反馈循环</strong>：印钞→通胀→更多印钞→恶性通胀→货币崩溃。</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 美国债务爆炸：从290亿到36万亿</h2>
+  <p>1913年联邦储备体系成立时，美国国债约 <strong>290亿美元</strong>。到2026年已突破 <strong>36万亿美元</strong>，增长超过 <strong>1,200倍</strong>。</p>
+  <table class="data-table"><thead><tr><th>年份</th><th>美国国债</th><th>关键事件</th></tr></thead><tbody>
+  <tr><td>1913</td><td>$290亿</td><td>联邦储备法案</td></tr>
+  <tr><td>1946</td><td>$2,690亿</td><td>二战结束</td></tr>
+  <tr><td>1971</td><td>$3,980亿</td><td>尼克松关闭金窗口</td></tr>
+  <tr><td>2008</td><td>$10.02万亿</td><td>金融危机</td></tr>
+  <tr><td>2020</td><td>$27.7万亿</td><td>COVID大印钞</td></tr>
+  <tr><td>2026</td><td>$36万亿+</td><td>持续恶化中</td></tr>
+  </tbody></table>
+  <p>|------|---------|----------|</p>
+  <h3>1971年：分水岭时刻</h3>
+  <p>• 尼克松宣布美元与黄金脱钩（尼克松冲击）</p>
+  <p>• 美元从"有锚货币"变成"无锚货币"</p>
+  <p>• 1971年前58年债务增长约13倍；此后55年增长约9倍</p>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p><strong>关键洞察</strong>：1971年之前美元受黄金锚定的物理约束；之后唯一的约束只剩下政治意愿——而政治意愿是最不可靠的约束。</p></div>
+  <h3>利息支出的死亡螺旋</h3>
+  <p>截至2026年，美国年度利息支出已超 <strong>1万亿美元</strong>：</p>
+  <p>• 超过国防预算，成为联邦最大单项支出之一</p>
+  <p>• 新借债越来越多用于偿还旧债利息（庞氏特征）</p>
+  <p>• 利率每上升1%，年增利息支出约 $3,000亿+</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 价格信号扭曲：央行如何破坏市场</h2>
+  <h3>价格信号的经济功能</h3>
+  <p>奥地利学派的核心洞见：<strong>价格是市场经济的神经系统</strong>。利率、汇率、商品价格、工资水平——这些由数百万参与者分散决策自发形成的价格传递着不可替代的经济信息。</p>
+  <h3>央行干预的扭曲效应</h3>
+  <table class="data-table"><thead><tr><th>干预手段</th><th>扭曲的信号</th><th>后果</th></tr></thead><tbody>
+  <tr><td>零利率政策</td><td>资本成本</td><td>过度投资、僵尸企业</td></tr>
+  <tr><td>量化宽松</td><td>长期利率</td><td>资产泡沫、贫富分化</td></tr>
+  <tr><td>收益率曲线控制</td><td>期限结构</td><td>信贷错配</td></tr>
+  <tr><td>前瞻性指引</td><td>预期利率</td><td>市场依赖心理</td></tr>
+  </tbody></table>
+  <p>|----------|----------|------|</p>
+  <p>米塞斯早在20世纪初就预言：<strong>"信贷扩张带来的繁荣最终必然以萧条告终。繁荣持续越久，萧条就越严重。"</strong> 2008年后的QE本质上是用更大的泡沫掩盖上一个泡沫的破裂。</p>
+  <h3>失真的经济数据</h3>
+  <p>• <strong>CPI被系统性低估</strong>：住房、医疗、教育的实际涨幅远超官方数据</p>
+  <p>• <strong>"核心通胀"剔除食品能源</strong>——恰恰是普通人最敏感的价格</p>
+  <p>• <strong>Hedonic调整</strong>：通过"质量改善"压低通胀数字</p>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p><strong>"当你篡改了温度计，就无法准确测量发烧——但这并不意味着病人没有发烧。"</strong></p></div>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 全球货币重置：1933/1944/1971的历史规律</h2>
+  <h3>第一次重置：1933年</h3>
+  <p>大萧条期间，罗斯福签署第6102号行政命令禁止私人持有黄金，将金价从 $20.67 提升至 $35/盎司，美元一次性贬值约 <strong>41%</strong>。本质：通过强制改变金价，实现对民众财富的隐性剥夺。</p>
+  <h3>第二次重置：1944年布雷顿森林</h3>
+  <p>美元与黄金挂钩（$35/盎司），其他货币与美元挂钩。内在矛盾（特里芬难题）：美国需输出美元提供国际流动性，但持续逆差会削弱美元信用。</p>
+  <h3>第三次重置：1971年尼克松冲击</h3>
+  <p>宣布"暂时"关闭黄金兑换窗口，美元成为纯法定货币，固定汇率制崩溃。全球进入完全信用本位时代，通胀常态化，金融衍生品爆发式增长。</p>
+  <h3>历史规律总结</h3>
+  <table class="data-table"><thead><tr><th>重置周期</th><th>间隔</th><th>触发因素</th><th>新体系</th></tr></thead><tbody>
+  <tr><td>1933</td><td>—</td><td>大萧条/银行挤兑</td><td>美元贬值+金本位弱化</td></tr>
+  <tr><td>1944</td><td>11年</td><td>二战</td><td>布雷顿森林体系</td></tr>
+  <tr><td>1971</td><td>27年</td><td>特里芬难题</td><td>纯信用货币体系</td></tr>
+  <tr><td>2025-2035?</td><td>54-64年</td><td>债务危机/去美元化?</td><td>新型锚定体系?</td></tr>
+  </tbody></table>
+  <p>|----------|------|----------|--------|</p>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p><strong>核心论点</strong>：货币重置不是偶然事件，而是信用扩张必然周期的一部分。每次重置间隔拉长，但冲击加剧。</p></div>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 黄金：终极对冲工具</h2>
+  <h3>黄金的货币属性</h3>
+  <p>黄金作为货币有超过 <strong>5,000年</strong> 历史，远超任何法定货币。其核心属性：</p>
+  <p><strong>1.</strong> <strong>稀缺性</strong>：年新增产量仅约1.5-2%</p>
+  <p><strong>2.</strong> <strong>不可销毁</strong>：不会腐蚀、分解或降解</p>
+  <p><strong>3.</strong> <strong>全球通用</strong>：跨越文化、语言和政治边界</p>
+  <p><strong>4.</strong> <strong>无需承诺</strong>：不依赖任何政府或机构的信用</p>
+  <h3>黄金 vs 法币购买力</h3>
+  <p><strong>1971年</strong>：1盎司黄金 = $35；一套住房 ≈ $25,000（约714盎司）</p>
+  <p><strong>2024年</strong>：1盎司黄金 ≈ $2,400+；一套住房 ≈ $400,000+（约167盎司）</p>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p>以美元计价住房上涨16倍；以黄金计价住房反而更便宜了。黄金完美保存了购买力。</p></div>
+  <h3>巴拉塔的黄金投资逻辑</h3>
+  <p><strong>1.</strong> <strong>法币贬值的对冲</strong>：货币供应无限膨胀，金价必然上涨</p>
+  <p><strong>2.</strong> <strong>负实际利率的避风港</strong>：通胀率 > 名义利率时，持有现金等于慢性亏损</p>
+  <p><strong>3.</strong> <strong>央行在囤积</strong>：中、俄、印等国央行正以前所未有的速度购金</p>
+  <p><strong>4.</strong> <strong>去美元化的载体</strong>：金砖国家探索以黄金为锚的新结算体系</p>
+  <p><strong>5.</strong> <strong>金价上涨不是黄金"变贵"</strong>：而是法币在"变便宜"——金价是法币信用度的反向温度计</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 四维共振分析框架</h2>
+  <p>巴拉塔构建了<strong>四维共振分析框架</strong>，用于判断货币重置的时间窗口：</p>
+  <p><code>`</code></p>
+  <p>第一维：历史周期 → 第二维：货币制度 → 第三维：价格信号 → 第四维：人性心理</p>
+  <p>↓</p>
+  <p>共振点 → 重置触发</p>
+  <p><code>`</code></p>
+  <h3>各维度评估</h3>
+  <p><strong>第一维·历史周期</strong>：康德拉季耶夫长波约60-80年一个完整循环，货币重置通常发生在冬季阶段。当前世界处于长波冬季中后期。</p>
+  <p><strong>第二维·货币制度</strong>：美元信用体系已运行53年（1971至今），美联储资产负债表从$0.9万亿膨胀到$7万亿+，全球去美元化加速。</p>
+  <p><strong>第三维·价格信号</strong>：实际利率深度负值、收益率曲线异常、金价加速上涨——多重信号指向危险区域。</p>
+  <p><strong>第四维·人性心理</strong>：大多数人在危机<strong>发生后</strong>才反应，主流仍处于否认阶段（"美元不可能崩溃""这次不一样"）。从"一切正常"到"全面崩溃"可能只需数周。</p>
+  <h3>综合判断</h3>
+  <p>当四个维度同时发出警告时：</p>
+  <p>• 历史周期：处于长波冬季后期 ✓</p>
+  <p>• 货币制度：信用扩张接近极限 ✓</p>
+  <p>• 价格信号：金价暴涨、收益率曲线异常 ✓</p>
+  <p>• 人性心理：主流仍处于否认阶段 ✓</p>
+  <p>→ <strong>重置窗口正在打开，应提前进行资产配置。</strong></p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 与康波长波的关联及局限</h2>
+  <h3>货币重置在长波中的位置</h3>
+  <table class="data-table"><thead><tr><th>长波阶段</th><th>货币状态</th><th>历史案例</th></tr></thead><tbody>
+  <tr><td>春季（复苏）</td><td>新体系确立</td><td>1945-1966</td></tr>
+  <tr><td>夏季（过热）</td><td>信用过度扩张</td><td>1966-1982</td></tr>
+  <tr><td>秋季（衰退）</td><td>体系开始瓦解</td><td>1982-2008</td></tr>
+  <tr><td>冬季（萧条）</td><td>体系重置</td><td>2008-2035?</td></tr>
+  </tbody></table>
+  <p>|----------|---------|---------|</p>
+  <h3>客观局限</h3>
+  <p><strong>1.</strong> 体系可以在"看起来要崩溃"的状态下维持很久</p>
+  <p><strong>2.</strong> 美元霸权的惯性可能比预期更强</p>
+  <p><strong>3.</strong> AI等新技术可能提高生产力，部分抵消债务压力</p>
+  <p><strong>4.</strong> 政府可通过资本管制等手段延缓崩溃</p>
+  <p><strong>5.</strong> 目前尚无明确的后美元替代体系</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 本课小结</h2>
+  <p><strong>1.</strong> <strong>法币天生倾向贬值</strong>：所有法定货币最终归零，这是制度设计决定的</p>
+  <p><strong>2.</strong> <strong>美国债务不可持续</strong>：$290亿→$36万亿的指数轨迹无法通过增长解决</p>
+  <p><strong>3.</strong> <strong>央行扭曲价格信号</strong>：零利率和QE破坏了市场经济的神经系统</p>
+  <p><strong>4.</strong> <strong>货币重置是周期性的</strong>：1933/1944/1971的历史规律指向未来新重置</p>
+  <p><strong>5.</strong> <strong>黄金是终极对冲</strong>：唯一不需要任何人承诺即可保持价值的资产</p>
+  <p><strong>6.</strong> <strong>四维共振提供判断框架</strong>：多维信号汇聚时，重置窗口打开</p>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p><strong>巴拉塔的终极警告："问题不是大贬值是否会来——它是数学上的必然。问题是你是否为此做好了准备。"</strong></p></div>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 课后测验</h2>
+  <h3>问题1：法币贬值的根本原因</h3>
+  <p>以下哪项最准确地描述了法定货币结构性贬值的根本原因？</p>
+  <p>A. 经济周期的自然波动导致的暂时性购买力下降</p>
+  <p>B. 法币无内在价值、供给无限，加上政治激励驱动的持续货币超发</p>
+  <p>C. 国际贸易不平衡导致的汇率波动</p>
+  <p>D. 黄金价格波动对货币价值的间接影响</p>
+  <p><strong>答案：B</strong> — 巴拉塔的核心论点是法定货币体系的结构性缺陷——无内在价值、供给无物理约束、政客天然有印钞动机——决定了所有法币最终必然走向崩溃。</p>
+  <h3>问题2：1971年尼克松冲击的关键意义</h3>
+  <p>1971年美元与黄金脱钩最重要的后果是什么？</p>
+  <p>A. 美国立即陷入严重的通货膨胀</p>
+  <p>B. 全球贸易量大幅下降</p>
+  <p>C. 美元从有物理约束的"有锚货币"变成仅靠政治信用支撑的"无锚货币"</p>
+  <p>D. 黄金价格立刻暴跌</p>
+  <p><strong>答案：C</strong> — 此前美元受黄金兑换承诺的物理约束；此后唯一约束只剩下政治意愿。此后债务增长进入指数级加速阶段。</p>
+  <h3>问题3：价格信号扭曲</h3>
+  <p>央行持续压低利率最可能导致什么后果？</p>
+  <p>A. 消费者购买力持续提升</p>
+  <p>B. 市场利率回归均衡水平</p>
+  <p>C. 资本错配、僵尸企业和资产泡沫</p>
+  <p>D. 政府债务自动减少</p>
+  <p><strong>答案：C</strong> — 人为压低利率传递"资本充裕且廉价"的错误信号，导致低效企业存活、资金涌入投机性资产，真正需要资本的领域反而得不到充分投资。</p>
+  <h3>问题4：四维共振框架</h3>
+  <p>当四维共振框架的所有维度同时发出警告时意味着什么？</p>
+  <p>A. 股市即将迎来大涨</p>
+  <p>B. 通货紧缩即将来临</p>
+  <p>C. 货币体系重置概率急剧上升，应提前调整资产配置</p>
+  <p>D. 央行将采取更积极的宽松政策</p>
+  <p><strong>答案：C</strong> — 历史周期、货币制度、价格信号和人性心理同时警告，意味着多重结构性因素正在汇聚，重置可能性大幅上升。</p>
+  <h3>问题5：黄金作为终极对冲</h3>
+  <p>为什么巴拉塔认为黄金是应对"大贬值"的终极工具？</p>
+  <p>A. 因为黄金价格每年都在上涨</p>
+  <p>B. 因为黄金收益率高于股票</p>
+  <p>C. 因为黄金是唯一不需要任何人"承诺"即可保持价值的资产，且有5000年货币历史</p>
+  <p>D. 因为各国央行已经放弃了黄金储备</p>
+  <p><strong>答案：C</strong> — 法币依赖政府承诺，债券依赖债务人承诺，股票依赖公司盈利承诺——黄金的物理属性使其价值不依赖任何人的承诺。在1933/1944/1971的重置中，黄金都扮演了"最终清算资产"角色。</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 延伸阅读</h2>
+  <p>• Adam Baratta,《The Big Devaluation》, 2022</p>
+  <p>• Mike Maloney,《Guide to Investing in Gold and Silver》</p>
+  <p>• Murray Rothbard,《What Has Government Done to Our Money?》</p>
+  <p>• Ray Dalio,《Principles for Dealing with the Changing World Order》</p>
+  <p>• Jim Rickards,《Currency Wars》</p>
+  <p>• 本系列：第14课（信贷周期与康波周期）、第15课（达利欧与世界秩序）</p>
+</div>
+<div class="section">
+  <h2><span class="icon"></span> </h2>
+  <p><em>本课程为康德拉季耶夫波理论系列教程的一部分</em></p>
+  <p><em>下一课预告：第17课 — 货币体系重建与后美元时代</em></p>
+</div>
+
+
+<!-- BOTTOM NAV -->
+<div class="bottom-nav">
+  <a href="lesson15.html" class="prev">← 第15课</a>
+  <a href="lesson17.html" class="next">第17课 →</a>
+</div>
+
+</div>
+
+<script>
+// Reading progress
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement;
+  const pct=(h.scrollTop)/(h.scrollHeight-h.clientHeight)*100;
+  document.getElementById('progressFill').style.width=pct+'%';
+});
+
+// Audio player
+function toggleAudio(){
+  const audio=document.getElementById('courseAudio');
+  const btn=document.getElementById('playBtn');
+  if(audio.paused){audio.play();btn.textContent='⏸️'}else{audio.pause();btn.textContent='▶️'}
+}
+</script>
+
+</body>
+</html>

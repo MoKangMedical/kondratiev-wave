@@ -3,183 +3,92 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>第六课：投资操作手册 2026-2040 — 康波研究院</title>
+<title>第6课：投资操作手册 — 周期定位实战 — 康波研究院</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{--bg:#09090b;--bg2:#0f0f13;--card:#1c1c21;--card2:#222228;--card3:#2a2a32;--border:#27272a;--border2:#3f3f46;--text:#fafafa;--text2:#a1a1aa;--text3:#71717a;--gold:#e2b64f;--gold2:#f5d98a;--green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;--orange:#f59e0b;--red:#ef4444;--serif:'Noto Serif SC',serif;--sans:'Inter',sans-serif;--radius:16px}
-body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.8}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:2;font-size:18px}
 a{color:var(--gold);text-decoration:none}
 
 /* NAV */
 .nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(9,9,11,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);height:56px;display:flex;align-items:center}
 .nav-inner{max-width:900px;margin:0 auto;padding:0 24px;width:100%;display:flex;align-items:center;justify-content:space-between}
 .nav-left{display:flex;align-items:center;gap:16px}
-.nav-back{font-size:0.85rem;color:var(--text3);transition:color .2s}.nav-back:hover{color:var(--gold)}
-.nav-title{font-size:0.85rem;color:var(--text2);font-weight:500}
+.nav-back{font-size:0.9rem;color:var(--text3);transition:color .2s}.nav-back:hover{color:var(--gold)}
+.nav-title{font-size:0.9rem;color:var(--text2);font-weight:500}
 .nav-right{display:flex;align-items:center;gap:12px}
-.nav-lesson{font-size:0.75rem;color:var(--text3);background:var(--card2);padding:4px 12px;border-radius:6px}
+.nav-lesson{font-size:0.8rem;color:var(--text3);background:var(--card2);padding:4px 14px;border-radius:6px}
 
 /* PROGRESS BAR */
 .progress-bar{position:fixed;top:56px;left:0;right:0;height:3px;background:var(--border);z-index:99}
 .progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));transition:width .3s;width:0%}
 
 /* MAIN */
-.main{max-width:740px;margin:0 auto;padding:80px 24px 60px}
+.main{max-width:800px;margin:0 auto;padding:80px 28px 60px}
 
 /* LESSON HEADER */
-.lesson-header{margin-bottom:48px}
-.lesson-num{display:inline-flex;align-items:center;gap:8px;font-size:0.8rem;color:var(--gold);font-weight:600;margin-bottom:12px;letter-spacing:0.08em}
-.lesson-num .line{width:32px;height:1px;background:var(--gold)}
-.lesson-header h1{font-family:var(--serif);font-size:clamp(1.8rem,4vw,2.4rem);font-weight:900;line-height:1.3;margin-bottom:12px}
-.lesson-meta{display:flex;gap:16px;flex-wrap:wrap}
-.lesson-meta span{font-size:0.8rem;color:var(--text3);display:flex;align-items:center;gap:4px}
+.lesson-header{margin-bottom:56px;text-align:center}
+.lesson-cat{display:inline-block;font-size:0.75rem;color:var(--gold);background:rgba(226,182,79,0.1);padding:4px 14px;border-radius:20px;margin-bottom:16px;letter-spacing:0.1em}
+.lesson-header h1{font-family:var(--serif);font-size:clamp(2rem,5vw,2.8rem);font-weight:900;line-height:1.3;margin-bottom:16px;background:linear-gradient(135deg,var(--text),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lesson-meta{display:flex;gap:20px;justify-content:center;flex-wrap:wrap}
+.lesson-meta span{font-size:0.85rem;color:var(--text3);display:flex;align-items:center;gap:6px}
 
 /* SECTIONS */
-.section{margin-bottom:40px}
-.section h2{font-size:1.2rem;font-weight:700;margin-bottom:16px;color:var(--text);display:flex;align-items:center;gap:8px}
-.section h2 .icon{font-size:1.1rem}
-.section p{color:var(--text2);font-size:0.95rem;margin-bottom:12px}
+.section{margin-bottom:48px}
+.section h2{font-size:1.4rem;font-weight:700;margin-bottom:20px;color:var(--text);display:flex;align-items:center;gap:10px}
+.section h2 .icon{font-size:1.2rem}
+.section h3{font-size:1.15rem;font-weight:600;margin:28px 0 12px;color:var(--gold2)}
+.section p{color:var(--text2);font-size:1.05rem;margin-bottom:14px;line-height:2}
 
 /* CALLOUT */
-.callout{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;margin:20px 0}
-.callout.gold{border-left:3px solid var(--gold)}
-.callout.green{border-left:3px solid var(--green)}
-.callout.blue{border-left:3px solid var(--blue)}
-.callout-title{font-size:0.8rem;font-weight:600;color:var(--gold);margin-bottom:8px;text-transform:uppercase;letter-spacing:0.08em}
-.callout p{color:var(--text2);font-size:0.9rem}
+.callout{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:28px;margin:24px 0}
+.callout.gold{border-left:4px solid var(--gold)}
+.callout.green{border-left:4px solid var(--green)}
+.callout.blue{border-left:4px solid var(--blue)}
+.callout-title{font-size:0.85rem;font-weight:600;color:var(--gold);margin-bottom:10px;text-transform:uppercase;letter-spacing:0.08em}
+.callout p{color:var(--text2);font-size:1rem;line-height:1.9}
 
 /* TABLE */
-.data-table{width:100%;border-collapse:collapse;margin:16px 0;font-size:0.88rem}
-.data-table th{text-align:left;padding:10px 12px;background:var(--card2);color:var(--text3);font-weight:600;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.05em;border-bottom:1px solid var(--border)}
-.data-table td{padding:10px 12px;border-bottom:1px solid var(--border);color:var(--text2)}
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:0.95rem}
+.data-table th{text-align:left;padding:12px 14px;background:var(--card2);color:var(--text3);font-weight:600;font-size:0.85rem;text-transform:uppercase;letter-spacing:0.05em;border-bottom:2px solid var(--border)}
+.data-table td{padding:12px 14px;border-bottom:1px solid var(--border);color:var(--text2)}
 .data-table tr:hover td{background:var(--card)}
 
-/* TIMELINE INTERACTIVE */
-.timeline-interactive{position:relative;margin:24px 0;padding-left:24px}
-.timeline-interactive::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--green),var(--orange),var(--blue),var(--purple))}
-.tl-item{position:relative;margin-bottom:20px;padding-left:24px;cursor:pointer;transition:all .3s}
-.tl-item::before{content:'';position:absolute;left:-20px;top:8px;width:12px;height:12px;border-radius:50%;border:2px solid var(--border2);background:var(--bg);transition:all .3s}
-.tl-item:hover::before{border-color:var(--gold);background:var(--gold)}
-.tl-item.active::before{border-color:var(--gold);background:var(--gold);box-shadow:0 0 12px rgba(226,182,79,0.4)}
-.tl-item .tl-title{font-weight:600;font-size:0.95rem;margin-bottom:4px}
-.tl-item .tl-period{font-size:0.8rem;color:var(--text3);margin-bottom:4px}
-.tl-item .tl-detail{max-height:0;overflow:hidden;transition:max-height .4s;font-size:0.88rem;color:var(--text2)}
-.tl-item.active .tl-detail{max-height:300px}
-
-/* ASSET MAPPING */
-.asset-phase{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:16px 0}
-.phase-btn{padding:12px 8px;border-radius:10px;border:1px solid var(--border);background:var(--card);cursor:pointer;text-align:center;transition:all .3s;font-size:0.82rem}
-.phase-btn:hover{border-color:var(--border2)}
-.phase-btn.active{border-color:var(--gold);background:rgba(226,182,79,0.08)}
-.phase-btn .emoji{font-size:1.2rem;display:block;margin-bottom:4px}
-.phase-btn .name{font-weight:600;color:var(--text)}
-.phase-btn .sub{font-size:0.7rem;color:var(--text3);margin-top:2px}
-.phase-result{min-height:120px}
-
 /* EXERCISE */
-.exercise{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:28px;margin:24px 0}
-.exercise-label{display:inline-flex;align-items:center;gap:6px;font-size:0.75rem;font-weight:600;color:var(--blue);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:12px}
-.exercise h3{font-size:1.05rem;margin-bottom:8px}
-.exercise p{color:var(--text2);font-size:0.9rem;margin-bottom:16px}
-.exercise textarea{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:14px;color:var(--text);font-family:var(--sans);font-size:0.9rem;resize:vertical;transition:border-color .2s}
+.exercise{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:32px;margin:28px 0}
+.exercise-label{display:inline-flex;align-items:center;gap:6px;font-size:0.8rem;font-weight:600;color:var(--blue);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:14px}
+.exercise h3{font-size:1.1rem;margin-bottom:10px;color:var(--text)}
+.exercise p{color:var(--text2);font-size:1rem;margin-bottom:14px}
+.exercise-question{color:var(--text);font-weight:500;font-size:1.05rem}
+.exercise textarea{width:100%;min-height:90px;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:16px;color:var(--text);font-family:var(--sans);font-size:1rem;resize:vertical;transition:border-color .2s;line-height:1.8}
 .exercise textarea:focus{outline:none;border-color:var(--gold)}
 .exercise textarea::placeholder{color:var(--text3)}
-.exercise .hint{margin-top:12px}
-.exercise .hint-btn{background:transparent;border:1px solid var(--border2);color:var(--text3);padding:8px 16px;border-radius:8px;font-size:0.82rem;cursor:pointer;transition:all .2s;font-family:var(--sans)}
-.exercise .hint-btn:hover{border-color:var(--gold);color:var(--gold)}
-.exercise .hint-answer{display:none;margin-top:12px;padding:14px;background:var(--card2);border-radius:10px;font-size:0.88rem;color:var(--green);line-height:1.7}
-.exercise .hint-answer.show{display:block}
-
-/* MULTI-CHOICE */
-.choices{display:flex;flex-direction:column;gap:8px;margin:12px 0}
-.choice{padding:12px 16px;background:var(--card2);border:1px solid var(--border);border-radius:10px;cursor:pointer;transition:all .25s;font-size:0.9rem;display:flex;align-items:center;gap:10px}
-.choice:hover{border-color:var(--border2)}
-.choice.selected{border-color:var(--gold);background:rgba(226,182,79,0.08)}
-.choice.correct{border-color:var(--green);background:rgba(34,197,94,0.08)}
-.choice.wrong{border-color:var(--red);background:rgba(239,68,68,0.05)}
-.choice .letter{width:28px;height:28px;border-radius:8px;background:var(--card3);display:flex;align-items:center;justify-content:center;font-weight:600;font-size:0.8rem;flex-shrink:0}
-.choice.correct .letter{background:var(--green);color:#000}
-.choice.wrong .letter{background:var(--red);color:#fff}
 
 /* BOTTOM NAV */
-.bottom-nav{display:flex;justify-content:space-between;align-items:center;padding:32px 0;margin-top:40px;border-top:1px solid var(--border)}
-.bottom-nav a{display:flex;align-items:center;gap:8px;padding:12px 20px;border-radius:10px;font-size:0.9rem;font-weight:500;transition:all .2s}
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;padding:36px 0;margin-top:48px;border-top:1px solid var(--border)}
+.bottom-nav a{display:flex;align-items:center;gap:8px;padding:14px 24px;border-radius:12px;font-size:1rem;font-weight:500;transition:all .2s}
 .bottom-nav .prev{color:var(--text3);border:1px solid var(--border)}
 .bottom-nav .prev:hover{border-color:var(--gold);color:var(--gold)}
 .bottom-nav .next{background:var(--gold);color:#000}
 .bottom-nav .next:hover{background:var(--gold2)}
 
-/* COMPLETION */
-.completion{text-align:center;padding:40px;background:var(--card);border-radius:var(--radius);border:1px solid var(--gold);margin-top:32px;display:none}
-.completion.show{display:block}
-.completion .check{font-size:3rem;margin-bottom:12px}
-.completion h3{color:var(--gold);margin-bottom:8px}
-.completion p{color:var(--text2);font-size:0.9rem}
+/* AUDIO PLAYER */
+.audio-player{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin:24px 0;display:flex;align-items:center;gap:16px}
+.audio-player .play-btn{width:48px;height:48px;border-radius:50%;background:var(--gold);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.2rem;transition:background .2s;flex-shrink:0}
+.audio-player .play-btn:hover{background:var(--gold2)}
+.audio-player .audio-info{flex:1}
+.audio-player .audio-title{font-size:0.9rem;font-weight:600;color:var(--text);margin-bottom:4px}
+.audio-player .audio-sub{font-size:0.8rem;color:var(--text3)}
 
-/* CUSTOM: AGE SLIDER */
-.slider-container{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;margin:20px 0}
-.slider-label{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
-.slider-label span{font-size:0.9rem;color:var(--text2)}
-.slider-label strong{color:var(--gold);font-size:1.1rem}
-input[type=range]{-webkit-appearance:none;width:100%;height:6px;border-radius:3px;background:var(--card3);outline:none;margin:12px 0}
-input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:24px;border-radius:50%;background:var(--gold);cursor:pointer;box-shadow:0 0 10px rgba(226,182,79,0.4)}
-input[type=range]::-moz-range-thumb{width:24px;height:24px;border-radius:50%;background:var(--gold);cursor:pointer;border:none}
-.slider-result{margin-top:16px;padding:20px;background:var(--card2);border-radius:12px;border:1px solid var(--border)}
-.slider-result h4{color:var(--gold);margin-bottom:8px;font-size:0.95rem}
-.alloc-bar{height:28px;border-radius:8px;display:flex;overflow:hidden;margin:12px 0;font-size:0.75rem;font-weight:600}
-.alloc-bar div{display:flex;align-items:center;justify-content:center;min-width:40px}
-
-/* CUSTOM: STRATEGY CHECKLIST */
-.strategy-list{display:flex;flex-direction:column;gap:10px;margin:16px 0}
-.strategy-item{display:flex;align-items:flex-start;gap:12px;padding:14px 16px;background:var(--card);border:1px solid var(--border);border-radius:12px;cursor:pointer;transition:all .3s;user-select:none}
-.strategy-item:hover{border-color:var(--border2)}
-.strategy-item.checked{border-color:var(--green);background:rgba(34,197,94,0.05)}
-.strategy-item input[type=checkbox]{display:none}
-.strategy-check{width:22px;height:22px;border-radius:6px;border:2px solid var(--border2);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .2s;margin-top:2px}
-.strategy-item.checked .strategy-check{background:var(--green);border-color:var(--green)}
-.strategy-item.checked .strategy-check::after{content:'✓';color:#000;font-weight:700;font-size:0.8rem}
-.strategy-info h4{font-size:0.95rem;font-weight:600;margin-bottom:4px}
-.strategy-info p{font-size:0.82rem;color:var(--text3);line-height:1.5}
-.strategy-tag{display:inline-block;font-size:0.7rem;padding:2px 8px;border-radius:4px;font-weight:600;margin-left:8px}
-.tag-attack{background:rgba(239,68,68,0.15);color:var(--red)}
-.tag-balance{background:rgba(245,158,11,0.15);color:var(--orange)}
-.tag-safe{background:rgba(34,197,94,0.15);color:var(--green)}
-.tag-all{background:rgba(167,139,250,0.15);color:var(--purple)}
-
-/* CUSTOM: CALENDAR */
-.calendar-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin:16px 0}
-.cal-cell{padding:8px 4px;background:var(--card);border:1px solid var(--border);border-radius:8px;text-align:center;font-size:0.78rem;transition:all .3s;cursor:default}
-.cal-cell:hover{border-color:var(--border2)}
-.cal-cell .cal-year{font-weight:700;color:var(--text);font-size:0.82rem}
-.cal-cell .cal-phase{font-size:0.68rem;margin-top:2px}
-.cal-cell.winter .cal-phase{color:var(--blue)}
-.cal-cell.spring .cal-phase{color:var(--green)}
-.cal-cell.event{border-color:var(--gold);background:rgba(226,182,79,0.06)}
-
-/* CUSTOM: RISK CHECKLIST */
-.risk-list{display:flex;flex-direction:column;gap:8px;margin:16px 0}
-.risk-item{display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--card);border:1px solid var(--border);border-radius:10px;font-size:0.9rem;color:var(--text2);cursor:pointer;user-select:none;transition:all .2s}
-.risk-item:hover{border-color:var(--border2)}
-.risk-item.done{border-color:var(--green);text-decoration:line-through;color:var(--text3)}
-.risk-item .risk-icon{font-size:1rem;flex-shrink:0}
-
-/* CUSTOM: GRADUATION */
-.graduation{text-align:center;padding:60px 32px;background:linear-gradient(135deg,rgba(226,182,79,0.08),rgba(34,197,94,0.05));border-radius:var(--radius);border:2px solid var(--gold);margin-top:32px;display:none;position:relative;overflow:hidden}
-.graduation.show{display:block}
-.graduation::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(226,182,79,0.06) 0%,transparent 60%);animation:gradPulse 4s ease-in-out infinite}
-@keyframes gradPulse{0%,100%{transform:scale(1);opacity:0.5}50%{transform:scale(1.1);opacity:1}}
-.graduation .grad-emoji{font-size:4rem;margin-bottom:16px;position:relative}
-.graduation h3{color:var(--gold);font-family:var(--serif);font-size:1.6rem;margin-bottom:12px;position:relative}
-.graduation p{color:var(--text2);font-size:0.95rem;max-width:500px;margin:0 auto;line-height:1.8;position:relative}
-.graduation .grad-stats{display:flex;justify-content:center;gap:24px;margin-top:20px;position:relative}
-.graduation .grad-stat{text-align:center}
-.graduation .grad-stat .num{font-size:1.5rem;font-weight:700;color:var(--gold)}
-.graduation .grad-stat .label{font-size:0.75rem;color:var(--text3)}
-
-/* TWO COLUMN */
-.two-col{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0}
-@media(max-width:600px){.two-col{grid-template-columns:1fr}.calendar-grid{grid-template-columns:repeat(4,1fr)}.asset-phase{grid-template-columns:repeat(2,1fr)}}
+/* RESPONSIVE */
+@media(max-width:640px){
+  .main{padding:72px 16px 40px}
+  .lesson-header h1{font-size:1.8rem}
+  .section h2{font-size:1.2rem}
+  .data-table{font-size:0.85rem}
+  .data-table th,.data-table td{padding:8px 10px}
+}
 </style>
 </head>
 <body>
@@ -188,10 +97,10 @@ input[type=range]::-moz-range-thumb{width:24px;height:24px;border-radius:50%;bac
   <div class="nav-inner">
     <div class="nav-left">
       <a href="index.html" class="nav-back">← 返回首页</a>
-      <span class="nav-title">第六课</span>
+      <span class="nav-title">第6课</span>
     </div>
     <div class="nav-right">
-      <span class="nav-lesson">6 / 6</span>
+      <span class="nav-lesson">6 / 20</span>
     </div>
   </div>
 </nav>
@@ -201,352 +110,459 @@ input[type=range]::-moz-range-thumb{width:24px;height:24px;border-radius:50%;bac
 
 <!-- HEADER -->
 <div class="lesson-header">
-  <div class="lesson-num"><span class="line"></span> LESSON 06</div>
-  <h1>投资操作手册 2026-2040</h1>
+  <div class="lesson-cat">宏观分析</div>
+  <h1>📋 投资操作手册 — 周期定位实战</h1>
   <div class="lesson-meta">
-    <span>📖 阅读约20分钟</span>
-    <span>✏️ 3道练习题</span>
-    <span>🎯 实战篇 · 终章</span>
+    <span>📖 阅读约45分钟</span>
+    <span>✏️ 6道练习题</span>
+    <span>🎯 高级</span>
   </div>
 </div>
 
-<!-- 6.1 当前周期定位 -->
+<!-- AUDIO OVERVIEW -->
+<div class="audio-player">
+  <button class="play-btn" onclick="toggleAudio()" id="playBtn">▶️</button>
+  <div class="audio-info">
+    <div class="audio-title">🎧 课程音频概述</div>
+    <div class="audio-sub">点击播放课程核心内容摘要</div>
+  </div>
+  <audio id="courseAudio" preload="none">
+    <source src="audio/lesson6.mp3" type="audio/mpeg">
+  </audio>
+</div>
+
+
+
 <div class="section">
-  <h2><span class="icon">🎯</span> 当前周期定位：历史的转折点</h2>
-  <p>2026年，我们正站在第五轮康波（信息技术时代）的尾声和第六轮康波（AI+新能源+生物科技）的起跑线上。这是过去50年来最重要的投资转折点。</p>
-  
-  <div class="callout gold">
-    <div class="callout-title">当前定位</div>
-    <p>
-      <strong>第五轮康波（1990-2030）：萧条末期 — 完成度 95%</strong><br>
-      信息技术红利基本耗尽，移动互联网渗透率见顶，全球去杠杆进入尾声。<br><br>
-      <strong>第六轮康波（2025-2070）：回升初期 — 完成度 5%</strong><br>
-      AI大模型突破（2022-2024），新能源成本跨越拐点，生物科技进入基因编辑时代。<br><br>
-      <span style="color:var(--gold)">→ 这相当于1993年的互联网，或者1905年的电气化——大机会刚刚开始。</span>
-    </p>
-  </div>
-
-  <div style="display:flex;gap:12px;margin:20px 0;flex-wrap:wrap">
-    <div style="flex:1;min-width:140px;padding:16px;background:var(--card);border:1px solid var(--border);border-radius:12px;text-align:center">
-      <div style="font-size:2rem;font-weight:900;color:var(--blue)">95%</div>
-      <div style="font-size:0.78rem;color:var(--text3);margin-top:4px">五轮萧条末期</div>
-      <div style="height:4px;background:var(--card3);border-radius:2px;margin-top:8px;overflow:hidden"><div style="width:95%;height:100%;background:var(--blue);border-radius:2px"></div></div>
-    </div>
-    <div style="flex:1;min-width:140px;padding:16px;background:var(--card);border:1px solid var(--border);border-radius:12px;text-align:center">
-      <div style="font-size:2rem;font-weight:900;color:var(--green)">5%</div>
-      <div style="font-size:0.78rem;color:var(--text3);margin-top:4px">六轮回升初期</div>
-      <div style="height:4px;background:var(--card3);border-radius:2px;margin-top:8px;overflow:hidden"><div style="width:5%;height:100%;background:var(--green);border-radius:2px"></div></div>
-    </div>
-  </div>
+  <h2><span class="icon"></span> </h2>
+  <p># 第6课：投资操作手册 2026-2040</p>
 </div>
-
-<!-- 6.2 年龄资产配置 -->
 <div class="section">
-  <h2><span class="icon">👤</span> 年龄决定你的"投资性格"</h2>
-  <p>同一轮康波周期，不同年龄的人应该采取完全不同的策略。年轻就是最大的资本，年长则以守为主。拖动滑块查看你的专属配置方案：</p>
-
-  <div class="slider-container">
-    <div class="slider-label">
-      <span>你的年龄</span>
-      <strong id="ageDisplay">30 岁</strong>
-    </div>
-    <input type="range" id="ageSlider" min="20" max="65" value="30" oninput="updateAllocation()">
-    
-    <div class="slider-result" id="sliderResult">
-      <!-- Dynamic content -->
-    </div>
-  </div>
+  <h2><span class="icon">📖</span> 开篇：从理论到行动</h2>
+  <p>前五课，我们学习了：</p>
+  <p>• 第1课：康波理论基础（什么是周期）</p>
+  <p>• 第2课：周金涛四周期嵌套（如何分析周期）</p>
+  <p>• 第3课：第六轮康波深度分析（当前在哪里）</p>
+  <p>• 第4课：顶级家族策略（如何穿越周期）</p>
+  <p>• 第5课：货币战争（货币环境如何影响资产）</p>
+  <p><strong>现在，是时候把这些知识转化为行动了。</strong></p>
+  <p>本课是整个课程体系的<strong>实战篇</strong>。学完这节课，你将拥有一个完整的投资计划框架。</p>
 </div>
-
-<!-- 6.3 六大可执行策略 -->
 <div class="section">
-  <h2><span class="icon">⚔️</span> 六大可执行策略</h2>
-  <p>勾选你已经了解并准备实施的策略，打造你的个人投资行动清单：</p>
-  
-  <div class="strategy-list" id="strategyList">
-    <label class="strategy-item" onclick="toggleStrategy(this)">
-      <input type="checkbox">
-      <div class="strategy-check"></div>
-      <div class="strategy-info">
-        <h4>策略一：播种期定投 <span class="strategy-tag tag-all">所有年龄</span></h4>
-        <p>在第六轮康波的播种期（2026-2035），每月定投AI、新能源、生物科技相关指数基金。利用萧条末期的低估值，用时间换空间。像1995年定投纳斯达克一样。</p>
-      </div>
-    </label>
-    <label class="strategy-item" onclick="toggleStrategy(this)">
-      <input type="checkbox">
-      <div class="strategy-check"></div>
-      <div class="strategy-info">
-        <h4>策略二：黑天鹅猎手 <span class="strategy-tag tag-balance">平衡/进攻型</span></h4>
-        <p>在周期转折期（2026-2030），保留10-20%现金仓位，等待黑天鹅事件（金融危机、地缘冲突）带来的极端低价买入机会。2020年疫情暴跌、2022年加密货币崩盘都是典型案例。</p>
-      </div>
-    </label>
-    <label class="strategy-item" onclick="toggleStrategy(this)">
-      <input type="checkbox">
-      <div class="strategy-check"></div>
-      <div class="strategy-info">
-        <h4>策略三：行业轮动 <span class="strategy-tag tag-attack">进攻型</span></h4>
-        <p>跟随康波主导技术群的渗透路径：第一阶段硬件基础设施（芯片、算力）→ 第二阶段软件平台（AI应用、云计算）→ 第三阶段行业改造（AI+医疗、AI+教育）。每个阶段5-8年，逐步轮动。</p>
-      </div>
-    </label>
-    <label class="strategy-item" onclick="toggleStrategy(this)">
-      <input type="checkbox">
-      <div class="strategy-check"></div>
-      <div class="strategy-info">
-        <h4>策略四：家族式资产隔离 <span class="strategy-tag tag-safe">稳健型</span></h4>
-        <p>将资产分为三个"口袋"：生存资金（12个月生活费，现金/货基）、核心资产（房产+指数基金，50%+）、机会资金（高风险高回报，10-20%）。任何单一资产不超过总资产的30%。</p>
-      </div>
-    </label>
-    <label class="strategy-item" onclick="toggleStrategy(this)">
-      <input type="checkbox">
-      <div class="strategy-check"></div>
-      <div class="strategy-info">
-        <h4>策略五：全球分散 <span class="strategy-tag tag-all">所有年龄</span></h4>
-        <p>第六轮康波的技术中心将分散在全球：美国（AI基础研究）、中国（AI应用落地）、印度（人口红利+数字化）、东南亚（产业链转移）。不要把所有鸡蛋放在一个国家的篮子里。</p>
-      </div>
-    </label>
-    <label class="strategy-item" onclick="toggleStrategy(this)">
-      <input type="checkbox">
-      <div class="strategy-check"></div>
-      <div class="strategy-info">
-        <h4>策略六：自身能力投资 <span class="strategy-tag tag-all">所有年龄 · 最重要</span></h4>
-        <p>在AI时代，最大的资产是你自己的能力。学习AI工具使用、培养跨领域思维、建立个人品牌和网络。这是所有年龄段最高回报的投资——年化回报率无限大，因为本金接近零。</p>
-      </div>
-    </label>
-  </div>
-  
-  <div id="strategyProgress" style="text-align:center;padding:12px;font-size:0.85rem;color:var(--text3)">已选择 <span id="stratCount" style="color:var(--gold);font-weight:700">0</span> / 6 项策略</div>
+  <h2><span class="icon">📖</span> 当前周期精确定位</h2>
+  <h3>2.1 2026年的周期坐标</h3>
+  <table class="data-table"><thead><tr><th>周期</th><th>当前阶段</th><th>进度</th><th>判断依据</th></tr></thead><tbody>
+  <tr><td>康波（50年）</td><td>第五轮冬末+第六轮春初</td><td>冬95%/春5%</td><td>信息技术成熟，AI开始商业化</td></tr>
+  <tr><td>房地产周期（20年）</td><td>下行期中段</td><td>40%</td><td>中国房价调整，美国房价高位</td></tr>
+  <tr><td>资本支出周期（10年）</td><td>底部回升</td><td>20%</td><td>企业开始增加AI相关投资</td></tr>
+  <tr><td>库存周期（4年）</td><td>回升初期</td><td>15%</td><td>全球库存出清，补库开始</td></tr>
+  </tbody></table>
+  <p>|------|----------|------|----------|</p>
+  <h3>2.2 综合判断</h3>
+  <p><strong>2026年处于"冬末春初"的交替窗口</strong>。</p>
+  <p>这意味着：</p>
+  <p>• 最坏的时候已经过去</p>
+  <p>• 最好的时候还没有到来</p>
+  <p>• 这是<strong>播种的最佳季节</strong></p>
+  <p>• 但不要期望立即收获</p>
+  <h3>2.3 历史对照</h3>
+  <p>当前位置类似于：</p>
+  <p>• <strong>1950年</strong>（第四轮春初）：战后重建开始，石油化工产业萌芽</p>
+  <p>• <strong>1982年</strong>（第五轮春初）：沃尔克加息结束，信息技术产业起步</p>
+  <p>• <strong>2003年</strong>（第五轮春中）：互联网泡沫出清，移动互联网萌芽</p>
+  <p><strong>历史告诉我们</strong>：在春初买入的人，在此后10-20年获得了最大的回报。</p>
 </div>
-
-<!-- 6.4 康波日历 2026-2040 -->
 <div class="section">
-  <h2><span class="icon">📅</span> 康波投资日历 2026-2040</h2>
-  <p>根据周期定位推演未来15年的关键节点。金色标记为重要投资窗口：</p>
-
-  <div class="timeline-interactive">
-    <div class="tl-item" onclick="toggleTL(this)">
-      <div class="tl-title">2026-2028 · 播种期</div>
-      <div class="tl-period">五轮萧条末尾 + 六轮技术验证</div>
-      <div class="tl-detail">AI基础设施大规模建设期。芯片、算力中心、新能源电网投资加速。股市可能出现震荡但整体估值偏低。<strong>行动：定投开始，建仓核心资产。</strong></div>
-    </div>
-    <div class="tl-item" onclick="toggleTL(this)">
-      <div class="tl-title">2028-2030 · 第一个黑天鹅窗口</div>
-      <div class="tl-period">五轮结束的"最后一跌"</div>
-      <div class="tl-detail">第五轮康波的尾部风险释放。可能出现：全球债务重组、地缘冲突升级、AI泡沫第一轮破裂。<strong>行动：黑天鹅猎手策略启动，逢低加仓。</strong></div>
-    </div>
-    <div class="tl-item" onclick="toggleTL(this)">
-      <div class="tl-title">2030-2033 · 回升确认期</div>
-      <div class="tl-period">六轮春季正式到来</div>
-      <div class="tl-detail">AI商业化进入第二阶段（应用层爆发）。新能源占比突破30%。生物科技出现重大突破。经济数据开始改善。<strong>行动：加大权益类配置，减少现金。</strong></div>
-    </div>
-    <div class="tl-item" onclick="toggleTL(this)">
-      <div class="tl-title">2033-2036 · 加速期</div>
-      <div class="tl-period">六轮春季中期</div>
-      <div class="tl-detail">新技术全面渗透到传统行业。生产效率大幅提升，GDP增速回升。利率开始温和上升。<strong>行动：行业轮动策略，从硬件转向软件平台。</strong></div>
-    </div>
-    <div class="tl-item" onclick="toggleTL(this)">
-      <div class="tl-title">2036-2040 · 繁荣前夜</div>
-      <div class="tl-period">从春季走向夏季的过渡</div>
-      <div class="tl-detail">资产价格开始快速上涨。社会情绪转向乐观。新的"这次不一样"叙事开始出现。<strong>行动：逐步降低风险敞口，锁定收益，为夏季顶点做准备。</strong></div>
-    </div>
-  </div>
-
-  <div class="calendar-grid">
-    <div class="cal-cell winter"><div class="cal-year">2026</div><div class="cal-phase">五轮萧条</div></div>
-    <div class="cal-cell winter"><div class="cal-year">2027</div><div class="cal-phase">播种期</div></div>
-    <div class="cal-cell winter event"><div class="cal-year">2028</div><div class="cal-phase">⚡风险窗口</div></div>
-    <div class="cal-cell winter event"><div class="cal-year">2029</div><div class="cal-phase">⚡最后一跌</div></div>
-    <div class="cal-cell spring event"><div class="cal-year">2030</div><div class="cal-phase">🌱回升起点</div></div>
-    <div class="cal-cell spring"><div class="cal-year">2031</div><div class="cal-phase">AI应用爆发</div></div>
-    <div class="cal-cell spring"><div class="cal-year">2032</div><div class="cal-phase">确认回升</div></div>
-    <div class="cal-cell spring"><div class="cal-year">2033</div><div class="cal-phase">加速渗透</div></div>
-    <div class="cal-cell spring"><div class="cal-year">2034</div><div class="cal-phase">行业轮动</div></div>
-    <div class="cal-cell spring"><div class="cal-year">2035</div><div class="cal-phase">平台期</div></div>
-    <div class="cal-cell spring"><div class="cal-year">2036</div><div class="cal-phase">快速上涨</div></div>
-    <div class="cal-cell spring"><div class="cal-year">2037</div><div class="cal-phase">乐观情绪</div></div>
-    <div class="cal-cell spring event"><div class="cal-year">2038</div><div class="cal-phase">⭐繁荣前夜</div></div>
-    <div class="cal-cell spring"><div class="cal-year">2039</div><div class="cal-phase">风险累积</div></div>
-    <div class="cal-cell spring event"><div class="cal-year">2040</div><div class="cal-phase">☀️夏季入口</div></div>
-  </div>
+  <h2><span class="icon">📖</span> 按年龄层的资产配置方案</h2>
+  <h3>3.1 配置原则</h3>
+  <p><strong>核心公式</strong>：</p>
+  <p><code>`</code></p>
+  <p>风险资产比例 = (100 - 你的年龄) × 周期系数</p>
+  <p><code>`</code></p>
+  <p><strong>周期系数</strong>：</p>
+  <p>• 康波春（回升期）：1.2（增加进攻性）</p>
+  <p>• 康波夏（繁荣期）：1.0（标准配置）</p>
+  <p>• 康波秋（衰退期）：0.7（增加防御性）</p>
+  <p>• 康波冬（萧条期）：0.8（底部逐步建仓）</p>
+  <p><strong>2026年（冬末春初）</strong>：周期系数 = 1.0（从防御转向进攻）</p>
+  <h3>3.2 各年龄段详细配置</h3>
+  <p>#### 25-35岁（进取型）</p>
+  <p><strong>特征</strong>：时间是最大的优势，可以承受较高波动</p>
+  <table class="data-table"><thead><tr><th>资产类别</th><th>配置比例</th><th>具体标的</th><th>说明</th></tr></thead><tbody>
+  <tr><td>股票</td><td>50%</td><td>指数基金+行业ETF</td><td>定投为主，长期持有</td></tr>
+  <tr><td>新兴产业</td><td>20%</td><td>AI、新能源、生物科技</td><td>第六轮康波核心赛道</td></tr>
+  <tr><td>房产</td><td>15%</td><td>核心城市首套</td><td>量力而行，不要过度杠杆</td></tr>
+  <tr><td>黄金</td><td>5%</td><td>黄金ETF</td><td>对冲风险</td></tr>
+  <tr><td>现金</td><td>10%</td><td>货币基金</td><td>应急储备</td></tr>
+  </tbody></table>
+  <p>|----------|----------|----------|------|</p>
+  <p><strong>操作建议</strong>：</p>
+  <p><strong>1.</strong> 每月定投指数基金（沪深300/中证500/纳斯达克100）</p>
+  <p><strong>2.</strong> 用年终奖配置新兴产业ETF</p>
+  <p><strong>3.</strong> 如果有条件，在核心城市买入首套房</p>
+  <p><strong>4.</strong> 保持10%现金作为应急储备</p>
+  <p><strong>5.</strong> <strong>最重要的投资是投资自己的能力</strong></p>
+  <p>#### 35-45岁（均衡型）</p>
+  <p><strong>特征</strong>：有一定积累，需要平衡增长和安全</p>
+  <table class="data-table"><thead><tr><th>资产类别</th><th>配置比例</th><th>具体标的</th><th>说明</th></tr></thead><tbody>
+  <tr><td>股票</td><td>40%</td><td>价值+成长均衡</td><td>选择低估值蓝筹+成长股</td></tr>
+  <tr><td>新兴产业</td><td>15%</td><td>AI、新能源龙头</td><td>集中配置龙头</td></tr>
+  <tr><td>房产</td><td>20%</td><td>核心城市优质地段</td><td>如果已有房产，可减少</td></tr>
+  <tr><td>黄金</td><td>10%</td><td>实物金+黄金ETF</td><td>对冲美元风险</td></tr>
+  <tr><td>现金</td><td>10%</td><td>货币基金</td><td>等待机会</td></tr>
+  <tr><td>保险</td><td>5%</td><td>寿险+重疾险</td><td>家庭保障</td></tr>
+  </tbody></table>
+  <p>|----------|----------|----------|------|</p>
+  <p><strong>操作建议</strong>：</p>
+  <p><strong>1.</strong> 检视现有资产配置，减少低效资产</p>
+  <p><strong>2.</strong> 增加第六轮康波核心赛道的配置</p>
+  <p><strong>3.</strong> 如果房产占比过高（超过50%），考虑减持非核心房产</p>
+  <p><strong>4.</strong> 增加黄金配置至10-15%</p>
+  <p><strong>5.</strong> 为家庭配置充足的保险</p>
+  <p>#### 45-55岁（稳健型）</p>
+  <p><strong>特征</strong>：资产积累期，风险承受能力下降</p>
+  <table class="data-table"><thead><tr><th>资产类别</th><th>配置比例</th><th>具体标的</th><th>说明</th></tr></thead><tbody>
+  <tr><td>股票</td><td>30%</td><td>低估值蓝筹+高分红</td><td>注重安全边际</td></tr>
+  <tr><td>固定收益</td><td>25%</td><td>国债+高等级债券</td><td>稳定现金流</td></tr>
+  <tr><td>黄金</td><td>15%</td><td>实物金</td><td>长期持有</td></tr>
+  <tr><td>房产</td><td>15%</td><td>核心城市</td><td>保持但不增加</td></tr>
+  <tr><td>现金</td><td>10%</td><td>货币基金</td><td>应急储备</td></tr>
+  <tr><td>保险/信托</td><td>5%</td><td>传承规划</td><td>开始考虑财富传承</td></tr>
+  </tbody></table>
+  <p>|----------|----------|----------|------|</p>
+  <p><strong>操作建议</strong>：</p>
+  <p><strong>1.</strong> 减少高波动资产的比例</p>
+  <p><strong>2.</strong> 增加固定收益类资产</p>
+  <p><strong>3.</strong> 开始考虑财富传承规划</p>
+  <p><strong>4.</strong> 配置充足的医疗保险</p>
+  <p><strong>5.</strong> 保持15%的黄金配置</p>
+  <p>#### 55岁以上（保守型）</p>
+  <p><strong>特征</strong>：保全为主，传承为重</p>
+  <table class="data-table"><thead><tr><th>资产类别</th><th>配置比例</th><th>具体标的</th><th>说明</th></tr></thead><tbody>
+  <tr><td>固定收益</td><td>40%</td><td>国债+存款+年金</td><td>稳定现金流</td></tr>
+  <tr><td>黄金</td><td>15%</td><td>实物金</td><td>避险</td></tr>
+  <tr><td>股票</td><td>20%</td><td>高分红蓝筹</td><td>增值</td></tr>
+  <tr><td>现金</td><td>15%</td><td>货币基金+存款</td><td>流动性</td></tr>
+  <tr><td>保险/信托</td><td>10%</td><td>年金+信托</td><td>传承</td></tr>
+  </tbody></table>
+  <p>|----------|----------|----------|------|</p>
+  <p><strong>操作建议</strong>：</p>
+  <p><strong>1.</strong> 将大部分资产配置在低风险资产上</p>
+  <p><strong>2.</strong> 保持一定的股票配置（20%），对抗通胀</p>
+  <p><strong>3.</strong> 开始财富传承规划</p>
+  <p><strong>4.</strong> 配置充足的医疗保险和长期护理险</p>
+  <p><strong>5.</strong> 考虑家族信托（如果资产规模允许）</p>
 </div>
-
-<!-- 6.5 风险检查清单 -->
 <div class="section">
-  <h2><span class="icon">🛡️</span> 投资前风险检查清单</h2>
-  <p>在执行任何投资决策前，逐项确认以下条件。点击标记已完成项：</p>
-
-  <div class="risk-list" id="riskList">
-    <div class="risk-item" onclick="toggleRisk(this)"><span class="risk-icon">□</span> 我有至少12个月的紧急储备金（现金/货基）</div>
-    <div class="risk-item" onclick="toggleRisk(this)"><span class="risk-icon">□</span> 我已还清所有高息负债（信用卡、消费贷）</div>
-    <div class="risk-item" onclick="toggleRisk(this)"><span class="risk-icon">□</span> 我了解所投资产品的风险，不会投"看不懂"的东西</div>
-    <div class="risk-item" onclick="toggleRisk(this)"><span class="risk-icon">□</span> 我的单一资产仓位不超过总资产的30%</div>
-    <div class="risk-item" onclick="toggleRisk(this)"><span class="risk-icon">□</span> 我有持续的收入来源，不依赖投资收益生活</div>
-    <div class="risk-item" onclick="toggleRisk(this)"><span class="risk-icon">□</span> 我已经和家人沟通了投资计划和风险承受能力</div>
-    <div class="risk-item" onclick="toggleRisk(this)"><span class="risk-icon">□</span> 我设定了止损线，并且会严格执行</div>
-    <div class="risk-item" onclick="toggleRisk(this)"><span class="risk-icon">□</span> 我不会因为短期波动而改变长期策略</div>
-    <div class="risk-item" onclick="toggleRisk(this)"><span class="risk-icon">□</span> 我理解康波理论是概率框架，不是精确预言</div>
-    <div class="risk-item" onclick="toggleRisk(this)"><span class="risk-icon">□</span> 我已准备好至少5年的投资期限</div>
+  <h2><span class="icon">📖</span> 六大可操作策略</h2>
+  <h3>策略1：康波定投法</h3>
+  <p><strong>原理</strong>：在康波冬末春初开始定投，持续到夏初</p>
+  <p><strong>操作</strong>：</p>
+  <p><strong>1.</strong> 选择第六轮康波核心赛道的指数基金</p>
+  <p><strong>2.</strong> 每月固定金额定投</p>
+  <p><strong>3.</strong> 持续5-10年</p>
+  <p><strong>4.</strong> 在康波夏（繁荣期）逐步减持</p>
+  <p><strong>标的建议</strong>：</p>
+  <p>• 沪深300指数基金（30%）</p>
+  <p>• 纳斯达克100指数基金（30%）</p>
+  <p>• 新能源ETF（20%）</p>
+  <p>• AI/半导体ETF（20%）</p>
+  <p><strong>预期回报</strong>：年化10-15%（基于历史康波春→夏的平均涨幅）</p>
+  <h3>策略2：逆周期建仓法</h3>
+  <p><strong>原理</strong>：在市场恐慌时买入，在市场疯狂时卖出</p>
+  <p><strong>操作</strong>：</p>
+  <p><strong>1.</strong> 当市场下跌超过30%时，开始分批建仓</p>
+  <p><strong>2.</strong> 当市场上涨超过100%时，开始分批减持</p>
+  <p><strong>3.</strong> 每次操作不超过总仓位的20%</p>
+  <p><strong>4.</strong> 保持耐心，等待机会</p>
+  <p><strong>历史验证</strong>：</p>
+  <p>• 2008年金融危机后建仓，到2021年收益超过500%</p>
+  <p>• 2020年3月疫情恐慌后建仓，到2021年收益超过100%</p>
+  <h3>策略3：核心-卫星配置法</h3>
+  <p><strong>原理</strong>：70%核心仓位+30%卫星仓位</p>
+  <p><strong>核心仓位（70%）</strong>：</p>
+  <p>• 低估值蓝筹股</p>
+  <p>• 指数基金</p>
+  <p>• 国债</p>
+  <p>• 黄金</p>
+  <p><strong>卫星仓位（30%）</strong>：</p>
+  <p>• 新兴产业（AI、新能源、生物科技）</p>
+  <p>• 行业ETF</p>
+  <p>• 个股（精选）</p>
+  <p><strong>操作</strong>：</p>
+  <p>• 核心仓位长期持有，每年再平衡一次</p>
+  <p>• 卫星仓位根据市场情况灵活调整</p>
+  <h3>策略4：行业轮动法</h3>
+  <p><strong>原理</strong>：根据康波阶段，轮动配置不同行业</p>
+  <p><strong>2026-2030年（春）重点配置</strong>：</p>
+  <table class="data-table"><thead><tr><th>行业</th><th>配置</th><th>原因</th></tr></thead><tbody>
+  <tr><td>AI算力</td><td>25%</td><td>AI的"水电煤"</td></tr>
+  <tr><td>新能源</td><td>20%</td><td>能源转型核心</td></tr>
+  <tr><td>半导体</td><td>15%</td><td>AI芯片需求</td></tr>
+  <tr><td>医疗健康</td><td>15%</td><td>老龄化需求</td></tr>
+  <tr><td>消费升级</td><td>10%</td><td>经济复苏</td></tr>
+  <tr><td>其他</td><td>15%</td><td>分散配置</td></tr>
+  <tr><td>行业</td><td>配置</td><td>原因</td></tr>
+  </tbody></table>
+  <p>|------|------|------|</p>
+  <p><strong>2030-2035年（夏）重点配置</strong>：</p>
+  <p>|------|------|------|</p>
+  <table class="data-table"><thead><tr><th>AI应用</th><th>30%</th><th>应用爆发期</th></tr></thead><tbody>
+  <tr><td>新能源车</td><td>20%</td><td>全面替代燃油车</td></tr>
+  <tr><td>生物科技</td><td>15%</td><td>商业化加速</td></tr>
+  <tr><td>消费</td><td>15%</td><td>经济繁荣</td></tr>
+  <tr><td>金融</td><td>10%</td><td>资本市场活跃</td></tr>
+  <tr><td>其他</td><td>10%</td><td>分散配置</td></tr>
+  </tbody></table>
+  <h3>策略5：对冲保值法</h3>
+  <p><strong>原理</strong>：用对冲工具保护核心资产</p>
+  <p><strong>操作</strong>：</p>
+  <p><strong>1.</strong> 核心资产（股票、房产）持有不动</p>
+  <p><strong>2.</strong> 用黄金对冲货币贬值风险</p>
+  <p><strong>3.</strong> 用国债对冲经济衰退风险</p>
+  <p><strong>4.</strong> 用保险对冲人身风险</p>
+  <p><strong>配置建议</strong>：</p>
+  <p>• 黄金：总资产的10-15%</p>
+  <p>• 国债：总资产的10-20%</p>
+  <p>• 保险：年收入的5-10%</p>
+  <h3>策略6：现金为王等待法</h3>
+  <p><strong>原理</strong>：在不确定时期持有现金，等待明确机会</p>
+  <p><strong>适用场景</strong>：</p>
+  <p>• 市场方向不明</p>
+  <p>• 个人风险承受能力下降</p>
+  <p>• 等待特定资产价格回调</p>
+  <p><strong>操作</strong>：</p>
+  <p><strong>1.</strong> 将30-50%资产转为现金（货币基金、短期存款）</p>
+  <p><strong>2.</strong> 设定明确的入场条件（如"上证跌破2800点"）</p>
+  <p><strong>3.</strong> 当条件满足时，分批入场</p>
+  <p><strong>4.</strong> 如果条件一直不满足，耐心等待</p>
+  <p><strong>注意</strong>：不要长期持有过多现金，会被通胀侵蚀。现金是"等待的武器"，不是"长期的策略"。</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 康波周期日历（2026-2040）</h2>
+  <h3>5.1 关键时间节点</h3>
+  <table class="data-table"><thead><tr><th>年份</th><th>周期阶段</th><th>关键事件</th><th>操作建议</th></tr></thead><tbody>
+  <tr><td>2026</td><td>春初</td><td>AI商业化加速，新能源规模化</td><td>开始定投，建仓</td></tr>
+  <tr><td>2027-2028</td><td>春中</td><td>经济复苏确认，股市上涨</td><td>继续定投，适度加仓</td></tr>
+  <tr><td>2029-2030</td><td>春末</td><td>经济过热迹象，通胀抬头</td><td>停止加仓，开始观察</td></tr>
+  <tr><td>2031-2033</td><td>夏初</td><td>泡沫形成，全民炒股</td><td>逐步减持，锁定利润</td></tr>
+  <tr><td>2034-2036</td><td>夏中→夏末</td><td>泡沫顶峰，黑天鹅出现</td><td>大幅减持，增加现金</td></tr>
+  <tr><td>2037-2038</td><td>秋初</td><td>泡沫破裂，市场恐慌</td><td>持有现金和黄金，等待</td></tr>
+  <tr><td>2039-2040</td><td>秋中</td><td>经济衰退，资产价格触底</td><td>开始新一轮建仓</td></tr>
+  </tbody></table>
+  <p>|------|----------|----------|----------|</p>
+  <h3>5.2 康波投资日历（年度版）</h3>
+  <p><strong>每年1月</strong>：检视上一年投资表现，调整当年策略</p>
+  <p><strong>每年4月</strong>：关注一季报，判断经济趋势</p>
+  <p><strong>每年7月</strong>：年中再平衡，调整资产配置</p>
+  <p><strong>每年10月</strong>：关注三季报，预判来年趋势</p>
+  <p><strong>每年12月</strong>：年度总结，制定来年计划</p>
+  <h3>5.3 需要关注的宏观指标</h3>
+  <table class="data-table"><thead><tr><th>指标</th><th>含义</th><th>频率</th></tr></thead><tbody>
+  <tr><td>GDP增速</td><td>经济增长动力</td><td>季度</td></tr>
+  <tr><td>CPI/PPI</td><td>通胀/通缩</td><td>月度</td></tr>
+  <tr><td>PMI</td><td>制造业景气度</td><td>月度</td></tr>
+  <tr><td>M2</td><td>货币供应量</td><td>月度</td></tr>
+  <tr><td>10年期国债收益率</td><td>市场利率预期</td><td>日度</td></tr>
+  <tr><td>美元指数</td><td>全球资本流向</td><td>日度</td></tr>
+  <tr><td>黄金价格</td><td>避险情绪</td><td>日度</td></tr>
+  </tbody></table>
+  <p>|------|------|------|</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 风险清单与对冲方案</h2>
+  <h3>6.1 主要风险识别</h3>
+  <table class="data-table"><thead><tr><th>风险类型</th><th>概率</th><th>影响</th><th>对冲方案</th></tr></thead><tbody>
+  <tr><td>经济衰退</td><td>中</td><td>高</td><td>国债+现金+黄金</td></tr>
+  <tr><td>通胀飙升</td><td>中</td><td>高</td><td>黄金+大宗商品+房产</td></tr>
+  <tr><td>地缘冲突</td><td>中</td><td>极高</td><td>黄金+分散地域</td></tr>
+  <tr><td>技术泡沫</td><td>高</td><td>中</td><td>分批操作+止盈</td></tr>
+  <tr><td>政策变化</td><td>中</td><td>中</td><td>关注政策+分散行业</td></tr>
+  <tr><td>黑天鹅事件</td><td>低</td><td>极高</td><td>保险+现金储备</td></tr>
+  <tr><td>工具</td><td>对冲对象</td><td>使用方法</td></tr>
+  </tbody></table>
+  <p>|----------|------|------|----------|</p>
+  <h3>6.2 对冲工具箱</h3>
+  <p>|------|----------|----------|</p>
+  <table class="data-table"><thead><tr><th>黄金</th><th>货币贬值+地缘风险</th><th>配置10-15%</th></tr></thead><tbody>
+  <tr><td>国债</td><td>经济衰退</td><td>配置10-20%</td></tr>
+  <tr><td>保险</td><td>人身风险</td><td>年收入5-10%</td></tr>
+  <tr><td>现金</td><td>流动性危机</td><td>保持10-15%</td></tr>
+  <tr><td>海外资产</td><td>单一国家风险</td><td>配置10-20%</td></tr>
+  </tbody></table>
+  <h3>6.3 止损纪律</h3>
+  <p><strong>核心原则</strong>：永远不要让亏损超过你能承受的范围</p>
+  <p><strong>止损规则</strong>：</p>
+  <p><strong>1.</strong> 单一资产亏损超过20%，必须检视是否需要止损</p>
+  <p><strong>2.</strong> 整体资产亏损超过30%，必须减少风险敞口</p>
+  <p><strong>3.</strong> 如果亏损影响到你的睡眠，说明仓位太重了</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 个人投资计划书模板</h2>
+  <h3>7.1 基本信息</h3>
+  <p>• 姓名：____</p>
+  <p>• 年龄：____</p>
+  <p>• 年收入：____</p>
+  <p>• 可投资资产：____</p>
+  <p>• 风险承受能力：____（低/中/高）</p>
+  <p>• 投资目标：____（保值/增值/高增长）</p>
+  <p>• 投资期限：____年</p>
+  <h3>7.2 资产配置计划</h3>
+  <table class="data-table"><thead><tr><th>资产类别</th><th>目标比例</th><th>当前比例</th><th>调整方案</th></tr></thead><tbody>
+  <tr><td>股票</td><td>____%</td><td>____%</td><td>____</td></tr>
+  <tr><td>债券</td><td>____%</td><td>____%</td><td>____</td></tr>
+  <tr><td>黄金</td><td>____%</td><td>____%</td><td>____</td></tr>
+  <tr><td>房产</td><td>____%</td><td>____%</td><td>____</td></tr>
+  <tr><td>现金</td><td>____%</td><td>____%</td><td>____</td></tr>
+  <tr><td>其他</td><td>____%</td><td>____%</td><td>____</td></tr>
+  <tr><td>时间</td><td>操作</td><td>金额</td><td>条件</td></tr>
+  </tbody></table>
+  <p>|----------|----------|----------|----------|</p>
+  <h3>7.3 操作计划</h3>
+  <p>|------|------|------|------|</p>
+  <table class="data-table"><thead><tr><th>每月</th><th>定投</th><th>____元</th><th>固定执行</th></tr></thead><tbody>
+  <tr><td>Q1</td><td>检视</td><td>-</td><td>1月</td></tr>
+  <tr><td>Q2</td><td>再平衡</td><td>-</td><td>4月</td></tr>
+  <tr><td>Q3</td><td>年中调整</td><td>-</td><td>7月</td></tr>
+  <tr><td>Q4</td><td>年终总结</td><td>-</td><td>12月</td></tr>
+  </tbody></table>
+  <h3>7.4 风险控制</h3>
+  <p>• 最大可承受亏损：____%</p>
+  <p>• 止损线：____%</p>
+  <p>• 保险配置：____元/年</p>
+  <p>• 应急储备：____元（覆盖____个月支出）</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 核心概念总结</h2>
+  <h3>你需要记住的5个关键点</h3>
+  <p><strong>1.</strong> <strong>2026年处于冬末春初</strong>，是播种的最佳时机，但不要期望立即收获</p>
+  <p><strong>2.</strong> <strong>资产配置的核心公式</strong>：风险资产比例 = (100-年龄) × 周期系数</p>
+  <p><strong>3.</strong> <strong>六大策略</strong>：康波定投、逆周期建仓、核心-卫星、行业轮动、对冲保值、现金等待</p>
+  <p><strong>4.</strong> <strong>2030年前是关键建仓期</strong>，之后将进入繁荣期</p>
+  <p><strong>5.</strong> <strong>永远保持风险意识</strong>，对冲工具是你的安全网</p>
+  <h3>你需要打破的3个误区</h3>
+  <p><strong>误区1</strong>："我现在钱太少，不值得做资产配置"</p>
+  <p>→ 资产配置不是有钱人的专利。10万和1亿的配置逻辑是一样的，只是规模不同。</p>
+  <p><strong>误区2</strong>："学了康波就能稳赚不赔"</p>
+  <p>→ 康波是概率框架，不是确定性预言。它提高你的胜率，但不能保证每一笔交易都盈利。</p>
+  <p><strong>误区3</strong>："投资太复杂了，我学不会"</p>
+  <p>→ 投资的核心逻辑其实很简单：在便宜的时候买入贵的东西，在贵的时候卖出。康波告诉你什么时候便宜，什么时候贵。</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 练习题</h2>
+  <div class="exercise"><div class="exercise-label">✏️ 练习</div><h3>练习1：制定个人投资计划</h3>
+  <p>根据你目前的情况，填写"个人投资计划书模板"：</p>
+  <p>• 你的年龄和可投资资产是多少？</p>
+  <p>• 你应该采取什么资产配置方案？</p>
+  <p>• 你的止损线是多少？</p>
+  <p>• 你每月应该定投多少？</p>
+  <div class="exercise"><div class="exercise-label">✏️ 练习</div><h3>练习2：风险评估</h3>
+  <p>分析以下情景，判断你应该怎么做：</p>
+  <p><strong>1.</strong> 你持有的股票下跌了30%，你应该卖出还是持有？</p>
+  <p><strong>2.</strong> 黄金价格突然上涨20%，你应该买入还是观望？</p>
+  <p><strong>3.</strong> 你有100万现金，市场方向不明，你应该如何配置？</p>
+  <div class="exercise"><div class="exercise-label">✏️ 练习</div><h3>练习3：周期操作</h3>
+  <p>假设你现在有50万可投资资产，根据2026年的周期位置，制定一个5年的投资计划：</p>
+  <p>• 2026年：____</p>
+  <p>• 2027年：____</p>
+  <p>• 2028年：____</p>
+  <p>• 2029年：____</p>
+  <p>• 2030年：____</p>
   </div>
-  
-  <div id="riskProgress" style="text-align:center;padding:12px;font-size:0.85rem;color:var(--text3)">已完成 <span id="riskCount" style="color:var(--green);font-weight:700">0</span> / 10 项</div>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 练习题参考答案</h2>
+  <div class="exercise"><div class="exercise-label">✏️ 练习</div><h3>练习1思路提示</h3>
+  <p>以30岁、30万可投资资产为例：</p>
+  <p>• 风险资产比例 = (100-30) × 1.0 = 70%</p>
+  <p>• 股票配置：21万（70%）</p>
+  <p>• 黄金配置：3万（10%）</p>
+  <p>• 现金：6万（20%）</p>
+  <p>• 每月定投：3000-5000元</p>
+  <p>• 止损线：整体亏损20%</p>
+  <div class="exercise"><div class="exercise-label">✏️ 练习</div><h3>练习2答案</h3>
+  <p><strong>1.</strong> <strong>股票下跌30%</strong>：</p>
+  <p>- 检视下跌原因（系统性风险 vs 个股问题）</p>
+  <p>- 如果是系统性风险，且你相信长期趋势，可以持有</p>
+  <p>- 如果是个股问题，考虑止损</p>
+  <p>- 不要在恐慌中做出决策</p>
+  <p><strong>2.</strong> <strong>黄金上涨20%</strong>：</p>
+  <p>- 如果你已经配置了10-15%的黄金，持有不动</p>
+  <p>- 如果你没有配置，可以分批建仓（不要一次性买入）</p>
+  <p>- 黄金是长期配置，不是短期投机</p>
+  <p><strong>3.</strong> <strong>100万现金</strong>：</p>
+  <p>- 30万配置股票（定投）</p>
+  <p>- 15万配置黄金</p>
+  <p>- 10万配置国债</p>
+  <p>- 45万保持现金，等待机会</p>
+  <div class="exercise"><div class="exercise-label">✏️ 练习</div><h3>练习3参考答案</h3>
+  <p>以50万为例：</p>
+  <table class="data-table"><thead><tr><th>年份</th><th>操作</th><th>金额</th><th>理由</th></tr></thead><tbody>
+  <tr><td>2026</td><td>定投建仓</td><td>买入20万股票+5万黄金</td><td>春初播种</td></tr>
+  <tr><td>2027</td><td>继续定投</td><td>买入10万股票</td><td>经济复苏确认</td></tr>
+  <tr><td>2028</td><td>适度加仓</td><td>买入5万股票+5万黄金</td><td>通胀预期上升</td></tr>
+  <tr><td>2029</td><td>开始观察</td><td>持有不动</td><td>经济过热迹象</td></tr>
+  <tr><td>2030</td><td>逐步减持</td><td>卖出10万股票</td><td>春末获利了结</td></tr>
+  </tbody></table>
+  <p>|------|------|------|------|</p>
+  </div>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 课程总结</h2>
+  <p>恭喜你完成了《读懂康波，掌握你的财富节奏》全部六节课！</p>
+  <h3>你学到了什么</h3>
+  <table class="data-table"><thead><tr><th>课次</th><th>核心知识</th><th>实战价值</th></tr></thead><tbody>
+  <tr><td>第1课</td><td>康波理论基础</td><td>建立周期思维</td></tr>
+  <tr><td>第2课</td><td>四周期嵌套</td><td>定位人生财富窗口</td></tr>
+  <tr><td>第3课</td><td>第六轮康波</td><td>识别核心赛道</td></tr>
+  <tr><td>第4课</td><td>顶级家族策略</td><td>学习跨周期生存</td></tr>
+  <tr><td>第5课</td><td>货币战争</td><td>理解货币环境</td></tr>
+  <tr><td>第6课</td><td>投资操作手册</td><td>制定个人计划</td></tr>
+  </tbody></table>
+  <p>|------|----------|----------|</p>
+  <h3>下一步行动</h3>
+  <p><strong>1.</strong> <strong>填写个人投资计划书</strong>（用第6课的模板）</p>
+  <p><strong>2.</strong> <strong>使用康波计算器</strong>定位你的周期位置</p>
+  <p><strong>3.</strong> <strong>开始定投</strong>（用第6课的策略1）</p>
+  <p><strong>4.</strong> <strong>加入社群</strong>与同学交流</p>
+  <p><strong>5.</strong> <strong>考虑进阶课</strong>深入学习</p>
+  <h3>最后的话</h3>
+  <p>周金涛说："人生就是一场康波。"</p>
+  <p>你现在掌握了这场游戏的规则。但记住：</p>
+  <p>• <strong>知识不等于行动</strong>。知道和做到之间，隔着一个"执行力"。</p>
+  <p>• <strong>周期不等人</strong>。2026年的窗口不会永远存在。</p>
+  <p>• <strong>投资自己是最好的投资</strong>。能力是你唯一不会被夺走的资产。</p>
+  <p>祝你在第六轮康波中，抓住属于你的财富机会。</p>
+</div>
+<div class="section">
+  <h2><span class="icon"></span> </h2>
+  <p><em>康波研究院 · 入门课完结 · 2026</em></p>
 </div>
 
-<!-- EXERCISE 1 -->
-<div class="exercise" id="ex1">
-  <div class="exercise-label">✏️ 练习 1/3</div>
-  <h3>制定你的定投方案</h3>
-  <p>假设你每月有3000元可以用于投资，请制定一个适合2026-2030年（播种期）的定投计划。包括：投什么品种、每月多少、预期持有时间。</p>
-  <textarea placeholder="写下你的定投方案...&#10;例如：&#10;品种1：___ ，每月___元&#10;品种2：___ ，每月___元&#10;品种3：___ ，每月___元&#10;预期持有：___年"></textarea>
-  <div class="hint">
-    <button class="hint-btn" onclick="this.nextElementSibling.classList.toggle('show')">💡 查看参考答案</button>
-    <div class="hint-answer">参考方案（3000元/月）：<br>• <strong>AI/科技指数基金：1200元</strong>（如纳斯达克100、科创50）——捕捉六轮主线<br>• <strong>新能源指数基金：900元</strong>（如新能源ETF）——第二主导技术<br>• <strong>宽基指数基金：600元</strong>（如沪深300/标普500）——底仓稳定性<br>• <strong>现金储备：300元</strong>——积累黑天鹅子弹<br><br>预期持有时间：<strong>5-8年</strong>（至少覆盖一个完整的回升周期）<br>关键原则：播种期（低估值）大量买入，不要因为短期下跌而停止定投。</div>
-  </div>
-</div>
-
-<!-- EXERCISE 2 -->
-<div class="exercise" id="ex2">
-  <div class="exercise-label">✏️ 练习 2/3</div>
-  <h3>黑天鹅应对演练</h3>
-  <p>假设2028年发生以下情景：全球股市暴跌30%，AI概念股跌幅超过50%，新闻标题是"AI泡沫破裂"。你会怎么做？</p>
-  <div class="choices" id="q2a">
-    <div class="choice" onclick="selectChoice(this,'q2a','wrong')"><span class="letter">A</span> 恐慌卖出所有持仓，等待市场稳定</div>
-    <div class="choice" onclick="selectChoice(this,'q2a','correct')"><span class="letter">B</span> 检查基本面，如果AI长期趋势未变，动用储备资金逢低加仓</div>
-    <div class="choice" onclick="selectChoice(this,'q2a','wrong')"><span class="letter">C</span> 不管跌多少都继续按原计划定投，不做任何调整</div>
-    <div class="choice" onclick="selectChoice(this,'q2a','wrong')"><span class="letter">D</span> 加杠杆抄底，这是千载难逢的机会</div>
-  </div>
-</div>
-
-<!-- EXERCISE 3 -->
-<div class="exercise" id="ex3">
-  <div class="exercise-label">✏️ 练习 3/3</div>
-  <h3>你的15年投资宣言</h3>
-  <p>基于本课程所学的全部知识，写下你的"2026-2040投资宣言"——你的核心信念、策略选择和风险底线。这将是你在未来15年中遇到迷茫时的指南针。</p>
-  <textarea placeholder="我的2026-2040投资宣言：&#10;&#10;核心信念：...&#10;主要策略：...&#10;风险底线：...&#10;最大的优势：...&#10;最需要警惕的：..."></textarea>
-  <div class="hint">
-    <button class="hint-btn" onclick="this.nextElementSibling.classList.toggle('show')">💡 查看参考答案</button>
-    <div class="hint-answer">示例宣言：<br><br>📝 <strong>核心信念：</strong>我们正处在第六轮康波的起点，AI+新能源将驱动未来30年的经济增长。短期波动是入场机会，不是逃跑信号。<br><br>📝 <strong>主要策略：</strong>播种期定投为主（60%），黑天鹅猎手为辅（20%），自身能力投资贯穿始终。<br><br>📝 <strong>风险底线：</strong>永远保留12个月生活费不动；单一资产不超30%；不加杠杆。<br><br>📝 <strong>最大优势：</strong>理解周期规律，能在别人恐惧时保持理性。<br><br>📝 <strong>最需警惕：</strong>过度自信——康波是概率框架，不是确定预言。市场总能找到让人意外的方式。</div>
-  </div>
-</div>
-
-<!-- GRADUATION -->
-<div class="graduation" id="graduation">
-  <div class="grad-emoji">🎓</div>
-  <h3>恭喜完成全部课程！</h3>
-  <p>你已经系统学习了康波理论的全部核心知识——从周期理论到实战策略。未来15年，你将带着这份认知地图，在第六轮康波的大潮中找到属于自己的位置。</p>
-  <div class="grad-stats">
-    <div class="grad-stat"><div class="num">6</div><div class="label">课程完成</div></div>
-    <div class="grad-stat"><div class="num">18</div><div class="label">练习完成</div></div>
-    <div class="grad-stat"><div class="num">15年</div><div class="label">投资视野</div></div>
-  </div>
-  <p style="margin-top:20px;font-size:0.88rem;color:var(--text3);font-style:italic">"人生发财靠康波。" —— 周金涛</p>
-</div>
 
 <!-- BOTTOM NAV -->
 <div class="bottom-nav">
-  <a href="lesson5.html" class="prev">← 上一课：周金涛预言验证</a>
-  <a href="index.html" class="next">返回首页 🏠</a>
+  <a href="lesson5.html" class="prev">← 第5课</a>
+  <a href="lesson7.html" class="next">第7课 →</a>
 </div>
 
 </div>
 
 <script>
-// Progress bar
+// Reading progress
 window.addEventListener('scroll',()=>{
-  const h=document.documentElement.scrollHeight-window.innerHeight;
-  const p=Math.min(100,window.scrollY/h*100);
-  document.getElementById('progressFill').style.width=p+'%';
-  if(p>95)document.getElementById('graduation').classList.add('show');
+  const h=document.documentElement;
+  const pct=(h.scrollTop)/(h.scrollHeight-h.clientHeight)*100;
+  document.getElementById('progressFill').style.width=pct+'%';
 });
 
-// Timeline toggle
-function toggleTL(el){el.classList.toggle('active')}
-
-// Age slider & allocation
-const allocData={
-  attack:{name:'进攻型',color:'#ef4444',stocks:50,tech:25,gold:5,bonds:5,cash:5,realestate:10},
-  balance:{name:'平衡型',color:'#f59e0b',stocks:30,tech:15,gold:10,bonds:15,cash:15,realestate:15},
-  safe:{name:'稳健型',color:'#22c55e',stocks:15,tech:5,gold:15,bonds:25,cash:25,realestate:15}
-};
-
-function getProfile(age){
-  if(age<=35)return 'attack';
-  if(age<=45)return 'balance';
-  return 'safe';
-}
-
-function getProfileName(age){
-  if(age<=35)return '进攻型';
-  if(age<=45)return '平衡型';
-  return '稳健型';
-}
-
-function getProfileDesc(age){
-  if(age<=35)return '时间是你的最大武器。可以承受更大波动，换取更高回报。';
-  if(age<=45)return '攻守兼备。核心仓位稳健，卫星仓位追求增长。';
-  return '以守为主。保住本金是第一要务，适度参与新技术红利。';
-}
-
-function getStrategyTips(age){
-  if(age<=35)return '• 重点策略：播种期定投 + 行业轮动 + 自身能力投资<br>• 权益类配置可达75%<br>• 有足够时间等待周期走完<br>• 加大AI/科技方向投入';
-  if(age<=45)return '• 重点策略：播种期定投 + 黑天鹅猎手 + 全球分散<br>• 权益类控制在45-50%<br>• 保留15-20%现金应对黑天鹅<br>• 开始关注防御型资产';
-  return '• 重点策略：家族式资产隔离 + 全球分散 + 自身能力投资<br>• 权益类控制在20%以内<br>• 以债券、黄金、现金为主<br>• 核心是保值，增值为辅';
-}
-
-function updateAllocation(){
-  const age=parseInt(document.getElementById('ageSlider').value);
-  document.getElementById('ageDisplay').textContent=age+' 岁';
-  const profile=getProfile(age);
-  const d=allocData[profile];
-  
-  const html=`
-    <h4>${d.name}配置方案（${age}岁）</h4>
-    <p style="font-size:0.85rem;color:var(--text3);margin:8px 0">${getProfileDesc(age)}</p>
-    <div class="alloc-bar">
-      <div style="width:${d.stocks}%;background:var(--blue)" title="股票基金">股${d.stocks}%</div>
-      <div style="width:${d.tech}%;background:var(--purple)" title="科技主题">科技${d.tech}%</div>
-      <div style="width:${d.gold}%;background:var(--gold)" title="黄金">金${d.gold}%</div>
-      <div style="width:${d.bonds}%;background:var(--green)" title="债券">债${d.bonds}%</div>
-      <div style="width:${d.realestate}%;background:var(--orange)" title="房产">房${d.realestate}%</div>
-      <div style="width:${d.cash}%;background:var(--text3)" title="现金">现${d.cash}%</div>
-    </div>
-    <div style="font-size:0.82rem;color:var(--text2);line-height:1.8;margin-top:12px">${getStrategyTips(age)}</div>
-  `;
-  document.getElementById('sliderResult').innerHTML=html;
-}
-
-// Init slider
-updateAllocation();
-
-// Strategy checklist
-function toggleStrategy(el){
-  const cb=el.querySelector('input[type=checkbox]');
-  cb.checked=!cb.checked;
-  el.classList.toggle('checked',cb.checked);
-  const count=document.querySelectorAll('.strategy-item.checked').length;
-  document.getElementById('stratCount').textContent=count;
-}
-
-// Risk checklist
-function toggleRisk(el){
-  el.classList.toggle('done');
-  const icon=el.querySelector('.risk-icon');
-  if(el.classList.contains('done')){
-    icon.textContent='☑';
-  }else{
-    icon.textContent='□';
-  }
-  const count=document.querySelectorAll('.risk-item.done').length;
-  document.getElementById('riskCount').textContent=count;
-}
-
-// Choice selection
-function selectChoice(el,groupId,correct){
-  const group=document.getElementById(groupId);
-  group.querySelectorAll('.choice').forEach(c=>{c.classList.remove('selected','correct','wrong')});
-  el.classList.add(correct==='correct'?'correct':'wrong');
-  if(correct==='correct'){
-    group.querySelectorAll('.choice').forEach(c=>{if(c!==el)c.classList.add('wrong')});
-  }
+// Audio player
+function toggleAudio(){
+  const audio=document.getElementById('courseAudio');
+  const btn=document.getElementById('playBtn');
+  if(audio.paused){audio.play();btn.textContent='⏸️'}else{audio.pause();btn.textContent='▶️'}
 }
 </script>
+
 </body>
 </html>

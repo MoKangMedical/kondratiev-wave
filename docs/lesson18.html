@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第18课：地缘政治经济学 — 康波研究院</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#09090b;--bg2:#0f0f13;--card:#1c1c21;--card2:#222228;--card3:#2a2a32;--border:#27272a;--border2:#3f3f46;--text:#fafafa;--text2:#a1a1aa;--text3:#71717a;--gold:#e2b64f;--gold2:#f5d98a;--green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;--orange:#f59e0b;--red:#ef4444;--serif:'Noto Serif SC',serif;--sans:'Inter',sans-serif;--radius:16px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:2;font-size:18px}
+a{color:var(--gold);text-decoration:none}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(9,9,11,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);height:56px;display:flex;align-items:center}
+.nav-inner{max-width:900px;margin:0 auto;padding:0 24px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-left{display:flex;align-items:center;gap:16px}
+.nav-back{font-size:0.9rem;color:var(--text3);transition:color .2s}.nav-back:hover{color:var(--gold)}
+.nav-title{font-size:0.9rem;color:var(--text2);font-weight:500}
+.nav-right{display:flex;align-items:center;gap:12px}
+.nav-lesson{font-size:0.8rem;color:var(--text3);background:var(--card2);padding:4px 14px;border-radius:6px}
+
+/* PROGRESS BAR */
+.progress-bar{position:fixed;top:56px;left:0;right:0;height:3px;background:var(--border);z-index:99}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));transition:width .3s;width:0%}
+
+/* MAIN */
+.main{max-width:800px;margin:0 auto;padding:80px 28px 60px}
+
+/* LESSON HEADER */
+.lesson-header{margin-bottom:56px;text-align:center}
+.lesson-cat{display:inline-block;font-size:0.75rem;color:var(--gold);background:rgba(226,182,79,0.1);padding:4px 14px;border-radius:20px;margin-bottom:16px;letter-spacing:0.1em}
+.lesson-header h1{font-family:var(--serif);font-size:clamp(2rem,5vw,2.8rem);font-weight:900;line-height:1.3;margin-bottom:16px;background:linear-gradient(135deg,var(--text),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lesson-meta{display:flex;gap:20px;justify-content:center;flex-wrap:wrap}
+.lesson-meta span{font-size:0.85rem;color:var(--text3);display:flex;align-items:center;gap:6px}
+
+/* SECTIONS */
+.section{margin-bottom:48px}
+.section h2{font-size:1.4rem;font-weight:700;margin-bottom:20px;color:var(--text);display:flex;align-items:center;gap:10px}
+.section h2 .icon{font-size:1.2rem}
+.section h3{font-size:1.15rem;font-weight:600;margin:28px 0 12px;color:var(--gold2)}
+.section p{color:var(--text2);font-size:1.05rem;margin-bottom:14px;line-height:2}
+
+/* CALLOUT */
+.callout{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:28px;margin:24px 0}
+.callout.gold{border-left:4px solid var(--gold)}
+.callout.green{border-left:4px solid var(--green)}
+.callout.blue{border-left:4px solid var(--blue)}
+.callout-title{font-size:0.85rem;font-weight:600;color:var(--gold);margin-bottom:10px;text-transform:uppercase;letter-spacing:0.08em}
+.callout p{color:var(--text2);font-size:1rem;line-height:1.9}
+
+/* TABLE */
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:0.95rem}
+.data-table th{text-align:left;padding:12px 14px;background:var(--card2);color:var(--text3);font-weight:600;font-size:0.85rem;text-transform:uppercase;letter-spacing:0.05em;border-bottom:2px solid var(--border)}
+.data-table td{padding:12px 14px;border-bottom:1px solid var(--border);color:var(--text2)}
+.data-table tr:hover td{background:var(--card)}
+
+/* EXERCISE */
+.exercise{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:32px;margin:28px 0}
+.exercise-label{display:inline-flex;align-items:center;gap:6px;font-size:0.8rem;font-weight:600;color:var(--blue);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:14px}
+.exercise h3{font-size:1.1rem;margin-bottom:10px;color:var(--text)}
+.exercise p{color:var(--text2);font-size:1rem;margin-bottom:14px}
+.exercise-question{color:var(--text);font-weight:500;font-size:1.05rem}
+.exercise textarea{width:100%;min-height:90px;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:16px;color:var(--text);font-family:var(--sans);font-size:1rem;resize:vertical;transition:border-color .2s;line-height:1.8}
+.exercise textarea:focus{outline:none;border-color:var(--gold)}
+.exercise textarea::placeholder{color:var(--text3)}
+
+/* BOTTOM NAV */
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;padding:36px 0;margin-top:48px;border-top:1px solid var(--border)}
+.bottom-nav a{display:flex;align-items:center;gap:8px;padding:14px 24px;border-radius:12px;font-size:1rem;font-weight:500;transition:all .2s}
+.bottom-nav .prev{color:var(--text3);border:1px solid var(--border)}
+.bottom-nav .prev:hover{border-color:var(--gold);color:var(--gold)}
+.bottom-nav .next{background:var(--gold);color:#000}
+.bottom-nav .next:hover{background:var(--gold2)}
+
+/* AUDIO PLAYER */
+.audio-player{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin:24px 0;display:flex;align-items:center;gap:16px}
+.audio-player .play-btn{width:48px;height:48px;border-radius:50%;background:var(--gold);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.2rem;transition:background .2s;flex-shrink:0}
+.audio-player .play-btn:hover{background:var(--gold2)}
+.audio-player .audio-info{flex:1}
+.audio-player .audio-title{font-size:0.9rem;font-weight:600;color:var(--text);margin-bottom:4px}
+.audio-player .audio-sub{font-size:0.8rem;color:var(--text3)}
+
+/* RESPONSIVE */
+@media(max-width:640px){
+  .main{padding:72px 16px 40px}
+  .lesson-header h1{font-size:1.8rem}
+  .section h2{font-size:1.2rem}
+  .data-table{font-size:0.85rem}
+  .data-table th,.data-table td{padding:8px 10px}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-left">
+      <a href="index.html" class="nav-back">← 返回首页</a>
+      <span class="nav-title">第18课</span>
+    </div>
+    <div class="nav-right">
+      <span class="nav-lesson">18 / 20</span>
+    </div>
+  </div>
+</nav>
+<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+
+<div class="main">
+
+<!-- HEADER -->
+<div class="lesson-header">
+  <div class="lesson-cat">专题研究</div>
+  <h1>🌍 地缘政治经济学</h1>
+  <div class="lesson-meta">
+    <span>📖 阅读约40分钟</span>
+    <span>✏️ 0道练习题</span>
+    <span>🎯 高级</span>
+  </div>
+</div>
+
+<!-- AUDIO OVERVIEW -->
+<div class="audio-player">
+  <button class="play-btn" onclick="toggleAudio()" id="playBtn">▶️</button>
+  <div class="audio-info">
+    <div class="audio-title">🎧 课程音频概述</div>
+    <div class="audio-sub">点击播放课程核心内容摘要</div>
+  </div>
+  <audio id="courseAudio" preload="none">
+    <source src="audio/lesson18.mp3" type="audio/mpeg">
+  </audio>
+</div>
+
+
+
+<div class="section">
+  <h2><span class="icon"></span> </h2>
+  <p># 课程 18：地缘政治经济学</p>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p><strong>康德拉季耶夫长波与地缘政治格局的演变</strong></p></div>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p>参考书目：格雷厄姆·艾利森《注定一战》、亨利·基辛格《世界秩序》</p></div>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 课程导言</h2>
+  <p>地缘政治经济学研究的是政治权力与经济利益在全球空间中的交织与博弈。在康德拉季耶夫长波的框架下，每一个重大技术经济范式的转换，都伴随着地缘政治格局的深刻重塑。新兴大国的崛起与守成大国的焦虑，往往构成世界经济秩序变革的核心驱动力。理解地缘政治经济学，是把握长波周期拐点与全球投资大趋势的关键钥匙。</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 第一章：修昔底德陷阱——大国竞争的历史规律</h2>
+  <h3>1.1 什么是修昔底德陷阱</h3>
+  <p>古希腊历史学家修昔底德在《伯罗奔尼撒战争史》中写道："使战争不可避免的真正原因是雅典实力的增长，以及由此在斯巴达引起的恐惧。"哈佛大学教授格雷厄姆·艾利森（Graham Allison）在其著作《注定一战》（<em>Destined for War</em>）中，将这一规律提炼为"修昔底德陷阱"概念：</p>
+  <p><strong>定义：当一个崛起大国威胁到现有霸权国家的地位时，双方极有可能走向战争或严重冲突。</strong></p>
+  <p>艾利森研究了过去500年中16个崛起大国与守成大国的案例，发现其中12个案例最终以战争收场，只有4个案例实现了和平过渡。这一统计规律揭示了大国竞争的深层结构性张力。</p>
+  <h3>1.2 历史案例分析</h3>
+  <table class="data-table"><thead><tr><th>案例</th><th>崛起国</th><th>守成国</th><th>结果</th></tr></thead><tbody>
+  <tr><td>伯罗奔尼撒战争</td><td>雅典</td><td>斯巴达</td><td>战争</td></tr>
+  <tr><td>一战</td><td>德国</td><td>英国</td><td>战争</td></tr>
+  <tr><td>二战</td><td>德国/日本</td><td>英美</td><td>战争</td></tr>
+  <tr><td>冷战</td><td>苏联</td><td>美国</td><td>和平（苏联解体）</td></tr>
+  <tr><td>英美霸权转移</td><td>美国</td><td>英国</td><td>和平</td></tr>
+  </tbody></table>
+  <p>|------|--------|--------|------|</p>
+  <h3>1.3 修昔底德陷阱的经济维度</h3>
+  <p>修昔底德陷阱不仅是军事安全问题，更是经济结构问题：</p>
+  <p>• <strong>技术霸权争夺</strong>：新兴大国的技术追赶触发守成国的安全焦虑</p>
+  <p>• <strong>贸易规则主导权</strong>：谁制定规则，谁就在经济博弈中占据优势</p>
+  <p>• <strong>金融体系控制权</strong>：货币霸权是霸权体系的核心支柱</p>
+  <p>• <strong>产业链控制力</strong>：关键供应链成为大国博弈的武器</p>
+  <h3>1.4 修昔底德陷阱与康波周期</h3>
+  <p>康德拉季耶夫长波的上升期往往伴随着新兴大国的快速崛起：</p>
+  <p>• <strong>第一康波（1780s-1840s）</strong>：英国工业化崛起，挑战荷兰商业霸权</p>
+  <p>• <strong>第二康波（1840s-1890s）</strong>：美德工业化加速，动摇英国全球主导地位</p>
+  <p>• <strong>第三康波（1890s-1940s）</strong>：德国崛起直接引发两次世界大战</p>
+  <p>• <strong>第四康波（1940s-1990s）</strong>：美苏冷战，技术与意识形态的全面竞争</p>
+  <p>• <strong>第五康波（1990s-至今）</strong>：中国崛起，中美关系进入结构性紧张期</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 第二章：供应链重构——全球化的新逻辑</h2>
+  <h3>2.1 从效率优先到安全优先</h3>
+  <p>过去四十年，全球供应链的主导逻辑是<strong>效率最大化</strong>：</p>
+  <p>• 廉价劳动力导向的离岸外包</p>
+  <p>• 零库存（Just-in-Time）管理模式</p>
+  <p>• 全球统一采购降低成本</p>
+  <p>而今，供应链逻辑正在向<strong>安全与韧性优先</strong>转变：</p>
+  <p>• 关键物资的战略储备（Just-in-Case）</p>
+  <p>• "友岸外包"（Friend-shoring）概念兴起</p>
+  <p>• 区域化替代全球化</p>
+  <h3>2.2 供应链重构的驱动力</h3>
+  <p><strong>政治驱动力：</strong></p>
+  <p>• 地缘政治冲突加剧（中美贸易战、俄乌冲突）</p>
+  <p>• 经济制裁作为外交工具的频繁使用</p>
+  <p>• 国家安全审查覆盖面扩大</p>
+  <p><strong>经济驱动力：</strong></p>
+  <p>• 劳动力成本差异缩小</p>
+  <p>• 物流成本上升与不确定性增加</p>
+  <p>• 技术脱钩导致标准分裂</p>
+  <p><strong>技术驱动力：</strong></p>
+  <p>• 自动化降低劳动力成本的重要性</p>
+  <p>• 数字化提升供应链可视性</p>
+  <p>• 3D打印等技术推动本地化生产</p>
+  <h3>2.3 供应链重构的主要模式</h3>
+  <p><strong>近岸外包（Nearshoring）：</strong> 将生产转移至地理邻近的国家，如美国企业将产能从中国转移至墨西哥。</p>
+  <p><strong>友岸外包（Friend-shoring）：</strong> 将供应链布局在政治盟友国家，强调价值观一致性。美国财政部长耶伦（Janet Yellen）2022年正式提出这一概念。</p>
+  <p><strong>回岸外包（Reshoring）：</strong> 将制造业带回本国，如美国的芯片制造回流政策（CHIPS法案）。</p>
+  <p><strong>多元化布局（China+1/China+N）：</strong> 在保留中国供应链的同时，建立替代来源，降低单一依赖风险。</p>
+  <h3>2.4 供应链重构的经济影响</h3>
+  <p>• <strong>通胀压力上升</strong>：低成本全球化红利消退</p>
+  <p>• <strong>投资方向变化</strong>：基础设施和制造业回流成为主题</p>
+  <p>• <strong>区域经济格局重塑</strong>：东南亚、印度、墨西哥等成为受益者</p>
+  <p>• <strong>企业成本结构变化</strong>：库存增加、供应商多元化的成本</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 第三章：脱钩与去风险——中美经济关系的演变</h2>
+  <h3>3.1 从脱钩到去风险的话语演变</h3>
+  <p>中美经济关系经历了几个关键阶段：</p>
+  <p><strong>第一阶段：接触与融合（1979-2008）</strong></p>
+  <p>• 中国加入WTO（2001年）</p>
+  <p>• 大规模贸易与投资往来</p>
+  <p>• "中美国"（Chimerica）概念的黄金时代</p>
+  <p><strong>第二阶段：摩擦与竞争（2008-2018）</strong></p>
+  <p>• 金融危机暴露失衡</p>
+  <p>• 中国制造2025引发警惕</p>
+  <p>• 贸易逆差成为政治议题</p>
+  <p><strong>第三阶段：全面脱钩论（2018-2022）</strong></p>
+  <p>• 特朗普发起贸易战</p>
+  <p>• 实体清单制裁华为等企业</p>
+  <p>• 技术封锁全面升级</p>
+  <p><strong>第四阶段：去风险化（2022至今）</strong></p>
+  <p>• 欧盟委员会主席冯德莱恩提出"去风险"（De-risking）</p>
+  <p>• 从全面脱钩转向选择性脱钩</p>
+  <p>• 聚焦关键技术与关键矿物</p>
+  <h3>3.2 "去风险"的具体内涵</h3>
+  <p>去风险并非全面脱钩，而是有选择地降低对特定领域的依赖：</p>
+  <p><strong>需要去风险的领域：</strong></p>
+  <p>• 先进半导体及制造设备</p>
+  <p>• 关键矿物（稀土、锂、钴等）</p>
+  <p>• 人工智能核心技术</p>
+  <p>• 量子计算与生物技术</p>
+  <p>• 关键基础设施（通信、能源）</p>
+  <p><strong>维持合作的领域：</strong></p>
+  <p>• 气候变化应对</p>
+  <p>• 公共卫生（疫情防范）</p>
+  <p>• 宏观经济政策协调</p>
+  <p>• 一般消费品贸易</p>
+  <h3>3.3 技术脱钩的深度分析</h3>
+  <p>半导体产业是中美科技竞争的核心战场：</p>
+  <p><strong>美国的策略：</strong></p>
+  <p>• CHIPS与科学法案（527亿美元补贴）</p>
+  <p>• 先进芯片出口管制</p>
+  <p>• 联合荷兰、日本限制光刻机出口</p>
+  <p>• 限制AI芯片对华销售</p>
+  <p><strong>中国的应对：</strong></p>
+  <p>• 大基金（国家集成电路产业投资基金）</p>
+  <p>• 华为海思的自主研发</p>
+  <p>• 成熟制程的产能扩张</p>
+  <p>• 开源架构（RISC-V）的布局</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 第四章：中美大国竞争——结构性矛盾与战略博弈</h2>
+  <h3>4.1 中美竞争的结构性根源</h3>
+  <p>根据基辛格在《世界秩序》中的分析，国际秩序的稳定需要大国之间就权力的合法性与限制达成基本共识。当新崛起大国的秩序观与现有大国产生根本分歧时，秩序将面临重构压力。</p>
+  <p>中美竞争的结构性矛盾包括：</p>
+  <p><strong>经济维度：</strong></p>
+  <p>• GDP总量的趋近（按购买力平价计算中国已超美国）</p>
+  <p>• 贸易与技术的不对称依赖</p>
+  <p>• 货币国际化竞争（美元 vs 人民币）</p>
+  <p><strong>技术维度：</strong></p>
+  <p>• 人工智能、量子计算、5G/6G的竞争</p>
+  <p>• 太空探索与卫星通信</p>
+  <p>• 生物技术与基因编辑</p>
+  <p><strong>制度维度：</strong></p>
+  <p>• 不同的政治经济体制</p>
+  <p>• 治理模式的国际影响力竞争</p>
+  <p>• 规则制定权的争夺</p>
+  <p><strong>地缘维度：</strong></p>
+  <p>• 台海问题</p>
+  <p>• 南海主权争端</p>
+  <p>• "一带一路"与印太战略的对冲</p>
+  <h3>4.2 大国竞争的经济工具箱</h3>
+  <p><strong>制裁与限制：</strong></p>
+  <p>• 出口管制（实体清单、外国直接产品规则）</p>
+  <p>• 投资审查（CFIUS强化审查）</p>
+  <p>• 金融制裁（SWIFT排除、资产冻结）</p>
+  <p><strong>产业政策：</strong></p>
+  <p>• 美国：CHIPS法案、通胀削减法案（IRA）、基础设施法案</p>
+  <p>• 中国：新型举国体制、专精特新企业培育、科技自立自强</p>
+  <p><strong>联盟经济：</strong></p>
+  <p>• 美国主导：印太经济框架（IPEF）、芯片四方联盟（Chip 4）</p>
+  <p>• 中国主导：RCEP、金砖扩员、上合组织经济合作</p>
+  <h3>4.3 基辛格的世界秩序观</h3>
+  <p>基辛格在《世界秩序》中强调：</p>
+  <div class="callout gold"><div class="callout-title">💡 核心洞察</div><p>"世界秩序从未在全球范围内存在过。过去存在的都是地区性秩序，各自基于不同的合法性原则。"</p></div>
+  <p>基辛格的核心洞见：</p>
+  <p>• <strong>均势是秩序的基础</strong>：大国之间的权力平衡比任何理想主义的国际组织更能维护和平</p>
+  <p>• <strong>合法性共识</strong>：秩序的稳定取决于大国对规则的基本认同</p>
+  <p>• <strong>务实外交</strong>：避免意识形态对抗，寻求利益交汇点</p>
+  <p>• <strong>历史的教训</strong>：威斯特伐利亚体系的成功在于承认多元并存的现实</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 第五章：能源地缘政治——大国博弈的资源基础</h2>
+  <h3>5.1 能源地缘政治的历史演变</h3>
+  <p>能源始终是地缘政治竞争的核心要素：</p>
+  <p><strong>石油时代的大国博弈：</strong></p>
+  <p>• 英国石油公司在中东的早期布局</p>
+  <p>• 美国通过"石油美元"体系确立霸权</p>
+  <p>• OPEC的崛起与石油武器的使用（1973年石油危机）</p>
+  <p>• 伊拉克战争的能源地缘政治背景</p>
+  <p><strong>天然气的政治化：</strong></p>
+  <p>• 俄罗斯对欧洲的天然气杠杆</p>
+  <p>• 北溪管道的地缘政治意义</p>
+  <p>• 俄乌冲突后的能源供应重组</p>
+  <h3>5.2 能源转型的地缘政治影响</h3>
+  <p>全球能源转型正在重塑地缘政治格局：</p>
+  <p><strong>传统能源大国的挑战：</strong></p>
+  <p>• 中东石油国家面临需求峰值压力</p>
+  <p>• 俄罗斯天然气武器的效用递减</p>
+  <p>• 化石能源出口国的经济转型压力</p>
+  <p><strong>新能源的关键矿物竞争：</strong></p>
+  <p>• 锂：澳大利亚、智利、中国主导</p>
+  <p>• 钴：刚果（金）供应70%以上</p>
+  <p>• 稀土：中国占全球加工量的60%以上</p>
+  <p>• 镍：印尼、菲律宾、俄罗斯主导</p>
+  <p><strong>能源技术的竞争：</strong></p>
+  <p>• 中国：光伏、电池、电动汽车制造的全球领先</p>
+  <p>• 美国：页岩油技术、核能创新</p>
+  <p>• 欧洲：海上风电、氢能技术</p>
+  <h3>5.3 能源安全与投资策略</h3>
+  <p>能源地缘政治对投资的影响：</p>
+  <p>• <strong>能源转型投资</strong>：可再生能源、储能技术、电网升级</p>
+  <p>• <strong>关键矿物投资</strong>：矿业上游、精炼加工、回收技术</p>
+  <p>• <strong>能源基础设施</strong>：LNG接收站、输电线路、充电网络</p>
+  <p>• <strong>防御性配置</strong>：传统能源企业在转型期的现金流优势</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 第六章：地缘政治风险下的投资策略</h2>
+  <h3>6.1 地缘政治风险的分类</h3>
+  <p><strong>系统性风险：</strong></p>
+  <p>• 大国战争或严重冲突</p>
+  <p>• 全球金融体系分裂</p>
+  <p>• 关键航道封锁（台海、马六甲海峡、霍尔木兹海峡）</p>
+  <p><strong>结构性风险：</strong></p>
+  <p>• 技术脱钩导致的产业链断裂</p>
+  <p>• 制裁升级影响跨国企业运营</p>
+  <p>• 资本流动限制与投资审查强化</p>
+  <p><strong>周期性风险：</strong></p>
+  <p>• 区域冲突的升级与缓和</p>
+  <p>• 贸易政策的摇摆</p>
+  <p>• 选举周期对政策的影响</p>
+  <h3>6.2 地缘政治风险的投资框架</h3>
+  <p><strong>地理多元化：</strong></p>
+  <p>• 避免过度集中于单一地缘政治风险区域</p>
+  <p>• 配置地缘政治受益地区（如东南亚、印度、墨西哥）</p>
+  <p>• 关注"中立地带"国家的投资机会</p>
+  <p><strong>供应链视角投资：</strong></p>
+  <p>• 投资于供应链重构的受益者（物流、自动化、本地化制造）</p>
+  <p>• 关注"友岸外包"目的地国的基础设施需求</p>
+  <p>• 配置关键矿物和替代材料企业</p>
+  <p><strong>防御性策略：</strong></p>
+  <p>• 黄金与贵金属作为地缘政治避险资产</p>
+  <p>• 军工与国防板块在紧张期的表现</p>
+  <p>• 网络安全与情报技术企业</p>
+  <p><strong>对冲策略：</strong></p>
+  <p>• 地缘政治风险溢价的量化评估</p>
+  <p>• 利用波动率工具（VIX、期权策略）</p>
+  <p>• 情景分析与压力测试</p>
+  <h3>6.3 历史经验：地缘政治事件的市场影响</h3>
+  <table class="data-table"><thead><tr><th>事件</th><th>短期影响</th><th>长期影响</th></tr></thead><tbody>
+  <tr><td>911事件（2001）</td><td>股市暴跌</td><td>反恐战争、安全支出增加</td></tr>
+  <tr><td>俄罗斯入侵克里米亚（2014）</td><td>俄罗斯股市崩盘</td><td>能源格局变化、制裁常态化</td></tr>
+  <tr><td>中美贸易战（2018）</td><td>全球股市震荡</td><td>供应链重构加速</td></tr>
+  <tr><td>俄乌冲突（2022）</td><td>能源价格暴涨</td><td>欧洲能源转型加速、全球通胀</td></tr>
+  <tr><td>中东冲突（2023-24）</td><td>油价波动</td><td>航运路线改道、保险成本上升</td></tr>
+  </tbody></table>
+  <p>|------|----------|----------|</p>
+  <h3>6.4 当前地缘政治环境下的投资主题</h3>
+  <p><strong>主题一：国防与安全支出上升</strong></p>
+  <p>• 全球军费开支创历史新高</p>
+  <p>• 北约国家增加国防预算</p>
+  <p>• 网络安全与太空军事化</p>
+  <p><strong>主题二：能源独立与转型</strong></p>
+  <p>• 美国通胀削减法案（IRA）推动清洁能源</p>
+  <p>• 欧洲REPowerEU计划</p>
+  <p>• 核能复兴</p>
+  <p><strong>主题三：关键技术自主</strong></p>
+  <p>• 半导体制造本地化</p>
+  <p>• AI算力基础设施</p>
+  <p>• 量子通信与密码学</p>
+  <p><strong>主题四：新兴市场重构</strong></p>
+  <p>• 印度制造业崛起（"印度制造"计划）</p>
+  <p>• 东南亚承接产业转移</p>
+  <p>• 墨西哥近岸外包繁荣</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 第七章：总结与展望</h2>
+  <h3>7.1 地缘政治经济学的核心命题</h3>
+  <p><strong>1.</strong> <strong>大国竞争是历史常态</strong>：修昔底德陷阱揭示了权力转移的结构性风险</p>
+  <p><strong>2.</strong> <strong>供应链是国家安全的核心</strong>：经济效率必须让位于战略安全</p>
+  <p><strong>3.</strong> <strong>脱钩是选择性的而非全面的</strong>：去风险化是务实的中间路线</p>
+  <p><strong>4.</strong> <strong>能源转型重塑地缘格局</strong>：关键矿物取代石油成为新的博弈焦点</p>
+  <p><strong>5.</strong> <strong>投资必须纳入地缘政治维度</strong>：忽视地缘风险的资产配置是不完整的</p>
+  <h3>7.2 与康波周期的关联</h3>
+  <p>地缘政治格局的变迁与康德拉季耶夫长波高度相关：</p>
+  <p>• <strong>长波上升期</strong>：技术革命驱动经济繁荣，新兴大国快速崛起，地缘竞争加剧</p>
+  <p>• <strong>长波顶点</strong>：大国实力对比最接近，修昔底德陷阱风险最高</p>
+  <p>• <strong>长波下降期</strong>：经济衰退加剧保护主义，地缘冲突频率上升</p>
+  <p>• <strong>长波底部</strong>：旧秩序瓦解，新秩序孕育，地缘格局完成重组</p>
+  <p>当前我们正处于第五康波的调整期，地缘政治风险处于冷战以来的最高水平。理解地缘政治经济学，不仅是学术需要，更是投资实践的必要工具。</p>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 课后练习</h2>
+  <div class="exercise"><div class="exercise-label">✏️ 练习</div><h3>思考题</h3>
+  <p><strong>1.</strong> 请结合修昔底德陷阱理论，分析中美关系中的结构性矛盾与可能的和平路径。为什么艾利森认为中美关系不必然走向冲突？</p>
+  <p><strong>2.</strong> 从供应链安全的角度，解释"友岸外包"（Friend-shoring）与"近岸外包"（Near-shoring）的区别，并各举一个实际案例。</p>
+  <p><strong>3.</strong> 基辛格在《世界秩序》中强调"均势"的重要性。请分析当前中美欧三角关系中，各方如何运用经济工具来维持或改变权力平衡。</p>
+  <p><strong>4.</strong> 能源转型如何改变了传统的地缘政治格局？请以稀土或锂为例，分析关键矿物竞争的地缘政治含义。</p>
+  <p><strong>5.</strong> 作为一名全球投资者，如果台海局势在未来五年显著升温，你会如何调整资产配置？请从地理多元化、行业配置和对冲策略三个维度进行分析。</p>
+  </div>
+</div>
+<div class="section">
+  <h2><span class="icon">📖</span> 延伸阅读</h2>
+  <p>• 格雷厄姆·艾利森.《注定一战：中美能避免修昔底德陷阱吗？》. 2017.</p>
+  <p>• 亨利·基辛格.《世界秩序》. 2014.</p>
+  <p>• 彼得·泽汉.《世界贸易战：地缘政治如何重塑全球经济》. 2020.</p>
+  <p>• 克里斯·米勒.《芯片战争》. 2022.</p>
+  <p>• 丹尼尔·耶金.《新版图：能源、气候与国家冲突》. 2020.</p>
+  <p>• 伊恩·布雷默.《超级大国：美国外交政策的兴衰》. 2022.</p>
+</div>
+<div class="section">
+  <h2><span class="icon"></span> </h2>
+  <p><em>课程 18 完 | 地缘政治经济学 — 理解大国博弈中的经济逻辑</em></p>
+</div>
+
+
+<!-- BOTTOM NAV -->
+<div class="bottom-nav">
+  <a href="lesson17.html" class="prev">← 第17课</a>
+  <a href="lesson19.html" class="next">第19课 →</a>
+</div>
+
+</div>
+
+<script>
+// Reading progress
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement;
+  const pct=(h.scrollTop)/(h.scrollHeight-h.clientHeight)*100;
+  document.getElementById('progressFill').style.width=pct+'%';
+});
+
+// Audio player
+function toggleAudio(){
+  const audio=document.getElementById('courseAudio');
+  const btn=document.getElementById('playBtn');
+  if(audio.paused){audio.play();btn.textContent='⏸️'}else{audio.pause();btn.textContent='▶️'}
+}
+</script>
+
+</body>
+</html>
