@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>用户中心 — 康波研究院</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#09090b;--bg2:#0f0f13;--card:#1c1c21;--card2:#222228;--card3:#2a2a32;--border:#27272a;--border2:#3f3f46;--text:#fafafa;--text2:#a1a1aa;--text3:#71717a;--gold:#e2b64f;--gold2:#f5d98a;--green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;--orange:#f59e0b;--red:#ef4444;--serif:'Noto Serif SC',serif;--sans:'Inter',sans-serif;--radius:16px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.7}
+a{color:var(--gold);text-decoration:none}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(9,9,11,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);height:64px;display:flex;align-items:center}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:var(--serif);font-size:1.1rem;font-weight:700;color:var(--gold)}
+.nav-links{display:flex;gap:24px;align-items:center}
+.nav-links a{font-size:0.85rem;color:var(--text2);transition:color .2s}.nav-links a:hover,.nav-links a.active{color:var(--gold)}
+
+.container{max-width:900px;margin:0 auto;padding:80px 24px 60px}
+
+/* Auth Forms */
+.auth-section{max-width:400px;margin:60px auto}
+.auth-section h1{font-family:var(--serif);font-size:1.8rem;text-align:center;margin-bottom:8px}
+.auth-section .subtitle{text-align:center;color:var(--text2);margin-bottom:32px;font-size:0.9rem}
+.form-group{margin-bottom:20px}
+.form-group label{display:block;font-size:0.85rem;color:var(--text2);margin-bottom:6px;font-weight:500}
+.form-group input{width:100%;padding:12px 16px;background:var(--card);border:1px solid var(--border);border-radius:10px;color:var(--text);font-size:0.95rem;font-family:var(--sans);transition:border-color .2s}
+.form-group input:focus{outline:none;border-color:var(--gold)}
+.form-group .error{font-size:0.8rem;color:var(--red);margin-top:4px}
+.btn{display:block;width:100%;padding:14px;border:none;border-radius:10px;font-size:1rem;font-weight:600;cursor:pointer;transition:all .2s;font-family:var(--sans)}
+.btn-primary{background:var(--gold);color:#000}.btn-primary:hover{background:var(--gold2)}
+.btn-secondary{background:var(--card);color:var(--text);border:1px solid var(--border)}.btn-secondary:hover{border-color:var(--gold)}
+.form-footer{text-align:center;margin-top:20px;font-size:0.85rem;color:var(--text3)}
+.form-footer a{color:var(--gold)}
+
+/* Dashboard */
+.dashboard{display:grid;grid-template-columns:1fr 2fr;gap:24px}
+.profile-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;text-align:center}
+.avatar{width:80px;height:80px;border-radius:50%;background:var(--card2);margin:0 auto 16px;display:flex;align-items:center;justify-content:center;font-size:2rem}
+.username{font-size:1.2rem;font-weight:700;margin-bottom:4px}
+.user-plan{display:inline-block;padding:4px 12px;border-radius:20px;font-size:0.75rem;font-weight:600;margin-bottom:16px}
+.plan-free{background:rgba(161,161,170,0.15);color:var(--text2)}
+.plan-starter{background:rgba(34,197,94,0.15);color:var(--green)}
+.plan-pro{background:rgba(226,182,79,0.15);color:var(--gold)}
+.plan-premium{background:rgba(167,139,250,0.15);color:var(--purple)}
+
+.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:16px}
+.stat-item{background:var(--card2);border-radius:10px;padding:12px}
+.stat-num{font-size:1.4rem;font-weight:900;color:var(--gold)}
+.stat-label{font-size:0.7rem;color:var(--text3)}
+
+.main-content{display:flex;flex-direction:column;gap:24px}
+.section-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px}
+.section-title{font-family:var(--serif);font-size:1.1rem;color:var(--gold);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+
+/* Progress Bars */
+.progress-item{display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.04)}
+.progress-item:last-child{border:none}
+.progress-num{font-size:0.8rem;color:var(--text3);min-width:24px}
+.progress-title{flex:1;font-size:0.85rem}
+.progress-bar{width:80px;height:4px;background:var(--border);border-radius:2px;overflow:hidden}
+.progress-fill{height:100%;background:var(--gold);border-radius:2px;transition:width .3s}
+.progress-pct{font-size:0.75rem;color:var(--text3);min-width:36px;text-align:right}
+
+/* Bookmarks */
+.bookmark-item{display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.04)}
+.bookmark-item:last-child{border:none}
+
+/* Notes */
+.note-item{padding:12px;background:var(--card2);border-radius:10px;margin-bottom:8px}
+.note-meta{font-size:0.75rem;color:var(--text3);margin-bottom:4px}
+.note-content{font-size:0.85rem;color:var(--text2)}
+
+/* Streak */
+.streak-calendar{display:flex;gap:4px;flex-wrap:wrap}
+.streak-day{width:14px;height:14px;border-radius:3px;background:var(--border)}
+.streak-day.active{background:var(--green)}
+.streak-day.today{background:var(--gold)}
+
+/* Payment */
+.plan-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+.plan-card{background:var(--card);border:2px solid var(--border);border-radius:var(--radius);padding:24px;text-align:center;cursor:pointer;transition:all .2s}
+.plan-card:hover{border-color:var(--gold);transform:translateY(-2px)}
+.plan-card.recommended{border-color:var(--gold);background:linear-gradient(135deg,rgba(226,182,79,0.05),rgba(226,182,79,0.02))}
+.plan-card .plan-name{font-size:1.1rem;font-weight:700;margin-bottom:4px}
+.plan-card .plan-price{font-size:2rem;font-weight:900;color:var(--gold);font-family:var(--serif)}
+.plan-card .plan-unit{font-size:0.8rem;color:var(--text3)}
+.plan-card .plan-features{margin-top:16px;text-align:left}
+.plan-card .plan-features li{font-size:0.8rem;color:var(--text2);padding:4px 0;list-style:none}
+.plan-card .plan-features li::before{content:'✓ ';color:var(--green)}
+
+/* Order */
+.order-card{background:var(--card2);border-radius:12px;padding:20px;margin-top:16px}
+.order-info{display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:0.85rem}
+.order-label{color:var(--text3)}.order-value{color:var(--text);text-align:right}
+
+/* Tabs */
+.tabs{display:flex;gap:4px;margin-bottom:20px;border-bottom:1px solid var(--border);padding-bottom:4px}
+.tab{padding:8px 16px;font-size:0.85rem;color:var(--text3);cursor:pointer;border-radius:8px 8px 0 0;transition:all .2s}
+.tab.active{color:var(--gold);background:rgba(226,182,79,0.1)}
+.tab-content{display:none}.tab-content.active{display:block}
+
+/* Toast */
+.toast{position:fixed;top:80px;right:24px;padding:12px 20px;border-radius:10px;font-size:0.85rem;z-index:200;transform:translateX(120%);transition:transform .3s}
+.toast.show{transform:translateX(0)}
+.toast.success{background:var(--green);color:#000}
+.toast.error{background:var(--red);color:#fff}
+
+.footer{text-align:center;padding:40px 24px;border-top:1px solid var(--border);margin-top:60px;font-size:0.8rem;color:var(--text3)}
+
+@media(max-width:768px){
+  .dashboard{grid-template-columns:1fr}
+  .plan-cards{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">← 康波研究院</a>
+    <div class="nav-links">
+      <a href="index.html">首页</a>
+      <a href="knowledge-graph.html">知识图谱</a>
+      <a href="courses.html">课程</a>
+      <a href="tools.html">工具</a>
+      <a href="user.html" class="active" id="navUser">用户中心</a>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <!-- AUTH SECTION -->
+  <div id="authSection" class="auth-section">
+    <!-- Login Form -->
+    <div id="loginForm">
+      <h1>欢迎回来</h1>
+      <p class="subtitle">登录康波研究院，继续你的学习之旅</p>
+      <div class="form-group">
+        <label>邮箱</label>
+        <input type="email" id="loginEmail" placeholder="your@email.com">
+      </div>
+      <div class="form-group">
+        <label>密码</label>
+        <input type="password" id="loginPassword" placeholder="输入密码">
+      </div>
+      <button class="btn btn-primary" onclick="doLogin()">登录</button>
+      <p class="form-footer">还没有账号？<a href="#" onclick="showRegister()">立即注册</a></p>
+    </div>
+
+    <!-- Register Form -->
+    <div id="registerForm" style="display:none">
+      <h1>创建账号</h1>
+      <p class="subtitle">开始你的周期投资学习之旅</p>
+      <div class="form-group">
+        <label>用户名</label>
+        <input type="text" id="regUsername" placeholder="你的名字">
+      </div>
+      <div class="form-group">
+        <label>邮箱</label>
+        <input type="email" id="regEmail" placeholder="your@email.com">
+      </div>
+      <div class="form-group">
+        <label>密码</label>
+        <input type="password" id="regPassword" placeholder="至少6位密码">
+      </div>
+      <div class="form-group">
+        <label>手机号（可选）</label>
+        <input type="tel" id="regPhone" placeholder="13800138000">
+      </div>
+      <button class="btn btn-primary" onclick="doRegister()">注册</button>
+      <p class="form-footer">已有账号？<a href="#" onclick="showLogin()">立即登录</a></p>
+    </div>
+  </div>
+
+  <!-- DASHBOARD SECTION -->
+  <div id="dashboardSection" style="display:none">
+    <div class="dashboard">
+      <!-- Profile Card -->
+      <div>
+        <div class="profile-card">
+          <div class="avatar" id="userAvatar">👤</div>
+          <div class="username" id="userName">-</div>
+          <div class="user-plan plan-free" id="userPlan">免费版</div>
+          <div class="stats-grid">
+            <div class="stat-item"><div class="stat-num" id="statCompleted">0</div><div class="stat-label">已完成</div></div>
+            <div class="stat-item"><div class="stat-num" id="statProgress">0%</div><div class="stat-label">平均进度</div></div>
+            <div class="stat-item"><div class="stat-num" id="statStreak">0</div><div class="stat-label">本周连续</div></div>
+            <div class="stat-item"><div class="stat-num" id="statBookmarks">0</div><div class="stat-label">收藏</div></div>
+          </div>
+          <button class="btn btn-secondary" style="margin-top:16px" onclick="doLogout()">退出登录</button>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div class="main-content">
+        <!-- Tabs -->
+        <div class="tabs">
+          <div class="tab active" onclick="switchTab('progress')">📊 学习进度</div>
+          <div class="tab" onclick="switchTab('bookmarks')">⭐ 我的收藏</div>
+          <div class="tab" onclick="switchTab('notes')">📝 笔记</div>
+          <div class="tab" onclick="switchTab('plans')">💎 套餐</div>
+          <div class="tab" onclick="switchTab('orders')">📋 订单</div>
+        </div>
+
+        <!-- Progress Tab -->
+        <div class="tab-content active" id="tab-progress">
+          <div class="section-card">
+            <div class="section-title">📊 课程学习进度</div>
+            <div id="progressList"><p style="color:var(--text3);font-size:0.85rem">暂无学习记录，去<a href="courses.html">课程页面</a>开始学习吧！</p></div>
+          </div>
+          <div class="section-card" style="margin-top:16px">
+            <div class="section-title">🔥 学习连续天数</div>
+            <div class="streak-calendar" id="streakCalendar"></div>
+          </div>
+        </div>
+
+        <!-- Bookmarks Tab -->
+        <div class="tab-content" id="tab-bookmarks">
+          <div class="section-card">
+            <div class="section-title">⭐ 我的收藏</div>
+            <div id="bookmarkList"><p style="color:var(--text3);font-size:0.85rem">暂无收藏</p></div>
+          </div>
+        </div>
+
+        <!-- Notes Tab -->
+        <div class="tab-content" id="tab-notes">
+          <div class="section-card">
+            <div class="section-title">📝 我的笔记</div>
+            <div id="noteList"><p style="color:var(--text3);font-size:0.85rem">暂无笔记</p></div>
+          </div>
+        </div>
+
+        <!-- Plans Tab -->
+        <div class="tab-content" id="tab-plans">
+          <div class="section-card">
+            <div class="section-title">💎 选择套餐</div>
+            <div class="plan-cards" id="planCards"></div>
+          </div>
+        </div>
+
+        <!-- Orders Tab -->
+        <div class="tab-content" id="tab-orders">
+          <div class="section-card">
+            <div class="section-title">📋 订单记录</div>
+            <div id="orderList"><p style="color:var(--text3);font-size:0.85rem">暂无订单</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<footer class="footer">
+  <p>康波研究院 © 2026 · MoKangMedical · 本平台内容仅供参考，不构成投资建议</p>
+</footer>
+
+<script>
+const API = window.location.hostname === 'localhost' ? 'http://localhost:8088' : '';
+let currentUser = null;
+let authToken = localStorage.getItem('kb_token');
+
+// API Helper
+async function api(path, options = {}) {
+  const headers = {'Content-Type': 'application/json'};
+  if (authToken) headers['Authorization'] = `Bearer ${authToken}`;
+  const res = await fetch(`${API}${path}`, {...options, headers});
+  if (res.status === 401) { doLogout(); return null; }
+  return res.json();
+}
+
+// Toast
+function showToast(msg, type = 'success') {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = `toast ${type} show`;
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+// Auth
+function showLogin() {
+  document.getElementById('loginForm').style.display = 'block';
+  document.getElementById('registerForm').style.display = 'none';
+}
+function showRegister() {
+  document.getElementById('loginForm').style.display = 'none';
+  document.getElementById('registerForm').style.display = 'block';
+}
+
+async function doLogin() {
+  const email = document.getElementById('loginEmail').value;
+  const password = document.getElementById('loginPassword').value;
+  if (!email || !password) return showToast('请填写邮箱和密码', 'error');
+  
+  const res = await api('/api/auth/login', {
+    method: 'POST',
+    body: JSON.stringify({email, password})
+  });
+  if (res && res.success) {
+    authToken = res.token;
+    localStorage.setItem('kb_token', authToken);
+    currentUser = res.user;
+    showToast('登录成功！');
+    showDashboard();
+  } else {
+    showToast(res?.detail || '登录失败', 'error');
+  }
+}
+
+async function doRegister() {
+  const username = document.getElementById('regUsername').value;
+  const email = document.getElementById('regEmail').value;
+  const password = document.getElementById('regPassword').value;
+  const phone = document.getElementById('regPhone').value;
+  if (!username || !email || !password) return showToast('请填写必填信息', 'error');
+  if (password.length < 6) return showToast('密码至少6位', 'error');
+  
+  const res = await api('/api/auth/register', {
+    method: 'POST',
+    body: JSON.stringify({username, email, password, phone})
+  });
+  if (res && res.success) {
+    authToken = res.token;
+    localStorage.setItem('kb_token', authToken);
+    currentUser = res.user;
+    showToast('注册成功！');
+    showDashboard();
+  } else {
+    showToast(res?.detail || '注册失败', 'error');
+  }
+}
+
+function doLogout() {
+  authToken = null;
+  localStorage.removeItem('kb_token');
+  currentUser = null;
+  document.getElementById('authSection').style.display = 'block';
+  document.getElementById('dashboardSection').style.display = 'none';
+}
+
+// Dashboard
+async function showDashboard() {
+  document.getElementById('authSection').style.display = 'none';
+  document.getElementById('dashboardSection').style.display = 'block';
+  
+  // Load profile
+  const profile = await api('/api/user/profile');
+  if (!profile) return;
+  currentUser = profile;
+  
+  document.getElementById('userName').textContent = profile.username;
+  document.getElementById('userAvatar').textContent = profile.avatar || '👤';
+  
+  const planEl = document.getElementById('userPlan');
+  planEl.textContent = profile.stats.plan_name;
+  planEl.className = `user-plan plan-${profile.plan}`;
+  
+  document.getElementById('statCompleted').textContent = profile.stats.courses_completed;
+  document.getElementById('statProgress').textContent = profile.stats.average_progress + '%';
+  document.getElementById('statStreak').textContent = profile.stats.weekly_streak;
+  document.getElementById('statBookmarks').textContent = profile.stats.bookmarks;
+  
+  // Load progress
+  loadProgress();
+  loadBookmarks();
+  loadNotes();
+  loadPlans();
+  loadOrders();
+  renderStreak();
+}
+
+async function loadProgress() {
+  const res = await api('/api/progress');
+  if (!res || !res.progress.length) return;
+  
+  const courseNames = {};
+  const coursesRes = await api('/api/courses');
+  if (coursesRes) coursesRes.courses.forEach(c => courseNames[c.id] = c.title);
+  
+  const el = document.getElementById('progressList');
+  el.innerHTML = res.progress.map(p => `
+    <div class="progress-item">
+      <div class="progress-num">#${p.course_id}</div>
+      <div class="progress-title">${courseNames[p.course_id] || '课程' + p.course_id}</div>
+      <div class="progress-bar"><div class="progress-fill" style="width:${p.progress_percent}%"></div></div>
+      <div class="progress-pct">${p.progress_percent}%</div>
+    </div>
+  `).join('');
+}
+
+async function loadBookmarks() {
+  const res = await api('/api/bookmarks');
+  if (!res || !res.bookmarks.length) return;
+  const el = document.getElementById('bookmarkList');
+  el.innerHTML = res.bookmarks.map(b => `
+    <div class="bookmark-item">
+      <span>⭐</span>
+      <a href="courses.html#course-${b.course_id}">第${b.course_id}课</a>
+      <span style="color:var(--text3);font-size:0.75rem;margin-left:auto">${b.created_at}</span>
+    </div>
+  `).join('');
+}
+
+async function loadNotes() {
+  const res = await api('/api/notes');
+  if (!res || !res.notes.length) return;
+  const el = document.getElementById('noteList');
+  el.innerHTML = res.notes.map(n => `
+    <div class="note-item">
+      <div class="note-meta">第${n.course_id}课 · ${n.created_at}</div>
+      <div class="note-content">${n.content}</div>
+    </div>
+  `).join('');
+}
+
+async function loadPlans() {
+  const res = await api('/api/plans');
+  if (!res) return;
+  const el = document.getElementById('planCards');
+  el.innerHTML = Object.entries(res.plans).map(([key, plan]) => `
+    <div class="plan-card ${key === 'pro' ? 'recommended' : ''}" onclick="selectPlan('${key}')">
+      <div class="plan-name">${plan.name}</div>
+      <div class="plan-price">${plan.price === 0 ? '免费' : '¥' + plan.price.toLocaleString()}</div>
+      <div class="plan-unit">${plan.price === 0 ? '' : '/年'}</div>
+      <ul class="plan-features">
+        ${plan.features.map(f => `<li>${f}</li>`).join('')}
+      </ul>
+    </div>
+  `).join('');
+}
+
+async function selectPlan(plan) {
+  if (plan === 'free') return showToast('当前已是免费版');
+  const res = await api('/api/payment/create', {
+    method: 'POST',
+    body: JSON.stringify({plan, method: 'alipay'})
+  });
+  if (res && res.success) {
+    showToast(`订单已创建：${res.order_no}`);
+    loadOrders();
+    switchTab('orders');
+  }
+}
+
+async function loadOrders() {
+  const res = await api('/api/payment/history');
+  if (!res || !res.payments.length) return;
+  const el = document.getElementById('orderList');
+  el.innerHTML = res.payments.map(p => `
+    <div class="order-card">
+      <div class="order-info">
+        <div class="order-label">订单号</div><div class="order-value">${p.order_no}</div>
+        <div class="order-label">套餐</div><div class="order-value">${p.plan}</div>
+        <div class="order-label">金额</div><div class="order-value">¥${p.amount}</div>
+        <div class="order-label">状态</div><div class="order-value" style="color:${p.status==='paid'?'var(--green)':'var(--orange)'}">${p.status==='paid'?'已支付':'待支付'}</div>
+        <div class="order-label">时间</div><div class="order-value">${p.created_at}</div>
+      </div>
+      ${p.status === 'pending' ? `<button class="btn btn-primary" style="margin-top:12px;padding:8px" onclick="confirmPayment('${p.order_no}')">确认支付（测试）</button>` : ''}
+    </div>
+  `).join('');
+}
+
+async function confirmPayment(orderNo) {
+  const res = await api(`/api/payment/confirm/${orderNo}`, {method: 'POST'});
+  if (res && res.success) {
+    showToast(res.message);
+    showDashboard();
+  }
+}
+
+function renderStreak() {
+  const el = document.getElementById('streakCalendar');
+  let html = '';
+  for (let i = 29; i >= 0; i--) {
+    const d = new Date(); d.setDate(d.getDate() - i);
+    const isToday = i === 0;
+    html += `<div class="streak-day${isToday ? ' today' : ''}" title="${d.toLocaleDateString()}"></div>`;
+  }
+  el.innerHTML = html;
+}
+
+// Tabs
+function switchTab(name) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  event.target.classList.add('active');
+  document.getElementById(`tab-${name}`).classList.add('active');
+}
+
+// Init
+if (authToken) {
+  showDashboard();
+} else {
+  document.getElementById('authSection').style.display = 'block';
+}
+</script>
+</body>
+</html>
