@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>课程加载中... — 康波研究院</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#09090b;--bg2:#0f0f13;--card:#1c1c21;--card2:#222228;--card3:#2a2a32;--border:#27272a;--border2:#3f3f46;--text:#fafafa;--text2:#a1a1aa;--text3:#71717a;--gold:#e2b64f;--gold2:#f5d98a;--green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;--orange:#f59e0b;--red:#ef4444;--serif:'Noto Serif SC',serif;--sans:'Inter',sans-serif;--radius:16px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:2;font-size:18px}
+a{color:var(--gold);text-decoration:none}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(9,9,11,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);height:56px;display:flex;align-items:center}
+.nav-inner{max-width:900px;margin:0 auto;padding:0 24px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-left{display:flex;align-items:center;gap:16px}
+.nav-back{font-size:0.9rem;color:var(--text3);transition:color .2s}.nav-back:hover{color:var(--gold)}
+.nav-title{font-size:0.9rem;color:var(--text2);font-weight:500}
+.nav-right{display:flex;align-items:center;gap:12px}
+.nav-lesson{font-size:0.8rem;color:var(--text3);background:var(--card2);padding:4px 14px;border-radius:6px}
+
+/* PROGRESS BAR */
+.progress-bar{position:fixed;top:56px;left:0;right:0;height:3px;background:var(--border);z-index:99}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));transition:width .3s;width:0%}
+
+/* MAIN */
+.main{max-width:800px;margin:0 auto;padding:80px 28px 60px}
+
+/* LESSON HEADER */
+.lesson-header{margin-bottom:56px;text-align:center}
+.lesson-cat{display:inline-block;font-size:0.75rem;color:var(--gold);background:rgba(226,182,79,0.1);padding:4px 14px;border-radius:20px;margin-bottom:16px;letter-spacing:0.1em}
+.lesson-header h1{font-family:var(--serif);font-size:clamp(2rem,5vw,2.8rem);font-weight:900;line-height:1.3;margin-bottom:16px;background:linear-gradient(135deg,var(--text),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lesson-meta{display:flex;gap:20px;justify-content:center;flex-wrap:wrap}
+.lesson-meta span{font-size:0.85rem;color:var(--text3);display:flex;align-items:center;gap:6px}
+
+/* SECTIONS */
+.section{margin-bottom:48px}
+.section h2{font-size:1.4rem;font-weight:700;margin-bottom:20px;color:var(--text);display:flex;align-items:center;gap:10px}
+.section h2 .icon{font-size:1.2rem}
+.section h3{font-size:1.15rem;font-weight:600;margin:28px 0 12px;color:var(--gold2)}
+.section p{color:var(--text2);font-size:1.05rem;margin-bottom:14px;line-height:2}
+
+/* CALLOUT */
+.callout{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:28px;margin:24px 0}
+.callout.gold{border-left:4px solid var(--gold)}
+.callout.green{border-left:4px solid var(--green)}
+.callout.blue{border-left:4px solid var(--blue)}
+.callout-title{font-size:0.85rem;font-weight:600;color:var(--gold);margin-bottom:10px;text-transform:uppercase;letter-spacing:0.08em}
+.callout p{color:var(--text2);font-size:1rem;line-height:1.9}
+
+/* TABLE */
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:0.95rem}
+.data-table th{text-align:left;padding:12px 14px;background:var(--card2);color:var(--text3);font-weight:600;font-size:0.85rem;text-transform:uppercase;letter-spacing:0.05em;border-bottom:2px solid var(--border)}
+.data-table td{padding:12px 14px;border-bottom:1px solid var(--border);color:var(--text2)}
+.data-table tr:hover td{background:var(--card)}
+
+/* EXERCISE */
+.exercise{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:32px;margin:28px 0}
+.exercise-label{display:inline-flex;align-items:center;gap:6px;font-size:0.8rem;font-weight:600;color:var(--blue);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:14px}
+.exercise h3{font-size:1.1rem;margin-bottom:10px;color:var(--text)}
+.exercise p{color:var(--text2);font-size:1rem;margin-bottom:14px}
+.exercise-question{color:var(--text);font-weight:500;font-size:1.05rem}
+.exercise textarea{width:100%;min-height:90px;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:16px;color:var(--text);font-family:var(--sans);font-size:1rem;resize:vertical;transition:border-color .2s;line-height:1.8}
+.exercise textarea:focus{outline:none;border-color:var(--gold)}
+.exercise textarea::placeholder{color:var(--text3)}
+
+/* BOTTOM NAV */
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;padding:36px 0;margin-top:48px;border-top:1px solid var(--border)}
+.bottom-nav a{display:flex;align-items:center;gap:8px;padding:14px 24px;border-radius:12px;font-size:1rem;font-weight:500;transition:all .2s}
+.bottom-nav .prev{color:var(--text3);border:1px solid var(--border)}
+.bottom-nav .prev:hover{border-color:var(--gold);color:var(--gold)}
+.bottom-nav .next{background:var(--gold);color:#000}
+.bottom-nav .next:hover{background:var(--gold2)}
+
+/* AUDIO PLAYER */
+.audio-player{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin:24px 0;display:flex;align-items:center;gap:16px}
+.audio-player .play-btn{width:48px;height:48px;border-radius:50%;background:var(--gold);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.2rem;transition:background .2s;flex-shrink:0}
+.audio-player .play-btn:hover{background:var(--gold2)}
+.audio-player .audio-info{flex:1}
+.audio-player .audio-title{font-size:0.9rem;font-weight:600;color:var(--text);margin-bottom:4px}
+.audio-player .audio-sub{font-size:0.8rem;color:var(--text3)}
+
+/* MARKDOWN CONTENT */
+.md-content h1,.md-content h2,.md-content h3{font-family:var(--serif);color:var(--text);margin:32px 0 16px}
+.md-content h1{font-size:1.8rem;display:none}
+.md-content h2{font-size:1.4rem;color:var(--gold);border-bottom:1px solid var(--border);padding-bottom:8px}
+.md-content h3{font-size:1.15rem;color:var(--gold2)}
+.md-content p{color:var(--text2);margin-bottom:14px;line-height:2}
+.md-content strong{color:var(--text);font-weight:600}
+.md-content em{color:var(--gold2);font-style:italic}
+.md-content ul,.md-content ol{margin:16px 0;padding-left:24px}
+.md-content li{color:var(--text2);margin-bottom:8px}
+.md-content blockquote{border-left:4px solid var(--gold);background:var(--card);padding:16px 20px;margin:20px 0;border-radius:0 12px 12px 0}
+.md-content blockquote p{color:var(--gold2);margin:0}
+.md-content table{width:100%;border-collapse:collapse;margin:20px 0}
+.md-content table th{text-align:left;padding:12px 14px;background:var(--card2);color:var(--text3);font-weight:600;font-size:0.85rem;border-bottom:2px solid var(--border)}
+.md-content table td{padding:12px 14px;border-bottom:1px solid var(--border);color:var(--text2)}
+.md-content table tr:hover td{background:var(--card)}
+.md-content code{background:var(--card2);padding:2px 8px;border-radius:4px;font-size:0.9em;color:var(--gold2)}
+.md-content pre{background:var(--card2);padding:20px;border-radius:12px;overflow-x:auto;margin:20px 0}
+.md-content pre code{background:none;padding:0;color:var(--text2)}
+.md-content hr{border:none;border-top:1px solid var(--border);margin:32px 0}
+
+/* RESPONSIVE */
+@media(max-width:640px){
+  .main{padding:72px 16px 40px}
+  .lesson-header h1{font-size:1.8rem}
+  .section h2{font-size:1.2rem}
+  .data-table{font-size:0.85rem}
+  .data-table th,.data-table td{padding:8px 10px}
+  .md-content table{font-size:0.85rem}
+  .md-content table th,.md-content table td{padding:8px 10px}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-left">
+      <a href="courses.html" class="nav-back">← 返回课程</a>
+      <span class="nav-title" id="navTitle">课程加载中...</span>
+    </div>
+    <div class="nav-right">
+      <span class="nav-lesson" id="navLesson">-- / 39</span>
+    </div>
+  </div>
+</nav>
+<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+
+<div class="main">
+
+<!-- HEADER -->
+<div class="lesson-header">
+  <div class="lesson-cat" id="lessonCat">经济史与金融体系</div>
+  <h1 id="lessonTitle">加载中...</h1>
+  <div class="lesson-meta">
+    <span id="metaTime">📖 阅读约40分钟</span>
+    <span id="metaExercises">✏️ 含练习题</span>
+    <span id="metaLevel">🎯 进阶</span>
+  </div>
+</div>
+
+<!-- AUDIO OVERVIEW -->
+<div class="audio-player" id="audioPlayer" style="display:none">
+  <button class="play-btn" onclick="toggleAudio()" id="playBtn">▶️</button>
+  <div class="audio-info">
+    <div class="audio-title">🎧 课程音频概述</div>
+    <div class="audio-sub">点击播放课程核心内容摘要</div>
+  </div>
+  <audio id="courseAudio" preload="none">
+    <source id="audioSource" src="" type="audio/mpeg">
+  </audio>
+</div>
+
+<!-- CONTENT -->
+<div class="md-content" id="courseContent">
+  <p>课程内容加载中...</p>
+</div>
+
+<!-- BOTTOM NAV -->
+<div class="bottom-nav">
+  <a href="#" class="prev" id="prevLesson">← 上一课</a>
+  <a href="#" class="next" id="nextLesson">下一课 →</a>
+</div>
+
+</div>
+
+<script>
+// Parse course number from URL
+const urlParams = new URLSearchParams(window.location.search);
+const courseNum = parseInt(urlParams.get('num')) || 34;
+
+// Course info mapping
+const courseInfo = {
+  34: { title: '欧美经济群雄逐鹿300年', file: '34-欧美经济群雄逐鹿300年.md', cat: '经济史与金融体系', time: '40分钟', level: '进阶' },
+  35: { title: '世界金融史 — 从贝壳到比特币', file: '35-世界金融史.md', cat: '经济史与金融体系', time: '40分钟', level: '进阶' },
+  36: { title: '二战 — 战争、财富与智慧', file: '36-二战战争财富与智慧.md', cat: '经济史与金融体系', time: '40分钟', level: '进阶' },
+  37: { title: '布雷顿森林体系 — 美元霸权的建立与瓦解', file: '37-布雷顿森林体系.md', cat: '经济史与金融体系', time: '40分钟', level: '进阶' },
+  38: { title: '货币战争 — 金融博弈与国家命运', file: '38-货币战争.md', cat: '经济史与金融体系', time: '40分钟', level: '进阶' },
+  39: { title: '交易的艺术 — 商业博弈与谈判智慧', file: '39-交易的艺术.md', cat: '经济史与金融体系', time: '40分钟', level: '进阶' }
+};
+
+// Simple Markdown parser
+function parseMd(md) {
+  let html = md
+    .replace(/^# .+\n/, '')
+    .replace(/^### (.+)$/gm, '<h3>$1</h3>')
+    .replace(/^## (.+)$/gm, '<h2>$1</h2>')
+    .replace(/^#### (.+)$/gm, '<h4>$1</h4>')
+    .replace(/^> (.+)$/gm, '<blockquote><p>$1</p></blockquote>')
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.+?)\*/g, '<em>$1</em>')
+    .replace(/`([^`]+)`/g, '<code>$1</code>')
+    .replace(/^---$/gm, '<hr>')
+    .replace(/^\|(.+)\|$/gm, function(match, content) {
+      const cells = content.split('|').map(c => c.trim());
+      if (cells.every(c => /^[-:]+$/.test(c))) return '<!--table-sep-->';
+      return '<tr>' + cells.map(c => `<td>${c}</td>`).join('') + '</tr>';
+    })
+    .replace(/^- (.+)$/gm, '<li>$1</li>')
+    .replace(/^\d+\. (.+)$/gm, '<li>$1</li>')
+    .replace(/```[\s\S]*?```/g, function(match) {
+      const code = match.replace(/```\w*\n?/, '').replace(/```$/, '');
+      return '<pre><code>' + code.trim() + '</code></pre>';
+    })
+    .replace(/\n\n/g, '</p><p>')
+    .replace(/<!--table-sep-->/g, '')
+    .replace(/<tr>/g, function(m) { return '<tr>'; });
+
+  html = '<p>' + html + '</p>';
+  html = html
+    .replace(/<p><\/p>/g, '')
+    .replace(/<p>(<h[234]>)/g, '$1')
+    .replace(/(<\/h[234]>)<\/p>/g, '$1')
+    .replace(/<p>(<blockquote>)/g, '$1')
+    .replace(/(<\/blockquote>)<\/p>/g, '$1')
+    .replace(/<p>(<pre>)/g, '$1')
+    .replace(/(<\/pre>)<\/p>/g, '$1')
+    .replace(/<p>(<hr>)<\/p>/g, '$1')
+    .replace(/<p><li>/g, '<ul><li>')
+    .replace(/<\/li><\/p>/g, '</li></ul>')
+    .replace(/<\/ul><ul>/g, '');
+
+  return html;
+}
+
+// Load course content
+function loadCourse() {
+  const info = courseInfo[courseNum];
+  if (!info) {
+    document.getElementById('courseContent').innerHTML = '<p>课程不存在。</p>';
+    return;
+  }
+
+  // Update page title and header
+  document.title = `第${courseNum}课：${info.title} — 康波研究院`;
+  document.getElementById('navTitle').textContent = `第${courseNum}课`;
+  document.getElementById('navLesson').textContent = `${courseNum} / 39`;
+  document.getElementById('lessonCat').textContent = info.cat;
+  document.getElementById('lessonTitle').textContent = `📚 第${courseNum}课：${info.title}`;
+  document.getElementById('metaTime').textContent = `📖 阅读约${info.time}`;
+  document.getElementById('metaLevel').textContent = `🎯 ${info.level}`;
+
+  // Load markdown content
+  fetch(`courses/${info.file}`)
+    .then(r => r.text())
+    .then(md => {
+      document.getElementById('courseContent').innerHTML = parseMd(md);
+    })
+    .catch(() => {
+      document.getElementById('courseContent').innerHTML = '<p>内容加载失败，请刷新页面重试。</p>';
+    });
+
+  // Check for audio
+  const audioSrc = `audio/lesson${courseNum}.mp3`;
+  fetch(audioSrc, { method: 'HEAD' })
+    .then(r => {
+      if (r.ok) {
+        document.getElementById('audioSource').src = audioSrc;
+        document.getElementById('audioPlayer').style.display = 'flex';
+      }
+    })
+    .catch(() => {});
+
+  // Set up navigation
+  const prevNum = courseNum - 1;
+  const nextNum = courseNum + 1;
+  const prevLink = document.getElementById('prevLesson');
+  const nextLink = document.getElementById('nextLesson');
+
+  if (prevNum >= 34 && courseInfo[prevNum]) {
+    prevLink.href = `lesson.html?num=${prevNum}`;
+    prevLink.textContent = `← 第${prevNum}课`;
+  } else {
+    prevLink.href = 'courses.html';
+    prevLink.textContent = '← 返回课程列表';
+  }
+
+  if (nextNum <= 39 && courseInfo[nextNum]) {
+    nextLink.href = `lesson.html?num=${nextNum}`;
+    nextLink.textContent = `第${nextNum}课 →`;
+  } else {
+    nextLink.href = 'courses.html';
+    nextLink.textContent = '返回课程列表 →';
+  }
+}
+
+// Audio player
+let isPlaying = false;
+function toggleAudio() {
+  const audio = document.getElementById('courseAudio');
+  const btn = document.getElementById('playBtn');
+  if (isPlaying) {
+    audio.pause();
+    btn.textContent = '▶️';
+  } else {
+    audio.play();
+    btn.textContent = '⏸️';
+  }
+  isPlaying = !isPlaying;
+}
+
+// Progress bar
+window.addEventListener('scroll', () => {
+  const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+  const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const scrolled = (winScroll / height) * 100;
+  document.getElementById('progressFill').style.width = scrolled + '%';
+});
+
+// Load course on page load
+loadCourse();
+</script>
+
+</body>
+</html>
